@@ -43,6 +43,23 @@ function toast(msg){
   clearTimeout(toast._t); toast._t = setTimeout(() => t.remove(), 2800);
 }
 
+/* ---------- telaffuz: tarayıcının kendi sesleriyle ---------- */
+const canSpeak = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+function englishVoice(){
+  const vs = speechSynthesis.getVoices().filter(v => /^en[-_]/i.test(v.lang));
+  return vs.find(v => /^en[-_]GB/i.test(v.lang)) || vs.find(v => /^en[-_]US/i.test(v.lang)) || vs[0] || null;
+}
+function speak(text){
+  if (!canSpeak || !text) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  const v = englishVoice();
+  u.lang = v ? v.lang : "en-GB"; if (v) u.voice = v;
+  u.rate = 0.9;
+  speechSynthesis.speak(u);
+}
+if (canSpeak) speechSynthesis.getVoices(); // bazı tarayıcılar ses listesini ilk çağrıda yüklemeye başlar
+
 /* ---------- depolama: Claude içinde hesaba, dışarıda tarayıcıya ---------- */
 const LS_KEY = "fislik.decks.v1";
 const store = {
@@ -222,6 +239,7 @@ function renderDeck(){
           <div class="w">${esc(k.en)} ${k.pos ? `<span class="hint" style="font:italic 400 14px var(--word)">${esc(k.pos)}</span>` : ""}</div>
           <div class="t">${esc(k.tr) || "<i>anlam eklenmedi</i>"} · <span class="hint">${STATUS[k.status].label}</span></div>
           <div class="acts">
+            ${canSpeak ? `<button class="ib" data-act="say" data-id="${k.id}" aria-label="${esc(k.en)} kelimesini sesli oku" title="Sesli oku">🔊</button>` : ""}
             <button class="ib" data-act="edit" data-id="${k.id}" aria-label="${esc(k.en)} kartını düzenle">Düzenle</button>
             <button class="ib" data-act="del" data-id="${k.id}" aria-label="${esc(k.en)} kartını sil">Sil</button>
           </div>
@@ -301,6 +319,8 @@ function renderStudy(){
     : `<div class="bigword">${esc(k.en)}</div>${k.pos ? `<div class="pos">${esc(k.pos)}</div>` : ""}${k.ex ? `<div class="ex">“${esc(k.ex)}”</div>` : ""}`;
   const pct = Math.round(s.i / s.queue.length * 100);
   const nextKnown = k.status === "known" ? Math.max(3, (k.interval||3)*2) : 3;
+  // Türkçe yönde İngilizceyi okumak cevabı söylemek olur; ses yalnızca İngilizce yüz görünürken çıkar
+  const showSay = canSpeak && (frontEn ? !s.flipped : s.flipped);
   app.innerHTML = `
     <div class="top studytop"><button class="back" data-act="endStudy">← Çık</button><span class="sync">${STATUS[k.status].label}</span></div>
     <div class="prog"><div class="track"><i style="width:${pct}%"></i></div><span>${s.i + 1} / ${s.queue.length}</span></div>
@@ -309,13 +329,14 @@ function renderStudy(){
         <div class="face front-f"><span class="tag">${frontEn ? "İngilizce" : "Türkçe"}</span><span class="deckn">${esc(deckName)}</span>${front}<span class="tap">Anlamını düşün, sonra çevir</span></div>
         <div class="face back-f"><span class="tag">${frontEn ? "Türkçe" : "İngilizce"}</span><span class="deckn">${esc(deckName)}</span>${back}</div>
       </button>
+      ${showSay ? `<button class="say" data-act="say" aria-label="Sesli oku" title="Sesli oku (S)">🔊</button>` : ""}
     </div>
     <div class="answers">
       <button class="ans a1" data-act="ans" data-v="unknown" ${s.flipped ? "" : "disabled"}>Bilmiyorum<small>birazdan tekrar</small></button>
       <button class="ans a2" data-act="ans" data-v="learning" ${s.flipped ? "" : "disabled"}>Öğreniyorum<small>yarın</small></button>
       <button class="ans a3" data-act="ans" data-v="known" ${s.flipped ? "" : "disabled"}>Öğrendim<small>${nextKnown} gün sonra</small></button>
     </div>
-    <div class="keys">Klavye: Boşluk çevir · 1 Bilmiyorum · 2 Öğreniyorum · 3 Öğrendim</div>
+    <div class="keys">Klavye: Boşluk çevir · 1 Bilmiyorum · 2 Öğreniyorum · 3 Öğrendim${canSpeak ? " · S sesli oku" : ""}</div>
   `;
 }
 function answer(v){
@@ -331,6 +352,16 @@ function answer(v){
     if (v === "unknown" && !s.retried.has(it.id)) { s.retried.add(it.id); s.queue.push({ ...it }); }
   }
   s.i++; s.flipped = false; renderStudy();
+}
+function endStudy(){
+  const back = session && session.from; session = null;
+  if (canSpeak) speechSynthesis.cancel();
+  go(back && back.name === "deck" && store.decks[back.id] ? back : { name: "home" });
+}
+function sayCurrent(){
+  const s = session; if (!s || s.i >= s.queue.length) return;
+  if (direction === "tr" && !s.flipped) return; // cevabı ele vermesin
+  const k = cardOf(s.queue[s.i]); if (k) speak(k.en);
 }
 
 /* ---------- yedekleme (GitHub sürümü) ---------- */
@@ -383,7 +414,11 @@ app.addEventListener("click", async e => {
   }
   else if (act === "flip") { if (session) { session.flipped = !session.flipped; renderStudy(); } }
   else if (act === "ans") answer(b.dataset.v);
-  else if (act === "endStudy") { const back = session && session.from; session = null; go(back && back.name === "deck" && store.decks[back.id] ? back : { name: "home" }); }
+  else if (act === "endStudy") endStudy();
+  else if (act === "say") {
+    if (view.name === "study") sayCurrent();
+    else { const k = (store.decks[view.id]?.cards || []).find(c => c.id === id); if (k) speak(k.en); }
+  }
   else if (act === "export") exportBackup();
   else if (act === "fill") {
     const f = b.closest("form"), msg = f.querySelector("[data-msg]"), w = f.en.value.trim();
@@ -449,7 +484,8 @@ document.addEventListener("keydown", e => {
   else if (e.key === "1") answer("unknown");
   else if (e.key === "2") answer("learning");
   else if (e.key === "3") answer("known");
-  else if (e.key === "Escape") { session = null; go({ name: "home" }); }
+  else if (e.key === "s" || e.key === "S") sayCurrent();
+  else if (e.key === "Escape") endStudy();
 });
 
 /* ---------- başlat ---------- */
@@ -457,4 +493,8 @@ store.loadLocal();
 render();
 store.connect();
 initSample();
+// çevrimdışı çalışma ve "ana ekrana ekle"; dosyadan açınca ya da Claude içinde gerekmez
+if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol) && !inClaude) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
 })();

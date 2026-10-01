@@ -6,7 +6,7 @@ Sunucu, hesap ya da kurulum gerekmez. Tek bir HTML sayfasıdır ve verilerin tar
 
 ## Özellikler
 
-- **Hazır desteler:** A2, B1, B2 ve IELTS 7+ (C1) seviyelerinde, her biri en sık kullanılan 500 kelimeden oluşur. Toplam 2000+ kelime ve hepsinin Türkçe anlamı var.
+- **Hazır desteler:** A2, B1, B2 ve IELTS 7+ (C1) seviyelerinde, her biri en sık kullanılan 500 kelimeden oluşur. Toplam 2000+ kelime ve hepsinin Türkçe anlamı var. Bunlara ek olarak tanım ve örnek cümleleriyle 24 kelimelik *Paket #1 · Memory & Learning* destesi de gelir.
 - **Aralıklı tekrar:**
   - *Bilmiyorum* → kart aynı oturumun sonunda bir kez daha gelir.
   - *Öğreniyorum* → kart ertesi gün gelir.
@@ -16,12 +16,14 @@ Sunucu, hesap ya da kurulum gerekmez. Tek bir HTML sayfasıdır ve verilerin tar
 - **Kart yönü:** İngilizce → Türkçe ya da Türkçe → İngilizce çalışabilirsin.
 - **Arama ve filtre:** Deste içinde kelime arayabilir, kartları duruma göre süzebilirsin.
 - **Yedekleme:** İlerlemeni JSON dosyası olarak indirip başka bir cihaza yükleyebilirsin.
-- **Klavye kısayolları:** Boşluk kartı çevirir, 1 / 2 / 3 cevap verir, Esc oturumdan çıkar.
+- **Sesli telaffuz:** 🔊 butonu kelimeyi tarayıcının İngilizce sesiyle okur (varsa İngiliz aksanı). Türkçe → İngilizce çalışırken cevabı ele vermemek için ses ancak kart çevrildikten sonra çıkar.
+- **Klavye kısayolları:** Boşluk kartı çevirir, 1 / 2 / 3 cevap verir, S sesli okur, Esc oturumdan çıkar.
+- **Telefona kurulabilir:** GitHub Pages üzerinden açınca tarayıcıdan *Ana ekrana ekle* diyebilirsin. Uygulama bir kez açıldıktan sonra internetsiz de çalışır.
 - **Görünüm:** Mobil uyumlu, karanlık mod destekli.
 
 ## Çalıştırma
 
-Klasörü indirip `index.html` dosyasını tarayıcıda açman yeterli.
+Klasörü indirip `index.html` dosyasını tarayıcıda açman yeterli. Çevrimdışı çalışma ve ana ekrana ekleme yalnızca sayfa bir web sunucusundan açıldığında çalışır (GitHub Pages ya da yerelde `python -m http.server`).
 
 ### GitHub Pages ile yayınlama
 
@@ -37,7 +39,11 @@ css/style.css       Tasarım (açık/koyu tema)
 js/app.js           Uygulama mantığı (bağımlılık yok)
 data/decks.js       Uygulamanın yüklediği hazır desteler
 data/*.json         Aynı desteler, başka projelerde kullanmak için JSON olarak
+manifest.webmanifest, icons/   Ana ekrana ekleme bilgileri ve ikonlar
+sw.js               Çevrimdışı çalışma (service worker)
 ```
+
+Service worker dosyaları önce önbellekten verir, arkada da yenilerini indirir. Bu yüzden yayınladığın bir değişiklik kullanıcıya sayfanın ikinci açılışında ulaşır. Önbellekteki dosya listesini değiştirirsen `sw.js` içindeki `CACHE` adını artır (ör. `fislik-v2`).
 
 Her desteye ait JSON dosyasındaki `cards` alanı `[ingilizce, tür, türkçe, tanım?, örnek?]` dizilerinden oluşur.
 
@@ -78,7 +84,7 @@ Kaynaklar:
 
 ### English
 
-Fişlik is a lightweight, dependency-free flashcard web app for IELTS vocabulary. It uses spaced repetition and ships with four ready-made decks (CEFR A2, B1, B2 and C1, 500 words each) with Turkish translations.
+Fişlik is a lightweight, dependency-free flashcard web app for IELTS vocabulary. It uses spaced repetition and ships with four ready-made decks (CEFR A2, B1, B2 and C1, 500 words each) with Turkish translations, plus a small themed starter pack. Words can be read aloud, and the app can be installed to the home screen and used offline.
 
 To use it, open `index.html` in a browser or host the folder on GitHub Pages. Your progress is stored in the browser and can be exported as JSON.
 
