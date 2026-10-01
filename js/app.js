@@ -37,25 +37,46 @@ function counts(cards){ const c = {new:0,unknown:0,learning:0,known:0}; cards.fo
 const isReview = k => k.status !== "new" && (k.due || 0) <= now();
 function todayCount(cards){ return cards.filter(isReview).length + Math.min(NEW_PER_SESSION, cards.filter(k => k.status === "new").length); }
 function quoteOfDay(){ const d = Math.floor(now() / DAY); return QUOTES[d % QUOTES.length]; }
-function toast(msg){
+function toast(msg, ms = 2800){
   const r = document.getElementById("toastRoot"); r.innerHTML = "";
   const t = document.createElement("div"); t.className = "toast"; t.setAttribute("role","status"); t.textContent = msg; r.appendChild(t);
-  clearTimeout(toast._t); toast._t = setTimeout(() => t.remove(), 2800);
+  clearTimeout(toast._t); toast._t = setTimeout(() => t.remove(), ms);
 }
 
 /* ---------- telaffuz: tarayıcının kendi sesleriyle ---------- */
 const canSpeak = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
-function englishVoice(){
-  const vs = speechSynthesis.getVoices().filter(v => /^en[-_]/i.test(v.lang));
-  return vs.find(v => /^en[-_]GB/i.test(v.lang)) || vs.find(v => /^en[-_]US/i.test(v.lang)) || vs[0] || null;
+// Ses listesi bazı tarayıcılarda geç gelir; "voiceschanged" olayını en fazla 2 sn bekle.
+function loadVoices(){
+  const vs = speechSynthesis.getVoices();
+  if (vs.length) return Promise.resolve(vs);
+  return new Promise(res => {
+    const done = () => { clearTimeout(t); speechSynthesis.removeEventListener("voiceschanged", done); res(speechSynthesis.getVoices()); };
+    const t = setTimeout(done, 2000);
+    speechSynthesis.addEventListener("voiceschanged", done);
+  });
 }
-function speak(text){
+function englishVoice(voices){
+  const en = voices.filter(v => /^en([-_]|$)/i.test(v.lang));
+  const score = v => (/^en[-_]GB/i.test(v.lang) ? 4 : /^en[-_]US/i.test(v.lang) ? 2 : 0)
+                   + (/natural|neural|online|google|premium|enhanced/i.test(v.name) ? 3 : 0)
+                   + (v.localService ? 0 : 1);
+  return en.sort((a, b) => score(b) - score(a))[0] || null;
+}
+function noVoiceHelp(){
+  const ua = navigator.userAgent;
+  if (/Android/i.test(ua)) return "Telefonunda İngilizce ses yok. Ayarlar → Metin okuma çıkışı bölümünden İngilizce ses verisini indir.";
+  if (/iPhone|iPad|Mac/i.test(ua)) return "Cihazında İngilizce ses yok. Ayarlar → Erişilebilirlik → Seslendirilen İçerik → Sesler bölümünden İngilizce bir ses indir.";
+  if (/Windows/i.test(ua)) return "Bilgisayarında İngilizce ses yok. Ayarlar → Saat ve dil → Konuşma → Ses ekle ile English (United Kingdom) ekle ya da Chrome/Edge kullan.";
+  return "Bu tarayıcıda İngilizce ses bulunamadı. Chrome ya da Edge ile deneyebilirsin.";
+}
+async function speak(text){
   if (!canSpeak || !text) return;
   speechSynthesis.cancel();
+  const v = englishVoice(await loadVoices());
+  // İngilizce ses yoksa okuma: tarayıcı varsayılan (çoğu zaman Türkçe) sesle okur, yanlış telaffuz öğretir.
+  if (!v) { toast(noVoiceHelp(), 8000); return; }
   const u = new SpeechSynthesisUtterance(text);
-  const v = englishVoice();
-  u.lang = v ? v.lang : "en-GB"; if (v) u.voice = v;
-  u.rate = 0.9;
+  u.voice = v; u.lang = v.lang.replace("_", "-"); u.rate = 0.9;
   speechSynthesis.speak(u);
 }
 if (canSpeak) speechSynthesis.getVoices(); // bazı tarayıcılar ses listesini ilk çağrıda yüklemeye başlar
