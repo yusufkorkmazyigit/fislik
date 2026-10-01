@@ -1,0 +1,2509 @@
+{
+ "key": "b1",
+ "name": "B1 · Orta 500",
+ "level": "B1",
+ "desc": "IELTS 5.5–6 için gereken orta seviye kelimeler",
+ "source": "CEFR-J",
+ "cards": [
+  [
+   "part-time",
+   "adj, adv",
+   "yarı zamanlı"
+  ],
+  [
+   "service",
+   "n, v",
+   "hizmet; bakım yapmak"
+  ],
+  [
+   "season",
+   "n",
+   "mevsim, sezon"
+  ],
+  [
+   "full-time",
+   "adj, adv",
+   "tam zamanlı"
+  ],
+  [
+   "general",
+   "adj, n",
+   "genel; general"
+  ],
+  [
+   "president",
+   "n",
+   "başkan, cumhurbaşkanı"
+  ],
+  [
+   "working",
+   "adj",
+   "çalışan, işleyen"
+  ],
+  [
+   "able",
+   "adj",
+   "yapabilen, muktedir"
+  ],
+  [
+   "series",
+   "n",
+   "dizi, seri"
+  ],
+  [
+   "development",
+   "n",
+   "gelişme, kalkınma"
+  ],
+  [
+   "available",
+   "adj",
+   "mevcut, müsait"
+  ],
+  [
+   "former",
+   "adj",
+   "eski, önceki"
+  ],
+  [
+   "sometimes",
+   "adv",
+   "bazen"
+  ],
+  [
+   "current",
+   "adj",
+   "şimdiki, güncel"
+  ],
+  [
+   "march",
+   "n, v",
+   "yürüyüş; yürümek"
+  ],
+  [
+   "process",
+   "n",
+   "süreç"
+  ],
+  [
+   "main",
+   "adj",
+   "ana, temel"
+  ],
+  [
+   "department",
+   "n",
+   "bölüm, departman"
+  ],
+  [
+   "full stop",
+   "n",
+   "nokta (noktalama)"
+  ],
+  [
+   "rest",
+   "n, v",
+   "dinlenme; geri kalan; dinlenmek"
+  ],
+  [
+   "term",
+   "n",
+   "dönem; terim"
+  ],
+  [
+   "sex",
+   "n",
+   "cinsiyet"
+  ],
+  [
+   "total",
+   "adj, n",
+   "toplam"
+  ],
+  [
+   "second-hand",
+   "adj, adv",
+   "ikinci el"
+  ],
+  [
+   "security",
+   "n",
+   "güvenlik"
+  ],
+  [
+   "county",
+   "n",
+   "ilçe, idari bölge"
+  ],
+  [
+   "hard-working",
+   "adj",
+   "çalışkan"
+  ],
+  [
+   "industry",
+   "n",
+   "sanayi, endüstri"
+  ],
+  [
+   "out-of-date",
+   "adj",
+   "eskimiş, modası geçmiş"
+  ],
+  [
+   "up-to-date",
+   "adj",
+   "güncel"
+  ],
+  [
+   "policy",
+   "n",
+   "politika, ilke"
+  ],
+  [
+   "press",
+   "n, v",
+   "basın; basmak"
+  ],
+  [
+   "worth",
+   "adj",
+   "değer, ... değerinde"
+  ],
+  [
+   "face to face",
+   "adv",
+   "yüz yüze"
+  ],
+  [
+   "face-to-face",
+   "adj",
+   "yüz yüze (sıfat)"
+  ],
+  [
+   "relationship",
+   "n",
+   "ilişki"
+  ],
+  [
+   "tax",
+   "n",
+   "vergi"
+  ],
+  [
+   "amount",
+   "n",
+   "miktar"
+  ],
+  [
+   "league",
+   "n",
+   "lig"
+  ],
+  [
+   "management",
+   "n",
+   "yönetim"
+  ],
+  [
+   "central",
+   "adj",
+   "merkezi"
+  ],
+  [
+   "paid",
+   "adj",
+   "ücretli"
+  ],
+  [
+   "various",
+   "adj",
+   "çeşitli"
+  ],
+  [
+   "chief",
+   "adj",
+   "baş, en önemli"
+  ],
+  [
+   "property",
+   "n",
+   "mülk; özellik"
+  ],
+  [
+   "amazing",
+   "adj",
+   "şaşırtıcı, harika"
+  ],
+  [
+   "economic",
+   "adj",
+   "ekonomik"
+  ],
+  [
+   "involved",
+   "adj",
+   "dahil, ilgili"
+  ],
+  [
+   "serious",
+   "adj",
+   "ciddi"
+  ],
+  [
+   "decision",
+   "n",
+   "karar"
+  ],
+  [
+   "entire",
+   "adj",
+   "tüm, bütün"
+  ],
+  [
+   "written",
+   "adj",
+   "yazılı"
+  ],
+  [
+   "council",
+   "n",
+   "konsey, belediye meclisi"
+  ],
+  [
+   "currently",
+   "adv",
+   "şu anda"
+  ],
+  [
+   "election",
+   "n",
+   "seçim"
+  ],
+  [
+   "financial",
+   "adj",
+   "mali, finansal"
+  ],
+  [
+   "legal",
+   "adj",
+   "yasal, hukuki"
+  ],
+  [
+   "race",
+   "n, v",
+   "yarış; ırk; yarışmak"
+  ],
+  [
+   "union",
+   "n",
+   "birlik, sendika"
+  ],
+  [
+   "career",
+   "n",
+   "kariyer"
+  ],
+  [
+   "loss",
+   "n",
+   "kayıp"
+  ],
+  [
+   "army",
+   "n",
+   "ordu"
+  ],
+  [
+   "huge",
+   "adj",
+   "devasa, çok büyük"
+  ],
+  [
+   "access",
+   "n",
+   "erişim"
+  ],
+  [
+   "risk",
+   "n",
+   "risk"
+  ],
+  [
+   "self-service",
+   "adj",
+   "self servis"
+  ],
+  [
+   "district",
+   "n",
+   "semt, bölge"
+  ],
+  [
+   "percent",
+   "n",
+   "yüzde"
+  ],
+  [
+   "growth",
+   "n",
+   "büyüme"
+  ],
+  [
+   "pain",
+   "n",
+   "acı, ağrı"
+  ],
+  [
+   "respect",
+   "n, v",
+   "saygı; saygı duymak"
+  ],
+  [
+   "standard",
+   "n",
+   "standart"
+  ],
+  [
+   "charge",
+   "n, v",
+   "ücret; şarj etmek, ücret almak"
+  ],
+  [
+   "hand-held",
+   "adj",
+   "elde taşınan"
+  ],
+  [
+   "limited",
+   "adj",
+   "sınırlı"
+  ],
+  [
+   "network",
+   "n",
+   "ağ"
+  ],
+  [
+   "anti",
+   "adj",
+   "karşıt"
+  ],
+  [
+   "beat",
+   "v",
+   "yenmek; dövmek"
+  ],
+  [
+   "potential",
+   "n",
+   "potansiyel"
+  ],
+  [
+   "treatment",
+   "n",
+   "tedavi; muamele"
+  ],
+  [
+   "completely",
+   "adv",
+   "tamamen"
+  ],
+  [
+   "content",
+   "n",
+   "içerik"
+  ],
+  [
+   "individual",
+   "adj",
+   "bireysel"
+  ],
+  [
+   "leading",
+   "adj",
+   "önde gelen"
+  ],
+  [
+   "previous",
+   "adj",
+   "önceki"
+  ],
+  [
+   "region",
+   "n",
+   "bölge"
+  ],
+  [
+   "sort",
+   "n",
+   "tür, çeşit"
+  ],
+  [
+   "air force",
+   "n",
+   "hava kuvvetleri"
+  ],
+  [
+   "link",
+   "n, v",
+   "bağlantı; bağlamak"
+  ],
+  [
+   "next door",
+   "adv",
+   "yan tarafta, bitişikte"
+  ],
+  [
+   "next-door",
+   "adj",
+   "yan kapıdaki, komşu"
+  ],
+  [
+   "positive",
+   "adj",
+   "olumlu"
+  ],
+  [
+   "absolutely",
+   "adv",
+   "kesinlikle"
+  ],
+  [
+   "immediately",
+   "adv",
+   "hemen"
+  ],
+  [
+   "construction",
+   "n",
+   "inşaat, yapım"
+  ],
+  [
+   "income",
+   "n",
+   "gelir"
+  ],
+  [
+   "justice",
+   "n",
+   "adalet"
+  ],
+  [
+   "movement",
+   "n",
+   "hareket, akım"
+  ],
+  [
+   "safety",
+   "n",
+   "güvenlik, emniyet"
+  ],
+  [
+   "definitely",
+   "adv",
+   "kesinlikle"
+  ],
+  [
+   "particularly",
+   "adv",
+   "özellikle"
+  ],
+  [
+   "generally",
+   "adv",
+   "genellikle"
+  ],
+  [
+   "global",
+   "adj",
+   "küresel"
+  ],
+  [
+   "annual",
+   "adj",
+   "yıllık"
+  ],
+  [
+   "battle",
+   "n",
+   "savaş, muharebe"
+  ],
+  [
+   "insurance",
+   "n",
+   "sigorta"
+  ],
+  [
+   "majority",
+   "n",
+   "çoğunluk"
+  ],
+  [
+   "opening",
+   "n",
+   "açılış"
+  ],
+  [
+   "sports",
+   "adj",
+   "spor (ile ilgili)"
+  ],
+  [
+   "stupid",
+   "adj",
+   "aptal"
+  ],
+  [
+   "active",
+   "adj",
+   "aktif, etkin"
+  ],
+  [
+   "administration",
+   "n",
+   "yönetim, idare"
+  ],
+  [
+   "approach",
+   "n",
+   "yaklaşım"
+  ],
+  [
+   "cancer",
+   "n",
+   "kanser"
+  ],
+  [
+   "civil",
+   "adj",
+   "sivil; medeni"
+  ],
+  [
+   "defense",
+   "n",
+   "savunma"
+  ],
+  [
+   "independent",
+   "adj",
+   "bağımsız"
+  ],
+  [
+   "awesome",
+   "adj",
+   "müthiş"
+  ],
+  [
+   "commercial",
+   "adj",
+   "ticari"
+  ],
+  [
+   "first lady",
+   "n",
+   "first lady, başkanın eşi"
+  ],
+  [
+   "operation",
+   "n",
+   "ameliyat; operasyon"
+  ],
+  [
+   "organization",
+   "n",
+   "kuruluş, örgüt"
+  ],
+  [
+   "protect",
+   "v",
+   "korumak"
+  ],
+  [
+   "analysis",
+   "n",
+   "analiz"
+  ],
+  [
+   "first floor",
+   "n",
+   "birinci kat"
+  ],
+  [
+   "first-floor",
+   "adj",
+   "birinci kattaki"
+  ],
+  [
+   "marriage",
+   "n",
+   "evlilik"
+  ],
+  [
+   "skin",
+   "n",
+   "deri, cilt"
+  ],
+  [
+   "thus",
+   "adv",
+   "böylece"
+  ],
+  [
+   "damage",
+   "n, v",
+   "hasar; zarar vermek"
+  ],
+  [
+   "directly",
+   "adv",
+   "doğrudan"
+  ],
+  [
+   "disease",
+   "n",
+   "hastalık"
+  ],
+  [
+   "gay",
+   "adj",
+   "eşcinsel"
+  ],
+  [
+   "professor",
+   "n",
+   "profesör"
+  ],
+  [
+   "common sense",
+   "n",
+   "sağduyu"
+  ],
+  [
+   "effective",
+   "adj",
+   "etkili"
+  ],
+  [
+   "heart attack",
+   "n",
+   "kalp krizi"
+  ],
+  [
+   "highly",
+   "adv",
+   "son derece"
+  ],
+  [
+   "reality",
+   "n",
+   "gerçeklik"
+  ],
+  [
+   "agreement",
+   "n",
+   "anlaşma"
+  ],
+  [
+   "bank account",
+   "n",
+   "banka hesabı"
+  ],
+  [
+   "comment",
+   "n",
+   "yorum"
+  ],
+  [
+   "equipment",
+   "n",
+   "ekipman, donanım"
+  ],
+  [
+   "eventually",
+   "adv",
+   "sonunda"
+  ],
+  [
+   "holy",
+   "adj",
+   "kutsal"
+  ],
+  [
+   "killing",
+   "n",
+   "öldürme"
+  ],
+  [
+   "otherwise",
+   "adv",
+   "aksi takdirde"
+  ],
+  [
+   "responsible",
+   "adj",
+   "sorumlu"
+  ],
+  [
+   "theory",
+   "n",
+   "teori, kuram"
+  ],
+  [
+   "cell",
+   "n",
+   "hücre"
+  ],
+  [
+   "economy",
+   "n",
+   "ekonomi"
+  ],
+  [
+   "foot",
+   "n",
+   "ayak"
+  ],
+  [
+   "mass",
+   "adj",
+   "kitlesel"
+  ],
+  [
+   "mission",
+   "n",
+   "görev, misyon"
+  ],
+  [
+   "politics",
+   "n",
+   "siyaset"
+  ],
+  [
+   "question mark",
+   "n",
+   "soru işareti"
+  ],
+  [
+   "status",
+   "n",
+   "statü, durum"
+  ],
+  [
+   "application",
+   "n",
+   "başvuru; uygulama"
+  ],
+  [
+   "complex",
+   "adj",
+   "karmaşık"
+  ],
+  [
+   "location",
+   "n",
+   "konum"
+  ],
+  [
+   "channel",
+   "n",
+   "kanal"
+  ],
+  [
+   "distance",
+   "n",
+   "mesafe"
+  ],
+  [
+   "finding",
+   "n",
+   "bulgu"
+  ],
+  [
+   "northern",
+   "adj",
+   "kuzeydeki"
+  ],
+  [
+   "protection",
+   "n",
+   "koruma"
+  ],
+  [
+   "religious",
+   "adj",
+   "dini"
+  ],
+  [
+   "demand",
+   "n, v",
+   "talep; talep etmek"
+  ],
+  [
+   "engine",
+   "n",
+   "motor"
+  ],
+  [
+   "southern",
+   "adj",
+   "güneydeki"
+  ],
+  [
+   "critical",
+   "adj",
+   "eleştirel; kritik"
+  ],
+  [
+   "digital",
+   "adj",
+   "dijital"
+  ],
+  [
+   "fire station",
+   "n",
+   "itfaiye istasyonu"
+  ],
+  [
+   "mental",
+   "adj",
+   "zihinsel"
+  ],
+  [
+   "score",
+   "n, v",
+   "skor; puan almak"
+  ],
+  [
+   "surface",
+   "n",
+   "yüzey"
+  ],
+  [
+   "totally",
+   "adv",
+   "tamamen"
+  ],
+  [
+   "benefit",
+   "n",
+   "fayda, yarar"
+  ],
+  [
+   "fund",
+   "n, v",
+   "fon; finanse etmek"
+  ],
+  [
+   "hearing",
+   "n",
+   "işitme; duruşma"
+  ],
+  [
+   "primary school",
+   "n",
+   "ilkokul"
+  ],
+  [
+   "authority",
+   "n",
+   "otorite, yetkili makam"
+  ],
+  [
+   "basis",
+   "n",
+   "temel, esas"
+  ],
+  [
+   "brand-new",
+   "adj",
+   "yepyeni"
+  ],
+  [
+   "dude",
+   "n",
+   "ahbap, dostum (argo)"
+  ],
+  [
+   "foundation",
+   "n",
+   "temel; vakıf"
+  ],
+  [
+   "gain",
+   "n, v",
+   "kazanç; kazanmak"
+  ],
+  [
+   "rise",
+   "n, v",
+   "yükseliş; yükselmek"
+  ],
+  [
+   "soul",
+   "n",
+   "ruh"
+  ],
+  [
+   "supply",
+   "n",
+   "tedarik, arz"
+  ],
+  [
+   "waste",
+   "adj, n, v",
+   "israf; atık; israf etmek"
+  ],
+  [
+   "weird",
+   "adj",
+   "tuhaf"
+  ],
+  [
+   "artist",
+   "n",
+   "sanatçı"
+  ],
+  [
+   "edition",
+   "n",
+   "baskı (yayın)"
+  ],
+  [
+   "engineering",
+   "n",
+   "mühendislik"
+  ],
+  [
+   "institute",
+   "n",
+   "enstitü"
+  ],
+  [
+   "message board",
+   "n",
+   "mesaj panosu, forum"
+  ],
+  [
+   "obviously",
+   "adv",
+   "açıkça, belli ki"
+  ],
+  [
+   "option",
+   "n",
+   "seçenek"
+  ],
+  [
+   "prison",
+   "n",
+   "hapishane"
+  ],
+  [
+   "bet",
+   "v",
+   "bahse girmek"
+  ],
+  [
+   "firm",
+   "adj, n",
+   "sağlam, kesin; firma"
+  ],
+  [
+   "spirit",
+   "n",
+   "ruh, moral"
+  ],
+  [
+   "aware",
+   "adj",
+   "farkında"
+  ],
+  [
+   "eastern",
+   "adj",
+   "doğudaki"
+  ],
+  [
+   "fifth",
+   "n",
+   "beşte bir"
+  ],
+  [
+   "progress",
+   "n",
+   "ilerleme"
+  ],
+  [
+   "proud",
+   "adj",
+   "gururlu"
+  ],
+  [
+   "require",
+   "v",
+   "gerektirmek"
+  ],
+  [
+   "van",
+   "n",
+   "kamyonet, minibüs"
+  ],
+  [
+   "concept",
+   "n",
+   "kavram"
+  ],
+  [
+   "journal",
+   "n",
+   "dergi (bilimsel); günlük"
+  ],
+  [
+   "leadership",
+   "n",
+   "liderlik"
+  ],
+  [
+   "length",
+   "n",
+   "uzunluk"
+  ],
+  [
+   "prove",
+   "v",
+   "kanıtlamak"
+  ],
+  [
+   "rare",
+   "adj",
+   "nadir"
+  ],
+  [
+   "setting",
+   "n",
+   "ortam, mekân"
+  ],
+  [
+   "balance",
+   "n",
+   "denge"
+  ],
+  [
+   "connection",
+   "n",
+   "bağlantı"
+  ],
+  [
+   "fellow",
+   "n",
+   "adam, arkadaş"
+  ],
+  [
+   "stick",
+   "v",
+   "yapışmak, yapıştırmak"
+  ],
+  [
+   "vehicle",
+   "n",
+   "araç, taşıt"
+  ],
+  [
+   "volume",
+   "n",
+   "hacim; ses düzeyi; cilt"
+  ],
+  [
+   "aid",
+   "n, v",
+   "yardım; yardım etmek"
+  ],
+  [
+   "concerned",
+   "adj",
+   "endişeli; ilgili"
+  ],
+  [
+   "criminal",
+   "n",
+   "suçlu"
+  ],
+  [
+   "cultural",
+   "adj",
+   "kültürel"
+  ],
+  [
+   "guide",
+   "n, v",
+   "rehber; rehberlik etmek"
+  ],
+  [
+   "investigation",
+   "n",
+   "soruşturma, inceleme"
+  ],
+  [
+   "responsibility",
+   "n",
+   "sorumluluk"
+  ],
+  [
+   "slightly",
+   "adv",
+   "biraz, hafifçe"
+  ],
+  [
+   "treat",
+   "n",
+   "ikram, ödül"
+  ],
+  [
+   "unique",
+   "adj",
+   "eşsiz, benzersiz"
+  ],
+  [
+   "variety",
+   "n",
+   "çeşitlilik"
+  ],
+  [
+   "violence",
+   "n",
+   "şiddet"
+  ],
+  [
+   "edge",
+   "n",
+   "kenar, uç"
+  ],
+  [
+   "injury",
+   "n",
+   "yaralanma"
+  ],
+  [
+   "iron",
+   "n, v",
+   "demir; ütü; ütülemek"
+  ],
+  [
+   "prepared",
+   "adj",
+   "hazırlıklı"
+  ],
+  [
+   "religion",
+   "n",
+   "din"
+  ],
+  [
+   "blog",
+   "n",
+   "blog"
+  ],
+  [
+   "democratic",
+   "adj",
+   "demokratik"
+  ],
+  [
+   "ground floor",
+   "n",
+   "zemin kat"
+  ],
+  [
+   "honest",
+   "adj",
+   "dürüst"
+  ],
+  [
+   "nuclear",
+   "adj",
+   "nükleer"
+  ],
+  [
+   "port",
+   "n",
+   "liman"
+  ],
+  [
+   "presence",
+   "n",
+   "varlık, mevcudiyet"
+  ],
+  [
+   "reduce",
+   "v",
+   "azaltmak"
+  ],
+  [
+   "solid",
+   "adj",
+   "katı, sağlam"
+  ],
+  [
+   "stress",
+   "n",
+   "stres"
+  ],
+  [
+   "taste",
+   "n, v",
+   "tat; tadına bakmak"
+  ],
+  [
+   "victory",
+   "n",
+   "zafer"
+  ],
+  [
+   "entirely",
+   "adv",
+   "tamamen"
+  ],
+  [
+   "failure",
+   "n",
+   "başarısızlık"
+  ],
+  [
+   "fuel",
+   "n",
+   "yakıt"
+  ],
+  [
+   "initial",
+   "n",
+   "baş harf"
+  ],
+  [
+   "massive",
+   "adj",
+   "devasa"
+  ],
+  [
+   "regional",
+   "adj",
+   "bölgesel"
+  ],
+  [
+   "session",
+   "n",
+   "oturum, seans"
+  ],
+  [
+   "teaching",
+   "n",
+   "öğretim"
+  ],
+  [
+   "transfer",
+   "v",
+   "aktarmak, transfer etmek"
+  ],
+  [
+   "upper",
+   "adj",
+   "üst"
+  ],
+  [
+   "alternative",
+   "adj, n",
+   "alternatif"
+  ],
+  [
+   "capacity",
+   "n",
+   "kapasite"
+  ],
+  [
+   "climate",
+   "n",
+   "iklim"
+  ],
+  [
+   "duty",
+   "n",
+   "görev; gümrük vergisi"
+  ],
+  [
+   "governor",
+   "n",
+   "vali"
+  ],
+  [
+   "industrial",
+   "adj",
+   "sanayi (sıfat), endüstriyel"
+  ],
+  [
+   "joint",
+   "adj",
+   "ortak"
+  ],
+  [
+   "remove",
+   "v",
+   "kaldırmak, çıkarmak"
+  ],
+  [
+   "steel",
+   "n",
+   "çelik"
+  ],
+  [
+   "turning",
+   "n",
+   "sapak, dönemeç"
+  ],
+  [
+   "vice",
+   "adj",
+   "yardımcı (başkan yardımcısı vb.)"
+  ],
+  [
+   "border",
+   "n",
+   "sınır"
+  ],
+  [
+   "command",
+   "n",
+   "komut, emir"
+  ],
+  [
+   "dating",
+   "n",
+   "flört etme"
+  ],
+  [
+   "enemy",
+   "n",
+   "düşman"
+  ],
+  [
+   "ensure",
+   "v",
+   "sağlamak, garantilemek"
+  ],
+  [
+   "environmental",
+   "adj",
+   "çevresel"
+  ],
+  [
+   "limit",
+   "n, v",
+   "sınır; sınırlamak"
+  ],
+  [
+   "ocean",
+   "n",
+   "okyanus"
+  ],
+  [
+   "proof",
+   "n",
+   "kanıt"
+  ],
+  [
+   "debt",
+   "n",
+   "borç"
+  ],
+  [
+   "historical",
+   "adj",
+   "tarihi"
+  ],
+  [
+   "honestly",
+   "adv",
+   "dürüstçe, açıkçası"
+  ],
+  [
+   "launch",
+   "v",
+   "başlatmak, piyasaya sürmek"
+  ],
+  [
+   "minimum",
+   "adj, n",
+   "asgari, en az"
+  ],
+  [
+   "suddenly",
+   "adv",
+   "aniden"
+  ],
+  [
+   "update",
+   "v",
+   "güncellemek"
+  ],
+  [
+   "flow",
+   "n, v",
+   "akış; akmak"
+  ],
+  [
+   "stuck",
+   "adj",
+   "sıkışmış, takılmış"
+  ],
+  [
+   "transport",
+   "n",
+   "ulaşım"
+  ],
+  [
+   "appeal",
+   "n",
+   "çağrı; itiraz; çekicilik"
+  ],
+  [
+   "device",
+   "n",
+   "cihaz"
+  ],
+  [
+   "entry",
+   "n",
+   "giriş; kayıt"
+  ],
+  [
+   "era",
+   "n",
+   "çağ, dönem"
+  ],
+  [
+   "exchange rate",
+   "n",
+   "döviz kuru"
+  ],
+  [
+   "grant",
+   "n, v",
+   "hibe, burs; vermek, bahşetmek"
+  ],
+  [
+   "platform",
+   "n",
+   "platform, peron"
+  ],
+  [
+   "duty-free",
+   "adj",
+   "gümrüksüz"
+  ],
+  [
+   "emotional",
+   "adj",
+   "duygusal"
+  ],
+  [
+   "internal",
+   "adj",
+   "iç, dahili"
+  ],
+  [
+   "relatively",
+   "adv",
+   "nispeten"
+  ],
+  [
+   "studio",
+   "n",
+   "stüdyo"
+  ],
+  [
+   "advance",
+   "v",
+   "ilerlemek"
+  ],
+  [
+   "confidence",
+   "n",
+   "güven, özgüven"
+  ],
+  [
+   "equal",
+   "adj",
+   "eşit"
+  ],
+  [
+   "fake",
+   "adj",
+   "sahte"
+  ],
+  [
+   "finance",
+   "v",
+   "finanse etmek"
+  ],
+  [
+   "identity",
+   "n",
+   "kimlik"
+  ],
+  [
+   "maintain",
+   "v",
+   "sürdürmek, korumak"
+  ],
+  [
+   "measure",
+   "n, v",
+   "önlem; ölçmek"
+  ],
+  [
+   "numerous",
+   "adj",
+   "çok sayıda"
+  ],
+  [
+   "approximately",
+   "adv",
+   "yaklaşık olarak"
+  ],
+  [
+   "conflict",
+   "n",
+   "çatışma"
+  ],
+  [
+   "distribution",
+   "n",
+   "dağıtım"
+  ],
+  [
+   "lay",
+   "v",
+   "koymak, sermek"
+  ],
+  [
+   "properly",
+   "adv",
+   "düzgünce, doğru şekilde"
+  ],
+  [
+   "pure",
+   "adj",
+   "saf"
+  ],
+  [
+   "secure",
+   "adj",
+   "güvenli"
+  ],
+  [
+   "vice president",
+   "n",
+   "başkan yardımcısı"
+  ],
+  [
+   "determine",
+   "v",
+   "belirlemek"
+  ],
+  [
+   "experienced",
+   "adj",
+   "deneyimli"
+  ],
+  [
+   "incredible",
+   "adj",
+   "inanılmaz"
+  ],
+  [
+   "obvious",
+   "adj",
+   "apaçık, belli"
+  ],
+  [
+   "public transport",
+   "n",
+   "toplu taşıma"
+  ],
+  [
+   "surgery",
+   "n",
+   "ameliyat"
+  ],
+  [
+   "vision",
+   "n",
+   "vizyon; görme"
+  ],
+  [
+   "whenever",
+   "adv",
+   "her ne zaman"
+  ],
+  [
+   "champion",
+   "n",
+   "şampiyon"
+  ],
+  [
+   "crisis",
+   "n",
+   "kriz"
+  ],
+  [
+   "giant",
+   "adj",
+   "dev"
+  ],
+  [
+   "jail",
+   "n",
+   "hapishane"
+  ],
+  [
+   "literature",
+   "n",
+   "edebiyat"
+  ],
+  [
+   "mayor",
+   "n",
+   "belediye başkanı"
+  ],
+  [
+   "minor",
+   "adj",
+   "küçük, önemsiz"
+  ],
+  [
+   "selection",
+   "n",
+   "seçim, seçki"
+  ],
+  [
+   "signal",
+   "n",
+   "sinyal"
+  ],
+  [
+   "stream",
+   "n, v",
+   "dere; canlı yayın yapmak"
+  ],
+  [
+   "struggle",
+   "n",
+   "mücadele"
+  ],
+  [
+   "suicide",
+   "n",
+   "intihar"
+  ],
+  [
+   "tiny",
+   "adj",
+   "minicik"
+  ],
+  [
+   "typically",
+   "adv",
+   "tipik olarak"
+  ],
+  [
+   "alcohol",
+   "n",
+   "alkol"
+  ],
+  [
+   "capable",
+   "adj",
+   "yetenekli, muktedir"
+  ],
+  [
+   "combination",
+   "n",
+   "kombinasyon"
+  ],
+  [
+   "conservative",
+   "adj",
+   "muhafazakâr"
+  ],
+  [
+   "desire",
+   "n",
+   "arzu"
+  ],
+  [
+   "drunk",
+   "adj",
+   "sarhoş"
+  ],
+  [
+   "essential",
+   "adj",
+   "temel, gerekli"
+  ],
+  [
+   "guilty",
+   "adj",
+   "suçlu"
+  ],
+  [
+   "largely",
+   "adv",
+   "büyük ölçüde"
+  ],
+  [
+   "medium",
+   "adj, n",
+   "orta; araç, ortam"
+  ],
+  [
+   "recommend",
+   "v",
+   "tavsiye etmek"
+  ],
+  [
+   "unable",
+   "adj",
+   "yapamayan, ...-amayan"
+  ],
+  [
+   "wing",
+   "n",
+   "kanat"
+  ],
+  [
+   "bomb",
+   "n, v",
+   "bomba; bombalamak"
+  ],
+  [
+   "cycle",
+   "n, v",
+   "döngü; bisiklete binmek"
+  ],
+  [
+   "extreme",
+   "adj",
+   "aşırı, uç"
+  ],
+  [
+   "facility",
+   "n",
+   "tesis, olanak"
+  ],
+  [
+   "goods",
+   "n",
+   "mallar, eşya"
+  ],
+  [
+   "hang",
+   "v",
+   "asmak"
+  ],
+  [
+   "maximum",
+   "adj, n",
+   "azami, en fazla"
+  ],
+  [
+   "republic",
+   "n",
+   "cumhuriyet"
+  ],
+  [
+   "reserve",
+   "n, v",
+   "rezerv; ayırtmak"
+  ],
+  [
+   "scared",
+   "adj",
+   "korkmuş"
+  ],
+  [
+   "switch",
+   "n, v",
+   "düğme; değiştirmek"
+  ],
+  [
+   "threat",
+   "n",
+   "tehdit"
+  ],
+  [
+   "affect",
+   "v",
+   "etkilemek"
+  ],
+  [
+   "aside",
+   "adv",
+   "bir kenara"
+  ],
+  [
+   "assistance",
+   "n",
+   "yardım"
+  ],
+  [
+   "bond",
+   "n",
+   "bağ"
+  ],
+  [
+   "delivery",
+   "n",
+   "teslimat"
+  ],
+  [
+   "deserve",
+   "v",
+   "hak etmek"
+  ],
+  [
+   "instance",
+   "n",
+   "örnek (for instance)"
+  ],
+  [
+   "mile",
+   "n",
+   "mil"
+  ],
+  [
+   "prize",
+   "n",
+   "ödül"
+  ],
+  [
+   "reasonable",
+   "adj",
+   "makul"
+  ],
+  [
+   "register",
+   "n, v",
+   "kayıt; kaydolmak"
+  ],
+  [
+   "travel agent",
+   "n",
+   "seyahat acentesi"
+  ],
+  [
+   "typical",
+   "adj",
+   "tipik"
+  ],
+  [
+   "universe",
+   "n",
+   "evren"
+  ],
+  [
+   "warning",
+   "n",
+   "uyarı"
+  ],
+  [
+   "definition",
+   "n",
+   "tanım"
+  ],
+  [
+   "heaven",
+   "n",
+   "cennet"
+  ],
+  [
+   "possibility",
+   "n",
+   "olasılık"
+  ],
+  [
+   "recovery",
+   "n",
+   "iyileşme, toparlanma"
+  ],
+  [
+   "academic",
+   "adj",
+   "akademik"
+  ],
+  [
+   "academy",
+   "n",
+   "akademi"
+  ],
+  [
+   "accurate",
+   "adj",
+   "doğru, kesin"
+  ],
+  [
+   "afford",
+   "v",
+   "gücü yetmek"
+  ],
+  [
+   "assume",
+   "v",
+   "varsaymak"
+  ],
+  [
+   "bunch",
+   "n",
+   "demet, bir sürü"
+  ],
+  [
+   "category",
+   "n",
+   "kategori"
+  ],
+  [
+   "competitive",
+   "adj",
+   "rekabetçi"
+  ],
+  [
+   "mess",
+   "n",
+   "dağınıklık, karmaşa"
+  ],
+  [
+   "normally",
+   "adv",
+   "normalde"
+  ],
+  [
+   "opposition",
+   "n",
+   "muhalefet, karşıtlık"
+  ],
+  [
+   "permanent",
+   "adj",
+   "kalıcı"
+  ],
+  [
+   "personally",
+   "adv",
+   "şahsen"
+  ],
+  [
+   "representative",
+   "n",
+   "temsilci"
+  ],
+  [
+   "shift",
+   "v",
+   "değiştirmek, kaydırmak"
+  ],
+  [
+   "storage",
+   "n",
+   "depolama"
+  ],
+  [
+   "tank",
+   "n",
+   "tank; depo"
+  ],
+  [
+   "tend",
+   "v",
+   "eğiliminde olmak"
+  ],
+  [
+   "transportation",
+   "n",
+   "ulaşım, taşımacılık"
+  ],
+  [
+   "constitution",
+   "n",
+   "anayasa"
+  ],
+  [
+   "consumer",
+   "n",
+   "tüketici"
+  ],
+  [
+   "counter",
+   "v",
+   "karşı koymak"
+  ],
+  [
+   "depression",
+   "n",
+   "depresyon; buhran"
+  ],
+  [
+   "employment",
+   "n",
+   "istihdam"
+  ],
+  [
+   "exclusive",
+   "adj",
+   "özel, ayrıcalıklı"
+  ],
+  [
+   "frequently",
+   "adv",
+   "sık sık"
+  ],
+  [
+   "hopefully",
+   "adv",
+   "umarım"
+  ],
+  [
+   "object",
+   "n",
+   "nesne"
+  ],
+  [
+   "pattern",
+   "n",
+   "desen, örüntü"
+  ],
+  [
+   "pregnant",
+   "adj",
+   "hamile"
+  ],
+  [
+   "promote",
+   "v",
+   "teşvik etmek, tanıtmak"
+  ],
+  [
+   "severe",
+   "adj",
+   "ciddi, şiddetli"
+  ],
+  [
+   "suppose",
+   "v",
+   "farz etmek, sanmak"
+  ],
+  [
+   "tournament",
+   "n",
+   "turnuva"
+  ],
+  [
+   "victim",
+   "n",
+   "kurban, mağdur"
+  ],
+  [
+   "arrest",
+   "n, v",
+   "tutuklama; tutuklamak"
+  ],
+  [
+   "attend",
+   "v",
+   "katılmak"
+  ],
+  [
+   "crash",
+   "n, v",
+   "kaza; çarpmak"
+  ],
+  [
+   "deliver",
+   "v",
+   "teslim etmek"
+  ],
+  [
+   "depth",
+   "n",
+   "derinlik"
+  ],
+  [
+   "electronic",
+   "adj",
+   "elektronik"
+  ],
+  [
+   "existence",
+   "n",
+   "varoluş, varlık"
+  ],
+  [
+   "maintenance",
+   "n",
+   "bakım"
+  ],
+  [
+   "nearby",
+   "adj, adv",
+   "yakındaki; yakında"
+  ],
+  [
+   "origin",
+   "n",
+   "köken"
+  ],
+  [
+   "retail",
+   "n",
+   "perakende"
+  ],
+  [
+   "shame",
+   "n",
+   "utanç; yazık"
+  ],
+  [
+   "surely",
+   "adv",
+   "kesinlikle, elbette"
+  ],
+  [
+   "absolute",
+   "adj",
+   "mutlak"
+  ],
+  [
+   "calm",
+   "adj",
+   "sakin"
+  ],
+  [
+   "chat show",
+   "n",
+   "sohbet programı"
+  ],
+  [
+   "empire",
+   "n",
+   "imparatorluk"
+  ],
+  [
+   "incident",
+   "n",
+   "olay"
+  ],
+  [
+   "weapon",
+   "n",
+   "silah"
+  ],
+  [
+   "broad",
+   "adj",
+   "geniş"
+  ],
+  [
+   "closely",
+   "adv",
+   "yakından"
+  ],
+  [
+   "constantly",
+   "adv",
+   "sürekli"
+  ],
+  [
+   "height",
+   "n",
+   "yükseklik, boy"
+  ],
+  [
+   "hidden",
+   "adj",
+   "gizli, saklı"
+  ],
+  [
+   "loud",
+   "adj, adv",
+   "yüksek sesli"
+  ],
+  [
+   "marine",
+   "adj",
+   "deniz (sıfat)"
+  ],
+  [
+   "motor",
+   "n",
+   "motor"
+  ],
+  [
+   "officially",
+   "adv",
+   "resmi olarak"
+  ],
+  [
+   "respond",
+   "v",
+   "yanıt vermek"
+  ],
+  [
+   "somehow",
+   "adv",
+   "bir şekilde"
+  ],
+  [
+   "blind",
+   "adj",
+   "kör"
+  ],
+  [
+   "breath",
+   "n",
+   "nefes"
+  ],
+  [
+   "brief",
+   "adj",
+   "kısa"
+  ],
+  [
+   "conduct",
+   "n",
+   "davranış, tutum"
+  ],
+  [
+   "engaged",
+   "adj",
+   "nişanlı; meşgul"
+  ],
+  [
+   "fantasy",
+   "n",
+   "fantezi, hayal"
+  ],
+  [
+   "grab",
+   "v",
+   "kapmak"
+  ],
+  [
+   "immediate",
+   "adj",
+   "acil, anında"
+  ],
+  [
+   "introduction",
+   "n",
+   "giriş, tanıtım"
+  ],
+  [
+   "recognize",
+   "v",
+   "tanımak"
+  ],
+  [
+   "steam",
+   "n",
+   "buhar"
+  ],
+  [
+   "witness",
+   "v",
+   "tanık olmak"
+  ],
+  [
+   "aim",
+   "n",
+   "amaç"
+  ],
+  [
+   "comedy",
+   "n",
+   "komedi"
+  ],
+  [
+   "comparison",
+   "n",
+   "karşılaştırma"
+  ],
+  [
+   "defeat",
+   "v",
+   "yenmek"
+  ],
+  [
+   "democracy",
+   "n",
+   "demokrasi"
+  ],
+  [
+   "exact",
+   "adj",
+   "tam, kesin"
+  ],
+  [
+   "recording",
+   "n",
+   "kayıt"
+  ],
+  [
+   "suspect",
+   "n",
+   "şüpheli"
+  ],
+  [
+   "swear",
+   "v",
+   "yemin etmek; küfretmek"
+  ],
+  [
+   "trend",
+   "n",
+   "eğilim"
+  ],
+  [
+   "valuable",
+   "adj",
+   "değerli"
+  ],
+  [
+   "approval",
+   "n",
+   "onay"
+  ],
+  [
+   "burning",
+   "adj",
+   "yanan"
+  ],
+  [
+   "contain",
+   "v",
+   "içermek"
+  ],
+  [
+   "document",
+   "n",
+   "belge"
+  ],
+  [
+   "hanging",
+   "adj",
+   "asılı"
+  ],
+  [
+   "identity card",
+   "n",
+   "kimlik kartı"
+  ],
+  [
+   "lift",
+   "n, v",
+   "asansör; kaldırmak"
+  ],
+  [
+   "marked",
+   "adj",
+   "belirgin"
+  ],
+  [
+   "monthly",
+   "adj, adv",
+   "aylık"
+  ],
+  [
+   "neighborhood",
+   "n",
+   "mahalle"
+  ],
+  [
+   "outstanding",
+   "adj",
+   "olağanüstü"
+  ],
+  [
+   "rid",
+   "v",
+   "kurtulmak (get rid of)"
+  ],
+  [
+   "secondary school",
+   "n",
+   "ortaokul/lise"
+  ],
+  [
+   "visual",
+   "adj",
+   "görsel"
+  ],
+  [
+   "barely",
+   "adv",
+   "zar zor"
+  ],
+  [
+   "check-in counter",
+   "n",
+   "check-in bankosu"
+  ],
+  [
+   "coal",
+   "n",
+   "kömür"
+  ],
+  [
+   "historic",
+   "adj",
+   "tarihi (önemli)"
+  ],
+  [
+   "hunt",
+   "n, v",
+   "av; avlamak"
+  ],
+  [
+   "improvement",
+   "n",
+   "gelişme, iyileştirme"
+  ],
+  [
+   "initially",
+   "adv",
+   "başlangıçta"
+  ],
+  [
+   "monster",
+   "n",
+   "canavar"
+  ],
+  [
+   "philosophy",
+   "n",
+   "felsefe"
+  ],
+  [
+   "rough",
+   "adj",
+   "pürüzlü; kaba"
+  ],
+  [
+   "settlement",
+   "n",
+   "yerleşim; uzlaşma"
+  ],
+  [
+   "surrounding",
+   "adj",
+   "çevredeki"
+  ]
+ ]
+}

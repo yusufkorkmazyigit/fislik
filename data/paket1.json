@@ -1,0 +1,177 @@
+{
+ "key": "paket1",
+ "name": "Paket #1 · Memory & Learning",
+ "level": "#1",
+ "desc": "Basılı çalışma paketindeki 24 kelime, tanım ve örnekleriyle",
+ "source": "Fişlik",
+ "cards": [
+  [
+   "striking",
+   "adj",
+   "çarpıcı, dikkat çekici",
+   "very noticeable or unusual",
+   "The results were striking."
+  ],
+  [
+   "vanish",
+   "v",
+   "yok olmak, ortadan kaybolmak",
+   "to disappear suddenly or completely",
+   "After a day roughly two thirds had vanished."
+  ],
+  [
+   "level off",
+   "phr v",
+   "dengelenmek, düzleşmek",
+   "to stop rising or falling and stay at the same level",
+   "The curve gradually levelled off."
+  ],
+  [
+   "interpretation",
+   "n",
+   "yorum, yorumlama",
+   "an explanation of the meaning of something",
+   "This interpretation is incomplete."
+  ],
+  [
+   "adaptive",
+   "adj",
+   "uyumsal, uyum sağlamaya yarayan",
+   "helping an organism adjust to its environment",
+   "Forgetting is an active and adaptive process."
+  ],
+  [
+   "bombard (with)",
+   "v",
+   "(bir şeye) boğmak, bombardımana tutmak",
+   "to direct a large amount of something at someone",
+   "The brain is constantly bombarded with information."
+  ],
+  [
+   "discard",
+   "v",
+   "atmak, elden çıkarmak",
+   "to get rid of something no longer useful",
+   "The brain discards details that are rarely used."
+  ],
+  [
+   "burden",
+   "n",
+   "yük, külfet",
+   "something difficult that you have to deal with",
+   "A perfect memory would be less of a gift than a burden."
+  ],
+  [
+   "inevitable",
+   "adj",
+   "kaçınılmaz",
+   "certain to happen; impossible to avoid",
+   "If forgetting is inevitable, how can we slow it down?"
+  ],
+  [
+   "durable",
+   "adj",
+   "dayanıklı, kalıcı",
+   "able to last a long time",
+   "Each review made the memory more durable."
+  ],
+  [
+   "subsequent",
+   "adj",
+   "sonraki, müteakip",
+   "happening after something else",
+   "Subsequent forgetting occurred more slowly."
+  ],
+  [
+   "lay the foundation for",
+   "phrase",
+   "temelini atmak",
+   "to create the basis from which something develops",
+   "This observation laid the foundation for the spacing effect."
+  ],
+  [
+   "distribute",
+   "v",
+   "dağıtmak, yaymak",
+   "to spread something over an area or period",
+   "Study sessions should be distributed over time."
+  ],
+  [
+   "replicate",
+   "v",
+   "(deneyi) tekrarlamak",
+   "to repeat a study and get the same result",
+   "It is one of the most consistently replicated findings."
+  ],
+  [
+   "persistent",
+   "adj",
+   "kalıcı, inatçı, sürekli",
+   "continuing for a long time; hard to get rid of",
+   "That is precisely why cramming is so persistent."
+  ],
+  [
+   "trade-off",
+   "n",
+   "ödünleşim",
+   "a balance between two things you cannot have at the same time",
+   "For a language learner, this is a costly trade-off."
+  ],
+  [
+   "substantially",
+   "adv",
+   "önemli ölçüde",
+   "by a large amount",
+   "The testing group remembered substantially more."
+  ],
+  [
+   "retention",
+   "n",
+   "akılda tutma",
+   "the ability to keep or remember something",
+   "Desirable difficulties produce stronger long-term retention."
+  ],
+  [
+   "illusion",
+   "n",
+   "yanılsama",
+   "a false idea or belief",
+   "Rereading creates an illusion of mastery."
+  ],
+  [
+   "mastery",
+   "n",
+   "ustalık, hakimiyet",
+   "great skill or complete knowledge of something",
+   "Her mastery of English impressed the examiners."
+  ],
+  [
+   "implication",
+   "n",
+   "olası sonuç, anlam",
+   "a possible effect or result",
+   "These findings have clear implications for learners."
+  ],
+  [
+   "high-stakes",
+   "adj",
+   "riski/önemi büyük",
+   "involving serious possible gains or losses",
+   "IELTS is a high-stakes examination."
+  ],
+  [
+   "automate",
+   "v",
+   "otomatikleştirmek",
+   "to make a process work by machine",
+   "Apps now automate the review process."
+  ],
+  [
+   "underlying",
+   "adj",
+   "altta yatan, temel",
+   "real but not immediately obvious",
+   "The underlying principle requires no technology."
+  ]
+ ]
+}
