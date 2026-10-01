@@ -4,7 +4,9 @@
 
 Telif: © 2026 Yusuf Korkmazyiğit (Türkçe anlamlar ve derleme).
 
-Bu veri aşağıdaki kaynaklardan türetilmiştir:
+`data/stories.js` içindeki hikâyeler ve hikâye sözlüğü Fişlik için yazılmış özgün metinlerdir; başka bir eserden alıntı içermez. Aynı CC BY-SA 4.0 lisansıyla paylaşılır.
+
+Kelime desteleri aşağıdaki kaynaklardan türetilmiştir:
 
 - **CEFR-J Wordlist Version 1.5.** Compiled by Yukio Tono, Tokyo University of Foreign Studies. Telif Tono Laboratory, TUFS'a aittir. Kaynak gösterilmek koşuluyla araştırma ve ticari amaçlarla ücretsiz kullanılabilir. Kaynak: http://www.cefr-j.org/download.html — https://github.com/openlanguageprofiles/olp-en-cefrj
 - **Octanove Vocabulary Profile C1/C2 ver 1.0.** Octanove Labs, CC BY-SA 4.0. (`ielts-c1` destesinin kaynağıdır.)

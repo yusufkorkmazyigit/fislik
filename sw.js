@@ -1,12 +1,13 @@
 /* Fişlik service worker: uygulamayı çevrimdışı çalıştırır.
    Önce önbellekten verir, arkada ağdan tazeler; yeni sürüm bir sonraki açılışta gelir. */
-const CACHE = "fislik-v1";
+const CACHE = "fislik-v2";
 const SHELL = [
   "./",
   "index.html",
   "css/style.css",
   "js/app.js",
   "data/decks.js",
+  "data/stories.js",
   "manifest.webmanifest",
   "icons/icon-192.png",
   "icons/icon-512.png",

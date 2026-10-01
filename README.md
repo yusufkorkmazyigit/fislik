@@ -7,6 +7,7 @@ Sunucu, hesap ya da kurulum gerekmez. Tek bir HTML sayfasıdır ve verilerin tar
 ## Özellikler
 
 - **Hazır desteler:** A2, B1, B2 ve IELTS 7+ (C1) seviyelerinde, her biri en sık kullanılan 500 kelimeden oluşur. Toplam 2000+ kelime ve hepsinin Türkçe anlamı var. Bunlara ek olarak tanım ve örnek cümleleriyle 24 kelimelik *Paket #1 · Memory & Learning* destesi de gelir.
+- **Seviyeli hikâyeler:** A1, A2, B1 ve B2 seviyelerinde beşer kısa hikâye. Okurken bir kelimeye dokununca Türkçe anlamı ve hikâyedeki cümle görünür; istersen kelimeyi o cümleyle birlikte istediğin desteye eklersin (varsayılan: *Hikâye kelimeleri*). Çekimli hâller köke bağlanır (*went → go*), *look after* gibi kalıplar tek parça seçilir.
 - **Aralıklı tekrar:**
   - *Bilmiyorum* → kart aynı oturumun sonunda bir kez daha gelir.
   - *Öğreniyorum* → kart ertesi gün gelir.
@@ -16,8 +17,7 @@ Sunucu, hesap ya da kurulum gerekmez. Tek bir HTML sayfasıdır ve verilerin tar
 - **Kart yönü:** İngilizce → Türkçe ya da Türkçe → İngilizce çalışabilirsin.
 - **Arama ve filtre:** Deste içinde kelime arayabilir, kartları duruma göre süzebilirsin.
 - **Yedekleme:** İlerlemeni JSON dosyası olarak indirip başka bir cihaza yükleyebilirsin.
-- **Sesli telaffuz:** 🔊 butonu kelimeyi tarayıcının İngilizce sesiyle okur (varsa İngiliz aksanı). Türkçe → İngilizce çalışırken cevabı ele vermemek için ses ancak kart çevrildikten sonra çıkar.
-- **Klavye kısayolları:** Boşluk kartı çevirir, 1 / 2 / 3 cevap verir, S sesli okur, Esc oturumdan çıkar.
+- **Klavye kısayolları:** Boşluk kartı çevirir, 1 / 2 / 3 cevap verir, Esc oturumdan çıkar.
 - **Telefona kurulabilir:** GitHub Pages üzerinden açınca tarayıcıdan *Ana ekrana ekle* diyebilirsin. Uygulama bir kez açıldıktan sonra internetsiz de çalışır.
 - **Görünüm:** Mobil uyumlu, karanlık mod destekli.
 
@@ -39,6 +39,7 @@ css/style.css       Tasarım (açık/koyu tema)
 js/app.js           Uygulama mantığı (bağımlılık yok)
 data/decks.js       Uygulamanın yüklediği hazır desteler
 data/*.json         Aynı desteler, başka projelerde kullanmak için JSON olarak
+data/stories.js     Hikâyeler ve hikâye sözlüğü
 manifest.webmanifest, icons/   Ana ekrana ekleme bilgileri ve ikonlar
 sw.js               Çevrimdışı çalışma (service worker)
 ```
@@ -46,6 +47,12 @@ sw.js               Çevrimdışı çalışma (service worker)
 Service worker dosyaları önce önbellekten verir, arkada da yenilerini indirir. Bu yüzden yayınladığın bir değişiklik kullanıcıya sayfanın ikinci açılışında ulaşır. Önbellekteki dosya listesini değiştirirsen `sw.js` içindeki `CACHE` adını artır (ör. `fislik-v2`).
 
 Her desteye ait JSON dosyasındaki `cards` alanı `[ingilizce, tür, türkçe, tanım?, örnek?]` dizilerinden oluşur.
+
+## Hikâye nasıl eklenir?
+
+`data/stories.js` içindeki `stories` listesine `{ id, level, title, tr, text }` biçiminde bir nesne ekle. `text` içinde paragrafları boş satırla ayır; birden fazla kelimelik kalıpları `{look after}` gibi süslü paranteze al.
+
+Tıklanan kelimenin anlamı `lexicon` sözlüğünden gelir: `"apples": ["apple", "n", "elma"]` (çekimli hâl → kök, tür, Türkçe) ya da kök ile aynıysa `"apple": ["n", "elma"]`. Sözlükte olmayan kelimeler (özel isimler, *the*, *is* gibi) tıklanmaz. Bir kelime bir hikâyede farklı anlamdaysa o hikâyeye `gloss: { "lives": ["life", "n", "hayat"] }` ekleyerek sözlüğü ezebilirsin.
 
 ## Deste nasıl eklenir?
 
@@ -63,6 +70,7 @@ Her desteye ait JSON dosyasındaki `cards` alanı `[ingilizce, tür, türkçe, t
 - Her seviyede, alt seviyelerde hiç geçmeyen kelimeler seçildi.
 - Bu kelimeler [wordfreq](https://github.com/rspeer/wordfreq) kütüphanesindeki kullanım sıklığına göre sıralandı ve her seviyeden ilk 500 kelime alındı.
 - Türkçe anlamlar bu proje için hazırlandı.
+- Hikâyeler ve hikâye sözlüğü Fişlik için yazıldı; başka bir eserden alınmadı.
 
 Hata gördüğün bir anlam olursa *issue* açabilir ya da düzeltmeyi *pull request* olarak gönderebilirsin.
 
@@ -84,7 +92,7 @@ Kaynaklar:
 
 ### English
 
-Fişlik is a lightweight, dependency-free flashcard web app for IELTS vocabulary. It uses spaced repetition and ships with four ready-made decks (CEFR A2, B1, B2 and C1, 500 words each) with Turkish translations, plus a small themed starter pack. Words can be read aloud, and the app can be installed to the home screen and used offline.
+Fişlik is a lightweight, dependency-free flashcard web app for IELTS vocabulary. It uses spaced repetition and ships with four ready-made decks (CEFR A2, B1, B2 and C1, 500 words each) with Turkish translations, plus a small themed starter pack. It also includes 20 original graded stories (A1–B2): tap any word to see its Turkish meaning and add it, with its sentence, to a deck. The app can be installed to the home screen and used offline.
 
 To use it, open `index.html` in a browser or host the folder on GitHub Pages. Your progress is stored in the browser and can be exported as JSON.
 
