@@ -115,6 +115,10 @@ let view = { name: "home" };
 let filter = "all";
 let query = "";
 let direction = "en";
+let mode = "flip";          // "flip": kart çevir · "type": Türkçesini görüp İngilizcesini yaz
+const PREFS_KEY = "fislik.prefs";
+try { const p = JSON.parse(localStorage.getItem(PREFS_KEY) || "{}"); if (p.direction === "tr") direction = "tr"; if (p.mode === "type") mode = "type"; } catch {}
+function savePrefs(){ try { localStorage.setItem(PREFS_KEY, JSON.stringify({ direction, mode })); } catch {} }
 let editing = null;
 let session = null;
 function go(v){ view = v; editing = null; closeSheet(); window.scrollTo(0, 0); render(); }
@@ -153,6 +157,16 @@ function legendHTML(c){
   return `<div class="legend">${["unknown","learning","known","new"].map(s => `<span><span class="dot ${STATUS[s].cls}"></span>${STATUS[s].label} ${c[s]}</span>`).join("")}</div>`;
 }
 
+function modeSeg(){
+  return `<div class="row modeseg">
+    <span class="hint">Çalışma şekli:</span>
+    <div class="seg" role="group" aria-label="Çalışma şekli">
+      <button data-act="mode" data-v="flip" aria-pressed="${mode==="flip"}">Kart çevir</button>
+      <button data-act="mode" data-v="type" aria-pressed="${mode==="type"}">Yazarak</button>
+    </div>
+  </div>`;
+}
+
 function renderHome(){
   const decks = Object.entries(store.decks).sort((a,b) => (a[1].created||0) - (b[1].created||0));
   const all = decks.flatMap(([,d]) => d.cards || []);
@@ -163,6 +177,7 @@ function renderHome(){
       <div><h2>Bugün çalışılacak</h2><div class="n">${due}<span>kart</span></div></div>
       <button class="btn hl" data-act="studyAll" ${due ? "" : "disabled"}>Çalışmaya başla</button>
     </section>
+    ${all.length ? modeSeg() : ""}
     ${all.some(k => k.status === "new") ? `<div class="newinfo">Her oturumda en fazla ${NEW_PER_SESSION} yeni kelime gelir; tekrarı gelenler hep önce gösterilir.</div>` : ""}
     <h3 class="sec">Destelerin</h3>
     <div class="decks">
@@ -216,13 +231,14 @@ function renderDeck(){
       <button class="btn hl" data-act="study" data-id="${id}" ${due ? "" : "disabled"}>Bugünküleri çalış (${due})</button>
       <button class="btn ghost" data-act="studyEvery" data-id="${id}" ${cs.length ? "" : "disabled"}>Hepsini çalış</button>
     </div>
-    <div class="row" style="margin-top:12px">
+    ${modeSeg()}
+    ${mode === "flip" ? `<div class="row" style="margin-top:10px">
       <span class="hint">Kartın ön yüzü:</span>
       <div class="seg" role="group" aria-label="Kart yönü">
         <button data-act="dir" data-v="en" aria-pressed="${direction==="en"}">İngilizce</button>
         <button data-act="dir" data-v="tr" aria-pressed="${direction==="tr"}">Türkçe</button>
       </div>
-    </div>
+    </div>` : `<div class="hint" style="margin-top:8px">Yazarak modda Türkçesi gösterilir, İngilizcesini yazarsın.</div>`}
     ${cardForm(editing ? cs.find(k => k.id === editing) : null)}
     <input class="search" type="text" placeholder="Bu destede ara (İngilizce ya da Türkçe)" value="${esc(query)}" data-field="search" aria-label="Destede ara">
     <div class="chips" role="group" aria-label="Filtre">
@@ -436,6 +452,107 @@ function startSession(deckIds, everything){
   go({ name: "study" });
 }
 
+/* yazarak çalışma: cevap karşılaştırma */
+const normAns = x => String(x || "").toLowerCase().replace(/[’`]/g, "'").replace(/[-‐–]/g, " ").replace(/[^a-z' ]/g, "").replace(/\s+/g, " ").trim();
+// "bombard (with)" -> bombard with / bombard; "to/be ..." başı isteğe bağlı
+function accepted(en){
+  const raw = String(en || "");
+  const set = new Set([raw.replace(/[()]/g, ""), raw.replace(/\([^)]*\)/g, "")].map(normAns));
+  [...set].forEach(v => { const m = v.match(/^(to|be) (.+)$/); if (m) set.add(m[2]); });
+  set.delete(""); return [...set];
+}
+// yan yana iki harfin yer değiştirmesi (recieve) tek hata sayılır
+function editDistance(a, b){
+  const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) {
+    d[i][j] = Math.min(d[i-1][j] + 1, d[i][j-1] + 1, d[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+    if (i > 1 && j > 1 && a[i-1] === b[j-2] && a[i-2] === b[j-1]) d[i][j] = Math.min(d[i][j], d[i-2][j-2] + 1);
+  }
+  return d[a.length][b.length];
+}
+function checkTyped(input, en){
+  const a = normAns(input); if (!a) return "bad";
+  const ok = accepted(en);
+  if (ok.includes(a)) return "ok";
+  // birkaç harflik yazım hatası: 4–7 harfte 1, daha uzunda 2 harf
+  return ok.some(v => v.length >= 4 && editDistance(a, v) <= (v.length >= 8 ? 2 : 1)) ? "near" : "bad";
+}
+const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+// örnek cümlede kelimeyi boşluğa çevir; bulamazsa null (cümle cevabı ele vermesin diye hiç gösterilmez)
+// düzenli çekimler: vanish → vanished, make → making, stop → stopped, study → studied
+function inflections(w){
+  const f = new Set([w, w + "s", w + "es", w + "ed", w + "d", w + "ing", w.replace(/e$/, "") + "ing"]);
+  if (/y$/.test(w)) { const i = w.slice(0, -1) + "i"; f.add(i + "ed"); f.add(i + "es"); }
+  if (/[^aeiou][aeiou][bdgklmnprt]$/.test(w)) { const d = w + w.slice(-1); f.add(d + "ed"); f.add(d + "ing"); }
+  return [...f].sort((a, b) => b.length - a.length).map(escRe).join("|");
+}
+function blankExample(ex, en){
+  if (!ex) return null;
+  for (const v of accepted(en).sort((a, b) => b.length - a.length)) {
+    const [first, ...rest] = v.split(" ");
+    const re = new RegExp(`\\b(?:${inflections(first)})${rest.map(w => "[\\s-]+" + escRe(w)).join("")}\\b`, "i");
+    if (re.test(ex)) return esc(ex.replace(re, "\u0000")).replace("\u0000", `<span class="blank">${"_".repeat(Math.min(12, v.length + 2))}</span>`);
+  }
+  return null;
+}
+function hintPattern(en, n){
+  let shown = 0;
+  return [...en].map(ch => /[a-z]/i.test(ch) ? (shown++ < n ? ch : "_") : ch === " " ? " " : ch).join(" ");
+}
+const SUGGEST = { ok: "known", near: "learning", bad: "unknown" };
+
+function renderTyped(s, it, k){
+  const t = s.t || (s.t = { value: "", hints: 0, result: null });
+  const deckName = store.decks[it.deck].name;
+  const letters = (k.en.match(/[a-z]/gi) || []).length;
+  const exBlank = blankExample(k.ex, k.en);
+  const pct = Math.round(s.i / s.queue.length * 100);
+  const nextKnown = k.status === "known" ? Math.max(3, (k.interval||3)*2) : 3;
+  const done = !!t.result;
+  const suggest = done ? (t.result === "ok" && t.hints ? "learning" : SUGGEST[t.result]) : null;
+  const verdict = !done ? "" : t.result === "ok"
+    ? `<div class="verdict ok">Doğru${t.hints ? " (ipucuyla)" : ""}</div>`
+    : t.result === "near"
+      ? `<div class="verdict near">Neredeyse, küçük bir yazım hatası var</div><div class="yours">Senin cevabın: <s>${esc(t.value)}</s></div>`
+      : `<div class="verdict bad">${t.value.trim() ? "Yanlış" : "Cevap"}</div>${t.value.trim() ? `<div class="yours">Senin cevabın: <s>${esc(t.value)}</s></div>` : ""}`;
+  const ans = (v, cls, label, small) => `<button class="ans ${cls}${suggest === v ? " sug" : ""}" data-act="ans" data-v="${v}" ${done ? "" : "disabled"}>${label}<small>${suggest === v ? "önerilen · Enter" : small}</small></button>`;
+  app.innerHTML = `
+    <div class="top studytop"><button class="back" data-act="endStudy">← Çık</button><span class="sync">${STATUS[k.status].label}</span></div>
+    <div class="prog"><div class="track"><i style="width:${pct}%"></i></div><span>${s.i + 1} / ${s.queue.length}</span></div>
+    <div class="typecard">
+      <div class="tc-top"><span class="tag">Türkçe</span><span class="deckn">${esc(deckName)}</span></div>
+      <div class="tr">${esc(k.tr) || "?"}</div>
+      ${k.pos ? `<div class="pos">${esc(k.pos)}</div>` : ""}
+      ${k.def ? `<div class="def">${esc(k.def)}</div>` : ""}
+      ${!done && exBlank ? `<div class="ex">“${exBlank}”</div>` : ""}
+      ${done ? `<div class="reveal">${verdict}<div class="bigword">${esc(k.en)}</div>${k.ex ? `<div class="ex">“${esc(k.ex)}”</div>` : ""}</div>` : `
+      <form class="typeform" data-form="typed">
+        <input type="text" name="typed" value="${esc(t.value)}" placeholder="İngilizcesini yaz" aria-label="İngilizcesini yaz" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" enterkeyhint="done">
+        <div class="row">
+          <button class="btn hl" type="submit">Kontrol et</button>
+          <button class="btn ghost" type="button" data-act="hint" ${t.hints >= letters - 1 ? "disabled" : ""}>İpucu</button>
+          <button class="btn ghost" type="button" data-act="giveup">Bilmiyorum</button>
+        </div>
+        ${t.hints ? `<div class="hintline" aria-label="İpucu">${esc(hintPattern(k.en, t.hints))}</div>` : `<div class="hint">${letters} harf${/[ -]/.test(k.en.trim()) ? ", birden fazla kelime" : ""}</div>`}
+      </form>`}
+    </div>
+    <div class="answers">
+      ${ans("unknown", "a1", "Bilmiyorum", "birazdan tekrar")}
+      ${ans("learning", "a2", "Öğreniyorum", "yarın")}
+      ${ans("known", "a3", "Öğrendim", `${nextKnown} gün sonra`)}
+    </div>
+    <div class="keys">${done ? "Enter önerileni seçer · 1 / 2 / 3 ile başka cevap" : "Enter kontrol eder · Esc çıkış"}</div>
+  `;
+  if (!done) { const inp = app.querySelector("[name=typed]"); inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); }
+  else app.querySelector(".ans.sug")?.focus();
+}
+function submitTyped(value){
+  const s = session; if (!s || !s.t) return;
+  const k = cardOf(s.queue[s.i]); if (!k) return;
+  s.t.value = value; s.t.result = checkTyped(value, k.en); s.flipped = true; renderStudy();
+}
+
 function renderStudy(){
   const s = session;
   if (!s) return go({ name: "home" });
@@ -456,6 +573,7 @@ function renderStudy(){
   }
   const it = s.queue[s.i], k = cardOf(it);
   if (!k) { s.i++; return renderStudy(); }
+  if (mode === "type") return renderTyped(s, it, k);
   const deckName = store.decks[it.deck].name;
   const frontEn = direction === "en";
   const front = frontEn
@@ -495,7 +613,7 @@ function answer(v){
     if (s.i < s.total) s.res[v]++;
     if (v === "unknown" && !s.retried.has(it.id)) { s.retried.add(it.id); s.queue.push({ ...it }); }
   }
-  s.i++; s.flipped = false; renderStudy();
+  s.i++; s.flipped = false; s.t = null; renderStudy();
 }
 function endStudy(){
   const back = session && session.from; session = null;
@@ -538,7 +656,10 @@ app.addEventListener("click", async e => {
       cards: t.cards.map(([en,pos,tr,def,ex], i) => makeCard({en,pos,tr,def,ex}, i)) };
     store.save(did); toast(`${t.cards.length} kelimelik deste eklendi.`); render();
   }
-  else if (act === "dir") { direction = b.dataset.v; render(); }
+  else if (act === "dir") { direction = b.dataset.v; savePrefs(); render(); }
+  else if (act === "mode") { mode = b.dataset.v; savePrefs(); render(); }
+  else if (act === "hint" && session && session.t) { session.t.value = app.querySelector("[name=typed]").value; session.t.hints++; renderStudy(); }
+  else if (act === "giveup") submitTyped("");
   else if (act === "filter") { filter = b.dataset.v; render(); }
   else if (act === "edit") { editing = id; render(); app.querySelector('[data-form=card]').scrollIntoView({block:"center"}); app.querySelector('[data-form=card] input[name=en]').focus(); }
   else if (act === "cancelEdit") { editing = null; render(); }
@@ -579,6 +700,7 @@ app.addEventListener("click", async e => {
 app.addEventListener("submit", e => {
   e.preventDefault();
   const f = e.target;
+  if (f.dataset.form === "typed") { submitTyped(f.typed.value); return; }
   if (f.dataset.form === "newdeck") {
     const name = f.deckname.value.trim(); if (!name) return;
     const id = uid(); store.decks[id] = { name, created: now(), cards: [] };
@@ -617,12 +739,19 @@ app.addEventListener("input", e => {
 document.addEventListener("keydown", e => {
   if (sheet && e.key === "Escape") { const b = sheet.btn; closeSheet(); if (b && b.isConnected) b.focus(); return; }
   if (view.name !== "study" || !session) return;
+  if (e.key === "Escape") return endStudy();
   if (e.target.matches("input,textarea")) return;
+  const t = session.t;
+  if (mode === "type" && t) {
+    // yazarak modda boşluk/Enter kartı çevirmez; kontrol edildiyse önerilen cevabı seçer
+    if ((e.key === " " || e.key === "Enter") && t.result) { e.preventDefault(); app.querySelector(".ans.sug")?.click(); }
+    else if (t.result && "123".includes(e.key)) answer(["unknown", "learning", "known"][+e.key - 1]);
+    return;
+  }
   if (e.key === " " || e.key === "Enter") { e.preventDefault(); session.flipped = !session.flipped; renderStudy(); }
   else if (e.key === "1") answer("unknown");
   else if (e.key === "2") answer("learning");
   else if (e.key === "3") answer("known");
-  else if (e.key === "Escape") endStudy();
 });
 
 /* ---------- başlat ---------- */

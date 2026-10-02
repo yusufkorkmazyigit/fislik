@@ -15,9 +15,10 @@ Sunucu, hesap ya da kurulum gerekmez. Tek bir HTML sayfasıdır ve verilerin tar
 - **Günlük yeni kelime sınırı:** Bir oturumda en fazla 20 yeni kelime gelir, tekrarı gelenler her zaman önce gösterilir. 500 kelimelik bir deste seni boğmaz.
 - **Kendi destelerin:** İstediğin kategoriyi açabilirsin. Her kelime için İngilizce, tür, Türkçe anlam, tanım ve örnek cümle ekleyebilirsin.
 - **Kart yönü:** İngilizce → Türkçe ya da Türkçe → İngilizce çalışabilirsin.
+- **Yazarak çalışma:** Türkçesini görüp İngilizcesini yazarsın. Varsa tanım ve kelimesi boşaltılmış örnek cümle ipucu olur; *İpucu* her basışta bir harf açar. Küçük yazım hatalarını (*recieve*) "neredeyse" diye ayırır ve buna göre Bilmiyorum / Öğreniyorum / Öğrendim önerir; son kararı sen verirsin.
 - **Arama ve filtre:** Deste içinde kelime arayabilir, kartları duruma göre süzebilirsin.
 - **Yedekleme:** İlerlemeni JSON dosyası olarak indirip başka bir cihaza yükleyebilirsin.
-- **Klavye kısayolları:** Boşluk kartı çevirir, 1 / 2 / 3 cevap verir, Esc oturumdan çıkar.
+- **Klavye kısayolları:** Boşluk kartı çevirir, 1 / 2 / 3 cevap verir, Esc oturumdan çıkar. Yazarak modda Enter önce kontrol eder, sonra önerilen cevabı seçer.
 - **Telefona kurulabilir:** GitHub Pages üzerinden açınca tarayıcıdan *Ana ekrana ekle* diyebilirsin. Uygulama bir kez açıldıktan sonra internetsiz de çalışır.
 - **Görünüm:** Mobil uyumlu, karanlık mod destekli.
 
