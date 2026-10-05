@@ -204,14 +204,16 @@ function renderHome(){
       <span><span class="nm">Seviyeli hikâyeler</span><span class="ds">${STORIES.length} kısa hikâye. Okurken bilmediğin kelimeye dokun, anlamını gör, destene ekle.</span></span>
       <span class="go" aria-hidden="true">→</span>
     </button>` : ""}
-    <h3 class="sec">Hazır şablonlar</h3>
+    ${[["Hazır şablonlar: seviye desteleri", TEMPLATES.filter(t => t.kind !== "topic")],
+       ["Konu desteleri: IELTS Writing konuları", TEMPLATES.filter(t => t.kind === "topic")]].filter(([, ts]) => ts.length).map(([title, ts]) => `
+    <h3 class="sec">${title}</h3>
     <div class="tpl">
-      ${TEMPLATES.map(t => `<div class="tpl-item">
-        <div class="lvl">${esc(t.level)}</div>
+      ${ts.map(t => `<div class="tpl-item">
+        <div class="lvl${t.kind === "topic" ? " emo" : ""}">${esc(t.level)}</div>
         <div><div class="nm">${esc(t.name)}</div><div class="ds">${esc(t.desc)} · ${t.cards.length} kelime</div></div>
         ${used.has(t.key) ? `<span class="added">Eklendi</span>` : `<button class="btn small" data-act="addTpl" data-key="${esc(t.key)}">Ekle</button>`}
       </div>`).join("")}
-    </div>
+    </div>`).join("")}
   ` + footer();
 }
 
@@ -490,8 +492,9 @@ function inflections(w){
 function blankExample(ex, en){
   if (!ex) return null;
   for (const v of accepted(en).sort((a, b) => b.length - a.length)) {
-    const [first, ...rest] = v.split(" ");
-    const re = new RegExp(`\\b(?:${inflections(first)})${rest.map(w => "[\\s-]+" + escRe(w)).join("")}\\b`, "i");
+    // ilk kelime fiil gibi (look → looked after), son kelime isim gibi (state school → state schools) çekimlenebilir
+    const words = v.split(" "), last = words.length - 1;
+    const re = new RegExp(`\\b${words.map((w, i) => i === 0 || i === last ? `(?:${inflections(w)})` : escRe(w)).join("[\\s-]+")}\\b`, "i");
     if (re.test(ex)) return esc(ex.replace(re, "\u0000")).replace("\u0000", `<span class="blank">${"_".repeat(Math.min(12, v.length + 2))}</span>`);
   }
   return null;

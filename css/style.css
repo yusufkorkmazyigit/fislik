@@ -147,6 +147,7 @@ textarea{resize:vertical;min-height:60px}
 .tpl-item{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--card);border-radius:14px;padding:12px 14px;box-shadow:var(--shadow)}
 .lvl{font:700 15px/1 var(--ui);width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--paper);color:var(--ink)}
 .tpl-item .nm{font-weight:600}
+.lvl.emo{font-size:22px}
 .tpl-item .ds{font-size:13px;color:var(--ink-3)}
 .added{font-size:13px;color:var(--good);font-weight:600;padding:0 6px}
 .search{margin-top:14px}

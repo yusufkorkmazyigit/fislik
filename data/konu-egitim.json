@@ -1,0 +1,290 @@
+{
+ "key": "konu-egitim",
+ "name": "Eğitim · Education",
+ "level": "📚",
+ "desc": "Okul, üniversite, öğrenme yöntemleri ve fırsat eşitliği",
+ "source": "Fişlik",
+ "kind": "topic",
+ "cards": [
+  [
+   "curriculum",
+   "n",
+   "müfredat",
+   "the subjects that are taught in a school or course",
+   "Some people believe financial skills should be part of the school curriculum."
+  ],
+  [
+   "compulsory",
+   "adj",
+   "zorunlu",
+   "required by law or rules",
+   "Education is compulsory for children until the age of sixteen."
+  ],
+  [
+   "tuition fees",
+   "n",
+   "öğrenim ücreti",
+   "money paid to a university or school for teaching",
+   "High tuition fees prevent many talented students from attending university."
+  ],
+  [
+   "scholarship",
+   "n",
+   "burs",
+   "money given to a student to pay for their education",
+   "She won a scholarship to study engineering abroad."
+  ],
+  [
+   "higher education",
+   "n",
+   "yükseköğretim",
+   "education at university or college level",
+   "Access to higher education has expanded in recent decades."
+  ],
+  [
+   "vocational training",
+   "n",
+   "mesleki eğitim",
+   "training for a specific job or trade",
+   "Vocational training can be a valuable alternative to university."
+  ],
+  [
+   "academic performance",
+   "n",
+   "akademik başarı",
+   "how well a student does in their studies",
+   "Lack of sleep can harm academic performance."
+  ],
+  [
+   "literacy",
+   "n",
+   "okuryazarlık",
+   "the ability to read and write",
+   "Adult literacy rates have improved dramatically."
+  ],
+  [
+   "numeracy",
+   "n",
+   "temel matematik becerisi",
+   "the ability to understand and work with numbers",
+   "Employers complain about poor numeracy among school leavers."
+  ],
+  [
+   "critical thinking",
+   "n",
+   "eleştirel düşünme",
+   "the ability to analyse information and form a judgement",
+   "Universities should develop critical thinking rather than memorisation."
+  ],
+  [
+   "rote learning",
+   "n",
+   "ezberci öğrenme",
+   "learning by repeating information until it is memorised",
+   "Rote learning may help students pass exams but not understand concepts."
+  ],
+  [
+   "distance learning",
+   "n",
+   "uzaktan eğitim",
+   "studying from home, usually online, instead of in a classroom",
+   "Distance learning allows working adults to gain qualifications."
+  ],
+  [
+   "qualification",
+   "n",
+   "nitelik belgesi, diploma",
+   "an official record showing you have finished a course",
+   "Many jobs now require a university qualification."
+  ],
+  [
+   "graduate",
+   "n, v",
+   "mezun; mezun olmak",
+   "a person who has completed a university degree",
+   "Graduates often struggle to find work in their field."
+  ],
+  [
+   "undergraduate",
+   "n",
+   "lisans öğrencisi",
+   "a university student studying for a first degree",
+   "Undergraduates are expected to study independently."
+  ],
+  [
+   "discipline",
+   "n",
+   "disiplin",
+   "the practice of making people obey rules",
+   "Some argue that schools today lack discipline."
+  ],
+  [
+   "peer pressure",
+   "n",
+   "akran baskısı",
+   "influence from people of your own age to behave like them",
+   "Peer pressure can lead teenagers to make poor decisions."
+  ],
+  [
+   "extracurricular activities",
+   "n",
+   "ders dışı etkinlikler",
+   "activities that students do outside normal lessons",
+   "Extracurricular activities help children develop social skills."
+  ],
+  [
+   "single-sex school",
+   "n",
+   "kız/erkek okulu (karma olmayan)",
+   "a school for only boys or only girls",
+   "Supporters of single-sex schools claim students concentrate better."
+  ],
+  [
+   "state school",
+   "n",
+   "devlet okulu",
+   "a school funded by the government",
+   "Most children in the country attend state schools."
+  ],
+  [
+   "private school",
+   "n",
+   "özel okul",
+   "a school paid for by parents rather than the government",
+   "Private schools often have smaller class sizes."
+  ],
+  [
+   "class size",
+   "n",
+   "sınıf mevcudu",
+   "the number of students in one class",
+   "Reducing class size allows teachers to give more individual attention."
+  ],
+  [
+   "assessment",
+   "n",
+   "değerlendirme",
+   "the process of judging a student's work or ability",
+   "Continuous assessment may be fairer than a single final exam."
+  ],
+  [
+   "exam-oriented",
+   "adj",
+   "sınav odaklı",
+   "focused mainly on preparing for exams",
+   "An exam-oriented system can reduce creativity."
+  ],
+  [
+   "drop out",
+   "phr v",
+   "okulu bırakmak",
+   "to leave school or university before finishing",
+   "Financial problems force some students to drop out."
+  ],
+  [
+   "lifelong learning",
+   "n",
+   "hayat boyu öğrenme",
+   "continuing to learn throughout your life",
+   "Lifelong learning is essential in a changing job market."
+  ],
+  [
+   "mature student",
+   "n",
+   "ileri yaşta öğrenci",
+   "an adult who starts studying later than usual",
+   "Mature students often bring valuable work experience to class."
+  ],
+  [
+   "equal opportunities",
+   "n",
+   "fırsat eşitliği",
+   "the same chances for everyone regardless of background",
+   "Free education promotes equal opportunities."
+  ],
+  [
+   "well-rounded",
+   "adj",
+   "çok yönlü",
+   "having a wide range of skills and interests",
+   "Schools should aim to produce well-rounded individuals."
+  ],
+  [
+   "gifted",
+   "adj",
+   "üstün yetenekli",
+   "having a natural ability that is much higher than average",
+   "Gifted children may become bored in ordinary classes."
+  ],
+  [
+   "acquire",
+   "v",
+   "edinmek",
+   "to gain knowledge or a skill",
+   "Children acquire languages more easily than adults."
+  ],
+  [
+   "specialise in",
+   "phr v",
+   "(bir alanda) uzmanlaşmak",
+   "to concentrate on one particular subject",
+   "Students should not be forced to specialise in one subject too early."
+  ],
+  [
+   "practical skills",
+   "n",
+   "pratik beceriler",
+   "abilities used in real situations rather than theory",
+   "Employers value practical skills as much as degrees."
+  ],
+  [
+   "theoretical",
+   "adj",
+   "kuramsal",
+   "based on ideas rather than practical experience",
+   "The course is too theoretical and does not prepare students for work."
+  ],
+  [
+   "motivate",
+   "v",
+   "motive etmek, isteklendirmek",
+   "to make someone want to do something",
+   "Good teachers know how to motivate struggling students."
+  ],
+  [
+   "attendance",
+   "n",
+   "devam, katılım",
+   "the fact of being present at school or class",
+   "Poor attendance is closely linked to low grades."
+  ],
+  [
+   "learning outcomes",
+   "n",
+   "öğrenme çıktıları",
+   "what students are expected to know after a course",
+   "Technology does not always improve learning outcomes."
+  ],
+  [
+   "tutor",
+   "n",
+   "özel öğretmen, danışman",
+   "a teacher who works with one student or a small group",
+   "Wealthy families often pay for private tutors."
+  ],
+  [
+   "brain drain",
+   "n",
+   "beyin göçü",
+   "the movement of skilled people to another country",
+   "Brain drain is a serious problem for many developing countries."
+  ],
+  [
+   "educational attainment",
+   "n",
+   "eğitim düzeyi",
+   "the highest level of education a person has completed",
+   "Educational attainment strongly predicts future income."
+  ]
+ ]
+}

@@ -1,0 +1,290 @@
+{
+ "key": "konu-toplum",
+ "name": "Toplum ve Şehir · Society",
+ "level": "🏙️",
+ "desc": "Kentleşme, suç, aile, göç ve kamu hizmetleri",
+ "source": "Fişlik",
+ "kind": "topic",
+ "cards": [
+  [
+   "urbanisation",
+   "n",
+   "kentleşme",
+   "the movement of people from the countryside to cities",
+   "Rapid urbanisation has created housing shortages."
+  ],
+  [
+   "overcrowding",
+   "n",
+   "aşırı kalabalık",
+   "too many people in one place",
+   "Overcrowding on public transport is a daily problem."
+  ],
+  [
+   "infrastructure",
+   "n",
+   "altyapı",
+   "basic systems such as roads, water and electricity",
+   "The government plans to spend billions on infrastructure."
+  ],
+  [
+   "public transport",
+   "n",
+   "toplu taşıma",
+   "buses and trains available for everyone to use",
+   "Cheaper public transport would reduce traffic congestion."
+  ],
+  [
+   "traffic congestion",
+   "n",
+   "trafik sıkışıklığı",
+   "too many vehicles on the roads",
+   "Traffic congestion costs the economy millions every year."
+  ],
+  [
+   "affordable housing",
+   "n",
+   "uygun fiyatlı konut",
+   "homes that people on average incomes can afford",
+   "There is a severe lack of affordable housing in the capital."
+  ],
+  [
+   "homelessness",
+   "n",
+   "evsizlik",
+   "the state of having no home",
+   "Homelessness has increased as rents have risen."
+  ],
+  [
+   "rural",
+   "adj",
+   "kırsal",
+   "connected with the countryside",
+   "Young people are leaving rural areas to find work."
+  ],
+  [
+   "community",
+   "n",
+   "topluluk",
+   "the people living in one area",
+   "Libraries play an important role in the local community."
+  ],
+  [
+   "crime rate",
+   "n",
+   "suç oranı",
+   "the number of crimes in an area",
+   "The crime rate has fallen for the third year running."
+  ],
+  [
+   "offender",
+   "n",
+   "suçlu, fail",
+   "a person who has committed a crime",
+   "Young offenders need education rather than punishment."
+  ],
+  [
+   "rehabilitation",
+   "n",
+   "rehabilitasyon, topluma kazandırma",
+   "helping someone return to normal life",
+   "Prisons should focus more on rehabilitation."
+  ],
+  [
+   "deter",
+   "v",
+   "caydırmak",
+   "to stop someone from doing something",
+   "Harsh punishments do not always deter criminals."
+  ],
+  [
+   "law enforcement",
+   "n",
+   "kolluk kuvvetleri",
+   "the police and other agencies that make people obey laws",
+   "Law enforcement agencies are using new technology to fight crime."
+  ],
+  [
+   "immigration",
+   "n",
+   "göç (bir ülkeye)",
+   "the process of coming to live in another country",
+   "Immigration has helped fill labour shortages."
+  ],
+  [
+   "cultural diversity",
+   "n",
+   "kültürel çeşitlilik",
+   "the existence of many different cultures in a society",
+   "Cultural diversity makes cities more interesting places to live."
+  ],
+  [
+   "integration",
+   "n",
+   "uyum, entegrasyon",
+   "becoming part of a group or society",
+   "Language classes help the integration of new arrivals."
+  ],
+  [
+   "globalisation",
+   "n",
+   "küreselleşme",
+   "the increasing connection between countries",
+   "Globalisation has made products cheaper but threatened local cultures."
+  ],
+  [
+   "tradition",
+   "n",
+   "gelenek",
+   "a custom passed down through generations",
+   "Many traditions are disappearing in modern cities."
+  ],
+  [
+   "nuclear family",
+   "n",
+   "çekirdek aile",
+   "a family of parents and their children only",
+   "The nuclear family is now the most common household type."
+  ],
+  [
+   "extended family",
+   "n",
+   "geniş aile",
+   "a family including grandparents, aunts, uncles, etc.",
+   "In the past, extended families often lived together."
+  ],
+  [
+   "generation gap",
+   "n",
+   "kuşak çatışması",
+   "differences in attitudes between young and old people",
+   "Technology has widened the generation gap."
+  ],
+  [
+   "gender equality",
+   "n",
+   "toplumsal cinsiyet eşitliği",
+   "equal rights and opportunities for men and women",
+   "Gender equality in leadership positions is still far away."
+  ],
+  [
+   "discrimination",
+   "n",
+   "ayrımcılık",
+   "unfair treatment of people because of who they are",
+   "Laws against discrimination protect minorities."
+  ],
+  [
+   "volunteer",
+   "n, v",
+   "gönüllü; gönüllü olmak",
+   "a person who works without pay to help others",
+   "Volunteers run the local food bank."
+  ],
+  [
+   "charity",
+   "n",
+   "hayır kurumu",
+   "an organisation that helps people in need",
+   "Many charities rely on public donations."
+  ],
+  [
+   "taxpayer",
+   "n",
+   "vergi mükellefi",
+   "a person who pays tax",
+   "Public services are funded by taxpayers' money."
+  ],
+  [
+   "public services",
+   "n",
+   "kamu hizmetleri",
+   "services such as health, education and transport provided by the state",
+   "Cuts to public services affect the poorest most."
+  ],
+  [
+   "funding",
+   "n",
+   "finansman, fon",
+   "money provided for a purpose",
+   "Museums depend on government funding."
+  ],
+  [
+   "authorities",
+   "n",
+   "yetkililer",
+   "the people or organisations in control",
+   "The authorities have closed the bridge for safety reasons."
+  ],
+  [
+   "policy",
+   "n",
+   "politika (uygulama)",
+   "a plan of action agreed by a government",
+   "The new housing policy has been widely criticised."
+  ],
+  [
+   "legislation",
+   "n",
+   "mevzuat, yasalar",
+   "laws made by a government",
+   "New legislation bans smoking in public places."
+  ],
+  [
+   "prohibit",
+   "v",
+   "yasaklamak",
+   "to officially forbid something",
+   "The law prohibits the sale of alcohol to minors."
+  ],
+  [
+   "vulnerable",
+   "adj",
+   "savunmasız, korunmasız",
+   "easily harmed",
+   "The elderly are particularly vulnerable in extreme heat."
+  ],
+  [
+   "anti-social behaviour",
+   "n",
+   "toplum karşıtı davranış",
+   "behaviour that harms or annoys other people",
+   "Anti-social behaviour is common in poorly lit areas."
+  ],
+  [
+   "green spaces",
+   "n",
+   "yeşil alanlar",
+   "parks and areas of grass in a town",
+   "Green spaces improve the quality of life in cities."
+  ],
+  [
+   "pedestrian",
+   "n",
+   "yaya",
+   "a person walking in the street",
+   "The city centre is now closed to cars and open only to pedestrians."
+  ],
+  [
+   "quality of life",
+   "n",
+   "yaşam kalitesi",
+   "how good or comfortable a person's life is",
+   "Shorter working hours could improve quality of life."
+  ],
+  [
+   "social cohesion",
+   "n",
+   "toplumsal uyum",
+   "the bonds that bring people in a society together",
+   "Shared public spaces strengthen social cohesion."
+  ],
+  [
+   "gentrification",
+   "n",
+   "soylulaştırma (semtin pahalanıp eski sakinlerin çıkması)",
+   "the process of a poor area becoming richer, often forcing poorer residents out",
+   "Gentrification has forced many long-term residents to move away."
+  ]
+ ]
+}

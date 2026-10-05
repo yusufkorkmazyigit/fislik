@@ -1,0 +1,290 @@
+{
+ "key": "konu-cevre",
+ "name": "Çevre · Environment",
+ "level": "🌍",
+ "desc": "Writing Task 2'nin en sık konusu: iklim, kirlilik, enerji",
+ "source": "Fişlik",
+ "kind": "topic",
+ "cards": [
+  [
+   "climate change",
+   "n",
+   "iklim değişikliği",
+   "long-term changes in global temperatures and weather patterns",
+   "Climate change is often described as the greatest challenge of our time."
+  ],
+  [
+   "global warming",
+   "n",
+   "küresel ısınma",
+   "the gradual rise in the Earth's average temperature",
+   "Global warming is largely caused by burning fossil fuels."
+  ],
+  [
+   "greenhouse gas",
+   "n",
+   "sera gazı",
+   "a gas, such as carbon dioxide, that traps heat in the atmosphere",
+   "Governments have promised to cut greenhouse gas emissions by half."
+  ],
+  [
+   "carbon footprint",
+   "n",
+   "karbon ayak izi",
+   "the amount of carbon dioxide a person or activity produces",
+   "Flying less is one of the easiest ways to reduce your carbon footprint."
+  ],
+  [
+   "emissions",
+   "n",
+   "salınım, emisyon",
+   "gases or substances released into the air",
+   "Vehicle emissions are a major source of urban air pollution."
+  ],
+  [
+   "fossil fuels",
+   "n",
+   "fosil yakıtlar",
+   "fuels such as coal, oil and gas formed from ancient organisms",
+   "Many countries still depend heavily on fossil fuels for electricity."
+  ],
+  [
+   "renewable energy",
+   "n",
+   "yenilenebilir enerji",
+   "energy from sources that do not run out, like sun and wind",
+   "Investment in renewable energy has grown rapidly in the last decade."
+  ],
+  [
+   "sustainable",
+   "adj",
+   "sürdürülebilir",
+   "able to continue without damaging the environment",
+   "Cities need more sustainable forms of public transport."
+  ],
+  [
+   "deforestation",
+   "n",
+   "ormansızlaşma",
+   "the cutting down of large areas of forest",
+   "Deforestation destroys the habitats of countless species."
+  ],
+  [
+   "habitat",
+   "n",
+   "yaşam alanı",
+   "the natural home of an animal or plant",
+   "Rising sea levels threaten the habitat of many coastal birds."
+  ],
+  [
+   "biodiversity",
+   "n",
+   "biyoçeşitlilik",
+   "the variety of plant and animal life in an area",
+   "Protecting biodiversity is essential for healthy ecosystems."
+  ],
+  [
+   "endangered species",
+   "n",
+   "nesli tükenmekte olan tür",
+   "a type of animal or plant that may soon disappear",
+   "The tiger is an endangered species in many parts of Asia."
+  ],
+  [
+   "extinction",
+   "n",
+   "neslin tükenmesi",
+   "the situation in which a species no longer exists",
+   "Without urgent action, many insects face extinction."
+  ],
+  [
+   "ecosystem",
+   "n",
+   "ekosistem",
+   "all the living things in an area and how they affect each other",
+   "Plastic waste is damaging marine ecosystems."
+  ],
+  [
+   "pollution",
+   "n",
+   "kirlilik",
+   "harmful substances in the air, water or land",
+   "Noise pollution can have serious effects on mental health."
+  ],
+  [
+   "contaminate",
+   "v",
+   "kirletmek, bulaştırmak",
+   "to make something dirty or harmful by adding a substance",
+   "Chemicals from factories can contaminate rivers and lakes."
+  ],
+  [
+   "waste disposal",
+   "n",
+   "atık bertarafı",
+   "the process of getting rid of rubbish",
+   "Poor waste disposal leads to health problems in crowded cities."
+  ],
+  [
+   "landfill",
+   "n",
+   "çöp depolama alanı",
+   "a place where large amounts of rubbish are buried",
+   "Most household rubbish still ends up in landfill."
+  ],
+  [
+   "recycle",
+   "v",
+   "geri dönüştürmek",
+   "to treat used materials so they can be used again",
+   "Residents are encouraged to recycle glass, paper and plastic."
+  ],
+  [
+   "single-use plastic",
+   "n",
+   "tek kullanımlık plastik",
+   "plastic items designed to be used once and thrown away",
+   "Several countries have banned single-use plastic bags."
+  ],
+  [
+   "drought",
+   "n",
+   "kuraklık",
+   "a long period with little or no rain",
+   "The drought caused serious food shortages in the region."
+  ],
+  [
+   "flood",
+   "n",
+   "sel",
+   "a large amount of water covering land that is usually dry",
+   "Heavy rain caused floods across the north of the country."
+  ],
+  [
+   "natural disaster",
+   "n",
+   "doğal afet",
+   "a natural event such as an earthquake or flood that causes damage",
+   "Poorer countries often suffer most from natural disasters."
+  ],
+  [
+   "sea level",
+   "n",
+   "deniz seviyesi",
+   "the average height of the sea's surface",
+   "Rising sea levels could make some islands uninhabitable."
+  ],
+  [
+   "conservation",
+   "n",
+   "koruma (doğa)",
+   "the protection of nature and natural resources",
+   "Conservation projects have helped some whale populations recover."
+  ],
+  [
+   "natural resources",
+   "n",
+   "doğal kaynaklar",
+   "materials such as water, wood and minerals found in nature",
+   "We are using natural resources faster than they can be replaced."
+  ],
+  [
+   "consumption",
+   "n",
+   "tüketim",
+   "the amount of something that people use",
+   "Energy consumption rises sharply in winter."
+  ],
+  [
+   "environmentally friendly",
+   "adj",
+   "çevre dostu",
+   "not harmful to the environment",
+   "Electric buses are a more environmentally friendly option."
+  ],
+  [
+   "carbon neutral",
+   "adj",
+   "karbon nötr",
+   "adding no extra carbon dioxide to the atmosphere overall",
+   "The company aims to become carbon neutral by 2035."
+  ],
+  [
+   "solar power",
+   "n",
+   "güneş enerjisi",
+   "electricity produced from sunlight",
+   "Solar power is becoming cheaper every year."
+  ],
+  [
+   "wind farm",
+   "n",
+   "rüzgâr santrali",
+   "an area with many wind turbines that produce electricity",
+   "A new wind farm will supply power to fifty thousand homes."
+  ],
+  [
+   "tackle",
+   "v",
+   "(sorunla) mücadele etmek, ele almak",
+   "to make a determined effort to deal with a problem",
+   "Individuals alone cannot tackle climate change."
+  ],
+  [
+   "take measures",
+   "phrase",
+   "önlem almak",
+   "to take action to deal with a problem",
+   "Governments must take measures to protect forests."
+  ],
+  [
+   "irreversible",
+   "adj",
+   "geri dönüşü olmayan",
+   "impossible to change back to a previous state",
+   "Some damage to coral reefs may be irreversible."
+  ],
+  [
+   "degradation",
+   "n",
+   "bozulma, tahribat",
+   "the process of something becoming worse in quality",
+   "Soil degradation reduces the amount of food farmers can grow."
+  ],
+  [
+   "urban sprawl",
+   "n",
+   "kentsel yayılma",
+   "the uncontrolled spread of a city into the countryside",
+   "Urban sprawl increases car use and destroys farmland."
+  ],
+  [
+   "eco-friendly",
+   "adj",
+   "çevre dostu",
+   "designed to cause little harm to the environment",
+   "More shoppers are choosing eco-friendly products."
+  ],
+  [
+   "environmentalist",
+   "n",
+   "çevreci",
+   "a person who works to protect the environment",
+   "Environmentalists have criticised the new airport plan."
+  ],
+  [
+   "impose a tax",
+   "phrase",
+   "vergi koymak",
+   "to officially introduce a tax",
+   "Some argue governments should impose a tax on frequent flyers."
+  ],
+  [
+   "raise awareness",
+   "phrase",
+   "farkındalık yaratmak",
+   "to make people know more about a problem",
+   "Schools play a key role in raising awareness of environmental issues."
+  ]
+ ]
+}

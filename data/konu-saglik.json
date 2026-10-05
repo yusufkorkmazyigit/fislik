@@ -1,0 +1,290 @@
+{
+ "key": "konu-saglik",
+ "name": "Sağlık · Health",
+ "level": "🩺",
+ "desc": "Sağlıklı yaşam, beslenme, sağlık sistemi ve ruh sağlığı",
+ "source": "Fişlik",
+ "kind": "topic",
+ "cards": [
+  [
+   "sedentary lifestyle",
+   "n",
+   "hareketsiz yaşam tarzı",
+   "a way of living that involves sitting a lot and little exercise",
+   "A sedentary lifestyle increases the risk of heart disease."
+  ],
+  [
+   "obesity",
+   "n",
+   "obezite",
+   "the condition of being very overweight",
+   "Childhood obesity has doubled in thirty years."
+  ],
+  [
+   "balanced diet",
+   "n",
+   "dengeli beslenme",
+   "a diet with the right amounts of different types of food",
+   "A balanced diet includes plenty of fruit and vegetables."
+  ],
+  [
+   "nutrition",
+   "n",
+   "beslenme",
+   "the process of getting the food necessary for health",
+   "Good nutrition in early childhood affects brain development."
+  ],
+  [
+   "processed food",
+   "n",
+   "işlenmiş gıda",
+   "food that has been changed by industrial methods",
+   "Processed food often contains high levels of salt and sugar."
+  ],
+  [
+   "junk food",
+   "n",
+   "abur cubur",
+   "unhealthy food with little nutritional value",
+   "Advertising junk food to children should be restricted."
+  ],
+  [
+   "life expectancy",
+   "n",
+   "ortalama yaşam süresi",
+   "the average number of years a person is expected to live",
+   "Life expectancy has risen thanks to better healthcare."
+  ],
+  [
+   "chronic",
+   "adj",
+   "kronik, süreğen",
+   "lasting for a long time",
+   "Diabetes is a chronic condition that requires careful management."
+  ],
+  [
+   "epidemic",
+   "n",
+   "salgın",
+   "a large number of cases of a disease at the same time",
+   "Some doctors describe loneliness as a modern epidemic."
+  ],
+  [
+   "vaccination",
+   "n",
+   "aşılama",
+   "giving people a substance to protect them from a disease",
+   "Vaccination programmes have saved millions of lives."
+  ],
+  [
+   "prevention",
+   "n",
+   "önleme",
+   "action taken to stop something from happening",
+   "Prevention is better and cheaper than cure."
+  ],
+  [
+   "mental health",
+   "n",
+   "ruh sağlığı",
+   "a person's psychological and emotional well-being",
+   "Social media may have a negative impact on teenagers' mental health."
+  ],
+  [
+   "well-being",
+   "n",
+   "iyi oluş, esenlik",
+   "the state of being healthy and happy",
+   "Regular exercise improves both physical and mental well-being."
+  ],
+  [
+   "stress-related",
+   "adj",
+   "stresle ilgili",
+   "caused by stress",
+   "Stress-related illnesses are a major cause of absence from work."
+  ],
+  [
+   "healthcare system",
+   "n",
+   "sağlık sistemi",
+   "the organisation of medical services in a country",
+   "The healthcare system is under pressure from an ageing population."
+  ],
+  [
+   "public health",
+   "n",
+   "halk sağlığı",
+   "the health of the population as a whole",
+   "Smoking bans have greatly improved public health."
+  ],
+  [
+   "medical treatment",
+   "n",
+   "tıbbi tedavi",
+   "care given by doctors to cure an illness",
+   "Some families cannot afford medical treatment."
+  ],
+  [
+   "side effects",
+   "n",
+   "yan etkiler",
+   "unwanted effects of a medicine",
+   "All medicines can have side effects."
+  ],
+  [
+   "diagnose",
+   "v",
+   "teşhis koymak",
+   "to identify an illness",
+   "Doctors diagnosed the disease at an early stage."
+  ],
+  [
+   "symptom",
+   "n",
+   "belirti",
+   "a sign that someone has an illness",
+   "Fever is a common symptom of infection."
+  ],
+  [
+   "physical activity",
+   "n",
+   "fiziksel aktivite",
+   "movement of the body that uses energy",
+   "Adults should do at least thirty minutes of physical activity a day."
+  ],
+  [
+   "work out",
+   "phr v",
+   "spor yapmak",
+   "to exercise to improve your health or strength",
+   "He works out at the gym three times a week."
+  ],
+  [
+   "addiction",
+   "n",
+   "bağımlılık",
+   "the condition of being unable to stop using something harmful",
+   "Gaming addiction is a growing concern among parents."
+  ],
+  [
+   "ageing population",
+   "n",
+   "yaşlanan nüfus",
+   "a population in which the number of older people is increasing",
+   "An ageing population puts pressure on pension and health systems."
+  ],
+  [
+   "fitness",
+   "n",
+   "zindelik, form",
+   "the condition of being physically strong and healthy",
+   "Schools should do more to improve children's fitness."
+  ],
+  [
+   "outbreak",
+   "n",
+   "(hastalık) patlak vermesi",
+   "the sudden start of a disease",
+   "An outbreak of flu closed several schools."
+  ],
+  [
+   "access to healthcare",
+   "n",
+   "sağlık hizmetine erişim",
+   "the ability to get medical services when needed",
+   "Rural communities often lack access to healthcare."
+  ],
+  [
+   "preventable",
+   "adj",
+   "önlenebilir",
+   "able to be stopped before it happens",
+   "Many deaths from heart disease are preventable."
+  ],
+  [
+   "intake",
+   "n",
+   "alım (besin, tuz vb.)",
+   "the amount of food, drink or a substance that you take in",
+   "Doctors advise people to reduce their salt intake."
+  ],
+  [
+   "harmful",
+   "adj",
+   "zararlı",
+   "causing damage or injury",
+   "Smoking is harmful not only to smokers but to those around them."
+  ],
+  [
+   "beneficial",
+   "adj",
+   "faydalı",
+   "having a good effect",
+   "Moderate exercise is beneficial at any age."
+  ],
+  [
+   "sleep deprivation",
+   "n",
+   "uykusuzluk",
+   "not getting enough sleep",
+   "Sleep deprivation affects memory and concentration."
+  ],
+  [
+   "burnout",
+   "n",
+   "tükenmişlik",
+   "extreme tiredness caused by working too hard",
+   "Doctors and nurses are at high risk of burnout."
+  ],
+  [
+   "healthy habits",
+   "n",
+   "sağlıklı alışkanlıklar",
+   "regular behaviour that is good for your health",
+   "Children who learn healthy habits early keep them as adults."
+  ],
+  [
+   "life-threatening",
+   "adj",
+   "hayati tehlike taşıyan",
+   "able to cause death",
+   "Some allergies can be life-threatening."
+  ],
+  [
+   "recover from",
+   "phr v",
+   "(hastalıktan) iyileşmek",
+   "to become healthy again after an illness",
+   "It took him months to recover from the operation."
+  ],
+  [
+   "cosmetic surgery",
+   "n",
+   "estetik cerrahi",
+   "surgery to improve a person's appearance",
+   "The popularity of cosmetic surgery has increased among young people."
+  ],
+  [
+   "alternative medicine",
+   "n",
+   "alternatif tıp",
+   "treatments not part of traditional Western medicine",
+   "There is little scientific evidence for some forms of alternative medicine."
+  ],
+  [
+   "health insurance",
+   "n",
+   "sağlık sigortası",
+   "an arrangement to pay for medical costs",
+   "Without health insurance, treatment can be extremely expensive."
+  ],
+  [
+   "pharmaceutical",
+   "adj",
+   "ilaç (sanayisi) ile ilgili",
+   "connected with the production of medicines",
+   "Pharmaceutical companies spend billions on research."
+  ]
+ ]
+}

@@ -1,0 +1,290 @@
+{
+ "key": "konu-is",
+ "name": "İş ve Ekonomi · Work",
+ "level": "💼",
+ "desc": "Çalışma hayatı, işsizlik, ekonomi ve tüketim",
+ "source": "Fişlik",
+ "kind": "topic",
+ "cards": [
+  [
+   "unemployment",
+   "n",
+   "işsizlik",
+   "the state of not having a job",
+   "Youth unemployment remains high in many European countries."
+  ],
+  [
+   "job security",
+   "n",
+   "iş güvencesi",
+   "the likelihood of keeping your job",
+   "Many young people value job security over high salaries."
+  ],
+  [
+   "work-life balance",
+   "n",
+   "iş-özel hayat dengesi",
+   "the balance between time at work and personal time",
+   "Flexible hours can improve work-life balance."
+  ],
+  [
+   "job satisfaction",
+   "n",
+   "iş tatmini",
+   "the feeling of enjoying your work",
+   "Job satisfaction is more important than money for many employees."
+  ],
+  [
+   "career prospects",
+   "n",
+   "kariyer olanakları",
+   "the chances of success in a career",
+   "Learning a second language can improve your career prospects."
+  ],
+  [
+   "income",
+   "n",
+   "gelir",
+   "money received for work or from investments",
+   "Income inequality has increased in many countries."
+  ],
+  [
+   "minimum wage",
+   "n",
+   "asgari ücret",
+   "the lowest pay an employer is allowed to give",
+   "Raising the minimum wage helps low-paid workers."
+  ],
+  [
+   "inequality",
+   "n",
+   "eşitsizlik",
+   "an unfair difference between groups",
+   "Economic inequality can lead to social unrest."
+  ],
+  [
+   "cost of living",
+   "n",
+   "hayat pahalılığı, geçim maliyeti",
+   "the amount of money needed for basic needs",
+   "The cost of living in big cities is rising fast."
+  ],
+  [
+   "consumerism",
+   "n",
+   "tüketim kültürü",
+   "the belief that buying goods is very important",
+   "Consumerism encourages people to buy things they do not need."
+  ],
+  [
+   "recruit",
+   "v",
+   "işe almak",
+   "to find new people to work for an organisation",
+   "The company plans to recruit two hundred staff."
+  ],
+  [
+   "employee",
+   "n",
+   "çalışan",
+   "a person who is paid to work for someone",
+   "Happy employees are usually more productive."
+  ],
+  [
+   "employer",
+   "n",
+   "işveren",
+   "a person or company that employs people",
+   "Employers are looking for graduates with practical skills."
+  ],
+  [
+   "self-employed",
+   "adj",
+   "serbest çalışan",
+   "working for yourself, not for an employer",
+   "Being self-employed gives you freedom but less security."
+  ],
+  [
+   "freelance",
+   "adj",
+   "serbest (proje bazlı)",
+   "working for different companies rather than one employer",
+   "She works as a freelance translator."
+  ],
+  [
+   "flexible working hours",
+   "n",
+   "esnek çalışma saatleri",
+   "a system allowing workers to choose when they work",
+   "Flexible working hours help parents manage childcare."
+  ],
+  [
+   "promotion",
+   "n",
+   "terfi",
+   "a move to a more senior job",
+   "She received a promotion after only two years."
+  ],
+  [
+   "retirement",
+   "n",
+   "emeklilik",
+   "the time when you stop working, usually because of age",
+   "Many people now work long after retirement age."
+  ],
+  [
+   "pension",
+   "n",
+   "emekli maaşı",
+   "money paid regularly to a retired person",
+   "An ageing population makes pensions harder to fund."
+  ],
+  [
+   "workforce",
+   "n",
+   "işgücü",
+   "all the people who work in a country or company",
+   "Women now make up almost half of the workforce."
+  ],
+  [
+   "productivity",
+   "n",
+   "verimlilik",
+   "the rate at which work is done",
+   "Long hours do not necessarily increase productivity."
+  ],
+  [
+   "economic growth",
+   "n",
+   "ekonomik büyüme",
+   "an increase in the value of goods and services produced",
+   "Tourism contributes significantly to economic growth."
+  ],
+  [
+   "recession",
+   "n",
+   "durgunluk",
+   "a period when the economy shrinks",
+   "Thousands lost their jobs during the recession."
+  ],
+  [
+   "invest in",
+   "phr v",
+   "-e yatırım yapmak",
+   "to spend money on something to gain benefits later",
+   "Governments should invest in public transport."
+  ],
+  [
+   "multinational company",
+   "n",
+   "çok uluslu şirket",
+   "a company that operates in many countries",
+   "Multinational companies often pay little tax."
+  ],
+  [
+   "small business",
+   "n",
+   "küçük işletme",
+   "a business with few employees",
+   "Online shopping has hurt many small businesses."
+  ],
+  [
+   "entrepreneur",
+   "n",
+   "girişimci",
+   "a person who starts their own business",
+   "Young entrepreneurs need access to affordable loans."
+  ],
+  [
+   "skilled worker",
+   "n",
+   "nitelikli işçi",
+   "a worker with special training or ability",
+   "There is a shortage of skilled workers in construction."
+  ],
+  [
+   "manual labour",
+   "n",
+   "beden işçiliği",
+   "physical work done with the hands",
+   "Machines have replaced much manual labour."
+  ],
+  [
+   "workplace",
+   "n",
+   "işyeri",
+   "the place where people work",
+   "Discrimination in the workplace is illegal."
+  ],
+  [
+   "gender pay gap",
+   "n",
+   "cinsiyete dayalı ücret farkı",
+   "the difference between men's and women's average pay",
+   "The gender pay gap has narrowed but not disappeared."
+  ],
+  [
+   "overtime",
+   "n",
+   "fazla mesai",
+   "extra time worked beyond normal hours",
+   "Many nurses work unpaid overtime."
+  ],
+  [
+   "commute",
+   "v, n",
+   "işe gidip gelmek; işe gidiş geliş",
+   "to travel regularly between home and work",
+   "Millions of people commute into the capital every day."
+  ],
+  [
+   "job-hopping",
+   "n",
+   "sık iş değiştirme",
+   "changing jobs frequently",
+   "Job-hopping is more common among younger workers."
+  ],
+  [
+   "teamwork",
+   "n",
+   "takım çalışması",
+   "working together with other people",
+   "Most employers value teamwork highly."
+  ],
+  [
+   "leadership",
+   "n",
+   "liderlik",
+   "the ability to lead a group",
+   "Leadership skills can be developed through practice."
+  ],
+  [
+   "career ladder",
+   "n",
+   "kariyer basamakları",
+   "the series of jobs that lead to higher positions",
+   "It took her ten years to climb the career ladder."
+  ],
+  [
+   "poverty",
+   "n",
+   "yoksulluk",
+   "the state of being very poor",
+   "Education is one of the best ways to reduce poverty."
+  ],
+  [
+   "standard of living",
+   "n",
+   "yaşam standardı",
+   "the level of comfort and wealth people have",
+   "The standard of living has improved for most people."
+  ],
+  [
+   "make ends meet",
+   "phrase",
+   "geçinebilmek, iki yakayı bir araya getirmek",
+   "to have just enough money for what you need",
+   "Many families struggle to make ends meet."
+  ]
+ ]
+}

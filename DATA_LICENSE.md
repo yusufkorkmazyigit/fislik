@@ -4,7 +4,7 @@
 
 Telif: © 2026 Yusuf Korkmazyiğit (Türkçe anlamlar ve derleme).
 
-`data/stories.js` içindeki hikâyeler ve hikâye sözlüğü Fişlik için yazılmış özgün metinlerdir; başka bir eserden alıntı içermez. Aynı CC BY-SA 4.0 lisansıyla paylaşılır.
+`data/stories.js` içindeki hikâyeler ve hikâye sözlüğü ile konu destelerindeki (`konu-*`) tanımlar ve örnek cümleler Fişlik için yazılmış özgün metinlerdir; başka bir eserden alıntı içermez. Aynı CC BY-SA 4.0 lisansıyla paylaşılır.
 
 Kelime desteleri aşağıdaki kaynaklardan türetilmiştir:
 
