@@ -48,6 +48,29 @@ function toast(msg, ms = 2800){
   clearTimeout(toast._t); toast._t = setTimeout(() => t.remove(), ms);
 }
 
+/* ---------- çalışma günlüğü: seri, günlük hedef, takvim ---------- */
+const ACT_KEY = "fislik.activity.v1";
+const GOALS = [10, 20, 30, 50];
+const HARD_MIN = 2;   // en az kaç kez "Bilmiyorum" denince zorlanılan sayılır
+let activity = { days: {}, goal: 20, best: 0 };
+try { const a = JSON.parse(localStorage.getItem(ACT_KEY) || "null"); if (a && typeof a.days === "object") activity = { days: a.days, goal: GOALS.includes(a.goal) ? a.goal : 20, best: a.best || 0 }; } catch {}
+function saveActivity(){ try { localStorage.setItem(ACT_KEY, JSON.stringify(activity)); } catch {} }
+// yerel saate göre gün anahtarı; öğlen sabitlenir ki yaz saati geçişinde gün kaymasın
+function noon(t = now()){ const d = new Date(t); d.setHours(12, 0, 0, 0); return d; }
+function dayKey(d = noon()){ return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; }
+function streak(){
+  const d = noon(), todayDone = !!activity.days[dayKey(d)];
+  if (!todayDone) d.setDate(d.getDate() - 1);   // bugün henüz çalışılmadıysa seri dünden sayılır, bozulmuş sayılmaz
+  let len = 0; while (activity.days[dayKey(d)]) { len++; d.setDate(d.getDate() - 1); }
+  return { len, todayDone };
+}
+function logReview(){
+  const k = dayKey(); activity.days[k] = (activity.days[k] || 0) + 1;
+  activity.best = Math.max(activity.best, streak().len);
+  saveActivity();
+}
+function lastDays(n){ const d = noon(); let sum = 0; for (let i = 0; i < n; i++) { sum += activity.days[dayKey(d)] || 0; d.setDate(d.getDate() - 1); } return sum; }
+
 /* ---------- depolama: Claude içinde hesaba, dışarıda tarayıcıya ---------- */
 const LS_KEY = "fislik.decks.v1";
 const store = {
@@ -167,6 +190,75 @@ function modeSeg(){
   </div>`;
 }
 
+const MONTHS = ["Oca","Şub","Mar","Nis","May","Haz","Tem","Ağu","Eyl","Eki","Kas","Ara"];
+const WDAYS = ["Pzt","Sal","Çar","Per","Cum","Cmt","Paz"];
+const fmtDay = d => `${d.getDate()} ${MONTHS[d.getMonth()]} ${WDAYS[(d.getDay() + 6) % 7]}`;
+
+function goalRowHTML(){
+  const st = streak(), done = activity.days[dayKey()] || 0, goal = activity.goal;
+  const pct = Math.min(100, Math.round(done / goal * 100));
+  const fire = st.len
+    ? `<span class="streak${st.todayDone ? "" : " cold"}" title="Üst üste çalıştığın gün sayısı">🔥 ${st.len} gün</span>${st.todayDone ? "" : `<span class="gr-note">bugün çalışırsan serin sürer</span>`}`
+    : `<span class="gr-note">Bugün çalış, serin başlasın</span>`;
+  return `<div class="goalrow">
+    <div class="gr-top">${fire}<span class="gr-count">${done >= goal ? "Hedef tamam ✓ " : ""}${done} / ${goal} kart</span></div>
+    <div class="gr-bar" role="progressbar" aria-label="Bugünkü hedef" aria-valuemin="0" aria-valuemax="${goal}" aria-valuenow="${Math.min(done, goal)}"><i style="width:${pct}%"></i></div>
+  </div>`;
+}
+
+// son 17 hafta, GitHub tarzı: sütunlar hafta, satırlar Pzt..Paz; renk o günkü tekrar sayısı (hedefe göre)
+function heatmapHTML(){
+  const WEEKS = 17, goal = activity.goal, today = noon();
+  const start = noon(); start.setDate(today.getDate() - (today.getDay() + 6) % 7 - (WEEKS - 1) * 7);
+  const level = c => !c ? 0 : c < goal / 2 ? 1 : c < goal ? 2 : c < goal * 2 ? 3 : 4;
+  let cells = "", months = "", daysOn = 0, total = 0;
+  for (let w = 0; w < WEEKS; w++) {
+    const first = new Date(start); first.setDate(start.getDate() + w * 7);
+    months += `<span>${w === 0 || first.getDate() <= 7 ? MONTHS[first.getMonth()] : ""}</span>`;
+    for (let r = 0; r < 7; r++) {
+      const d = new Date(first); d.setDate(first.getDate() + r);
+      if (d > today) { cells += `<span class="hm-c future"></span>`; continue; }
+      const c = activity.days[dayKey(d)] || 0; if (c) { daysOn++; total += c; }
+      cells += `<span class="hm-c l${level(c)}${+d === +today ? " is-today" : ""}" data-tip="${fmtDay(d)}: ${c ? c + " kart" : "çalışılmadı"}"></span>`;
+    }
+  }
+  return `<div class="hm" role="img" aria-label="Son ${WEEKS} haftada ${daysOn} gün çalıştın, toplam ${total} kart tekrar ettin.">
+      <div class="hm-months" aria-hidden="true">${months}</div>
+      <div class="hm-body" aria-hidden="true">
+        <div class="hm-days"><span>Pzt</span><span></span><span>Çar</span><span></span><span>Cum</span><span></span><span></span></div>
+        <div class="hm-grid">${cells}</div>
+      </div>
+    </div>
+    <div class="hm-foot"><span class="hm-tip" aria-live="polite">Bir güne dokun ya da üzerine gel</span>
+      <span class="hm-legend" aria-hidden="true">Az <i class="hm-c l0"></i><i class="hm-c l1"></i><i class="hm-c l2"></i><i class="hm-c l3"></i><i class="hm-c l4"></i> Çok</span></div>`;
+}
+
+function progressHTML(cards){
+  const st = streak(), known = cards.filter(k => k.status === "known").length;
+  const hard = cards.filter(k => (k.miss || 0) >= HARD_MIN).length;
+  const tile = (n, label) => `<div class="tile"><b>${n}</b><span>${label}</span></div>`;
+  return `<h3 class="sec">İlerlemen</h3>
+    <section class="progress">
+      <div class="tiles">
+        ${tile(`🔥 ${st.len}`, "günlük seri")}
+        ${tile(activity.best, "en uzun seri")}
+        ${tile(lastDays(7), "son 7 günde kart")}
+        ${tile(known, "öğrendiğin kelime")}
+      </div>
+      ${heatmapHTML()}
+      <div class="row prow">
+        <span class="hint">Günlük hedef:</span>
+        <div class="seg" role="group" aria-label="Günlük hedef">
+          ${GOALS.map(g => `<button data-act="goal" data-v="${g}" aria-pressed="${activity.goal === g}">${g}</button>`).join("")}
+        </div>
+      </div>
+      <div class="hardrow">
+        <div><div class="nm">Zorlandıkların</div><div class="ds">En az ${HARD_MIN} kez "Bilmiyorum" dediğin kelimeler. "Öğrendim" dedikçe listeden düşerler.</div></div>
+        <button class="btn small" data-act="studyHard" ${hard ? "" : "disabled"}>Çalış (${hard})</button>
+      </div>
+    </section>`;
+}
+
 function renderHome(){
   const decks = Object.entries(store.decks).sort((a,b) => (a[1].created||0) - (b[1].created||0));
   const all = decks.flatMap(([,d]) => d.cards || []);
@@ -176,6 +268,7 @@ function renderHome(){
     <section class="today">
       <div><h2>Bugün çalışılacak</h2><div class="n">${due}<span>kart</span></div></div>
       <button class="btn hl" data-act="studyAll" ${due ? "" : "disabled"}>Çalışmaya başla</button>
+      ${all.length ? goalRowHTML() : ""}
     </section>
     ${all.length ? modeSeg() : ""}
     ${all.some(k => k.status === "new") ? `<div class="newinfo">Her oturumda en fazla ${NEW_PER_SESSION} yeni kelime gelir; tekrarı gelenler hep önce gösterilir.</div>` : ""}
@@ -198,6 +291,7 @@ function renderHome(){
       <input type="text" name="deckname" placeholder="Yeni kategori adı (ör. Environment, Education)" maxlength="60" aria-label="Yeni kategori adı">
       <button class="btn" type="submit">Oluştur</button>
     </form>
+    ${all.length ? progressHTML(all) : ""}
     ${STORIES.length ? `<h3 class="sec">Okuma</h3>
     <button class="readcard" data-act="stories">
       <span class="lvl">A1<br>B2</span>
@@ -215,6 +309,8 @@ function renderHome(){
       </div>`).join("")}
     </div>`).join("")}
   ` + footer();
+  // dar ekranda takvim yana kayar: en yeni haftalar görünsün
+  const hm = app.querySelector(".hm"); if (hm) hm.scrollLeft = hm.scrollWidth;
 }
 
 function renderDeck(){
@@ -437,9 +533,9 @@ sheetRoot.addEventListener("change", e => {
 
 /* ---------- çalışma ---------- */
 function cardOf(it){ const d = store.decks[it.deck]; return d && (d.cards || []).find(k => k.id === it.id); }
-function startSession(deckIds, everything){
+function startSession(deckIds, everything, pick){
   const items = [];
-  deckIds.forEach(id => (store.decks[id].cards || []).forEach(k => items.push({ deck: id, id: k.id, k })));
+  deckIds.forEach(id => (store.decks[id].cards || []).forEach(k => { if (!pick || pick(k)) items.push({ deck: id, id: k.id, k }); }));
   let queue;
   if (everything) {
     queue = shuffle(items.slice());
@@ -569,6 +665,8 @@ function renderStudy(){
           <div><b style="color:var(--mid)">${s.res.learning}</b>Öğreniyorum</div>
           <div><b style="color:var(--good)">${s.res.known}</b>Öğrendim</div>
         </div>
+        ${(() => { const st = streak(), d = activity.days[dayKey()] || 0;
+          return `<p class="donestreak">🔥 ${st.len} günlük seri · bugün ${d} kart${d >= activity.goal ? " · günlük hedef tamam ✓" : ` · hedefe ${activity.goal - d} kart kaldı`}</p>`; })()}
         <p class="hint">Öğrendiklerin 3, sonra 6, 12, 24 gün sonra tekrar karşına çıkacak. Öğreniyorum dediklerin yarın.</p>
         <button class="btn hl" data-act="endStudy">Tamam</button>
       </div>`;
@@ -611,7 +709,11 @@ function answer(v){
     if (v === "unknown") { k.interval = 0; k.due = now(); }
     else if (v === "learning") { k.interval = 1; k.due = now() + DAY; }
     else { k.interval = k.status === "known" ? Math.max(3, (k.interval || 3) * 2) : 3; k.due = now() + k.interval * DAY; }
+    // zorlanılan kelime sayacı: "Bilmiyorum" artırır, "Öğrendim" azaltır; öğrendikçe listeden düşer
+    if (v === "unknown") k.miss = (k.miss || 0) + 1;
+    else if (v === "known" && k.miss) k.miss--;
     k.status = v; k.seen = (k.seen || 0) + 1; k.last = now();
+    logReview();
     store.save(it.deck);
     if (s.i < s.total) s.res[v]++;
     if (v === "unknown" && !s.retried.has(it.id)) { s.retried.add(it.id); s.queue.push({ ...it }); }
@@ -625,7 +727,7 @@ function endStudy(){
 
 /* ---------- yedekleme (GitHub sürümü) ---------- */
 function exportBackup(){
-  const blob = new Blob([JSON.stringify({ app: "fislik", version: 1, exported: new Date().toISOString(), decks: store.decks }, null, 1)], { type: "application/json" });
+  const blob = new Blob([JSON.stringify({ app: "fislik", version: 1, exported: new Date().toISOString(), decks: store.decks, activity }, null, 1)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = `fislik-yedek-${new Date().toISOString().slice(0,10)}.json`;
@@ -639,6 +741,11 @@ async function importBackup(file){
     const n = Object.keys(data.decks).length;
     if (!confirm(`Yedekte ${n} deste var. Aynı desteler yedektekiyle değiştirilecek, diğerleri kalacak. Devam edilsin mi?`)) return;
     Object.entries(data.decks).forEach(([id, d]) => { if (d && Array.isArray(d.cards)) { store.decks[id] = d; store.push(id); } });
+    if (data.activity && typeof data.activity.days === "object") {
+      // günler birleştirilir: aynı gün için büyük olan sayı kalır
+      Object.entries(data.activity.days).forEach(([d, c]) => { if (+c > (activity.days[d] || 0)) activity.days[d] = +c; });
+      activity.best = Math.max(activity.best, +data.activity.best || 0, streak().len); saveActivity();
+    }
     store.saveLocal(); toast(`${n} deste yüklendi.`); go({ name: "home" });
   } catch { toast("Bu dosya bir Fişlik yedeği değil."); }
 }
@@ -652,6 +759,8 @@ app.addEventListener("click", async e => {
   else if (act === "study") startSession([id], false);
   else if (act === "studyEvery") startSession([id], true);
   else if (act === "studyAll") startSession(Object.keys(store.decks), false);
+  else if (act === "studyHard") startSession(Object.keys(store.decks), true, k => (k.miss || 0) >= HARD_MIN);
+  else if (act === "goal") { activity.goal = +b.dataset.v; saveActivity(); render(); }
   else if (act === "addTpl") {
     const t = TEMPLATES.find(x => x.key === b.dataset.key); if (!t) return;
     const did = uid();
@@ -699,6 +808,14 @@ app.addEventListener("click", async e => {
     } finally { b.disabled = false; }
   }
 });
+
+function showTip(e){
+  const c = e.target.closest(".hm-c[data-tip]"); if (!c) return;
+  const tip = app.querySelector(".hm-tip"); if (tip) tip.textContent = c.dataset.tip;
+  app.querySelectorAll(".hm-c.sel").forEach(x => x.classList.remove("sel")); c.classList.add("sel");
+}
+app.addEventListener("mouseover", showTip);
+app.addEventListener("click", showTip);
 
 app.addEventListener("submit", e => {
   e.preventDefault();
