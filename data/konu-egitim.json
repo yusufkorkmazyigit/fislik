@@ -11,280 +11,320 @@
    "n",
    "müfredat",
    "the subjects that are taught in a school or course",
-   "Some people believe financial skills should be part of the school curriculum."
+   "Some people believe financial skills should be part of the school curriculum.",
+   "Bazı insanlar finansal becerilerin okul müfredatının bir parçası olması gerektiğine inanıyor."
   ],
   [
    "compulsory",
    "adj",
    "zorunlu",
    "required by law or rules",
-   "Education is compulsory for children until the age of sixteen."
+   "Education is compulsory for children until the age of sixteen.",
+   "On altı yaşına kadar eğitim zorunludur."
   ],
   [
    "tuition fees",
    "n",
    "öğrenim ücreti",
    "money paid to a university or school for teaching",
-   "High tuition fees prevent many talented students from attending university."
+   "High tuition fees prevent many talented students from attending university.",
+   "Yüksek öğrenim ücretleri birçok yetenekli öğrencinin üniversiteye gitmesini engelliyor."
   ],
   [
    "scholarship",
    "n",
    "burs",
    "money given to a student to pay for their education",
-   "She won a scholarship to study engineering abroad."
+   "She won a scholarship to study engineering abroad.",
+   "Yurt dışında mühendislik okumak için burs kazandı."
   ],
   [
    "higher education",
    "n",
    "yükseköğretim",
    "education at university or college level",
-   "Access to higher education has expanded in recent decades."
+   "Access to higher education has expanded in recent decades.",
+   "Son on yıllarda yükseköğretime erişim genişledi."
   ],
   [
    "vocational training",
    "n",
    "mesleki eğitim",
    "training for a specific job or trade",
-   "Vocational training can be a valuable alternative to university."
+   "Vocational training can be a valuable alternative to university.",
+   "Mesleki eğitim, üniversiteye değerli bir alternatif olabilir."
   ],
   [
    "academic performance",
    "n",
    "akademik başarı",
    "how well a student does in their studies",
-   "Lack of sleep can harm academic performance."
+   "Lack of sleep can harm academic performance.",
+   "Uyku eksikliği akademik başarıya zarar verebilir."
   ],
   [
    "literacy",
    "n",
    "okuryazarlık",
    "the ability to read and write",
-   "Adult literacy rates have improved dramatically."
+   "Adult literacy rates have improved dramatically.",
+   "Yetişkin okuryazarlık oranları büyük ölçüde arttı."
   ],
   [
    "numeracy",
    "n",
    "temel matematik becerisi",
    "the ability to understand and work with numbers",
-   "Employers complain about poor numeracy among school leavers."
+   "Employers complain about poor numeracy among school leavers.",
+   "İşverenler okuldan yeni mezun olanların zayıf matematik becerilerinden yakınıyor."
   ],
   [
    "critical thinking",
    "n",
    "eleştirel düşünme",
    "the ability to analyse information and form a judgement",
-   "Universities should develop critical thinking rather than memorisation."
+   "Universities should develop critical thinking rather than memorisation.",
+   "Üniversiteler ezberden çok eleştirel düşünmeyi geliştirmeli."
   ],
   [
    "rote learning",
    "n",
    "ezberci öğrenme",
    "learning by repeating information until it is memorised",
-   "Rote learning may help students pass exams but not understand concepts."
+   "Rote learning may help students pass exams but not understand concepts.",
+   "Ezberci öğrenme sınavları geçmeye yardımcı olabilir ama kavramları anlamayı sağlamaz."
   ],
   [
    "distance learning",
    "n",
    "uzaktan eğitim",
    "studying from home, usually online, instead of in a classroom",
-   "Distance learning allows working adults to gain qualifications."
+   "Distance learning allows working adults to gain qualifications.",
+   "Uzaktan eğitim, çalışan yetişkinlerin diploma almasını sağlar."
   ],
   [
    "qualification",
    "n",
    "nitelik belgesi, diploma",
    "an official record showing you have finished a course",
-   "Many jobs now require a university qualification."
+   "Many jobs now require a university qualification.",
+   "Artık birçok iş üniversite diploması gerektiriyor."
   ],
   [
    "graduate",
    "n, v",
    "mezun; mezun olmak",
    "a person who has completed a university degree",
-   "Graduates often struggle to find work in their field."
+   "Graduates often struggle to find work in their field.",
+   "Mezunlar genellikle kendi alanlarında iş bulmakta zorlanıyor."
   ],
   [
    "undergraduate",
    "n",
    "lisans öğrencisi",
    "a university student studying for a first degree",
-   "Undergraduates are expected to study independently."
+   "Undergraduates are expected to study independently.",
+   "Lisans öğrencilerinin bağımsız çalışması beklenir."
   ],
   [
    "discipline",
    "n",
    "disiplin",
    "the practice of making people obey rules",
-   "Some argue that schools today lack discipline."
+   "Some argue that schools today lack discipline.",
+   "Bazıları bugünün okullarında disiplin olmadığını savunuyor."
   ],
   [
    "peer pressure",
    "n",
    "akran baskısı",
    "influence from people of your own age to behave like them",
-   "Peer pressure can lead teenagers to make poor decisions."
+   "Peer pressure can lead teenagers to make poor decisions.",
+   "Akran baskısı gençleri kötü kararlar vermeye itebilir."
   ],
   [
    "extracurricular activities",
    "n",
    "ders dışı etkinlikler",
    "activities that students do outside normal lessons",
-   "Extracurricular activities help children develop social skills."
+   "Extracurricular activities help children develop social skills.",
+   "Ders dışı etkinlikler çocukların sosyal becerilerini geliştirmesine yardımcı olur."
   ],
   [
    "single-sex school",
    "n",
    "kız/erkek okulu (karma olmayan)",
    "a school for only boys or only girls",
-   "Supporters of single-sex schools claim students concentrate better."
+   "Supporters of single-sex schools claim students concentrate better.",
+   "Karma olmayan okulların destekçileri öğrencilerin daha iyi odaklandığını öne sürüyor."
   ],
   [
    "state school",
    "n",
    "devlet okulu",
    "a school funded by the government",
-   "Most children in the country attend state schools."
+   "Most children in the country attend state schools.",
+   "Ülkedeki çocukların çoğu devlet okullarına gidiyor."
   ],
   [
    "private school",
    "n",
    "özel okul",
    "a school paid for by parents rather than the government",
-   "Private schools often have smaller class sizes."
+   "Private schools often have smaller class sizes.",
+   "Özel okullarda sınıflar genellikle daha küçüktür."
   ],
   [
    "class size",
    "n",
    "sınıf mevcudu",
    "the number of students in one class",
-   "Reducing class size allows teachers to give more individual attention."
+   "Reducing class size allows teachers to give more individual attention.",
+   "Sınıf mevcudunu azaltmak, öğretmenlerin her öğrenciyle daha çok ilgilenmesini sağlar."
   ],
   [
    "assessment",
    "n",
    "değerlendirme",
    "the process of judging a student's work or ability",
-   "Continuous assessment may be fairer than a single final exam."
+   "Continuous assessment may be fairer than a single final exam.",
+   "Sürekli değerlendirme, tek bir final sınavından daha adil olabilir."
   ],
   [
    "exam-oriented",
    "adj",
    "sınav odaklı",
    "focused mainly on preparing for exams",
-   "An exam-oriented system can reduce creativity."
+   "An exam-oriented system can reduce creativity.",
+   "Sınav odaklı bir sistem yaratıcılığı azaltabilir."
   ],
   [
    "drop out",
    "phr v",
    "okulu bırakmak",
    "to leave school or university before finishing",
-   "Financial problems force some students to drop out."
+   "Financial problems force some students to drop out.",
+   "Maddi sorunlar bazı öğrencileri okulu bırakmaya zorluyor."
   ],
   [
    "lifelong learning",
    "n",
    "hayat boyu öğrenme",
    "continuing to learn throughout your life",
-   "Lifelong learning is essential in a changing job market."
+   "Lifelong learning is essential in a changing job market.",
+   "Değişen iş piyasasında hayat boyu öğrenme şarttır."
   ],
   [
    "mature student",
    "n",
    "ileri yaşta öğrenci",
    "an adult who starts studying later than usual",
-   "Mature students often bring valuable work experience to class."
+   "Mature students often bring valuable work experience to class.",
+   "İleri yaşta öğrenciler derse genellikle değerli iş deneyimleri getirir."
   ],
   [
    "equal opportunities",
    "n",
    "fırsat eşitliği",
    "the same chances for everyone regardless of background",
-   "Free education promotes equal opportunities."
+   "Free education promotes equal opportunities.",
+   "Ücretsiz eğitim fırsat eşitliğini destekler."
   ],
   [
    "well-rounded",
    "adj",
    "çok yönlü",
    "having a wide range of skills and interests",
-   "Schools should aim to produce well-rounded individuals."
+   "Schools should aim to produce well-rounded individuals.",
+   "Okullar çok yönlü bireyler yetiştirmeyi hedeflemeli."
   ],
   [
    "gifted",
    "adj",
    "üstün yetenekli",
    "having a natural ability that is much higher than average",
-   "Gifted children may become bored in ordinary classes."
+   "Gifted children may become bored in ordinary classes.",
+   "Üstün yetenekli çocuklar normal sınıflarda sıkılabilir."
   ],
   [
    "acquire",
    "v",
    "edinmek",
    "to gain knowledge or a skill",
-   "Children acquire languages more easily than adults."
+   "Children acquire languages more easily than adults.",
+   "Çocuklar dilleri yetişkinlerden daha kolay edinir."
   ],
   [
    "specialise in",
    "phr v",
    "(bir alanda) uzmanlaşmak",
    "to concentrate on one particular subject",
-   "Students should not be forced to specialise in one subject too early."
+   "Students should not be forced to specialise in one subject too early.",
+   "Öğrenciler tek bir alanda çok erken uzmanlaşmaya zorlanmamalı."
   ],
   [
    "practical skills",
    "n",
    "pratik beceriler",
    "abilities used in real situations rather than theory",
-   "Employers value practical skills as much as degrees."
+   "Employers value practical skills as much as degrees.",
+   "İşverenler pratik becerilere diplomalar kadar değer veriyor."
   ],
   [
    "theoretical",
    "adj",
    "kuramsal",
    "based on ideas rather than practical experience",
-   "The course is too theoretical and does not prepare students for work."
+   "The course is too theoretical and does not prepare students for work.",
+   "Kurs fazla kuramsal ve öğrencileri işe hazırlamıyor."
   ],
   [
    "motivate",
    "v",
    "motive etmek, isteklendirmek",
    "to make someone want to do something",
-   "Good teachers know how to motivate struggling students."
+   "Good teachers know how to motivate struggling students.",
+   "İyi öğretmenler zorlanan öğrencileri nasıl motive edeceğini bilir."
   ],
   [
    "attendance",
    "n",
    "devam, katılım",
    "the fact of being present at school or class",
-   "Poor attendance is closely linked to low grades."
+   "Poor attendance is closely linked to low grades.",
+   "Devamsızlık düşük notlarla yakından ilişkilidir."
   ],
   [
    "learning outcomes",
    "n",
    "öğrenme çıktıları",
    "what students are expected to know after a course",
-   "Technology does not always improve learning outcomes."
+   "Technology does not always improve learning outcomes.",
+   "Teknoloji her zaman öğrenme çıktılarını iyileştirmez."
   ],
   [
    "tutor",
    "n",
    "özel öğretmen, danışman",
    "a teacher who works with one student or a small group",
-   "Wealthy families often pay for private tutors."
+   "Wealthy families often pay for private tutors.",
+   "Varlıklı aileler genellikle özel öğretmenlere para öder."
   ],
   [
    "brain drain",
    "n",
    "beyin göçü",
    "the movement of skilled people to another country",
-   "Brain drain is a serious problem for many developing countries."
+   "Brain drain is a serious problem for many developing countries.",
+   "Beyin göçü birçok gelişmekte olan ülke için ciddi bir sorun."
   ],
   [
    "educational attainment",
    "n",
    "eğitim düzeyi",
    "the highest level of education a person has completed",
-   "Educational attainment strongly predicts future income."
+   "Educational attainment strongly predicts future income.",
+   "Eğitim düzeyi gelecekteki geliri güçlü bir şekilde öngörür."
   ]
  ]
 }

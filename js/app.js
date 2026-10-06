@@ -37,9 +37,10 @@ const STATUS = {
 const ORDER = ["unknown", "learning", "new", "known"];
 const inClaude = !!(window.claude && window.claude.use);
 function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
-function makeCard(o, i = 0){ return { id: uid(), en: String(o.en||"").trim(), pos: String(o.pos||"").trim(), tr: String(o.tr||"").trim(), def: String(o.def||"").trim(), ex: String(o.ex||"").trim(), status: "new", interval: 0, due: 0, seen: 0, added: now() + i }; }
+function makeCard(o, i = 0){ return { id: uid(), en: String(o.en||"").trim(), pos: String(o.pos||"").trim(), tr: String(o.tr||"").trim(), def: String(o.def||"").trim(), ex: String(o.ex||"").trim(), extr: String(o.extr||"").trim(), status: "new", interval: 0, due: 0, seen: 0, added: now() + i }; }
 function counts(cards){ const c = {new:0,unknown:0,learning:0,known:0}; cards.forEach(k => c[k.status]++); return c; }
-const isReview = k => k.status !== "new" && (k.due || 0) <= now();
+// Bilmiyorum: her çalışmada gelir · Öğreniyorum: ertesi gün gelir · Öğrendim: artık gösterilmez (listeden istenirse tekrar edilir)
+const isReview = k => (k.status === "unknown" || k.status === "learning") && (k.due || 0) <= now();
 function todayCount(cards){ return cards.filter(isReview).length + Math.min(NEW_PER_SESSION, cards.filter(k => k.status === "new").length); }
 function quoteOfDay(){ const d = Math.floor(now() / DAY); return QUOTES[d % QUOTES.length]; }
 function toast(msg, ms = 2800){
@@ -128,7 +129,8 @@ For the English word or phrase "${word}", return ONLY a JSON object with these k
 "pos": part of speech abbreviation (n, v, adj, adv, phr v, phrase),
 "tr": the most useful Turkish meaning(s), short, comma-separated,
 "def": a short learner-dictionary English definition (max 15 words),
-"ex": one natural academic-style example sentence (IELTS level, max 20 words).
+"ex": one natural academic-style example sentence (IELTS level, max 20 words),
+"ex_tr": a natural Turkish translation of that example sentence.
 No markdown, no extra text.`;
   return await sampleFn.json(prompt, { modelTier: "quick" });
 }
@@ -154,12 +156,13 @@ function render(){
   else if (view.name === "study") renderStudy();
   else if (view.name === "stories") renderStories();
   else if (view.name === "story") renderStory();
+  else if (view.name === "help") renderHelp();
 }
 
 function header(){
   const [q, a] = quoteOfDay();
   return `<header class="top">
-    <div class="brandbox"><button class="brand" data-act="home">Fişlik <small>IELTS kelime kartları</small></button></div>
+    <div class="brandbox"><button class="brand" data-act="home">Fişlik <small>IELTS kelime kartları</small></button><button class="helplink" data-act="help">Nasıl kullanılır?</button></div>
     <blockquote class="quote">“${esc(q)}”<cite>${esc(a)}</cite></blockquote>
   </header>`;
 }
@@ -235,7 +238,7 @@ function heatmapHTML(){
 
 function progressHTML(cards){
   const st = streak(), known = cards.filter(k => k.status === "known").length;
-  const hard = cards.filter(k => (k.miss || 0) >= HARD_MIN).length;
+  const hard = cards.filter(k => k.status !== "known" && (k.miss || 0) >= HARD_MIN).length;
   const tile = (n, label) => `<div class="tile"><b>${n}</b><span>${label}</span></div>`;
   return `<h3 class="sec">İlerlemen</h3>
     <section class="progress">
@@ -257,6 +260,61 @@ function progressHTML(cards){
         <button class="btn small" data-act="studyHard" ${hard ? "" : "disabled"}>Çalış (${hard})</button>
       </div>
     </section>`;
+}
+
+/* kelime listeleri: çalışılan her kelime cevabına göre Bilmiyorum / Öğreniyorum / Öğrendim listesine taşınır */
+let listTab = "unknown", listLimit = 50;
+const LIST_INFO = {
+  unknown: "Bu kelimeler her çalışmada karşına çıkar.",
+  learning: "Bu kelimeler ertesi gün tekrar karşına çıkar.",
+  known: "Bu kelimeler artık gösterilmez. Unuttuğunu düşünürsen buradan tekrar edebilirsin.",
+};
+function wordListsHTML(decks){
+  const rows = [];
+  decks.forEach(([id, d]) => (d.cards || []).forEach(k => { if (k.status !== "new") rows.push({ id, d, k }); }));
+  const count = s => rows.filter(r => r.k.status === s).length;
+  const cur = rows.filter(r => r.k.status === listTab).sort((a, b) => (b.k.last || 0) - (a.k.last || 0));
+  return `<h3 class="sec">Kelime listelerin</h3>
+    <section class="lists">
+      <div class="chips" role="group" aria-label="Liste">
+        ${["unknown", "learning", "known"].map(s => `<button class="chip" data-act="ltab" data-v="${s}" aria-pressed="${listTab === s}"><span class="dot ${STATUS[s].cls}"></span>${STATUS[s].label} ${count(s)}</button>`).join("")}
+      </div>
+      <div class="lists-head"><span class="hint">${LIST_INFO[listTab]}</span>
+        <button class="btn small" data-act="studyList" ${cur.length ? "" : "disabled"}>${listTab === "known" ? "Tekrar et" : "Bu listeyi çalış"} (${cur.length})</button></div>
+      ${cur.length ? `<div class="wl">${cur.slice(0, listLimit).map(({ id, d, k }) => `
+        <div class="wl-row s-${k.status}">
+          <div><span class="wl-en">${esc(k.en)}</span>${k.pos ? ` <span class="wl-pos">${esc(k.pos)}</span>` : ""}<div class="wl-tr">${esc(k.tr) || "—"} · <span class="hint">${esc(d.name)}</span></div></div>
+          ${k.status === "known" ? `<button class="ib" data-act="unlearn" data-id="${k.id}" data-deck="${id}" title="Öğreniyorum listesine geri al">Tekrar çalış</button>` : ""}
+        </div>`).join("")}</div>
+        ${cur.length > listLimit ? `<button class="btn ghost small" data-act="moreList">Daha fazla göster (${cur.length - listLimit} kelime daha)</button>` : ""}`
+      : `<div class="empty">Bu listede henüz kelime yok. Kartları çalışıp cevap verdikçe kelimeler buraya taşınır.</div>`}
+    </section>`;
+}
+
+function renderHelp(){
+  const step = (n, title, body) => `<li><h4>${title}</h4>${body}</li>`;
+  app.innerHTML = header() + `
+    <button class="back" data-act="home">← Ana sayfa</button>
+    <h2 class="ptitle">Nasıl kullanılır?</h2>
+    <p class="hint">Fişlik, IELTS kelimelerini aralıklı tekrarla öğrenmen için yapıldı: bilmediğin kelimeler sık, öğrendiklerin hiç karşına çıkmaz. Böylece zamanını bilmediklerine harcarsın.</p>
+    <ol class="help">
+      ${step(1, "Bir deste ekle", `<p>Ana sayfanın altındaki <b>Hazır şablonlar</b> bölümünden seviyene uygun bir deste (A2, B1, B2, C1) ya da bir <b>konu destesi</b> (Çevre, Eğitim…) seç ve <b>Ekle</b>'ye bas. İstersen kendi desteni oluşturup kelimeleri tek tek de ekleyebilirsin.</p>`)}
+      ${step(2, "Çalışmaya başla", `<p><b>Çalışmaya başla</b> sana bugün çalışman gereken kartları getirir. Her oturumda en fazla ${NEW_PER_SESSION} yeni kelime gelir. İki çalışma şekli var:</p>
+        <ul><li><b>Kart çevir:</b> Kelimeyi gör, anlamını düşün, sonra kartı çevir. Arka yüzde anlam, tanım, örnek cümle ve cümlenin Türkçesi var.</li>
+        <li><b>Yazarak:</b> Türkçesini görürsün, İngilizcesini yazarsın. Yazım hatalarını da yakalar; IELTS'te yazım puan kaybettirir.</li></ul>`)}
+      ${step(3, "Dürüstçe cevap ver", `<p>Her karttan sonra üç seçenekten birini seç. Kelime o listeye taşınır:</p>
+        <ul class="help-ans"><li><span class="dot c-bad"></span><b>Bilmiyorum:</b> Kelime her çalışmada karşına çıkar, aynı oturumun sonunda da bir kez daha gelir.</li>
+        <li><span class="dot c-mid"></span><b>Öğreniyorum:</b> Kelime ertesi gün tekrar gelir.</li>
+        <li><span class="dot c-good"></span><b>Öğrendim:</b> Kelime artık gösterilmez. Unutursan <b>Öğrendim</b> listesinden geri alabilirsin.</li></ul>`)}
+      ${step(4, "Listelerini takip et", `<p>Ana sayfadaki <b>Kelime listelerin</b> bölümünde her kelimenin hangi listede olduğunu görürsün ve istediğin listeyi ayrıca çalışabilirsin. İki kez <i>Bilmiyorum</i> dediğin kelimeler <b>Zorlandıkların</b> bölümünde toplanır.</p>`)}
+      ${step(5, "Her gün biraz çalış", `<p>Günlük hedefini (10, 20, 30 ya da 50 kart) seç. Her gün çalıştıkça 🔥 serin uzar, çalışma takvimin yeşillenir. Az ama her gün çalışmak, haftada bir uzun çalışmaktan çok daha etkilidir.</p>`)}
+      ${step(6, "Hikâye oku", `<p><b>Seviyeli hikâyeler</b> bölümünde A1'den B2'ye 40 kısa hikâye var. Bilmediğin kelimeye dokun: Türkçesini ve cümleyi görürsün, istersen destene eklersin. Hikâyenin sonundaki <b>True / False / Not Given</b> soruları IELTS Reading'e hazırlar.</p>`)}
+      ${step(7, "İlerlemeni koru", `<p>İlerlemen bu tarayıcıda saklanır. Başka bir cihaza geçmek ya da yedek almak için sayfanın en altındaki <b>Yedeği indir</b> ve <b>Yedekten yükle</b> düğmelerini kullan. Telefonda tarayıcı menüsünden <b>Ana ekrana ekle</b> dersen Fişlik uygulama gibi açılır ve internetsiz de çalışır.</p>`)}
+    </ol>
+    <h3 class="sec">Klavye kısayolları</h3>
+    <p class="hint"><b>Boşluk</b> kartı çevirir · <b>1</b> Bilmiyorum · <b>2</b> Öğreniyorum · <b>3</b> Öğrendim · Yazarak modda <b>Enter</b> önce kontrol eder, sonra önerilen cevabı seçer · <b>Esc</b> çalışmadan çıkar.</p>
+    <div style="margin-top:20px"><button class="btn hl" data-act="home">Başlayalım</button></div>
+  ` + footer();
 }
 
 function renderHome(){
@@ -285,13 +343,13 @@ function renderHome(){
           <div class="deck-meta">${cs.length} kart</div>
           ${legendHTML(c)}
         </article>`;
-      }).join("") : `<div class="empty">Henüz deste yok. Aşağıdaki hazır şablonlardan birini ekle ya da kendi kategorini oluştur.</div>`}
+      }).join("") : `<div class="empty">Henüz deste yok. Aşağıdaki hazır şablonlardan birini ekle ya da kendi kategorini oluştur.<br><button class="btn small" data-act="help" style="margin-top:10px">Nasıl kullanılır?</button></div>`}
     </div>
     <form class="newdeck" data-form="newdeck">
       <input type="text" name="deckname" placeholder="Yeni kategori adı (ör. Environment, Education)" maxlength="60" aria-label="Yeni kategori adı">
       <button class="btn" type="submit">Oluştur</button>
     </form>
-    ${all.length ? progressHTML(all) : ""}
+    ${all.length ? progressHTML(all) + wordListsHTML(decks) : ""}
     ${STORIES.length ? `<h3 class="sec">Okuma</h3>
     <button class="readcard" data-act="stories">
       <span class="lvl">A1<br>B2</span>
@@ -360,7 +418,7 @@ function renderDeck(){
 }
 
 function cardForm(k){
-  const v = k || {en:"",pos:"",tr:"",def:"",ex:""};
+  const v = k || {en:"",pos:"",tr:"",def:"",ex:"",extr:""};
   return `<form class="addbox" data-form="card" ${k ? `data-edit="${k.id}"` : ""}>
     <strong>${k ? "Kartı düzenle" : "Yeni kelime ekle"}</strong>
     <div class="two">
@@ -370,6 +428,7 @@ function cardForm(k){
     <label>Türkçe anlamı<input type="text" name="tr" value="${esc(v.tr)}" maxlength="120"></label>
     <label>İngilizce tanım (isteğe bağlı)<input type="text" name="def" value="${esc(v.def)}" maxlength="200"></label>
     <label>Örnek cümle (isteğe bağlı)<textarea name="ex" maxlength="300">${esc(v.ex)}</textarea></label>
+    <label>Örnek cümlenin Türkçesi (isteğe bağlı)<textarea name="extr" maxlength="300">${esc(v.extr || (k ? exTrOf(k, view.id) : ""))}</textarea></label>
     <div class="row">
       <button class="btn hl" type="submit">${k ? "Değişiklikleri kaydet" : "Kartı ekle"}</button>
       ${sampleFn ? `<button class="btn ghost" type="button" data-act="fill">Claude ile doldur</button>` : ""}
@@ -570,6 +629,16 @@ sheetRoot.addEventListener("change", e => {
   if (e.target.dataset.sh === "deck" && sheet) { sheet.deck = e.target.value; renderSheet(); }
 });
 
+/* örnek cümlenin Türkçesi: kartta yoksa kartın geldiği şablondan bulunur */
+const tplExTr = {};
+TEMPLATES.forEach(t => { tplExTr[t.key] = {}; t.cards.forEach(c => { if (c[5]) tplExTr[t.key][c[0].toLowerCase()] = c[5]; }); });
+function exTrOf(k, deckId){
+  if (k.extr) return k.extr;
+  const d = store.decks[deckId], key = d && (d.template || (d.starter ? "paket1" : null));
+  return (key && tplExTr[key] && tplExTr[key][k.en.toLowerCase()]) || "";
+}
+const exBlock = (k, deckId) => k.ex ? `<div class="ex">“${esc(k.ex)}”</div>${exTrOf(k, deckId) ? `<div class="extr">${esc(exTrOf(k, deckId))}</div>` : ""}` : "";
+
 /* ---------- çalışma ---------- */
 function cardOf(it){ const d = store.decks[it.deck]; return d && (d.cards || []).find(k => k.id === it.id); }
 function startSession(deckIds, everything, pick){
@@ -581,7 +650,7 @@ function startSession(deckIds, everything, pick){
   } else {
     const group = s => shuffle(items.filter(it => it.k.status === s && isReview(it.k)));
     const fresh = items.filter(it => it.k.status === "new").sort((a,b) => (a.k.added||0) - (b.k.added||0)).slice(0, NEW_PER_SESSION);
-    queue = [...group("unknown"), ...group("learning"), ...group("known"), ...fresh];
+    queue = [...group("unknown"), ...group("learning"), ...fresh];
   }
   queue = queue.map(({deck, id}) => ({deck, id}));
   if (!queue.length) { toast("Şu an sırası gelen kart yok."); return; }
@@ -646,7 +715,6 @@ function renderTyped(s, it, k){
   const letters = (k.en.match(/[a-z]/gi) || []).length;
   const exBlank = blankExample(k.ex, k.en);
   const pct = Math.round(s.i / s.queue.length * 100);
-  const nextKnown = k.status === "known" ? Math.max(3, (k.interval||3)*2) : 3;
   const done = !!t.result;
   const suggest = done ? (t.result === "ok" && t.hints ? "learning" : SUGGEST[t.result]) : null;
   const verdict = !done ? "" : t.result === "ok"
@@ -664,7 +732,7 @@ function renderTyped(s, it, k){
       ${k.pos ? `<div class="pos">${esc(k.pos)}</div>` : ""}
       ${k.def ? `<div class="def">${esc(k.def)}</div>` : ""}
       ${!done && exBlank ? `<div class="ex">“${exBlank}”</div>` : ""}
-      ${done ? `<div class="reveal">${verdict}<div class="bigword">${esc(k.en)}</div>${k.ex ? `<div class="ex">“${esc(k.ex)}”</div>` : ""}</div>` : `
+      ${done ? `<div class="reveal">${verdict}<div class="bigword">${esc(k.en)}</div>${exBlock(k, it.deck)}</div>` : `
       <form class="typeform" data-form="typed">
         <input type="text" name="typed" value="${esc(t.value)}" placeholder="İngilizcesini yaz" aria-label="İngilizcesini yaz" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="en" enterkeyhint="done">
         <div class="row">
@@ -676,9 +744,9 @@ function renderTyped(s, it, k){
       </form>`}
     </div>
     <div class="answers">
-      ${ans("unknown", "a1", "Bilmiyorum", "birazdan tekrar")}
+      ${ans("unknown", "a1", "Bilmiyorum", "sık gösterilir")}
       ${ans("learning", "a2", "Öğreniyorum", "yarın")}
-      ${ans("known", "a3", "Öğrendim", `${nextKnown} gün sonra`)}
+      ${ans("known", "a3", "Öğrendim", "artık gösterilmez")}
     </div>
     <div class="keys">${done ? "Enter önerileni seçer · 1 / 2 / 3 ile başka cevap" : "Enter kontrol eder · Esc çıkış"}</div>
   `;
@@ -706,7 +774,7 @@ function renderStudy(){
         </div>
         ${(() => { const st = streak(), d = activity.days[dayKey()] || 0;
           return `<p class="donestreak">🔥 ${st.len} günlük seri · bugün ${d} kart${d >= activity.goal ? " · günlük hedef tamam ✓" : ` · hedefe ${activity.goal - d} kart kaldı`}</p>`; })()}
-        <p class="hint">Öğrendiklerin 3, sonra 6, 12, 24 gün sonra tekrar karşına çıkacak. Öğreniyorum dediklerin yarın.</p>
+        <p class="hint">Bilmiyorum dediklerin her çalışmada, Öğreniyorum dediklerin yarın tekrar gelir. Öğrendim dediklerin artık gösterilmez; istersen ana sayfadaki Öğrendim listesinden tekrar edebilirsin.</p>
         <button class="btn hl" data-act="endStudy">Tamam</button>
       </div>`;
     return;
@@ -720,10 +788,9 @@ function renderStudy(){
     ? `<div class="bigword">${esc(k.en)}</div>${k.pos ? `<div class="pos">${esc(k.pos)}</div>` : ""}`
     : `<div class="tr">${esc(k.tr) || esc(k.def) || "?"}</div>`;
   const back = frontEn
-    ? `<div class="tr">${esc(k.tr) || "—"}</div>${k.def ? `<div class="def">${esc(k.def)}</div>` : ""}${k.ex ? `<div class="ex">“${esc(k.ex)}”</div>` : ""}`
-    : `<div class="bigword">${esc(k.en)}</div>${k.pos ? `<div class="pos">${esc(k.pos)}</div>` : ""}${k.ex ? `<div class="ex">“${esc(k.ex)}”</div>` : ""}`;
+    ? `<div class="tr">${esc(k.tr) || "—"}</div>${k.def ? `<div class="def">${esc(k.def)}</div>` : ""}${exBlock(k, it.deck)}`
+    : `<div class="bigword">${esc(k.en)}</div>${k.pos ? `<div class="pos">${esc(k.pos)}</div>` : ""}${exBlock(k, it.deck)}`;
   const pct = Math.round(s.i / s.queue.length * 100);
-  const nextKnown = k.status === "known" ? Math.max(3, (k.interval||3)*2) : 3;
   app.innerHTML = `
     <div class="top studytop"><button class="back" data-act="endStudy">← Çık</button><span class="sync">${STATUS[k.status].label}</span></div>
     <div class="prog"><div class="track"><i style="width:${pct}%"></i></div><span>${s.i + 1} / ${s.queue.length}</span></div>
@@ -734,9 +801,9 @@ function renderStudy(){
       </button>
     </div>
     <div class="answers">
-      <button class="ans a1" data-act="ans" data-v="unknown" ${s.flipped ? "" : "disabled"}>Bilmiyorum<small>birazdan tekrar</small></button>
+      <button class="ans a1" data-act="ans" data-v="unknown" ${s.flipped ? "" : "disabled"}>Bilmiyorum<small>sık gösterilir</small></button>
       <button class="ans a2" data-act="ans" data-v="learning" ${s.flipped ? "" : "disabled"}>Öğreniyorum<small>yarın</small></button>
-      <button class="ans a3" data-act="ans" data-v="known" ${s.flipped ? "" : "disabled"}>Öğrendim<small>${nextKnown} gün sonra</small></button>
+      <button class="ans a3" data-act="ans" data-v="known" ${s.flipped ? "" : "disabled"}>Öğrendim<small>artık gösterilmez</small></button>
     </div>
     <div class="keys">Klavye: Boşluk çevir · 1 Bilmiyorum · 2 Öğreniyorum · 3 Öğrendim</div>
   `;
@@ -796,15 +863,23 @@ app.addEventListener("click", async e => {
   if (act === "home") go({ name: "home" });
   else if (act === "open") { filter = "all"; query = ""; go({ name: "deck", id }); }
   else if (act === "study") startSession([id], false);
-  else if (act === "studyEvery") startSession([id], true);
+  else if (act === "studyEvery") startSession([id], true, k => k.status !== "known");
   else if (act === "studyAll") startSession(Object.keys(store.decks), false);
-  else if (act === "studyHard") startSession(Object.keys(store.decks), true, k => (k.miss || 0) >= HARD_MIN);
+  else if (act === "studyHard") startSession(Object.keys(store.decks), true, k => k.status !== "known" && (k.miss || 0) >= HARD_MIN);
+  else if (act === "help") go({ name: "help" });
+  else if (act === "ltab") { listTab = b.dataset.v; listLimit = 50; render(); }
+  else if (act === "moreList") { listLimit += 100; render(); }
+  else if (act === "studyList") startSession(Object.keys(store.decks), true, k => k.status === listTab);
+  else if (act === "unlearn") {
+    const d = store.decks[b.dataset.deck], k = d && d.cards.find(c => c.id === id);
+    if (k) { k.status = "learning"; k.due = now(); store.save(b.dataset.deck); toast(`"${k.en}" Öğreniyorum listesine alındı.`); render(); }
+  }
   else if (act === "goal") { activity.goal = +b.dataset.v; saveActivity(); render(); }
   else if (act === "addTpl") {
     const t = TEMPLATES.find(x => x.key === b.dataset.key); if (!t) return;
     const did = uid();
     store.decks[did] = { name: t.name, created: now(), template: t.key,
-      cards: t.cards.map(([en,pos,tr,def,ex], i) => makeCard({en,pos,tr,def,ex}, i)) };
+      cards: t.cards.map(([en,pos,tr,def,ex,extr], i) => makeCard({en,pos,tr,def,ex,extr}, i)) };
     store.save(did); toast(`${t.cards.length} kelimelik deste eklendi.`); render();
   }
   else if (act === "dir") { direction = b.dataset.v; savePrefs(); render(); }
@@ -839,6 +914,7 @@ app.addEventListener("click", async e => {
       const r = await autofill(w);
       if (r && typeof r === "object") {
         ["pos","tr","def","ex"].forEach(key => { if (r[key] && !f[key].value.trim()) f[key].value = String(r[key]); });
+        if (r.ex_tr && !f.extr.value.trim()) f.extr.value = String(r.ex_tr);
         msg.textContent = "Dolduruldu. Kontrol edip kaydet.";
       }
     } catch (err) {
@@ -868,11 +944,11 @@ app.addEventListener("submit", e => {
     store.save(id); filter = "all"; query = ""; go({ name: "deck", id });
   }
   if (f.dataset.form === "card") {
-    const d = store.decks[view.id]; const data = { en: f.en.value, pos: f.pos.value, tr: f.tr.value, def: f.def.value, ex: f.ex.value };
+    const d = store.decks[view.id]; const data = { en: f.en.value, pos: f.pos.value, tr: f.tr.value, def: f.def.value, ex: f.ex.value, extr: f.extr.value };
     if (!data.en.trim()) return;
     if (f.dataset.edit) {
       const k = d.cards.find(c => c.id === f.dataset.edit);
-      Object.assign(k, { en: data.en.trim(), pos: data.pos.trim(), tr: data.tr.trim(), def: data.def.trim(), ex: data.ex.trim() });
+      Object.assign(k, { en: data.en.trim(), pos: data.pos.trim(), tr: data.tr.trim(), def: data.def.trim(), ex: data.ex.trim(), extr: data.extr.trim() });
       editing = null; toast("Kart güncellendi.");
     } else {
       if (d.cards.some(c => c.en.toLowerCase() === data.en.trim().toLowerCase())) { toast(`"${data.en.trim()}" bu destede zaten var.`); return; }

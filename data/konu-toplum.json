@@ -11,280 +11,320 @@
    "n",
    "kentleşme",
    "the movement of people from the countryside to cities",
-   "Rapid urbanisation has created housing shortages."
+   "Rapid urbanisation has created housing shortages.",
+   "Hızlı kentleşme konut sıkıntısına yol açtı."
   ],
   [
    "overcrowding",
    "n",
    "aşırı kalabalık",
    "too many people in one place",
-   "Overcrowding on public transport is a daily problem."
+   "Overcrowding on public transport is a daily problem.",
+   "Toplu taşımadaki aşırı kalabalık günlük bir sorun."
   ],
   [
    "infrastructure",
    "n",
    "altyapı",
    "basic systems such as roads, water and electricity",
-   "The government plans to spend billions on infrastructure."
+   "The government plans to spend billions on infrastructure.",
+   "Hükümet altyapıya milyarlar harcamayı planlıyor."
   ],
   [
    "public transport",
    "n",
    "toplu taşıma",
    "buses and trains available for everyone to use",
-   "Cheaper public transport would reduce traffic congestion."
+   "Cheaper public transport would reduce traffic congestion.",
+   "Daha ucuz toplu taşıma trafik sıkışıklığını azaltır."
   ],
   [
    "traffic congestion",
    "n",
    "trafik sıkışıklığı",
    "too many vehicles on the roads",
-   "Traffic congestion costs the economy millions every year."
+   "Traffic congestion costs the economy millions every year.",
+   "Trafik sıkışıklığı ekonomiye her yıl milyonlara mal oluyor."
   ],
   [
    "affordable housing",
    "n",
    "uygun fiyatlı konut",
    "homes that people on average incomes can afford",
-   "There is a severe lack of affordable housing in the capital."
+   "There is a severe lack of affordable housing in the capital.",
+   "Başkentte uygun fiyatlı konut ciddi şekilde eksik."
   ],
   [
    "homelessness",
    "n",
    "evsizlik",
    "the state of having no home",
-   "Homelessness has increased as rents have risen."
+   "Homelessness has increased as rents have risen.",
+   "Kiralar arttıkça evsizlik de arttı."
   ],
   [
    "rural",
    "adj",
    "kırsal",
    "connected with the countryside",
-   "Young people are leaving rural areas to find work."
+   "Young people are leaving rural areas to find work.",
+   "Gençler iş bulmak için kırsal bölgeleri terk ediyor."
   ],
   [
    "community",
    "n",
    "topluluk",
    "the people living in one area",
-   "Libraries play an important role in the local community."
+   "Libraries play an important role in the local community.",
+   "Kütüphaneler yerel toplulukta önemli bir rol oynar."
   ],
   [
    "crime rate",
    "n",
    "suç oranı",
    "the number of crimes in an area",
-   "The crime rate has fallen for the third year running."
+   "The crime rate has fallen for the third year running.",
+   "Suç oranı üst üste üçüncü yıl düştü."
   ],
   [
    "offender",
    "n",
    "suçlu, fail",
    "a person who has committed a crime",
-   "Young offenders need education rather than punishment."
+   "Young offenders need education rather than punishment.",
+   "Genç suçluların cezadan çok eğitime ihtiyacı var."
   ],
   [
    "rehabilitation",
    "n",
    "rehabilitasyon, topluma kazandırma",
    "helping someone return to normal life",
-   "Prisons should focus more on rehabilitation."
+   "Prisons should focus more on rehabilitation.",
+   "Cezaevleri topluma kazandırmaya daha çok odaklanmalı."
   ],
   [
    "deter",
    "v",
    "caydırmak",
    "to stop someone from doing something",
-   "Harsh punishments do not always deter criminals."
+   "Harsh punishments do not always deter criminals.",
+   "Ağır cezalar suçluları her zaman caydırmaz."
   ],
   [
    "law enforcement",
    "n",
    "kolluk kuvvetleri",
    "the police and other agencies that make people obey laws",
-   "Law enforcement agencies are using new technology to fight crime."
+   "Law enforcement agencies are using new technology to fight crime.",
+   "Kolluk kuvvetleri suçla mücadelede yeni teknolojiler kullanıyor."
   ],
   [
    "immigration",
    "n",
    "göç (bir ülkeye)",
    "the process of coming to live in another country",
-   "Immigration has helped fill labour shortages."
+   "Immigration has helped fill labour shortages.",
+   "Göç, işgücü açığının kapanmasına yardımcı oldu."
   ],
   [
    "cultural diversity",
    "n",
    "kültürel çeşitlilik",
    "the existence of many different cultures in a society",
-   "Cultural diversity makes cities more interesting places to live."
+   "Cultural diversity makes cities more interesting places to live.",
+   "Kültürel çeşitlilik şehirleri yaşamak için daha ilginç yerler hâline getirir."
   ],
   [
    "integration",
    "n",
    "uyum, entegrasyon",
    "becoming part of a group or society",
-   "Language classes help the integration of new arrivals."
+   "Language classes help the integration of new arrivals.",
+   "Dil kursları yeni gelenlerin topluma uyumuna yardımcı olur."
   ],
   [
    "globalisation",
    "n",
    "küreselleşme",
    "the increasing connection between countries",
-   "Globalisation has made products cheaper but threatened local cultures."
+   "Globalisation has made products cheaper but threatened local cultures.",
+   "Küreselleşme ürünleri ucuzlattı ama yerel kültürleri tehdit etti."
   ],
   [
    "tradition",
    "n",
    "gelenek",
    "a custom passed down through generations",
-   "Many traditions are disappearing in modern cities."
+   "Many traditions are disappearing in modern cities.",
+   "Modern şehirlerde birçok gelenek kayboluyor."
   ],
   [
    "nuclear family",
    "n",
    "çekirdek aile",
    "a family of parents and their children only",
-   "The nuclear family is now the most common household type."
+   "The nuclear family is now the most common household type.",
+   "Çekirdek aile artık en yaygın hane tipi."
   ],
   [
    "extended family",
    "n",
    "geniş aile",
    "a family including grandparents, aunts, uncles, etc.",
-   "In the past, extended families often lived together."
+   "In the past, extended families often lived together.",
+   "Geçmişte geniş aileler genellikle bir arada yaşardı."
   ],
   [
    "generation gap",
    "n",
    "kuşak çatışması",
    "differences in attitudes between young and old people",
-   "Technology has widened the generation gap."
+   "Technology has widened the generation gap.",
+   "Teknoloji kuşaklar arasındaki farkı büyüttü."
   ],
   [
    "gender equality",
    "n",
    "toplumsal cinsiyet eşitliği",
    "equal rights and opportunities for men and women",
-   "Gender equality in leadership positions is still far away."
+   "Gender equality in leadership positions is still far away.",
+   "Yönetim pozisyonlarında toplumsal cinsiyet eşitliği hâlâ çok uzakta."
   ],
   [
    "discrimination",
    "n",
    "ayrımcılık",
    "unfair treatment of people because of who they are",
-   "Laws against discrimination protect minorities."
+   "Laws against discrimination protect minorities.",
+   "Ayrımcılığa karşı yasalar azınlıkları korur."
   ],
   [
    "volunteer",
    "n, v",
    "gönüllü; gönüllü olmak",
    "a person who works without pay to help others",
-   "Volunteers run the local food bank."
+   "Volunteers run the local food bank.",
+   "Yerel gıda bankasını gönüllüler işletiyor."
   ],
   [
    "charity",
    "n",
    "hayır kurumu",
    "an organisation that helps people in need",
-   "Many charities rely on public donations."
+   "Many charities rely on public donations.",
+   "Birçok hayır kurumu halkın bağışlarına dayanıyor."
   ],
   [
    "taxpayer",
    "n",
    "vergi mükellefi",
    "a person who pays tax",
-   "Public services are funded by taxpayers' money."
+   "Public services are funded by taxpayers' money.",
+   "Kamu hizmetleri vergi mükelleflerinin parasıyla finanse edilir."
   ],
   [
    "public services",
    "n",
    "kamu hizmetleri",
    "services such as health, education and transport provided by the state",
-   "Cuts to public services affect the poorest most."
+   "Cuts to public services affect the poorest most.",
+   "Kamu hizmetlerindeki kesintiler en çok yoksulları etkiler."
   ],
   [
    "funding",
    "n",
    "finansman, fon",
    "money provided for a purpose",
-   "Museums depend on government funding."
+   "Museums depend on government funding.",
+   "Müzeler devlet finansmanına bağımlı."
   ],
   [
    "authorities",
    "n",
    "yetkililer",
    "the people or organisations in control",
-   "The authorities have closed the bridge for safety reasons."
+   "The authorities have closed the bridge for safety reasons.",
+   "Yetkililer güvenlik nedeniyle köprüyü kapattı."
   ],
   [
    "policy",
    "n",
    "politika (uygulama)",
    "a plan of action agreed by a government",
-   "The new housing policy has been widely criticised."
+   "The new housing policy has been widely criticised.",
+   "Yeni konut politikası geniş çapta eleştirildi."
   ],
   [
    "legislation",
    "n",
    "mevzuat, yasalar",
    "laws made by a government",
-   "New legislation bans smoking in public places."
+   "New legislation bans smoking in public places.",
+   "Yeni yasalar kamusal alanlarda sigara içmeyi yasaklıyor."
   ],
   [
    "prohibit",
    "v",
    "yasaklamak",
    "to officially forbid something",
-   "The law prohibits the sale of alcohol to minors."
+   "The law prohibits the sale of alcohol to minors.",
+   "Yasa, reşit olmayanlara alkol satışını yasaklıyor."
   ],
   [
    "vulnerable",
    "adj",
    "savunmasız, korunmasız",
    "easily harmed",
-   "The elderly are particularly vulnerable in extreme heat."
+   "The elderly are particularly vulnerable in extreme heat.",
+   "Yaşlılar aşırı sıcakta özellikle savunmasızdır."
   ],
   [
    "anti-social behaviour",
    "n",
    "toplum karşıtı davranış",
    "behaviour that harms or annoys other people",
-   "Anti-social behaviour is common in poorly lit areas."
+   "Anti-social behaviour is common in poorly lit areas.",
+   "Toplum karşıtı davranışlar az aydınlatılmış bölgelerde yaygındır."
   ],
   [
    "green spaces",
    "n",
    "yeşil alanlar",
    "parks and areas of grass in a town",
-   "Green spaces improve the quality of life in cities."
+   "Green spaces improve the quality of life in cities.",
+   "Yeşil alanlar şehirlerdeki yaşam kalitesini artırır."
   ],
   [
    "pedestrian",
    "n",
    "yaya",
    "a person walking in the street",
-   "The city centre is now closed to cars and open only to pedestrians."
+   "The city centre is now closed to cars and open only to pedestrians.",
+   "Şehir merkezi artık araçlara kapalı, sadece yayalara açık."
   ],
   [
    "quality of life",
    "n",
    "yaşam kalitesi",
    "how good or comfortable a person's life is",
-   "Shorter working hours could improve quality of life."
+   "Shorter working hours could improve quality of life.",
+   "Daha kısa çalışma saatleri yaşam kalitesini artırabilir."
   ],
   [
    "social cohesion",
    "n",
    "toplumsal uyum",
    "the bonds that bring people in a society together",
-   "Shared public spaces strengthen social cohesion."
+   "Shared public spaces strengthen social cohesion.",
+   "Ortak kamusal alanlar toplumsal uyumu güçlendirir."
   ],
   [
    "gentrification",
    "n",
    "soylulaştırma (semtin pahalanıp eski sakinlerin çıkması)",
    "the process of a poor area becoming richer, often forcing poorer residents out",
-   "Gentrification has forced many long-term residents to move away."
+   "Gentrification has forced many long-term residents to move away.",
+   "Soylulaştırma, uzun süredir orada yaşayan birçok kişiyi taşınmaya zorladı."
   ]
  ]
 }

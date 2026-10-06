@@ -11,280 +11,320 @@
    "n",
    "yapay zekâ",
    "computer systems that can perform tasks normally needing human intelligence",
-   "Artificial intelligence may replace many routine jobs."
+   "Artificial intelligence may replace many routine jobs.",
+   "Yapay zekâ birçok rutin işin yerini alabilir."
   ],
   [
    "automation",
    "n",
    "otomasyon",
    "the use of machines to do work previously done by people",
-   "Automation has increased productivity in factories."
+   "Automation has increased productivity in factories.",
+   "Otomasyon fabrikalarda verimliliği artırdı."
   ],
   [
    "innovation",
    "n",
    "yenilik, inovasyon",
    "a new idea, method or product",
-   "Innovation is the key to economic growth."
+   "Innovation is the key to economic growth.",
+   "Yenilik, ekonomik büyümenin anahtarıdır."
   ],
   [
    "cutting-edge",
    "adj",
    "en son teknoloji, öncü",
    "the most modern and advanced",
-   "The hospital uses cutting-edge medical equipment."
+   "The hospital uses cutting-edge medical equipment.",
+   "Hastane en son teknoloji tıbbi ekipman kullanıyor."
   ],
   [
    "breakthrough",
    "n",
    "çığır açan buluş",
    "an important new discovery",
-   "Scientists have made a breakthrough in battery technology."
+   "Scientists have made a breakthrough in battery technology.",
+   "Bilim insanları pil teknolojisinde çığır açan bir buluş yaptı."
   ],
   [
    "digital literacy",
    "n",
    "dijital okuryazarlık",
    "the ability to use digital technology effectively",
-   "Digital literacy should be taught from primary school."
+   "Digital literacy should be taught from primary school.",
+   "Dijital okuryazarlık ilkokuldan itibaren öğretilmeli."
   ],
   [
    "screen time",
    "n",
    "ekran süresi",
    "time spent looking at phones, computers or TVs",
-   "Experts recommend limiting children's screen time."
+   "Experts recommend limiting children's screen time.",
+   "Uzmanlar çocukların ekran süresinin sınırlandırılmasını öneriyor."
   ],
   [
    "social media",
    "n",
    "sosyal medya",
    "websites and apps used to share content and communicate",
-   "Social media allows news to spread within minutes."
+   "Social media allows news to spread within minutes.",
+   "Sosyal medya haberlerin dakikalar içinde yayılmasını sağlıyor."
   ],
   [
    "online privacy",
    "n",
    "çevrim içi gizlilik",
    "the protection of personal information on the internet",
-   "Many users do not understand the risks to their online privacy."
+   "Many users do not understand the risks to their online privacy.",
+   "Birçok kullanıcı çevrim içi gizliliklerine yönelik riskleri anlamıyor."
   ],
   [
    "personal data",
    "n",
    "kişisel veri",
    "information about an individual",
-   "Companies collect huge amounts of personal data."
+   "Companies collect huge amounts of personal data.",
+   "Şirketler çok büyük miktarda kişisel veri topluyor."
   ],
   [
    "cybercrime",
    "n",
    "siber suç",
    "crime committed using computers or the internet",
-   "Cybercrime costs businesses billions every year."
+   "Cybercrime costs businesses billions every year.",
+   "Siber suç işletmelere her yıl milyarlara mal oluyor."
   ],
   [
    "hacker",
    "n",
    "bilgisayar korsanı",
    "a person who illegally gets into computer systems",
-   "Hackers stole the details of millions of customers."
+   "Hackers stole the details of millions of customers.",
+   "Bilgisayar korsanları milyonlarca müşterinin bilgilerini çaldı."
   ],
   [
    "misinformation",
    "n",
    "yanlış bilgi",
    "false information that is spread",
-   "Misinformation spreads quickly on social media."
+   "Misinformation spreads quickly on social media.",
+   "Yanlış bilgi sosyal medyada hızla yayılıyor."
   ],
   [
    "addictive",
    "adj",
    "bağımlılık yapan",
    "making you want to continue doing something",
-   "Many apps are designed to be addictive."
+   "Many apps are designed to be addictive.",
+   "Birçok uygulama bağımlılık yapacak şekilde tasarlanıyor."
   ],
   [
    "obsolete",
    "adj",
    "modası geçmiş, kullanılmaz hâle gelmiş",
    "no longer used because something newer exists",
-   "Many skills quickly become obsolete in the digital age."
+   "Many skills quickly become obsolete in the digital age.",
+   "Dijital çağda birçok beceri hızla geçerliliğini yitiriyor."
   ],
   [
    "user-friendly",
    "adj",
    "kullanıcı dostu",
    "easy to use",
-   "The new software is much more user-friendly."
+   "The new software is much more user-friendly.",
+   "Yeni yazılım çok daha kullanıcı dostu."
   ],
   [
    "digital divide",
    "n",
    "dijital uçurum",
    "the gap between people with and without access to technology",
-   "The digital divide became obvious during school closures."
+   "The digital divide became obvious during school closures.",
+   "Okulların kapandığı dönemde dijital uçurum açıkça ortaya çıktı."
   ],
   [
    "remote working",
    "n",
    "uzaktan çalışma",
    "working from home or another place outside the office",
-   "Remote working has become common in many industries."
+   "Remote working has become common in many industries.",
+   "Uzaktan çalışma birçok sektörde yaygınlaştı."
   ],
   [
    "e-commerce",
    "n",
    "e-ticaret",
    "buying and selling goods online",
-   "E-commerce has changed the way people shop."
+   "E-commerce has changed the way people shop.",
+   "E-ticaret insanların alışveriş yapma biçimini değiştirdi."
   ],
   [
    "cashless society",
    "n",
    "nakitsiz toplum",
    "a society where people pay electronically rather than with cash",
-   "A cashless society could exclude elderly people."
+   "A cashless society could exclude elderly people.",
+   "Nakitsiz bir toplum yaşlıları dışarıda bırakabilir."
   ],
   [
    "surveillance",
    "n",
    "gözetim",
    "careful watching of people, often by governments",
-   "Facial recognition has increased concerns about surveillance."
+   "Facial recognition has increased concerns about surveillance.",
+   "Yüz tanıma teknolojisi gözetimle ilgili kaygıları artırdı."
   ],
   [
    "algorithm",
    "n",
    "algoritma",
    "a set of rules a computer follows to solve a problem",
-   "Algorithms decide which posts we see on social media."
+   "Algorithms decide which posts we see on social media.",
+   "Sosyal medyada hangi gönderileri göreceğimize algoritmalar karar veriyor."
   ],
   [
    "virtual reality",
    "n",
    "sanal gerçeklik",
    "computer-generated environments that seem real",
-   "Virtual reality is being used to train surgeons."
+   "Virtual reality is being used to train surgeons.",
+   "Sanal gerçeklik cerrahların eğitiminde kullanılıyor."
   ],
   [
    "device",
    "n",
    "cihaz",
    "a piece of equipment such as a phone or tablet",
-   "Children now own more electronic devices than ever."
+   "Children now own more electronic devices than ever.",
+   "Çocuklar artık her zamankinden daha fazla elektronik cihaza sahip."
   ],
   [
    "gadget",
    "n",
    "alet, ufak cihaz",
    "a small, clever piece of equipment",
-   "He always buys the latest gadgets."
+   "He always buys the latest gadgets.",
+   "Her zaman en yeni aletleri satın alıyor."
   ],
   [
    "connectivity",
    "n",
    "bağlantı (internet)",
    "the ability to connect to the internet or other devices",
-   "Rural areas still suffer from poor connectivity."
+   "Rural areas still suffer from poor connectivity.",
+   "Kırsal bölgeler hâlâ zayıf internet bağlantısından mustarip."
   ],
   [
    "tech-savvy",
    "adj",
    "teknolojiden anlayan",
    "good at using modern technology",
-   "Younger employees tend to be more tech-savvy."
+   "Younger employees tend to be more tech-savvy.",
+   "Genç çalışanlar teknolojiden daha iyi anlama eğiliminde."
   ],
   [
    "rely on",
    "phr v",
    "-e dayanmak, güvenmek",
    "to depend on something",
-   "We rely on our phones for almost everything."
+   "We rely on our phones for almost everything.",
+   "Neredeyse her şey için telefonlarımıza güveniyoruz."
   ],
   [
    "dependence on",
    "n",
    "-e bağımlılık",
    "the state of needing something too much",
-   "Our dependence on technology makes us vulnerable to power cuts."
+   "Our dependence on technology makes us vulnerable to power cuts.",
+   "Teknolojiye bağımlılığımız bizi elektrik kesintilerine karşı savunmasız bırakıyor."
   ],
   [
    "face-to-face",
    "adj",
    "yüz yüze",
    "in person, not online",
-   "Nothing can replace face-to-face communication."
+   "Nothing can replace face-to-face communication.",
+   "Hiçbir şey yüz yüze iletişimin yerini tutamaz."
   ],
   [
    "isolate",
    "v",
    "yalnızlaştırmak, yalıtmak",
    "to separate someone from other people",
-   "Excessive gaming can isolate young people."
+   "Excessive gaming can isolate young people.",
+   "Aşırı oyun oynamak gençleri yalnızlaştırabilir."
   ],
   [
    "streamline",
    "v",
    "sadeleştirmek, verimli hâle getirmek",
    "to make a process simpler and more efficient",
-   "Technology has streamlined many administrative tasks."
+   "Technology has streamlined many administrative tasks.",
+   "Teknoloji birçok idari işi sadeleştirdi."
   ],
   [
    "revolutionise",
    "v",
    "kökten değiştirmek",
    "to change something completely",
-   "The smartphone revolutionised communication."
+   "The smartphone revolutionised communication.",
+   "Akıllı telefon iletişimi kökten değiştirdi."
   ],
   [
    "exploit",
    "v",
    "istismar etmek; yararlanmak",
    "to use something unfairly for your own advantage",
-   "Some apps exploit users' personal information."
+   "Some apps exploit users' personal information.",
+   "Bazı uygulamalar kullanıcıların kişisel bilgilerini istismar ediyor."
   ],
   [
    "regulate",
    "v",
    "düzenlemek, denetlemek",
    "to control something with rules",
-   "Governments are struggling to regulate tech companies."
+   "Governments are struggling to regulate tech companies.",
+   "Hükümetler teknoloji şirketlerini denetlemekte zorlanıyor."
   ],
   [
    "drawback",
    "n",
    "dezavantaj",
    "a disadvantage",
-   "The main drawback of online learning is lack of interaction."
+   "The main drawback of online learning is lack of interaction.",
+   "Çevrim içi eğitimin en büyük dezavantajı etkileşim eksikliği."
   ],
   [
    "double-edged sword",
    "n",
    "iki ucu keskin kılıç",
    "something with both advantages and disadvantages",
-   "Technology is a double-edged sword for young people."
+   "Technology is a double-edged sword for young people.",
+   "Teknoloji gençler için iki ucu keskin bir kılıç."
   ],
   [
    "keep up with",
    "phr v",
    "-e ayak uydurmak",
    "to stay informed about new developments",
-   "Older workers may find it hard to keep up with new technology."
+   "Older workers may find it hard to keep up with new technology.",
+   "Yaşlı çalışanlar yeni teknolojiye ayak uydurmakta zorlanabilir."
   ],
   [
    "state-of-the-art",
    "adj",
    "en son teknolojiye sahip",
    "using the most modern methods",
-   "The university opened a state-of-the-art laboratory."
+   "The university opened a state-of-the-art laboratory.",
+   "Üniversite en son teknolojiye sahip bir laboratuvar açtı."
   ],
   [
    "data breach",
    "n",
    "veri sızıntısı",
    "an incident in which private data is stolen or exposed",
-   "The bank apologised after a major data breach."
+   "The bank apologised after a major data breach.",
+   "Banka büyük bir veri sızıntısının ardından özür diledi."
   ]
  ]
 }

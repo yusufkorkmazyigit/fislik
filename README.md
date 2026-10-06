@@ -9,10 +9,12 @@ Sunucu, hesap ya da kurulum gerekmez. Tek bir HTML sayfasıdır ve verilerin tar
 - **Hazır desteler:** A2, B1, B2 ve IELTS 7+ (C1) seviyelerinde, her biri en sık kullanılan 500 kelimeden oluşur. Toplam 2000+ kelime ve hepsinin Türkçe anlamı var. Bunlara ek olarak tanım ve örnek cümleleriyle 24 kelimelik *Paket #1 · Memory & Learning* destesi de gelir.
 - **Konu desteleri:** IELTS Writing Task 2'nin sık konularında altı deste: Çevre, Eğitim, Sağlık, Teknoloji, İş ve Ekonomi, Toplum ve Şehir. Her birinde 40 kelime ya da kalıp (*carbon footprint*, *work-life balance*…), hepsi Türkçe anlam, İngilizce tanım ve örnek cümleyle.
 - **Seviyeli hikâyeler:** A1, A2, B1 ve B2 seviyelerinde onar kısa hikâye; B2 hikâyeleri IELTS Reading tarzı metinlerdir. Her hikâyenin sonunda IELTS Reading'deki gibi **True / False / Not Given** soruları var (toplam 150); her cevabın nedeni metinden alıntıyla Türkçe açıklanır, en iyi skorun hikâye listesinde görünür. Okurken bir kelimeye dokununca Türkçe anlamı ve hikâyedeki cümle görünür; istersen kelimeyi o cümleyle birlikte istediğin desteye eklersin (varsayılan: *Hikâye kelimeleri*). Çekimli hâller köke bağlanır (*went → go*), *look after* gibi kalıplar tek parça seçilir.
-- **Aralıklı tekrar:**
-  - *Bilmiyorum* → kart aynı oturumun sonunda bir kez daha gelir.
-  - *Öğreniyorum* → kart ertesi gün gelir.
-  - *Öğrendim* → kart 3, 6, 12, 24… gün sonra gelir.
+- **Üç liste, üç sıklık:** Her karttan sonra verdiğin cevap kelimeyi o listeye taşır.
+  - *Bilmiyorum* → her çalışmada gelir; aynı oturumun sonunda da bir kez daha.
+  - *Öğreniyorum* → ertesi gün gelir.
+  - *Öğrendim* → artık gösterilmez. Ana sayfadaki **Kelime listelerin** bölümünden üç listeyi de görebilir, istediğini ayrıca çalışabilir, öğrendiğin bir kelimeyi *Tekrar çalış* ile geri alabilirsin.
+- **Örnek cümle çevirisi:** Kart çevrildiğinde örnek cümlenin altında Türkçesi de görünür (Paket #1 ve konu destelerinde hazır; kendi kartlarına da ekleyebilirsin).
+- **Nasıl kullanılır:** Üstteki bağlantıdan adım adım kullanım rehberine ulaşılır.
 - **Seri ve günlük hedef:** Kaç gün üst üste çalıştığını (🔥) ve bugünkü hedefine (10 / 20 / 30 / 50 kart) ne kadar kaldığını gösterir. Bugün henüz çalışmadıysan serin bozulmuş sayılmaz, akşama kadar vaktin var.
 - **Çalışma takvimi ve istatistik:** Son 17 haftanın GitHub tarzı takvimi (bir güne dokununca o gün kaç kart çalıştığın görünür), en uzun seri, son 7 gün ve öğrendiğin kelime sayısı.
 - **Zorlandıkların:** En az iki kez *Bilmiyorum* dediğin kelimeler ayrı bir listede toplanır ve tek tuşla çalışılır; *Öğrendim* dedikçe listeden düşerler.
@@ -53,7 +55,7 @@ sw.js               Çevrimdışı çalışma (service worker)
 
 Service worker uygulama dosyalarını önce ağdan ister, böylece yayınladığın değişiklik bir sonraki açılışta gelir. Ağ yoksa ya da birkaç saniyede cevap gelmezse önbellekteki sürüm açılır. Önbelleğe alınan dosya listesini (`SHELL`) değiştirirsen `sw.js` içindeki `CACHE` adını artır (ör. `fislik-v4`).
 
-Her desteye ait JSON dosyasındaki `cards` alanı `[ingilizce, tür, türkçe, tanım?, örnek?]` dizilerinden oluşur.
+Her desteye ait JSON dosyasındaki `cards` alanı `[ingilizce, tür, türkçe, tanım?, örnek?, örneğin türkçesi?]` dizilerinden oluşur.
 
 ## Hikâye nasıl eklenir?
 
@@ -72,7 +74,7 @@ Betik, sözlükte karşılığı olmayan kelimeleri listeler; onları `tools/sto
 ```js
 { "key": "environment", "name": "Environment", "level": "B2",
   "desc": "Çevre konulu IELTS kelimeleri", "source": "kendi listem",
-  "cards": [["pollution", "n", "kirlilik", "harmful substances in the environment", "Air pollution is a major problem in cities."]] }
+  "cards": [["pollution", "n", "kirlilik", "harmful substances in the environment", "Air pollution is a major problem in cities.", "Hava kirliliği şehirlerde büyük bir sorun."]] }
 ```
 
 ## Kelime listelerinin kaynağı

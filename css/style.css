@@ -277,3 +277,29 @@ body.sheet-open .wrap{padding-bottom:320px}
 .qz.bad .qz-f b{color:var(--bad)}
 .qz-end{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1.5px solid var(--line);padding-top:12px}
 .qz-best{color:var(--good);font-weight:600}
+
+/* örnek cümle çevirisi */
+.extr{font-size:14px;line-height:1.45;color:var(--ink-3);margin-top:4px;max-width:46ch}
+
+/* kelime listeleri */
+.lists{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:14px 16px;display:grid;gap:10px}
+.lists .chips{margin:0}
+.lists .chip .dot{margin-right:6px}
+.lists-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.wl{display:grid;gap:6px;max-height:420px;overflow:auto;padding-right:2px}
+.wl-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;background:var(--paper);border-left:4px solid var(--new)}
+.wl-row.s-unknown{border-left-color:var(--bad)}.wl-row.s-learning{border-left-color:var(--mid)}.wl-row.s-known{border-left-color:var(--good)}
+.wl-en{font:700 16px var(--word)}
+.wl-pos{font:italic 400 13px var(--word);color:var(--ink-3)}
+.wl-tr{font-size:13px;color:var(--ink-2)}
+
+/* nasıl kullanılır */
+.helplink{background:none;border:0;padding:0;font-size:13px;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;justify-self:start}
+.help{display:grid;gap:12px;padding-left:22px;margin:16px 0 0}
+.help>li{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:12px 16px}
+.help>li::marker{font-weight:700;color:var(--ink-3)}
+.help h4{margin:0 0 4px;font:700 17px var(--word)}
+.help p{margin:4px 0;font-size:15px;color:var(--ink-2)}
+.help ul{margin:6px 0 2px;padding-left:18px;font-size:15px;color:var(--ink-2);display:grid;gap:4px}
+.help-ans{list-style:none;padding-left:0 !important}
+.help-ans .dot{margin-right:6px}
