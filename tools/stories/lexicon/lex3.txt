@@ -1,0 +1,319 @@
+made: make | v | yapmak
+made all the difference: make all the difference | phrase | her şeyi değiştirmek, büyük fark yaratmak
+majority: n | çoğunluk
+makes: make | v | yapmak
+making: make | v | yapmak
+man: n | adam
+manage: v | yönetmek, idare etmek
+manager: n | yönetici, müdür
+managers: manager | n | yönetici, müdür
+many: det | birçok, çok
+map: n | harita
+march: n | mart
+market: n | pazar
+marks: mark | n | puan, not
+master's degree: n | yüksek lisans
+matches: match | n | maç
+maths: n | matematik
+matters: matter | v | önemli olmak
+may: modal | -ebilir
+mayor: n | belediye başkanı
+meals: meal | n | öğün, yemek
+meaningful: adj | anlamlı
+means: mean | v | anlamına gelmek
+meanwhile: adv | bu sırada
+measures: measure | n | önlem, tedbir
+meeting: n | toplantı
+meetings: meeting | n | toplantı
+memorise: v | ezberlemek
+memorising: memorise | v | ezberlemek
+memory: n | hafıza, bellek
+message: n | mesaj
+method: n | yöntem
+mind: n | zihin, akıl
+mint: n | nane
+minute: n | dakika
+minutes: minute | n | dakika
+miss: v | özlemek; kaçırmak
+missed: miss | v | özlemek; kaçırmak
+mistake: n | hata
+mistakes: mistake | n | hata
+mobile: adj | mobil, taşınabilir
+model: n | model
+modern: adj | modern
+modest: adj | mütevazı, küçük çaplı
+moment: n | an
+months: month | n | ay
+more: adv, det | daha; daha fazla
+moreover: adv | üstelik, ayrıca
+morning: n | sabah
+most: det, adv | çoğu; en
+mother: n | anne
+mountain: n | dağ
+moved: move | v | taşınmak; taşımak, ertelemek
+moving: move | v | taşınmak
+much: det, adv | çok
+mum: n | anne
+mushrooms: mushroom | n | mantar
+music: n | müzik
+must: modal | -meli, -malı
+myself: pron | kendim
+name: n | isim, ad
+named: adj | adında, isimli
+names: name | n | isim, ad
+napkin: n | peçete
+napkins: napkin | n | peçete
+narrow: adj | dar
+near: prep | yakınında
+need: v | ihtiyaç duymak
+needs: need | v | ihtiyaç duymak, gerekmek
+neighbourhoods: neighbourhood | n | mahalle
+neighbours: neighbour | n | komşu
+nervous: adj | gergin, heyecanlı
+nets: net | n | ağ (balık ağı)
+never: adv | asla, hiç
+nevertheless: adv | yine de, buna rağmen
+new: adj | yeni
+newly: adv | yeni, yakın zamanda
+newspapers: newspaper | n | gazete
+next: adj | sonraki; (next) sonra
+next door: adv | yan taraf(taki), bitişik
+next to: prep | yanında
+night: n | gece
+nine: num | dokuz
+no: det | hiç; hayır
+nobody: pron | hiç kimse
+not: adv | değil
+notebook: n | defter
+notes: note | n | not
+nothing: pron | hiçbir şey
+notice: v | fark etmek
+noticeably: adv | gözle görülür biçimde
+noticed: notice | v | fark etmek
+notifications: notification | n | bildirim
+novel: n | roman
+now: adv | şimdi, artık
+number: n | numara; sayı
+numbers: number | n | sayı, rakam
+nurse: n | hemşire
+nurses: nurse | n | hemşire
+o'clock: adv | saat (tam)
+oak: n | meşe
+of: prep | -in, -nın
+of course: phrase | elbette, tabii ki
+offered: offer | v | önermek, teklif etmek; sunmak
+offers: offer | v | sunmak, sağlamak
+office: n | ofis
+often: adv | sık sık
+oh: interj | ah, ha
+oil: n | yağ
+olive oil: n | zeytinyağı
+old: adj | eski; yaşlı
+older: old | adj | daha yaşlı
+on: prep | üzerinde; -de
+on its own: phrase | tek başına
+on the go: phrase | hareket hâlindeyken, dışarıdayken
+once: conj, adv | -dığında; bir kez; bir zamanlar
+one: num | bir
+one after another: phrase | birbiri ardına
+onion: n | soğan
+onions: onion | n | soğan
+online: adv | çevrim içi, internetten
+only: adv | sadece, yalnızca
+opened: open | v | açmak; açılmak
+opposite: n | zıt, karşıt
+opposition: n | muhalefet, karşı çıkma
+orange: n, adj | portakal; turuncu
+order: n | sıra, düzen
+ordered: order | v | sipariş vermek
+orders: order | v | sipariş vermek
+ordinary: adj | sıradan
+organisation: n | kuruluş, örgüt
+organise: v | düzenlemek, organize etmek
+organised: organise | v | düzenlemek, organize etmek
+originates: originate | v | kaynaklanmak
+other: det, pron | diğer, başka
+others: other | pron | diğerleri, başkaları
+out: adv | dışarı
+output: n | üretim, verim
+outside: adv, prep | dışarıda; dışında
+outskirts: n | şehrin dış mahalleleri, kenar
+over: prep | boyunca; üzerinde; -den fazla
+own: adj | kendi
+owned: own | v | sahip olmak
+owners: owner | n | sahip (mal sahibi)
+pack: n | deste, paket
+packaging: n | ambalaj
+pairs: pair | n | çift, ikili
+palace: n | saray
+panel: n | (mülakat) heyeti, kurul
+parents: parent | n | ebeveyn, anne baba
+park: n | park
+parked: park | v | park etmek
+part: n | kısım, bölüm
+particular: adj | belirli, özel
+particularly: adv | özellikle
+partner: n | eş, ortak, partner
+party: n | parti
+passengers: passenger | n | yolcu
+path: n | patika, yol
+patient: adj | sabırlı
+patterns: pattern | n | örüntü, düzen
+pavements: pavement | n | kaldırım
+pedestrians: pedestrian | n | yaya
+penalised: penalise | v | cezalandırmak
+people: n | insanlar
+percent: n | yüzde
+perfect: adj | mükemmel, kusursuz
+perhaps: adv | belki
+periods: period | n | dönem, süre
+phone: n | telefon
+photo: n | fotoğraf
+physical: adj | fiziksel
+picks up: pick up | phr v | kucağına almak, yerden almak
+piece: n | parça
+pile: n | yığın, deste
+pink: adj | pembe
+pizza: n | pizza
+place: n, v | yer; yerleştirmek, koymak
+places: place | n | yer
+planned: plan | v | planlamak
+planners: planner | n | planlamacı
+planting: plant | v | (bitki) dikmek
+plastic: n, adj | plastik
+platform: n | peron
+play: v | oynamak
+played: play | v | oynamak
+playing cards: n | iskambil kâğıtları
+plays: play | v | oynamak
+please: adv | lütfen
+pocket: n | cep
+poet: n | şair
+point: n | nokta
+point out: phr v | belirtmek, dikkat çekmek
+policy: n | politika, uygulama
+polluted: adj | kirli, kirlenmiş
+pollution: n | kirlilik
+poor: adj | zayıf, yetersiz; yoksul
+popcorn: n | patlamış mısır
+port: n | liman
+position: n | pozisyon, kadro
+possible: adj | mümkün
+poster: n | afiş, poster
+potatoes: potato | n | patates
+pounds: pound | n | sterlin
+practical: adj | pratik, kullanışlı
+practise: v | pratik yapmak, alıştırma yapmak
+practised: practise | v | pratik yapmak, çalışmak
+predicted: predict | v | tahmin etmek, öngörmek
+preferably: adv | tercihen
+preferring: prefer | v | tercih etmek
+preparation: n | hazırlık
+prepared: adj, v | hazırlıklı; hazırlamak
+presence: n | varlık, bulunma
+presented: present | v | sunmak
+pressure: n | baskı
+pretended: pretend | v | -miş gibi yapmak
+previously: adv | daha önce
+private: adj | özel, kişisel
+problem: n | sorun
+problems: problem | n | sorun
+produces: produce | v | üretmek
+productive: adj | verimli
+productivity: n | verimlilik
+project: n | proje
+projects: project | n | proje
+proof: n | kanıt
+proposal: n | öneri, teklif
+proposed: propose | v | önermek
+protect: v | korumak
+proud: adj | gururlu
+provoked: provoke | v | (tepki) doğurmak, kışkırtmak
+psychology: n | psikoloji
+public transport: n | toplu taşıma
+publicity stunt: n | reklam numarası
+pure: adj | saf, katıksız
+pushed: push | v | itmek
+put: v | koymak
+put on: phr v | (giysi) giymek
+puts: put | v | koymak; ifade etmek
+question: n | soru
+questions: question | n | soru
+quickly: adv | hızlı, çabuk
+quiet: adj | sessiz, sakin
+quite: adv | oldukça; tamamen
+radical: adj | köklü, radikal
+rain: n | yağmur
+raining: rain | v | yağmur yağmak
+rainwater: n | yağmur suyu
+rainy: adj | yağmurlu
+rare: adj | nadir
+rather than: conj | -mek yerine
+reach: v | ulaşmak
+reached: reach | v | ulaşmak, varmak
+reached for: reach for | phr v | (almak için) uzanmak
+read: v | okumak
+reading: read | v | okumak
+real: adj | gerçek
+realised: realise | v | fark etmek, anlamak
+reality: n | gerçeklik
+really: adv | gerçekten
+reason: n | sebep, neden
+reasoning: n | akıl yürütme
+recall: v | hatırlamak
+recalling: recall | v | hatırlamak
+received: receive | v | almak (e-posta vb.)
+recent: adj | yakın zamandaki, son
+recipe: n | tarif
+recognise: v | tanımak, anlamak
+recorded: record | v | kaydetmek
+recover: v | toparlanmak, iyileşmek
+recycled: recycle | v | geri dönüştürmek
+red: adj | kırmızı
+reduce: v | azaltmak
+refused: refuse | v | reddetmek
+regular: adj | düzenli, müdavim
+regularly: adv | düzenli olarak
+relaxed: adj | rahat
+remained: remain | v | kalmak
+remarkably: adv | şaşırtıcı derecede
+remember: v | hatırlamak
+removed: remove | v | kaldırmak, temizlemek
+repeated: adj, v | tekrarlanan; tekrarlamak
+replace: v | yerine koymak, değiştirmek
+reported: report | v | bildirmek
+reports: report | n | rapor
+representing: represent | v | temsil etmek
+reputation: n | itibar, ün
+require: v | gerektirmek
+research: n | araştırma
+researching: research | v | araştırmak
+residents: resident | n | sakin (oturan kişi)
+resigned: resign | v | istifa etmek
+responded: respond | v | karşılık vermek
+response: n | tepki, karşılık
+responsible: adj | sorumlu
+restaurant: n | restoran
+restaurants: restaurant | n | restoran
+restricted: adj | kısıtlanmış, sınırlandırılmış
+result: n | sonuç
+results: result | n | sonuç
+retain: v | korumak, elde tutmak
+retired: adj | emekli
+returns: return | v | geri dönmek
+revealed: reveal | v | ortaya çıkarmak, göstermek
+rice: n | pirinç
+rides: ride | v | (araçla) gitmek, binmek
+right: adj | doğru
+rings: ring | v | çalmak (telefon)
+risk: n, v | risk; riske atmak
+road: n | yol
+rock: n | kaya
+rocky: adj | kayalık
+room: n | oda; salon
+rose: rise | v | artmak, yükselmek
+roughly: adv | yaklaşık
+route: n | güzergâh, rota
+rubbish: n | çöp
+rules: rule | n | kural
+runs: run | v | koşmak

@@ -1,0 +1,389 @@
+safe: adj | güvenli, güvende
+said: say | v | söylemek, demek
+salary: n | maaş
+salt: n | tuz
+same: adj | aynı
+sandwich: n | sandviç
+sat: sit | v | oturmak
+sat down: sit down | phr v | oturmak
+saturday: n | cumartesi
+say: v | söylemek
+say no: phrase | hayır demek
+says: say | v | söylemek, demek
+scans: scan | n | tarama, görüntüleme
+school: n | okul
+schools: school | n | okul
+science: n | bilim, fen
+scrolling: scroll | v | (ekranı) kaydırmak
+sea: n | deniz
+seat: n | koltuk, oturacak yer
+second: adj | ikinci
+secondary school: n | ortaokul ve lise
+secret: n | sır
+secretly: adv | gizlice
+see: v | görmek
+seeds: seed | n | tohum
+seemed: seem | v | görünmek, gibi gelmek
+seen: see | v | görmek
+sees: see | v | görmek
+sense: n | his, duygu
+sentence: n | cümle
+september: n | eylül
+serious: adj | ciddi
+seven: num | yedi
+several: det | birkaç, birçok
+shapes: shape | v | şekillendirmek
+shared: share | v | paylaşmak
+sharply: adv | keskin biçimde, hızla
+shift: n, v | değişim, kayma; değişmek
+shifts: shift | n | vardiya
+shirt: n | gömlek
+shop: n | dükkân, mağaza
+shopkeepers: shopkeeper | n | esnaf, dükkân sahibi
+shopping list: n | alışveriş listesi
+shops: shop | n | dükkân, mağaza
+short: adj | kısa
+should: modal | -meli, -malı
+shouted: shout | v | bağırmak
+showed: show | v | göstermek
+shuffled: adj | karıştırılmış
+sick days: n | hastalık izni günleri
+significant: adj | önemli, kayda değer
+similar: adj | benzer
+simple: adj | basit
+simply: adv | sadece, basitçe
+since: conj, prep | -den beri; çünkü
+single: adj | tek
+single-use: adj | tek kullanımlık
+sit: v | oturmak
+sits: sit | v | oturmak
+sitting: sit | v | oturmak
+six: num | altı
+skill: n | beceri
+sky: n | gökyüzü
+sleep: n, v | uyku; uyumak
+slightly: adv | biraz, hafifçe
+slowing down: slow down | phr v | yavaşlamak
+slowly: adv | yavaşça
+small: adj | küçük
+smartphone: n | akıllı telefon
+smartphones: smartphone | n | akıllı telefon
+smiled: smile | v | gülümsemek
+smiles: smile | v | gülümsemek
+smiling: smile | v | gülümsemek
+snow: n | kar
+snowplough: n | kar küreme aracı
+so: adv, conj | bu yüzden; o kadar
+social media: n | sosyal medya
+sofa: n | kanepe
+software: n | yazılım
+solution: n | çözüm
+solve: v | çözmek
+some: det | biraz, bazı
+something: pron | bir şey
+sometimes: adv | bazen
+soon: adv | yakında, kısa süre sonra
+sophisticated: adj | gelişmiş, karmaşık
+soup: n | çorba
+spaces: space | n | alan, boşluk
+spanish: n | İspanyolca
+speak: v | konuşmak
+special: adj | özel
+spent: spend | v | (zaman) geçirmek; harcamak
+spoke: speak | v | konuşmak
+sport: n | spor
+spring: n | ilkbahar
+squeeze past: phr v | sıkışarak geçmek
+stable: adj | sabit, istikrarlı
+staff: n | personel, çalışanlar
+staff turnover: n | personel devir hızı (işten ayrılma oranı)
+stall: n | tezgâh
+start: n | başlangıç
+started: start | v | başlamak
+station: n | istasyon
+statistics: n | istatistikler
+stayed out: stay out | phr v | dışarıda kalmak
+still: adv | hâlâ; yine de
+stop: v, n | durmak; durak
+stopped: stop | v | bırakmak, durmak
+store: v | depolamak, saklamak
+stories: story | n | hikâye
+story: n | hikâye
+strange: adj | tuhaf, garip
+strawberries: strawberry | n | çilek
+straws: straw | n | pipet
+street: n | sokak, cadde
+streets: street | n | sokak, cadde
+stretch: n | (uzanan) bölüm, şerit
+struggled: struggle | v | zorlanmak
+struggling: struggle | v | uğraşmak, zorlanmak
+stuck: adj | sıkışmış, mahsur
+student: n | öğrenci
+students: student | n | öğrenci
+studied: study | v | çalışmak, okumak (ders)
+studies: study | n | eğitim, öğrenim
+study: n, v | araştırma, çalışma; ders çalışmak
+studying: study | v | okumak (bölüm), öğrenim görmek
+stuffed vine leaves: n | yaprak sarması
+substitute: n | yerine geçen şey, ikame
+suburbs: suburb | n | banliyö, şehir dışı
+success: n | başarı
+such as: phrase | gibi, örneğin
+suffer: v | zarar görmek, acı çekmek
+suggests: suggest | v | göstermek, işaret etmek
+suit: v | uymak, uygun olmak
+summer: n | yaz
+sunday: n | pazar (günü)
+sunrise: n | gün doğumu
+support: n | destek
+supported: support | v | desteklemek
+sure: adj | emin
+surprise: n | sürpriz
+surprised: surprise | v | şaşırtmak
+surprising: adj | şaşırtıcı
+survey: n | anket, araştırma
+survived: survive | v | hayatta kalmak
+swims: swim | v | yüzmek
+symbolic: adj | sembolik
+system: n | sistem
+table: n | masa
+tail: n | kuyruk
+take: v | almak; (tren) binmek
+take part: phr v | katılmak
+take risks: phrase | risk almak
+taken: take | v | (yol) kullanmak; almak
+taking a breath: take a breath | phrase | nefes almak
+talent: n | yetenek
+talented: adj | yetenekli
+talk: v | konuşmak
+tall: adj | uzun boylu
+tank: n | depo, tank
+task: n | görev
+tasted: taste | v | tadı ... gibi olmak
+taught: teach | v | öğretmek
+tea: n | çay
+teacher: n | öğretmen
+teachers: teacher | n | öğretmen
+teaches: teach | v | öğretmek
+team: n | ekip, takım
+technique: n | teknik
+technology: n | teknoloji
+tells: tell | v | anlatmak, söylemek
+ten: num | on
+terraces: terrace | n | teras
+terrible: adj | berbat, korkunç
+texts: text | n | kısa mesaj, SMS
+than: conj | -den (daha)
+that: det, conj | o; ki, -dığı
+then: adv | sonra; o zaman
+there: adv | orada; (there is/are) var
+these: det | bunlar, bu
+things: thing | n | şey
+think: v | düşünmek, sanmak
+thinks: think | v | düşünmek
+third: adj | üçüncü
+thirty: num | otuz
+this: det | bu
+those: det | o, şu, onlar
+thought: think | v | düşünmek, sanmak
+thousand: num | bin
+three: num | üç
+through: prep | içinden, boyunca
+throw away: phr v | atmak, çöpe atmak
+thursdays: thursday | n | perşembe
+ticket: n | bilet
+tides: tide | n | gelgit
+time: n | zaman; kez
+times: time | n | kez, defa
+tip: n | ipucu, püf noktası
+tired: adj | yorgun
+today: adv | bugün
+together: adv | birlikte
+told: tell | v | söylemek, anlatmak
+tomatoes: tomato | n | domates
+too: adv | de, da; fazla, çok
+took: take | v | götürmek; almak
+took out: take out | phr v | çıkarmak
+took place: take place | phr v | gerçekleşmek, yapılmak
+tool: n | araç, alet
+tools: tool | n | alet, araç
+top: n | zirve, tepe
+topics: topic | n | konu
+torches: torch | n | el feneri
+tourism: n | turizm
+tourist: n | turist
+towards: prep | -e doğru
+town: n | kasaba
+traffic: n | trafik
+train: n | tren
+trained: train | v | eğitmek, geliştirmek
+transformation: n | dönüşüm
+transition: n | geçiş
+translating: translate | v | çevirmek (dil)
+travelled: travel | v | seyahat etmek
+travels: travel | v | seyahat etmek, gitmek
+trees: tree | n | ağaç
+trial: n | deneme süreci
+tried: try | v | denemek
+trip: n | gezi, yolculuk
+tripled: triple | v | üç katına çıkmak
+truth: n | gerçek, doğruluk payı
+try: v | denemek
+tuesday: n | salı
+tuesdays: tuesday | n | salı
+turned: turn | v | dönüştürmek
+turned off: turn off | phr v | kapatmak (ışık, cihaz)
+turning: turn | v | (yaşına) girmek; (renge) dönmek
+turning point: n | dönüm noktası
+twenty: num | yirmi
+twenty-four: num | yirmi dört
+twice: adv | iki kez
+two: num | iki
+under: prep | altında; -den az
+understand: v | anlamak
+understanding: n | anlayış, kavrayış
+uninterrupted: adj | kesintisiz
+university: n | üniversite
+unnecessary: adj | gereksiz
+unsafe: adj | güvensiz, tehlikeli
+unusual: adj | alışılmadık
+urban: adj | kentsel
+use: v | kullanmak
+used: use | v | kullanmak
+used to: phrase | eskiden -erdi
+useful: adj | faydalı, kullanışlı
+valuable: adj | değerli
+value: n | değer
+vans: van | n | kamyonet, minibüs
+vegetable: n | sebze
+vegetables: vegetable | n | sebze
+vehicles: vehicle | n | araç, taşıt
+very: adv | çok
+victims: victim | n | kurban, mağdur
+victory: n | zafer
+video call: n | görüntülü arama
+videos: video | n | video
+view: n | manzara
+village: n | köy
+villages: village | n | köy
+visit: v | ziyaret etmek
+visitors: visitor | n | ziyaretçi
+vivid: adj | canlı, parlak
+vocabulary: n | kelime dağarcığı
+voice: n | ses, görüş
+volunteers: volunteer | n | gönüllü
+wait: v | beklemek
+waited: wait | v | beklemek
+walk: v | yürümek
+walked: walk | v | yürümek
+walking: walk | v | yürümek
+walls: wall | n | duvar
+want: v | istemek
+wanted: want | v | istemek
+wants: want | v | istemek
+warm: adj | sıcak, ılık
+warn: v | uyarmak
+washed up: wash up | phr v | (dalgayla) kıyıya vurmak
+waste: n, v | atık, çöp; boşa harcamak
+wasted: waste | v | boşa harcamak
+wasting: waste | v | boşa harcamak
+watch: v | izlemek
+watching: watch | v | izlemek
+water: n | su
+way: n | yol; şekil, biçim
+weaknesses: weakness | n | zayıf yön
+wednesday: n | çarşamba
+week: n | hafta
+weekend: n | hafta sonu
+weekly: adj | haftalık
+weeks: week | n | hafta
+well: adv | iyi; epey
+well-known: adj | iyi bilinen, ünlü
+went: go | v | gitmek
+what: pron | ne
+what if: phrase | ya ... -sak? ne olur
+wheels: wheel | n | tekerlek
+when: conj | -dığında; ne zaman
+where: adv | nerede, nereye
+whether: conj | -ip -mediği
+which: pron | hangi; ki o
+while: conj | -iken; oysa
+white: adj | beyaz
+who: pron | kim; ki o
+whole: adj | bütün, tüm
+why: adv | neden
+willing: adj | istekli, gönüllü
+wind: n | rüzgâr
+window: n | pencere
+winter: n | kış
+with: prep | ile
+without: prep | -sız, -meden
+woke up: wake up | phr v | uyanmak
+woken up: wake up | phr v | uyandırmak
+woman: n | kadın
+wonderful: adj | harika
+wooden: adj | ahşap
+words: word | n | kelime
+work: n, v | iş; çalışmak
+worked: work | v | çalışmak
+working: work | v | çalışmak
+works: work | v | çalışmak; işe yaramak
+worried: adj | endişeli
+worry: v | endişelenmek
+worth it: phrase | buna değer
+would: modal | -ecekti; -erdi
+writes down: write down | phr v | not almak, yazmak
+wrong: adj | yanlış
+wrote: write | v | yazmak
+year: n | yıl
+years: year | n | yıl
+yellow: adj | sarı
+yet: adv, conj | henüz; yine de, ama
+young: adj | genç
+zone: n | bölge
+ahmet
+aksoy
+aylin
+berlin
+burak
+canada
+clara
+daniel
+defne
+deniz
+edinburgh
+ela
+elif
+ellis
+emre
+hana
+hasan
+jake
+jensen
+kaan
+kemal
+leeds
+leyla
+lily
+london
+lucía
+madrid
+margaret
+mehmet
+northbridge
+okafor
+priya
+rosa
+sara
+scotland
+selin
+shah
+simonides
+tom
+toronto
+valdora
+wales
+zeynep
+@a2-mountain lives: life | n | hayat
+@b1-bus lives: life | n | hayat
+@b2-fourday lives: life | n | hayat

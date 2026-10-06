@@ -1,6 +1,8 @@
 /* Fişlik service worker: uygulamayı çevrimdışı çalıştırır.
-   Önce önbellekten verir, arkada ağdan tazeler; yeni sürüm bir sonraki açılışta gelir. */
-const CACHE = "fislik-v2";
+   Uygulama dosyaları önce ağdan istenir (her açılışta güncel sürüm), ağ yoksa ya da
+   birkaç saniye içinde cevap gelmezse önbellekteki sürüm verilir. Yazı tipleri önce önbellekten. */
+const CACHE = "fislik-v3";
+const NET_TIMEOUT = 3500;   // ms; yavaş bağlantıda bu süreden sonra önbellekteki sürüm açılır
 const SHELL = [
   "./",
   "index.html",
@@ -32,18 +34,36 @@ self.addEventListener("fetch", e => {
   const req = e.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);
-  const same = url.origin === self.location.origin;
-  if (!same && !FONT_HOSTS.includes(url.hostname)) return;
+
+  if (FONT_HOSTS.includes(url.hostname)) {
+    e.respondWith(caches.open(CACHE).then(async cache => {
+      const hit = await cache.match(req);
+      if (hit) return hit;
+      const res = await fetch(req);
+      if (res && (res.ok || res.type === "opaque")) cache.put(req, res.clone());
+      return res;
+    }));
+    return;
+  }
+  if (url.origin !== self.location.origin) return;
 
   e.respondWith(caches.open(CACHE).then(async cache => {
     // sayfa açılışları "?..." gibi eklerle gelse de kabuğu bulsun
     const key = req.mode === "navigate" ? "./" : req;
-    const cached = await cache.match(key, { ignoreSearch: req.mode === "navigate" });
-    const fresh = fetch(req).then(res => {
-      if (res && (res.ok || res.type === "opaque")) cache.put(key, res.clone());
+    // no-cache: tarayıcının kendi HTTP önbelleğini de sunucuya sordurur (değişmediyse 304, ucuz)
+    const fresh = fetch(req.url, { cache: "no-cache", credentials: "same-origin" }).then(res => {
+      if (res && res.ok) cache.put(key, res.clone());
       return res;
-    }).catch(() => cached);
-    if (cached) { e.waitUntil(fresh); return cached; }
-    return fresh;
+    });
+    e.waitUntil(fresh.catch(() => {}));
+    const cached = () => cache.match(key, { ignoreSearch: req.mode === "navigate" });
+    const timeout = new Promise(r => setTimeout(r, NET_TIMEOUT));
+    try {
+      const winner = await Promise.race([fresh, timeout]);
+      if (winner) return winner;                     // ağ zamanında cevap verdi
+      return (await cached()) || await fresh;         // ağ yavaş: önbellek, o da yoksa ağı bekle
+    } catch {
+      return (await cached()) || Response.error();    // çevrimdışı
+    }
   }));
 });

@@ -8,7 +8,7 @@ Sunucu, hesap ya da kurulum gerekmez. Tek bir HTML sayfasıdır ve verilerin tar
 
 - **Hazır desteler:** A2, B1, B2 ve IELTS 7+ (C1) seviyelerinde, her biri en sık kullanılan 500 kelimeden oluşur. Toplam 2000+ kelime ve hepsinin Türkçe anlamı var. Bunlara ek olarak tanım ve örnek cümleleriyle 24 kelimelik *Paket #1 · Memory & Learning* destesi de gelir.
 - **Konu desteleri:** IELTS Writing Task 2'nin sık konularında altı deste: Çevre, Eğitim, Sağlık, Teknoloji, İş ve Ekonomi, Toplum ve Şehir. Her birinde 40 kelime ya da kalıp (*carbon footprint*, *work-life balance*…), hepsi Türkçe anlam, İngilizce tanım ve örnek cümleyle.
-- **Seviyeli hikâyeler:** A1, A2, B1 ve B2 seviyelerinde onar kısa hikâye; B2 hikâyeleri IELTS Reading tarzı metinlerdir. Okurken bir kelimeye dokununca Türkçe anlamı ve hikâyedeki cümle görünür; istersen kelimeyi o cümleyle birlikte istediğin desteye eklersin (varsayılan: *Hikâye kelimeleri*). Çekimli hâller köke bağlanır (*went → go*), *look after* gibi kalıplar tek parça seçilir.
+- **Seviyeli hikâyeler:** A1, A2, B1 ve B2 seviyelerinde onar kısa hikâye; B2 hikâyeleri IELTS Reading tarzı metinlerdir. Her hikâyenin sonunda IELTS Reading'deki gibi **True / False / Not Given** soruları var (toplam 150); her cevabın nedeni metinden alıntıyla Türkçe açıklanır, en iyi skorun hikâye listesinde görünür. Okurken bir kelimeye dokununca Türkçe anlamı ve hikâyedeki cümle görünür; istersen kelimeyi o cümleyle birlikte istediğin desteye eklersin (varsayılan: *Hikâye kelimeleri*). Çekimli hâller köke bağlanır (*went → go*), *look after* gibi kalıplar tek parça seçilir.
 - **Aralıklı tekrar:**
   - *Bilmiyorum* → kart aynı oturumun sonunda bir kez daha gelir.
   - *Öğreniyorum* → kart ertesi gün gelir.
@@ -44,21 +44,26 @@ css/style.css       Tasarım (açık/koyu tema)
 js/app.js           Uygulama mantığı (bağımlılık yok)
 data/decks.js       Uygulamanın yüklediği hazır desteler
 data/*.json         Aynı desteler, başka projelerde kullanmak için JSON olarak
-data/stories.js     Hikâyeler ve hikâye sözlüğü
+data/stories.js     Hikâyeler ve hikâye sözlüğü (tools/stories/ ile üretilir)
+tools/stories/      Hikâye kaynakları, sözlük ve üretim betiği
 data/konu-*.json    Konu desteleri (decks.js içinde de var)
 manifest.webmanifest, icons/   Ana ekrana ekleme bilgileri ve ikonlar
 sw.js               Çevrimdışı çalışma (service worker)
 ```
 
-Service worker dosyaları önce önbellekten verir, arkada da yenilerini indirir. Bu yüzden yayınladığın bir değişiklik kullanıcıya sayfanın ikinci açılışında ulaşır. Önbellekteki dosya listesini değiştirirsen `sw.js` içindeki `CACHE` adını artır (ör. `fislik-v2`).
+Service worker uygulama dosyalarını önce ağdan ister, böylece yayınladığın değişiklik bir sonraki açılışta gelir. Ağ yoksa ya da birkaç saniyede cevap gelmezse önbellekteki sürüm açılır. Önbelleğe alınan dosya listesini (`SHELL`) değiştirirsen `sw.js` içindeki `CACHE` adını artır (ör. `fislik-v4`).
 
 Her desteye ait JSON dosyasındaki `cards` alanı `[ingilizce, tür, türkçe, tanım?, örnek?]` dizilerinden oluşur.
 
 ## Hikâye nasıl eklenir?
 
-`data/stories.js` içindeki `stories` listesine `{ id, level, title, tr, text }` biçiminde bir nesne ekle. `text` içinde paragrafları boş satırla ayır; birden fazla kelimelik kalıpları `{look after}` gibi süslü paranteze al.
+Hikâyeler ve sözlük `tools/stories/` klasöründe durur; `data/stories.js` oradan üretilir. Hikâyeyi `stories_more.py` dosyasına ekle (birden fazla kelimelik kalıpları `{look after}` gibi süslü paranteze al), sonra çalıştır:
 
-Tıklanan kelimenin anlamı `lexicon` sözlüğünden gelir: `"apples": ["apple", "n", "elma"]` (çekimli hâl → kök, tür, Türkçe) ya da kök ile aynıysa `"apple": ["n", "elma"]`. Sözlükte olmayan kelimeler (özel isimler, *the*, *is* gibi) tıklanmaz. Bir kelime bir hikâyede farklı anlamdaysa o hikâyeye `gloss: { "lives": ["life", "n", "hayat"] }` ekleyerek sözlüğü ezebilirsin.
+```
+python tools/stories/build.py
+```
+
+Betik, sözlükte karşılığı olmayan kelimeleri listeler; onları `tools/stories/lexicon/` altındaki bir dosyaya `apples: apple | n | elma` biçiminde ekleyip tekrar çalıştır. Ayrıntılar: [tools/stories/README.md](tools/stories/README.md).
 
 ## Deste nasıl eklenir?
 

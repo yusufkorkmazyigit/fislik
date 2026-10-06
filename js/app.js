@@ -417,6 +417,44 @@ function storyHTML(st){
   }).join("") + "</p>").join("");
 }
 
+/* hikâye soruları: IELTS Reading tarzı True / False / Not Given */
+const QUIZ_KEY = "fislik.quiz.v1";
+const QLABEL = { T: "True", F: "False", NG: "Not Given" };
+let quizBest = {}; try { quizBest = JSON.parse(localStorage.getItem(QUIZ_KEY) || "{}") || {}; } catch {}
+const quizPicks = {};   // hikâye id -> verilen cevaplar (bu oturumda)
+function quizHTML(st){
+  const q = st.quiz || []; if (!q.length) return "";
+  const picks = quizPicks[st.id] || [], answered = picks.filter(Boolean).length;
+  const score = q.reduce((n, [, a], i) => n + (picks[i] === a ? 1 : 0), 0);
+  return `<section class="quiz" aria-labelledby="qz-h">
+    <h3 id="qz-h">Anladın mı? <span>True / False / Not Given</span></h3>
+    <p class="hint"><b>True</b>: metin bunu söylüyor · <b>False</b>: metin bunun tersini söylüyor · <b>Not Given</b>: metinde bu bilgi yok</p>
+    <ol>${q.map(([stmt, ans, why], i) => {
+      const p = picks[i], ok = p === ans;
+      return `<li class="qz${p ? (ok ? " ok" : " bad") : ""}">
+        <div class="qz-s">${esc(stmt)}</div>
+        <div class="qz-b" role="group" aria-label="Cevabın">${["T", "F", "NG"].map(v =>
+          `<button data-act="qz" data-i="${i}" data-v="${v}" ${p ? "disabled" : ""} class="${p && v === ans ? "is-ans" : ""}${p === v && !ok ? " is-wrong" : ""}" aria-pressed="${p === v}">${QLABEL[v]}</button>`).join("")}</div>
+        ${p ? `<div class="qz-f" role="status"><b>${ok ? "Doğru ✓" : `Yanlış. Doğrusu: ${QLABEL[ans]}`}</b> ${esc(why)}</div>` : ""}
+      </li>`; }).join("")}</ol>
+    ${answered === q.length ? `<div class="qz-end"><b>Sonuç: ${score} / ${q.length}</b>${score === q.length ? " · Hepsi doğru!" : ""}
+      <button class="btn ghost small" data-act="qzReset">Tekrar dene</button></div>` : ""}
+  </section>`;
+}
+function answerQuiz(i, v){
+  const st = STORIES.find(s => s.id === view.id); if (!st) return;
+  const picks = quizPicks[st.id] || (quizPicks[st.id] = []);
+  if (picks[i]) return;
+  picks[i] = v;
+  if (picks.filter(Boolean).length === st.quiz.length) {
+    const score = st.quiz.reduce((n, [, a], k) => n + (picks[k] === a ? 1 : 0), 0);
+    const prev = quizBest[st.id];
+    if (!prev || score > prev.score) { quizBest[st.id] = { score, total: st.quiz.length }; try { localStorage.setItem(QUIZ_KEY, JSON.stringify(quizBest)); } catch {} }
+  }
+  // sadece soru bölümünü yenile: sayfa kaymasın, okuduğun yer kaybolmasın
+  const sec = app.querySelector(".quiz"); if (sec) sec.outerHTML = quizHTML(st);
+}
+
 function renderStories(){
   const levels = [...new Set(STORIES.map(s => s.level))];
   app.innerHTML = header() + `
@@ -428,7 +466,7 @@ function renderStories(){
       <div class="tpl">${STORIES.filter(s => s.level === lv).map(s => `
         <button class="tpl-item storyrow" data-act="story" data-id="${esc(s.id)}">
           <span class="lvl">${esc(s.level)}</span>
-          <span><span class="nm">${esc(s.title)}</span><span class="ds">${esc(s.tr)} · ${wordCount(s)} kelime</span></span>
+          <span><span class="nm">${esc(s.title)}</span><span class="ds">${esc(s.tr)} · ${wordCount(s)} kelime${quizBest[s.id] ? ` · <span class="qz-best">✓ ${quizBest[s.id].score}/${quizBest[s.id].total}</span>` : ""}</span></span>
           <span class="go" aria-hidden="true">→</span>
         </button>`).join("")}
       </div>`).join("")}
@@ -448,6 +486,7 @@ function renderStory(){
       <p class="hint">Bilmediğin kelimeye dokun. Yeşil altı çizili olanlar destende zaten var.</p>
       <div class="story-text">${storyHTML(st)}</div>
     </article>
+    ${quizHTML(st)}
     <nav class="row storynav">
       ${prev ? `<button class="btn ghost" data-act="story" data-id="${esc(prev.id)}">← ${esc(prev.title)}</button>` : ""}
       <span style="flex:1"></span>
@@ -789,6 +828,8 @@ app.addEventListener("click", async e => {
   else if (act === "stories") go({ name: "stories" });
   else if (act === "story") go({ name: "story", id });
   else if (act === "word") openSheet(b);
+  else if (act === "qz") answerQuiz(+b.dataset.i, b.dataset.v);
+  else if (act === "qzReset") { const st = STORIES.find(x => x.id === view.id); delete quizPicks[view.id]; const sec = app.querySelector(".quiz"); if (st && sec) sec.outerHTML = quizHTML(st); }
   else if (act === "export") exportBackup();
   else if (act === "fill") {
     const f = b.closest("form"), msg = f.querySelector("[data-msg]"), w = f.en.value.trim();

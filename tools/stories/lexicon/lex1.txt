@@ -1,0 +1,302 @@
+abandoned: abandon | v | terk etmek, bırakmak
+ability: n | yetenek, beceri
+able: adj | (be able to) -ebilmek, muktedir
+about: prep | hakkında; yaklaşık
+abroad: adv | yurt dışında, yurt dışına
+absurd: adj | saçma, absürt
+access: n | erişim, giriş hakkı
+accidents: accident | n | kaza
+according: according to | prep | -e göre
+according to: prep | -e göre
+accused: accuse | v | suçlamak
+achieved: achieve | v | başarmak, elde etmek
+activity: n | etkinlik, faaliyet
+added: add | v | eklemek
+admit: v | kabul etmek, itiraf etmek
+afford: v | (parası/gücü) yetmek, göze alabilmek
+afraid: adj | korkmuş, korkan
+after: prep | -den sonra
+afternoon: n | öğleden sonra
+afterwards: adv | sonradan, daha sonra
+again: adv | tekrar, yine
+ago: adv | önce (zaman)
+agree: v | aynı fikirde olmak, kabul etmek
+agreed: agree | v | kabul etmek, razı olmak
+agrees: agree | v | aynı fikirde olmak
+ahead: adv | ileride, önde
+air: n | hava
+alarming: adj | endişe verici, ürkütücü
+all: det | bütün, hepsi
+allowed: allow | v | izin vermek
+almost: adv | neredeyse
+alone: adj, adv | yalnız, tek başına
+along: prep | boyunca
+already: adv | zaten, çoktan
+also: adv | de, da, ayrıca
+alternatives: alternative | n | alternatif, seçenek
+although: conj | -e rağmen, gerçi
+always: adv | her zaman
+among: prep | arasında
+analyse: v | analiz etmek, incelemek
+ancient: adj | antik, çok eski
+angry: adj | kızgın
+ankle: n | ayak bileği
+announced: announce | v | duyurmak, açıklamak
+another: det | başka bir, bir diğer
+answer: v, n | cevap vermek; cevap
+answering: answer | v | cevap vermek
+answers: answer | n | cevap
+anxious: adj | endişeli, kaygılı
+any: det | hiç, herhangi bir
+anything: pron | hiçbir şey, herhangi bir şey
+app: n | uygulama (telefon)
+apples: apple | n | elma
+applications: application | n | başvuru
+applied for: apply for | phr v | -e başvurmak
+approach: n | yaklaşım, yöntem
+approaches: approach | n | yaklaşım, yöntem
+apps: app | n | uygulama (telefon)
+argued: argue | v | öne sürmek, savunmak
+arguing: argue | v | öne sürmek, savunmak
+arrived: arrive | v | varmak, ulaşmak
+as: conj, prep | olarak; gibi; -dığı sırada
+as long as: conj | -dığı sürece
+asked: ask | v | sormak; istemek
+asks: ask | v | sormak
+asleep: adj | uykuda
+assumed: assume | v | varsaymak, sanmak
+assumption: n | varsayım
+at: prep | -de, -da
+attacking: attack | v | saldırmak
+attempt: v | denemek, girişmek
+attention: n | dikkat
+attitudes: attitude | n | tutum
+attracted: attract | v | çekmek, cezbetmek
+attributed: attribute | v | (birine) atfetmek
+august: n | ağustos
+avoided: avoid | v | kaçınmak, uzak durmak
+away: adv | uzakta, uzağa
+back: adv | geri
+bad: adj | kötü
+badly: adv | kötü (bir şekilde)
+bag: n | çanta
+bags: bag | n | çanta, poşet
+balconies: balcony | n | balkon
+balloons: balloon | n | balon
+ban: v | yasaklamak
+bananas: banana | n | muz
+banquet: n | ziyafet
+barely: adv | zar zor, ancak
+basic: adj | temel, basit
+bathroom: n | banyo
+beach: n | plaj, sahil
+beaches: beach | n | plaj, sahil
+beans: bean | n | fasulye
+beautiful: adj | güzel
+became: become | v | olmak, hâline gelmek
+because: conj | çünkü
+become: v | olmak, hâline gelmek
+bed: n | yatak
+bedroom: n | yatak odası
+before: prep, conj | önce, -den önce
+began: begin | v | başlamak
+behaviour: n | davranış
+behind: prep | arkasında
+believed: believe | v | inanmak
+believes: believe | v | inanmak, düşünmek
+believing: believe | v | inanmak
+below: prep | aşağısında, altında
+benches: bench | n | bank, oturak
+best: adj | en iyi
+better: adj, adv | daha iyi
+beyond: prep | ötesinde
+big: adj | büyük
+biodegradable: adj | doğada çözünebilen
+birthday: n | doğum günü
+biscuits: biscuit | n | bisküvi
+black: adj | siyah
+blamed: blame | v | suçlamak
+blank: adj | boş
+blanket: n | battaniye
+blocked: block | v | kapatmak, tıkamak
+board: n | pano, tahta
+board game: n | kutu oyunu
+book: n | kitap
+booked: book | v | rezervasyon yapmak
+bored: adj | sıkılmış
+born: adj | (be born) doğmak
+both: det | her ikisi
+bottled: adj | şişelenmiş
+bottles: bottle | n | şişe
+bought: buy | v | satın almak
+box: n | kutu
+boxes: box | n | kutu, sandık
+brain: n | beyin
+bright: adj | aydınlık, parlak
+brilliant: adj | harika, mükemmel
+bringing: bring | v | getirmek
+broad: adj | geniş, yaygın
+broader: broad | adj | daha geniş
+broken: adj | kırık
+brother: n | erkek kardeş, ağabey
+brought: bring | v | getirmek
+brown: adj | kahverengi
+build: v | inşa etmek, kurmak
+building: n | bina
+buildings: building | n | bina
+built: build | v | inşa etmek, yapmak
+burnout: n | tükenmişlik
+bus: n | otobüs
+buses: bus | n | otobüs
+busy: adj | kalabalık, yoğun; meşgul
+buy: v | satın almak
+buys: buy | v | satın almak
+by: prep | yanında; tarafından; -e kadar
+café: n | kafe
+cafés: café | n | kafe
+cake: n | pasta, kek
+called: call | v | aramak (telefonla); adlandırmak
+calls: call | v, n | aramak, seslenmek; (telefon) araması
+calmer: calm | adj | daha sakin
+came: come | v | gelmek
+campaign: n | kampanya
+can: modal | -ebilmek
+cannot: can | modal | -ememek
+capable: adj | yetenekli, becerikli
+car parks: car park | n | otopark
+cardiff
+careful: adj | dikkatli
+carefully: adv | dikkatle
+carries: carry | v | taşımak
+cars: car | n | araba
+carts: cart | n | at arabası, el arabası
+cat: n | kedi
+categorised: categorise | v | sınıflandırmak
+centre: n | merkez
+chairs: chair | n | sandalye
+challenge: n, v | meydan okuma, zorlu görev; sorgulamak
+champions: champion | n | şampiyon
+change: n, v | değişiklik; değiştirmek
+changed: change | v | değişmek, değiştirmek
+changes: change | n | değişiklik
+chat: v | sohbet etmek
+checking: check | v | kontrol etmek
+checks: check | v | kontrol etmek
+cheese: n | peynir
+child: n | çocuk
+childhood: n | çocukluk
+children: child | n | çocuklar
+chocolate: n | çikolata
+choose: v | seçmek
+chooses: choose | v | seçmek
+cinema: n | sinema
+city: n | şehir
+class: n | sınıf; ders
+classmate: n | sınıf arkadaşı
+classroom: n | sınıf (oda)
+clean: adj | temiz
+cleaner: n | temizlikçi
+cleaners: cleaner | n | temizlikçi
+clear: adj | açık, net
+cleared: clear | v | temizlemek, boşaltmak
+climb: v | tırmanmak
+close: adj | yakın
+closing: close | v | kapanmak
+clouds: cloud | n | bulut
+coastal: adj | kıyı, sahil (ile ilgili)
+coffee: n | kahve
+cold: adj, n | soğuk; soğuk algınlığı
+colder: cold | adj | daha soğuk
+collapse: n | çöküş, yıkılma
+colleagues: colleague | n | iş arkadaşı
+collect: v | toplamak
+collected: collect | v | toplamak
+colourful: adj | renkli, rengârenk
+come: v | gelmek
+coming: come | v | gelmek
+community: n | topluluk, mahalle halkı
+company: n | şirket
+competition: n | yarışma
+complained: complain | v | şikâyet etmek
+complaining: complain | v | şikâyet etmek
+completely: adv | tamamen
+computer: n | bilgisayar
+concentration: n | konsantrasyon, odaklanma
+conducted: conduct | v | yürütmek, yapmak (araştırma vb.)
+confidence: n | özgüven
+connections: connection | n | bağlantı
+contacted: contact | v | iletişime geçmek
+containers: container | n | kap, ambalaj
+continue: v | devam etmek
+control: n, v | kontrol; kontrol etmek
+conversations: conversation | n | konuşma, sohbet
+cook: n, v | aşçı; yemek pişirmek
+correct: adj | doğru
+costs: cost | n | maliyet, bedel
+could: can | modal | -ebilirdi, -ebildi
+council: n | belediye, meclis
+countries: country | n | ülke
+courage: n | cesaret
+cousin: n | kuzen
+covered: cover | v | kaplamak, örtmek
+criticism: n | eleştiri
+critics: critic | n | eleştirmen, eleştiren kişi
+cry: v | ağlamak
+cup: n | fincan
+cupboard: n | dolap
+customers: customer | n | müşteri
+cycle: v | bisiklete binmek
+dad: n | baba
+damage: v | zarar vermek
+damaged: adj | hasarlı
+dark: adj | karanlık
+dates: date | n | tarih
+daughter: n | kız evlat
+day: n | gün
+days: day | n | gün
+debate: n | tartışma
+decade: n | on yıl
+decided: decide | v | karar vermek
+decorations: decoration | n | süsleme, süs
+deeper: deep | adj | daha derin
+deliberately: adv | bilerek, kasten
+delivery: n | teslimat
+demand: n | talep
+department: n | bölüm, zümre
+depended: depend | v | (depend on) -e bağlı olmak
+described: describe | v | anlatmak, tarif etmek
+design: v | tasarlamak
+designed: design | v | tasarlamak
+designer: n | tasarımcı
+desk: n | çalışma masası
+destination: n | gidilecek yer, destinasyon
+determined: adj | kararlı
+developers: developer | n | yazılım geliştirici
+did: do | v | yapmak
+difference: n | fark
+differently: adv | farklı şekilde
+difficult: adj | zor
+dinner: n | akşam yemeği
+disabilities: disability | n | engel, engellilik
+discovered: discover | v | keşfetmek, fark etmek
+discussed: discuss | v | tartışmak, konuşmak
+dish: n | yemek (tabak)
+dismissed: dismiss | v | önemsememek, geçiştirmek
+displayed: display | v | sergilemek, göstermek
+do: v | yapmak
+doctor: n | doktor
+does: do | v | yapmak
+dominated: dominate | v | hâkim olmak
+donated: donate | v | bağışlamak
+done: do | v | yapmak
+door: n | kapı
+doors: door | n | kapı
+doubled: double | v | iki katına çıkarmak
+doubtful: adj | şüpheli, kuşkulu
+down: adv | aşağı
+dramatically: adv | büyük ölçüde, çarpıcı biçimde
+drive: v | araba sürmek
+driver: n | şoför, sürücü
+drivers: driver | n | sürücü
+dumped: dump | v | (çöp vb.) atmak, bırakmak
+during: prep | sırasında, boyunca

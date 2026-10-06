@@ -254,3 +254,26 @@ body.sheet-open .wrap{padding-bottom:320px}
 .hardrow .ds{font-size:13px;color:var(--ink-3)}
 .donestreak{font-weight:600}
 @media (max-width:480px){.tiles{grid-template-columns:repeat(2,1fr)}.hm{--cell:13px}}
+
+/* hikâye soruları */
+.quiz{background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:18px 20px;margin-top:16px;display:grid;gap:10px}
+.quiz h3{margin:0;font:700 20px/1.2 var(--word)}
+.quiz h3 span{font:600 13px var(--ui);color:var(--ink-3);margin-left:6px}
+.quiz .hint b{color:var(--ink-2)}
+.quiz ol{margin:0;padding-left:22px;display:grid;gap:14px}
+.qz{padding-left:2px}
+.qz::marker{font-weight:700;color:var(--ink-3)}
+.qz-s{font:500 16px/1.5 var(--word);margin-bottom:8px}
+.qz-b{display:flex;gap:6px;flex-wrap:wrap}
+.qz-b button{border:1.5px solid var(--line);background:var(--card);border-radius:10px;padding:7px 12px;font-size:14px;font-weight:600}
+.qz-b button:not(:disabled):hover{border-color:var(--ink-3)}
+.qz-b button:disabled{cursor:default;opacity:.55}
+.qz-b button.is-ans{opacity:1;border-color:var(--good);background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
+.qz-b button.is-wrong{opacity:1;border-color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,transparent);color:var(--bad);text-decoration:line-through}
+.qz-f{margin-top:8px;font-size:14px;color:var(--ink-2);border-left:3px solid var(--line);padding-left:10px}
+.qz.ok .qz-f{border-left-color:var(--good)}
+.qz.bad .qz-f{border-left-color:var(--bad)}
+.qz.ok .qz-f b{color:var(--good)}
+.qz.bad .qz-f b{color:var(--bad)}
+.qz-end{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1.5px solid var(--line);padding-top:12px}
+.qz-best{color:var(--good);font-weight:600}

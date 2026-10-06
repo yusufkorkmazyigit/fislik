@@ -1,0 +1,340 @@
+each: det | her bir
+each other: pron | birbiri
+early: adj, adv | erken
+easily: adv | kolayca
+easy: adj | kolay
+eat: v | yemek
+edges: edge | n | kenar, sınır
+educational: adj | eğitimle ilgili, eğitim
+effect: n | etki
+effective: adj | etkili
+effort: n | çaba
+eight: num | sekiz
+elderly: adj | yaşlı
+elected: elect | v | seçmek (oyla)
+eleven: num | on bir
+else: adv | başka
+email: n | e-posta
+emails: email | n | e-posta
+embarrassed: adj | utanmış, mahcup
+embarrassment: n | utanç, mahcubiyet
+emergency: n | acil durum
+employees: employee | n | çalışan
+empty: adj | boş
+encouraged: encourage | v | teşvik etmek, cesaretlendirmek
+encouraging: adj | cesaret verici, destekleyici
+end: n | son; uç
+ended: end | v | bitmek, sona ermek
+energy: n | enerji
+engine: n | motor
+english: n, adj | İngilizce; İngiliz
+enjoys: enjoy | v | (destek vb.) görmek; keyif almak
+enormous: adj | muazzam, çok büyük
+enough: adj, pron | yeterli, yeter
+entered: enter | v | katılmak (yarışmaya); girmek
+enthusiastic: adj | hevesli, istekli
+entirely: adv | tamamen
+environmental: adj | çevresel, çevre ile ilgili
+essential: adj | gerekli, zorunlu
+even: adv | bile, hatta
+even though: conj | -e rağmen, -dığı hâlde
+evening: n | akşam
+events: event | n | olay
+eventually: adv | sonunda, en sonunda
+every: det | her
+everyone: pron | herkes
+everything: pron | her şey
+exactly: adv | tam olarak
+exaggerate: v | abartmak
+exam: n | sınav
+exchange: n | değişim
+excited: adj | heyecanlı
+excuse me: phrase | affedersiniz, pardon
+exercises: exercise | n | alıştırma
+exhausted: adj | bitkin, çok yorgun
+expected: expect | v | beklemek, ummak
+expensive: adj | pahalı
+experience: n | deneyim, tecrübe
+experiment: n | deney
+experts: expert | n | uzman
+explained: explain | v | açıklamak
+explains: explain | v | açıklamak
+explanations: explanation | n | açıklama
+explored: explore | v | keşfetmek, incelemek
+extended: extend | v | genişletmek, uzatmak
+extra: adj | ek, fazladan
+extraordinary: adj | olağanüstü
+extremely: adv | son derece
+eyes: eye | n | göz
+factories: factory | n | fabrika
+fail: v | başarısız olmak
+failed: fail | v | başarısız olmak, işe yaramamak
+failure: n | başarısızlık
+fall: v | düşmek, azalmak
+falls asleep: fall asleep | phr v | uykuya dalmak
+families: family | n | aile
+family: n | aile
+famous: adj | ünlü, meşhur
+far: adv | uzak; çok
+fast: adv | hızlı
+father: n | baba
+feared: fear | v | korkmak, endişe etmek
+feel: v | hissetmek
+fell: fall | v | düşmek, azalmak
+fell asleep: fall asleep | phr v | uykuya dalmak
+felt: feel | v | hissetmek
+few: det | birkaç; az
+fewer: few | det | daha az
+fierce: adj | şiddetli, sert
+fifteen: num | on beş
+fifty: num | elli
+figures: figure | n | rakam, veri
+filled: fill | v | doldurmak
+film: n | film
+finally: adv | sonunda
+find: v | bulmak
+findings: finding | n | bulgu
+fine: adj | iyi, sağlam
+finish: v | bitirmek
+finished: finish | v | bitirmek
+finishing: finish | v | bitirmek
+first: adj, adv | ilk; önce
+fishermen: fisherman | n | balıkçı
+fishing: n | balıkçılık
+five: num | beş
+fixed: adj | sabit, değişmez
+flask: n | termos
+flat: n | daire (ev)
+flatmate: n | ev arkadaşı
+flats: flat | n | daire (ev)
+floor: n | kat; zemin, yer
+flowers: flower | n | çiçek
+food: n | yiyecek, yemek
+football: n | futbol
+footfall: n | yaya trafiği, ziyaretçi sayısı
+for: prep | için; boyunca
+for instance: phrase | örneğin
+forests: forest | n | orman
+forgot: forget | v | unutmak
+form: n | biçim, şekil
+found: find | v | bulmak
+founder: n | kurucu
+fountains: fountain | n | çeşme
+four: num | dört
+fragments: fragment | n | parça, kırıntı
+free: adj | bedava; serbest, -den arınmış
+freedom: n | özgürlük
+frequency: n | sıklık
+fridays: friday | n | cuma
+friend: n | arkadaş
+friendly: adj | cana yakın, samimi
+friends: friend | n | arkadaş
+from: prep | -den, -dan
+front: n | ön
+fruit: n | meyve
+frustrating: adj | sinir bozucu
+full: adj | dolu
+funny: adj | komik
+furniture: n | mobilya
+game: n | oyun
+garage: n | garaj
+garden: n | bahçe
+gave: give | v | vermek
+generation: n | nesil, kuşak
+generations: generation | n | nesil, kuşak
+genuinely: adv | gerçekten
+get: v | almak; ulaşmak; olmak
+get tired of: phr v | -den bıkmak
+gets: get | v | almak, getirmek
+getting: get | v | almak; olmak
+getting it wrong: get it wrong | phrase | yanlış yapmak, hata yapmak
+ghost town: n | hayalet şehir, ıssız şehir
+give: v | vermek
+given: give | v | vermek
+gives: give | v | vermek
+glass: n | cam
+global: adj | küresel
+go: v | gitmek
+go on: phr v | devam etmek
+go out: phr v | dışarı çıkmak
+goes: go | v | gitmek
+going: go | v | gitmek
+gone: go | v | gitmek; (badly) kötü geçmek
+good: adj | iyi
+got: get | v | almak; olmak
+got lost: get lost | phr v | kaybolmak
+got off: get off | phr v | (araçtan) inmek
+got on: get on | phr v | (araca) binmek
+gradually: adv | yavaş yavaş, giderek
+graduating: graduate | v | mezun olmak
+grandchildren: grandchild | n | torun
+grandmother: n | büyükanne, nine
+greater: great | adj | daha büyük
+greek: adj | Yunan
+green: adj | yeşil
+grew: grow | v | büyümek, artmak
+grey: adj | gri
+group: n | grup
+grow: v | yetiştirmek; büyümek
+grow up: phr v | büyümek, yetişmek
+growing: adj | büyüyen, artan
+guest: n | misafir, davetli
+guests: guest | n | misafir, davetli
+habit: n | alışkanlık
+had: have | v | sahip olmak; (yardımcı fiil)
+hair: n | saç
+half past: phrase | (saat) buçuk
+hall: n | salon
+hands: hand | n | el
+happen: v | olmak, meydana gelmek
+happened: happen | v | olmak, meydana gelmek
+happy: adj | mutlu
+hard: adj, adv | zor; sert; çok (çalışmak)
+harder: hard | adj | daha zor
+hardest: hard | adj | en zor
+has: have | v | sahip olmak
+have: v | sahip olmak
+head: n | kafa, baş; başkan, yönetici
+heavy: adj | ağır; yoğun
+help: v | yardım etmek
+helped: help | v | yardım etmek
+helps: help | v | yardım etmek
+herbs: herb | n | ot, yeşillik (maydanoz vb.)
+hills: hill | n | tepe
+historic: adj | tarihî
+historical: adj | tarihsel, tarihî
+home: n | ev, yuva
+homework: n | ev ödevi
+honestly: adv | açıkçası, dürüst olmak gerekirse
+horses: horse | n | at
+hospital: n | hastane
+hospitals: hospital | n | hastane
+hot: adj | sıcak
+hour: n | saat (süre)
+hours: hour | n | saat (süre)
+house: n | ev
+how: adv | nasıl
+however: adv | ancak, ne var ki
+hug: n | sarılma
+hundreds: hundred | n | yüzlerce
+hungry: adj | aç
+hurt: v | incitmek, acıtmak; acımak
+hurts: hurt | v | acımak
+i'm afraid: phrase | maalesef, korkarım ki
+icon: n | simge, ikon
+idea: n | fikir
+identify: v | tanımlamak, kimliğini belirlemek
+if: conj | eğer; -ip -mediğini
+image: n | görüntü, imge
+imagine: v | hayal etmek
+immediate: adj | anında, hemen olan
+immediately: adv | hemen
+important: adj | önemli
+impressed: adj | etkilenmiş
+improve: v | geliştirmek
+improved: improve | v | gelişmek, iyileşmek
+improvement: n | gelişme, ilerleme
+in: prep | -de, içinde
+increased: increase | v | artmak
+increasing: increase | v | artmak
+increasingly: adv | giderek artan şekilde
+inevitably: adv | kaçınılmaz olarak
+information: n | bilgi
+initially: adv | başlangıçta
+inside: adv, prep | içeride
+insists: insist | v | ısrar etmek, üstüne basa basa söylemek
+installed: install | v | kurmak, yerleştirmek
+instead: adv | onun yerine
+instruction: n | öğretim, anlatım
+intelligence: n | zekâ
+intense: adj | yoğun
+internet: n | internet
+interrupt: v | sözünü kesmek
+interview: n | mülakat, iş görüşmesi
+interviewer: n | mülakatı yapan kişi
+interviewers: interviewer | n | mülakatı yapan kişi
+interviews: interview | n | mülakat, iş görüşmesi
+intimately: adv | çok iyi, yakından
+into: prep | içine; -e (dönüşmek)
+intriguing: adj | ilgi çekici, merak uyandıran
+introduced: introduce | v | tanıştırmak; başlatmak, getirmek
+invited: invite | v | davet etmek
+item: n | öğe, nesne
+items: item | n | öğe, nesne
+itself: pron | kendisi
+job: n | iş
+jobs: job | n | iş
+joined: join | v | katılmak
+joins: join | v | katılmak
+jokes: joke | n | şaka
+journey: n | yolculuk
+june: n | haziran
+junior: adj | kıdemsiz, yardımcı (pozisyon)
+just: adv | sadece; tam
+keeping: keep | v | (sır) saklamak, tutmak
+kept: keep | v | saklamak, tutmak; (kept doing) -meye devam etmek
+kilo: n | kilo
+kilometres: kilometre | n | kilometre
+kind: adj, n | nazik; tür, çeşit
+kindly: adv | nazikçe
+kitchen: n | mutfak
+knew: know | v | bilmek
+knocked on: knock on | phr v | (kapıyı) çalmak
+know: v | bilmek
+known as: phrase | olarak bilinen
+knows: know | v | bilmek, tanımak
+lack: n, v | eksiklik; -den yoksun olmak
+lacking in: be lacking in | phrase | -den yoksun olmak, -i eksik olmak
+lake: n | göl
+land: n | arazi, toprak
+language: n | dil
+large: adj | büyük, geniş
+last: adj | geçen; son
+lasted: last | v | sürmek, devam etmek
+late: adj, adv | geç
+later: adv | sonra, daha sonra
+laughed: laugh | v | gülmek
+lead to: phr v | -e yol açmak
+learn: v | öğrenmek
+learned: learn | v | öğrenmek
+learning: learn | v | öğrenmek
+least: adv | (at least) en az
+leave: v | bırakmak; ayrılmak
+leaves: leave | v | (yerden) ayrılmak, kalkmak
+left: leave | v | ayrılmak, çıkmak
+legend: n | efsane
+less: adv | daha az
+lesson: n | ders
+lessons: lesson | n | ders
+let: v | izin vermek
+life: n | hayat
+lights: light | n | ışık
+like: prep, v | gibi; sevmek, hoşlanmak
+likes: like | v | sevmek, hoşlanmak
+limitations: limitation | n | kısıtlama, sınırlılık
+limited: limit | v | sınırlamak
+list: n | liste
+listened: listen | v | dinlemek
+lists: list | n | liste
+little: adj | küçük; (a little) biraz
+live: v | yaşamak
+lives: live | v | yaşamak
+living: live | v | yaşamak
+living room: n | oturma odası
+local: adj | yerel
+lonely: adj | yalnız (hisseden)
+long: adj | uzun
+longer: long | adj | daha uzun
+look: v | bakmak
+looked: look | v | bakmak; görünmek
+looked after: look after | phr v | bakmak, ilgilenmek
+looked out of: look out of | phr v | -den dışarı bakmak
+looks: look | v | bakmak
+lose: v | kaybetmek
+losing: lose | v | kaybetmek
+lost: adj | kaybolmuş, kayıp
+lot: n | (a lot of) çok
+loved: love | v | çok sevmek
+loves: love | v | çok sevmek
+lower: low | adj | daha düşük
+lunch: n | öğle yemeği

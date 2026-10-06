@@ -1,0 +1,740 @@
+a handful of: phrase | birkaç, bir avuç
+abilities: ability | n | yetenek, beceri
+accessible: adj | erişilebilir, kolay ulaşılır
+accountant: n | muhasebeci
+accounts: account | n | hesap (muhasebe, sosyal medya)
+accurate: adj | doğru, isabetli
+achieve: v | başarmak, elde etmek
+across: prep | genelinde, boyunca
+active: adj | aktif, hareketli
+adapting: adapt | v | uyum sağlamak
+adolescence: n | ergenlik
+adolescents: adolescent | n | ergen
+adopt: v | sahiplenmek, evlat edinmek
+adults: adult | n | yetişkin
+advanced: adj | gelişmiş
+advantage: n | avantaj, üstünlük
+adventurous: adj | maceraperest
+ageing: adj | yaşlanan
+ai: n | yapay zekâ
+airport: n | havalimanı
+alarm: n | endişe, telaş
+alert: adj | uyanık, dikkatli
+allow: v | izin vermek; olanak sağlamak
+altogether: adv | tamamen
+animal: n | hayvan
+animals: animal | n | hayvan
+annual: adj | yıllık
+answered: answer | v | cevap vermek
+anxiety: n | kaygı
+anyone: pron | herkes; kimse
+anyway: adv | yine de
+anywhere: adv | herhangi bir yer(de)
+apple: n | elma
+application: n | başvuru
+applied: apply | v | başvurmak
+appointment: n | randevu
+april: n | nisan
+argue: v | savunmak, öne sürmek
+argument: n | argüman, görüş
+argumentative: adj | görüş savunan (argumentative essay: tartışmacı deneme)
+as a result: phrase | sonuç olarak
+as well as: phrase | -nin yanı sıra
+ask: v | sormak; istemek
+asking: ask | v | istemek, beklemek
+assessment: n | değerlendirme, ölçme
+assignment: n | ödev
+associated: associate | v | ilişkilendirmek
+ate: eat | v | yemek
+attend: v | (okula) devam etmek, katılmak
+available: adj | mevcut, ulaşılabilir
+average: n | ortalama
+babies: baby | n | bebek
+banning: ban | v | yasaklamak
+bars: bar | n | bar
+battle: n | mücadele, savaş
+bays: bay | n | koy
+becomes: become | v | olmak, hâline gelmek
+becoming: become | v | olmak, hâline gelmek
+begun: begin | v | başlamak
+believe in: phr v | -e inanmak
+bell: n | zil
+belongs: belong | v | ait olmak
+benefits: benefit | n, v | fayda; yararına olmak
+bigger: big | adj | daha büyük
+bike: n | bisiklet
+bills: bill | n | fatura
+biological: adj | biyolojik
+blame: v | suçlamak
+body: n | vücut
+books: book | n | kitap
+bookshop: n | kitapçı
+boom: n | patlama (ani büyüme)
+boring: adj | sıkıcı
+bottom: n | dip
+brains: brain | n | beyin
+brands: brand | n | marka
+bread: n | ekmek
+breakfast: n | kahvaltı
+burned: burn | v | yakmak
+bus stop: n | otobüs durağı
+busier: busy | adj | daha kalabalık, daha yoğun
+business: n | iş, işletme
+businesses: business | n | işletme
+butter: n | tereyağı
+buying: buy | v | satın almak
+call for: phr v | talep etmek, istemek
+came at a price: come at a price | phrase | bir bedeli olmak
+captain: n | kaptan
+care homes: care home | n | huzurevi, bakımevi
+cared: care | v | umursamak
+carers: carer | n | bakıcı
+cases: case | n | durum, vaka
+cats: cat | n | kedi
+cautious: adj | temkinli, dikkatli
+ceiling: n | tavan
+celebrated: celebrate | v | kutlamak
+centuries: century | n | yüzyıl
+certainly: adv | kesinlikle
+challenges: challenge | n | zorluk
+chance: n | fırsat, şans
+changing: change | v | değiştirmek
+cheap: adj | ucuz
+cheaper: cheap | adj | daha ucuz
+check: v | kontrol etmek
+chef: n | şef, aşçı
+cherry: n | kiraz
+chest: n | göğüs
+chicken: n | tavuk (eti)
+chickens: chicken | n | tavuk
+choice: n | seçim, tercih
+choices: choice | n | seçim, tercih
+choir: n | koro
+chosen: choose | v | seçmek
+chronic: adj | kronik, süreğen
+chronically: adv | sürekli, kronik olarak
+cities: city | n | şehir
+civil engineering: n | inşaat mühendisliği
+cleaned: clean | v | temizlemek
+clock: n | saat (internal clock: biyolojik saat)
+closed: close | v | kapanmak
+closes: close | v | kapatmak
+clothes: n | giysiler, kıyafetler
+clothing: n | giyim, giysi
+club: n | kulüp
+coach: n | antrenör, çalıştırıcı
+coat: n | palto, mont
+cocktail: n | kokteyl
+colleague: n | iş arkadaşı
+collections: collection | n | koleksiyon
+colours: colour | n | renk
+common: adj | yaygın
+communicating: communicate | v | iletişim kurmak
+companies: company | n | şirket
+compete: v | rekabet etmek
+competent: adj | yeterli, yetkin
+completed: complete | v | tamamlamak
+compromise: n | uzlaşma, orta yol
+concentrate: v | konsantre olmak, odaklanmak
+concerns: concern | n | endişe, kaygı
+conditions: condition | n | koşul; hastalık, rahatsızlık
+confident: adj | kendinden emin; emin
+consequences: consequence | n | sonuç
+considerable: adj | kayda değer, büyük
+consultations: consultation | n | (doktor) görüşmesi, muayene
+consumed: consume | v | tüketmek
+consumers: consumer | n | tüketici
+contact: n | temas, iletişim
+contain: v | içermek
+content: n | içerik
+contribute: v | katkıda bulunmak
+convincing: adj | ikna edici
+cooking: n | yemek yapma
+corridor: n | koridor
+cost: v | mal olmak
+course: n | kurs
+create: v | yaratmak, oluşturmak
+crisis: n | kriz
+critically: adv | eleştirel biçimde
+crossed: cross | v | geçmek
+crowded: adj | kalabalık
+cruise ships: cruise ship | n | yolcu gemisi, kruvaziyer
+cucumbers: cucumber | n | salatalık
+curry: n | köri (baharatlı yemek)
+cut: v | kesmek, doğramak
+cuts: cut | v | kesmek
+data: n | veri
+deadlines: deadline | n | son teslim tarihi
+decades: decade | n | on yıl
+decide: v | karar vermek
+decision: n | karar
+delighted: adj | çok memnun
+dementia: n | demans, bunama
+demographic: adj | demografik, nüfusla ilgili
+depression: n | depresyon
+designing: design | v | tasarlamak
+detect: v | algılamak, tespit etmek
+detection: n | tespit
+develop: v | geliştirmek; gelişmek
+developing: develop | v | geliştirmek
+develops: develop | v | gelişmek
+diabetes: n | diyabet, şeker hastalığı
+diet: n | beslenme düzeni
+different: adj | farklı
+disclose: v | açıklamak, ifşa etmek
+discover: v | keşfetmek, fark etmek
+distances: distance | n | mesafe
+divided: adj | bölünmüş (görüş)
+doctors: doctor | n | doktor
+dog: n | köpek
+dogs: dog | n | köpek
+donations: donation | n | bağış
+draw: v | (resim) çizmek
+drink: v | içmek
+earlier: early | adv | daha erken
+eating: eat | v | yemek
+eats: eat | v | yemek
+economic: adj | ekonomik
+economy: n | ekonomi
+edge: n | kenar, uç
+education: n | eğitim
+educators: educator | n | eğitimci
+eggs: egg | n | yumurta
+eighty: num | seksen
+either: conj | (either ... or) ya ... ya da
+elsewhere: adv | başka bir yere
+end up: phr v | sonunda (bir yere) varmak, -e düşmek
+enforced: enforce | v | uygulamak, yaptırım uygulamak
+engineers: engineer | n | mühendis
+enjoy: v | keyif almak, sevmek
+enormously: adv | muazzam derecede
+enter: v | girmek (veri)
+essay: n | deneme, kompozisyon
+essays: essay | n | deneme, kompozisyon
+evaluate: v | değerlendirmek
+evenings: evening | n | akşam
+ever: adv | hiç, şimdiye kadar
+exist: v | var olmak
+experimented: experiment | v | denemek, deney yapmak
+explain: v | açıklamak
+extend: v | uzanmak, kapsamak
+face: v | karşı karşıya kalmak, yüzleşmek
+face to face: phrase | yüz yüze
+facts: fact | n | olgu, gerçek bilgi
+fairness: n | adalet, hakkaniyet
+fall asleep: phr v | uykuya dalmak
+falls: fall | v, n | düşmek; düşme
+fantastic: adj | harika
+far from: phrase | -den uzak, hiç de ... değil
+fashionable: adj | moda, şık
+fast fashion: n | hızlı moda
+fast food: n | hazır yemek, fast food
+faster: fast | adj | daha hızlı
+favourite: adj | en sevdiği, favori
+fear: v | korkmak, endişe etmek
+fed: feed | v | beslemek
+feels: feel | v | hissetmek
+fibres: fibre | n | lif
+final: adj | son
+finding: find | v | bulmak
+finish line: n | bitiş çizgisi
+first edition: n | ilk baskı
+five-kilometre: adj | beş kilometrelik
+flexible: adj | esnek
+fluent: adj | akıcı
+forced: force | v | zorlamak
+forget: v | unutmak
+fortieth: num | kırkıncı
+forty: num | kırk
+fourteen: num | on dört
+freely: adv | serbestçe
+frequently: adv | sık sık
+fresh: adj | taze; temiz (hava)
+from scratch: phrase | sıfırdan
+frozen: freeze | v | dondurmak
+fulfilling: adj | tatmin edici, doyurucu
+full-time: adj, adv | tam zamanlı
+fun: adj | eğlenceli
+fund: v | finanse etmek
+fundamental: adj | temel, köklü
+funding: n | finansman, fon
+funds: fund | v | finanse etmek
+gain: v | kazanmak, elde etmek
+gaining: gain | v | kazanmak
+games: game | n | oyun
+gap year: n | ara yıl (okuldan sonra bir yıl ara)
+garlic: n | sarımsak
+garment: n | giysi (garment workers: konfeksiyon işçileri)
+garments: garment | n | giysi
+gave up: give up | phr v | bırakmak (alışkanlık); pes etmek
+generally: adv | genellikle
+get out of bed: phrase | yataktan kalkmak
+get up: phr v | (yataktan) kalkmak
+girl: n | kız
+give up: phr v | pes etmek; bırakmak
+giving: give | v | vermek
+glasses: n | gözlük
+gloves: glove | n | eldiven
+go far enough: phrase | yeterince ileri gitmek
+go running: phrase | koşuya çıkmak
+goal: n | hedef; gol
+goals: goal | n | gol
+going on: go on | phr v | olmak, yaşanmak
+goods: n | mal, ürün
+government: n | hükümet, yönetim
+governments: government | n | hükümet
+grades: grade | n | not (okul)
+granddaughter: n | kız torun
+grandfather: n | dede
+grandma: n | büyükanne, nine
+grandpa: n | dede
+great: adj | harika; büyük
+groups: group | n | grup
+habits: habit | n | alışkanlık
+half: n | yarı, devre
+half-blind: adj | yarı kör
+half-time: n | devre arası
+hated: hate | v | nefret etmek
+headache: n | baş ağrısı
+health: n | sağlık
+healthcare: n | sağlık hizmetleri
+healthier: healthy | adj | daha sağlıklı
+heard: hear | v | duymak
+heavily: adv | şiddetli (yağmur)
+here: adv | burada
+hero: n | kahraman
+herself: pron | kendisi
+hidden: adj | gizli
+high school: n | lise
+hill: n | tepe
+holding: hold | v | tutmak
+holds: hold | v | tutmak
+holiday: n | tatil
+homes: home | n | ev
+honey: n | bal
+hormone: n | hormon
+horse: n | at
+hostels: hostel | n | hostel (ucuz konaklama)
+hotels: hotel | n | otel
+hottest: hot | adj | en sıcak
+household: adj | ev (household goods: ev eşyası)
+human: adj | insani, insan
+ideas: idea | n | fikir
+ignore: v | görmezden gelmek
+impact: n | etki
+in person: phrase | yüz yüze, bizzat
+in the end: phrase | sonunda
+including: prep | dahil
+incredible: adj | inanılmaz
+independent: adj | bağımsız
+individual: adj | bireysel
+industry: n | sanayi, sektör
+inherited: inherit | v | miras almak
+interest: n | ilgi
+internal: adj | iç
+investment: n | yatırım
+island: n | ada
+jeans: n | kot pantolon
+join: v | katılmak
+kennels: kennel | n | köpek kulübesi, kafes
+kept going: keep going | phrase | devam etmek, yılmamak
+keys: key | n | anahtar
+killed: kill | v | öldürmek, bitirmek
+knee: n | diz
+knowing: know | v | bilmek
+known: know | v | bilinmek (be known to)
+label: n | etiket
+laptop: n | dizüstü bilgisayar
+largest: large | adj | en büyük
+late-night: adj | gece geç saatteki
+laugh: n | kahkaha, gülüş
+laughs: laugh | v | gülmek
+laziness: n | tembellik
+left behind: leave behind | phr v | geride bırakmak
+legs: leg | n | bacak
+lemon: n | limon
+lentil: n | mercimek
+lets go: let go | phr v | (elini) bırakmak
+lifestyle: n | yaşam tarzı
+lifting: lift | v | kaldırmak
+limiting: limit | v | sınırlamak
+limits: limit | n | sınır
+linked: link | v | ilişkilendirmek, bağlantılı olmak
+listen: v | dinlemek
+listens: listen | v | dinlemek
+litres: litre | n | litre
+lived: live | v | yaşamak, oturmak
+loneliness: n | yalnızlık
+love: v | sevmek
+low: adj | düşük
+low-income: adj | düşük gelirli
+lunchtime: n | öğle vakti
+machine: n | makine
+machine-generated: adj | makine tarafından üretilmiş
+magazine: n | dergi
+main: adj | ana, asıl
+mainland: n | anakara
+mainly: adv | çoğunlukla
+maintenance: n | bakım
+make: v | yapmak
+marathon: n | maraton
+marketing: n | pazarlama
+match: n | maç
+maybe: adv | belki
+meal: n | öğün, yemek
+meant: mean | v | (be meant to) -mesi amaçlanmak
+medicine: n | ilaç
+meet: v | tanışmak, buluşmak
+melatonin: n | melatonin (uyku hormonu)
+messages: message | n | mesaj
+met: meet | v | tanışmak
+metro: n | metro
+million: num | milyon
+millions: million | n | milyonlarca
+mine: pron | benimki
+monday: n | pazartesi
+money: n | para
+month: n | ay
+mood: n | ruh hâli
+mornings: morning | n | sabah
+mouth: n | ağız
+move: v | taşınmak
+moved house: move house | phrase | taşınmak (ev değiştirmek)
+mud: n | çamur
+muddy: adj | çamurlu
+nearly: adv | neredeyse
+negative: adj | olumsuz
+nil: n | sıfır (skor)
+noise: n | gürültü
+noisy: adj | gürültülü
+oceans: ocean | n | okyanus
+offer: v | sunmak, teklif etmek
+olives: olive | n | zeytin
+open: adj | açık
+open-plan: adj | bölmesiz, açık (ofis)
+opinion: n | görüş, fikir
+opportunity: n | fırsat
+oral: adj | sözlü
+otherwise: adv | aksi takdirde
+overnight: adv | bir gecede
+overweight: adj | kilolu, fazla kilolu
+page: n | sayfa
+pair: n | çift
+part-time: adj, adv | yarı zamanlı
+partly: adv | kısmen
+pasta: n | makarna
+paths: path | n | patika, yol
+pay: v, n | ödemek; ücret, maaş
+paying: pay | v | ödemek
+peak season: n | yüksek sezon
+pensions: pension | n | emekli maaşı
+peppers: pepper | n | biber
+per: prep | başına
+perform: v | performans göstermek, başarılı olmak
+permanently: adv | kalıcı olarak
+permits: permit | n | izin belgesi, ruhsat
+persuading: persuade | v | ikna etmek
+phones: phone | n | telefon
+photographs: photograph | n | fotoğraf
+pick: v | toplamak (meyve)
+picture: n | tablo, genel durum
+pictures: picture | n | resim
+piles: pile | n | yığın
+pitch: n | (futbol) sahası
+plan: n | plan
+plans: plan | n | plan
+plants: plant | n | bitki
+play a part: phrase | rol oynamak, payı olmak
+players: player | n | oyuncu
+pleased: adj | memnun
+pockets: pocket | n | cep
+poetry: n | şiir
+pointless: adj | anlamsız, boşuna
+policies: policy | n | politika
+polyester: n | polyester
+pools: pool | n | havuz
+poorer: poor | adj | daha zayıf, daha kötü
+poorly: adv | kötü, yetersiz biçimde
+popular: adj | popüler, sevilen
+popularity: n | popülerlik, rağbet
+population: n | nüfus
+posted: post | v | paylaşmak (internette)
+potential: n | potansiyel
+poverty: n | yoksulluk
+powerful: adj | güçlü
+presentations: presentation | n | sunum
+pretending: pretend | v | -mış gibi yapmak
+previous: adj | önceki
+price: n | fiyat; bedel
+privacy: n | gizlilik, mahremiyet
+process: n | süreç
+produce: v | üretmek
+produced: produce | v | üretmek
+producing: produce | v | üretmek
+product: n | ürün
+products: product | n | ürün
+proper: adj | düzgün, doğru dürüst
+property: n | mülk, gayrimenkul
+proportion: n | oran
+proved: prove | v | (olduğu) kanıtlanmak, ortaya çıkmak
+put up: phr v | kurmak (şemsiye, çadır)
+quarter: n | çeyrek, dörtte bir
+quick: adj | hızlı, kısa
+quietly: adv | sessizce
+quit: v | bırakmak, vazgeçmek
+race: n | yarış
+raising: raise | v | yükseltmek
+ran: run | v | koşmak
+reacted: react | v | tepki vermek
+reads: read | v | okumak
+recommending: recommend | v | tavsiye etmek, önermek
+recycling: n | geri dönüşüm
+redesigning: redesign | v | yeniden tasarlamak
+reflects: reflect | v | yansıtmak
+regulation: n | düzenleme, denetim
+regulations: regulation | n | yönetmelik, kural
+release: v | piyasaya sürmek; salmak
+released: release | v | salgılanmak, salınmak
+rely on: phr v | -e güvenmek, dayanmak
+relying: rely | v | (rely on) -e güvenmek
+remain: v | kalmak
+remains: remain | v | kalmak
+rent: n | kira
+rentals: rental | n | kiralık yer (holiday rentals: tatil evleri)
+renting: rent | v | kiraya vermek
+rents: rent | n | kira
+repair: n | tamir, onarım
+replaced: replace | v | yerini almak, değiştirmek
+report: v | bildirmek
+requirements: requirement | n | gereklilik, zorunluluk
+restrictions: restriction | n | kısıtlama
+retailers: retailer | n | perakendeci
+retirement: n | emeklilik
+retirement age: n | emeklilik yaşı
+return: v | geri dönmek
+rewrite: v | yeniden yazmak
+ride: v | (bisiklete) binmek
+risen: rise | v | artmak, yükselmek
+rising: rise | v | artmak, yükselmek
+risks: risk | n | risk
+rivers: river | n | nehir
+roads: road | n | yol
+robots: robot | n | robot
+run: v | koşmak
+running: n | koşu
+sad: adj | üzgün
+safety: n | güvenlik
+salad: n | salata
+sale: n | satış
+sand: n | kum
+sandwiches: sandwich | n | sandviç
+sauce: n | sos
+saved: save | v | kurtarmak; biriktirmek, (zaman) kazanmak
+saw: see | v | görmek
+score: n | skor
+scored: score | v | (gol) atmak
+screaming: scream | v | çığlık atmak
+screens: screen | n | ekran
+second-hand: adj | ikinci el
+seconds: second | n | saniye
+seems: seem | v | görünmek
+selling: sell | v | satmak
+send: v | göndermek
+sensors: sensor | n | sensör, algılayıcı
+series: n | dizi, seri
+services: service | n | hizmet
+set: v | belirlemek, koymak
+settled: settle | v | çözülmek, karara bağlanmak
+shallow: adj | yüzeysel, sığ
+shelter: n | barınak
+shelves: shelf | n | raf
+shiny: adj | parlak
+shocked: adj | şaşkın, şoke olmuş
+shopping: n | alışveriş
+short-term: adj | kısa süreli
+shortages: shortage | n | kıtlık, eksiklik
+shouts: shout | v | bağırmak
+shrinks: shrink | v | küçülmek, azalmak
+shy: adj | utangaç
+sign: n | pankart, tabela
+silver: adj | gümüş (silver economy: yaşlılara yönelik ekonomi)
+sing: v | şarkı söylemek
+singing: sing | v | şarkı söylemek
+sixty-five: num | altmış beş
+skills: skill | n | beceri
+sleep-deprived: adj | uykusuz kalmış
+sleeps: sleep | v | uyumak
+sleepy: adj | uykulu
+slow: adj | yavaş
+smoked: smoke | v | sigara içmek
+smoking: n | sigara içme
+so-called: adj | sözde, ... diye adlandırılan
+soared: soar | v | fırlamak, tavan yapmak
+society: n | toplum
+someone: pron | biri
+somewhere: adv | bir yerde
+songs: song | n | şarkı
+sore throat: n | boğaz ağrısı
+south: adj | güney
+souvenir: n | hediyelik eşya
+speaks: speak | v | konuşmak
+specifically: adv | özellikle, özel olarak
+spoken: speak | v | konuşmak
+sports: sport | n | spor
+stairs: n | merdiven
+stalls: stall | n | tezgâh, stant
+statements: statement | n | ifade, beyan
+stay: v | kalmak
+stay up: phr v | geç yatmak, uyanık kalmak
+stayed: stay | v | kalmak
+stood: stand | v | (ayakta) durmak
+stopping: stop | v | durmak
+straight: adv | doğrudan, hemen
+straightforward: adj | basit, kolay
+stricter: strict | adj | daha sıkı
+submit: v | teslim etmek
+successful: adj | başarılı
+such: det | böyle, bu tür
+suddenly: adv | aniden
+sugar: n | şeker
+suggest: v | öne sürmek, ileri sürmek
+suggested: suggest | v | önermek
+sun cream: n | güneş kremi
+sundays: sunday | n | pazar (günü)
+sunset: n | gün batımı
+supermarket: n | süpermarket
+supply: n | arz, kaynak
+supporters: supporter | n | destekçi
+surprisingly: adv | şaşırtıcı biçimde
+survive: v | ayakta kalmak, dayanmak
+sustainable: adj | sürdürülebilir
+swimming: n | yüzme
+switch off: phr v | kafasını işten uzaklaştırmak; kapatmak
+switched on: switch on | phr v | açmak (cihaz)
+synthetic: adj | sentetik
+systems: system | n | sistem
+t-shirt: n | tişört
+take back: phr v | geri almak
+takes: take | v | götürmek
+talked: talk | v | konuşmak
+talks: talk | v | konuşmak
+tax: n | vergi
+taxpayers: taxpayer | n | vergi mükellefi
+teach: v | öğretmek
+teams: team | n | takım
+teenager: n | ergen, genç
+teenagers: teenager | n | ergen, genç
+telling: tell | v | anlatmak
+tempting: adj | cazip, kolayına gelen
+tested: test | v | test etmek, denemek
+textile: adj | tekstil
+thanked: thank | v | teşekkür etmek
+thing: n | şey
+thinking: n | düşünme
+thirty-two: num | otuz iki
+thousands: thousand | n | binlerce
+thrown away: throw away | phr v | atmak, çöpe atmak
+thursday: n | perşembe
+timetables: timetable | n | ders programı, çizelge
+tiny: adj | minicik
+tiredness: n | yorgunluk
+tomato: n | domates
+tonnes: tonne | n | ton
+tourists: tourist | n | turist
+traditional: adj | geleneksel
+training: n | antrenman, hazırlık
+trains: train | n | tren
+transport: n | ulaşım, taşımacılık
+travel: n | yolculuk, yol
+travellers: traveller | n | gezgin, yolcu
+travelling: travel | v | seyahat etmek, gezmek
+treatment: n | tedavi
+tree: n | ağaç
+tries: try | v | denemek
+true: adj | doğru, gerçek
+turquoise: adj | turkuaz
+twenty-three: num | yirmi üç
+ultimately: adv | nihayetinde
+umbrella: n | şemsiye
+umbrellas: umbrella | n | şemsiye
+unable: adj | -emeyen, yapamayan
+undermining: undermine | v | zayıflatmak, baltalamak
+understandably: adv | anlaşılır biçimde
+understands: understand | v | anlamak
+unpopular: adj | sevilmeyen, rağbet görmeyen
+unreliable: adj | güvenilmez
+using: use | v | kullanmak
+usually: adv | genellikle
+valuing: value | v | değer vermek
+vet: n | veteriner
+video: n | video
+visited: visit | v | ziyaret etmek
+volleyball: n | voleybol
+volunteered: volunteer | v | gönüllü çalışmak
+volunteering: n | gönüllülük
+wages: wage | n | ücret
+waiting: wait | v | beklemek
+waiting room: n | bekleme salonu
+walks: walk | n | yürüyüş
+warning: n | uyarı
+washed: wash | v | yıkamak
+watched: watch | v | izlemek
+watermelon: n | karpuz
+wealthy: adj | zengin
+weather: n | hava (durumu)
+weekdays: weekday | n | hafta içi
+weekends: weekend | n | hafta sonu
+welcomed: welcome | v | memnuniyetle karşılamak
+went viral: go viral | phrase | viral olmak, hızla yayılmak
+wet: adj | ıslak
+whom: pron | ki onlar(ı), kimi
+wife: n | eş, karısı
+will: modal | -ecek, -acak
+within: prep | içinde
+women: woman | n | kadın
+workers: worker | n | işçi, çalışan
+working conditions: n | çalışma koşulları
+working-age: adj | çalışma çağındaki
+workplace: n | işyeri
+workshops: workshop | n | atölye
+world: n | dünya
+worn: wear | v | giymek
+write: v | yazmak
+writers: writer | n | yazar
+writes: write | v | yazmak
+writing: n | yazma, yazı
+yourselves: pron | kendiniz
+ada
+arda
+ayşe
+baran
+cemal
+gül
+julia
+kerem
+lara
+marco
+melis
+mert
+murat
+nehir
+omar
+ozan
+pamuk
+tarık
+yılmaz
+mirela
+istanbul
+ireland
+peru
+america
+@a2-beach lost: lose | v | kaybetmek
+@a2-football lost: lose | v | kaybetmek
+@b2-sleep shifts: shift | v | değişmek, kaymak
+@b2-sleep studies: study | n | araştırma, çalışma
+@b2-ageing lives: life | n | hayat
+@b2-tourism drive: v | (bir yerden) uzaklaştırmak, itmek
+ages: age | n | yaş
+fabrics: fabric | n | kumaş
+rental: n | kiralama
+activities: activity | n | etkinlik, faaliyet
