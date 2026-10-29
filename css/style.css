@@ -303,3 +303,36 @@ body.sheet-open .wrap{padding-bottom:320px}
 .help ul{margin:6px 0 2px;padding-left:18px;font-size:15px;color:var(--ink-2);display:grid;gap:4px}
 .help-ans{list-style:none;padding-left:0 !important}
 .help-ans .dot{margin-right:6px}
+
+/* sekmeler */
+.tabs{display:flex;gap:4px;background:var(--card);border-radius:14px;padding:4px;box-shadow:var(--shadow);margin:-6px 0 18px;position:sticky;top:8px;z-index:5}
+.tabs button{flex:1;border:0;background:transparent;border-radius:10px;padding:10px 8px;font-weight:600;color:var(--ink-2)}
+.tabs button[aria-current=page]{background:var(--ink);color:var(--paper)}
+.tabs button:not([aria-current=page]):hover{background:var(--paper)}
+
+/* hedef kartı */
+.plancard{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:14px 16px;display:grid;gap:10px;margin-bottom:6px}
+.pc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.pc-title{font:700 18px/1.3 var(--word)}
+.pc-sub{font-size:14px;color:var(--ink-2);margin-top:2px}
+.pc-rec{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px;color:var(--ink-2);border-top:1.5px solid var(--line);padding-top:10px}
+.pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pf-grid label{display:grid;gap:4px;font-size:13px;color:var(--ink-3)}
+.pf-grid select,.pf-grid input{border:1.5px solid var(--line);background:var(--card);border-radius:10px;padding:9px 10px;font-size:15px;color:var(--ink);min-width:0}
+.plan-mini{margin:-4px 0 4px}
+@media (max-width:560px){.pf-grid{grid-template-columns:1fr}}
+
+/* bugünün planı */
+.todayplan{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:8px}
+.tp-item{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--card);border-radius:14px;padding:12px 14px;box-shadow:var(--shadow)}
+.tp-item .nm{font-weight:600}
+.tp-item .ds{font-size:13px;color:var(--ink-3)}
+.tp-check{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-weight:700;font-size:14px;color:#fff}
+.tp-item.ok .tp-check{background:var(--good);border-color:var(--good)}
+.tp-item.ok .nm{text-decoration:line-through;text-decoration-color:var(--ink-3)}
+
+/* öneriler */
+.recbadge{display:inline-block;font:600 11px/1 var(--ui);letter-spacing:.02em;background:var(--hl);color:#1C2541;border-radius:99px;padding:4px 8px;vertical-align:middle;margin-left:4px}
+.tpl-item.rec{box-shadow:var(--shadow),inset 0 0 0 2px var(--hl)}
+.hardrow.card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:12px 14px;margin-top:12px;border-top:0}
+.readcard + h3.sec{margin-top:24px}

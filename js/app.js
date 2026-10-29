@@ -51,10 +51,10 @@ function toast(msg, ms = 2800){
 
 /* ---------- çalışma günlüğü: seri, günlük hedef, takvim ---------- */
 const ACT_KEY = "fislik.activity.v1";
-const GOALS = [10, 20, 30, 50];
+const GOALS = [10, 15, 20, 25, 30, 40, 50];
 const HARD_MIN = 2;   // en az kaç kez "Bilmiyorum" denince zorlanılan sayılır
-let activity = { days: {}, goal: 20, best: 0 };
-try { const a = JSON.parse(localStorage.getItem(ACT_KEY) || "null"); if (a && typeof a.days === "object") activity = { days: a.days, goal: GOALS.includes(a.goal) ? a.goal : 20, best: a.best || 0 }; } catch {}
+let activity = { days: {}, goal: 20, best: 0, reads: {} };
+try { const a = JSON.parse(localStorage.getItem(ACT_KEY) || "null"); if (a && typeof a.days === "object") activity = { days: a.days, goal: GOALS.includes(a.goal) ? a.goal : 20, best: a.best || 0, reads: a.reads || {} }; } catch {}
 function saveActivity(){ try { localStorage.setItem(ACT_KEY, JSON.stringify(activity)); } catch {} }
 // yerel saate göre gün anahtarı; öğlen sabitlenir ki yaz saati geçişinde gün kaymasın
 function noon(t = now()){ const d = new Date(t); d.setHours(12, 0, 0, 0); return d; }
@@ -70,6 +70,39 @@ function logReview(){
   activity.best = Math.max(activity.best, streak().len);
   saveActivity();
 }
+/* ---------- hedef: band, sınav türü, sınav tarihi ---------- */
+const PLAN_KEY = "fislik.plan.v1";
+const BANDS = ["5.5", "6.0", "6.5", "7.0", "7.5", "8.0", "8.5"];
+let plan = null;   // { band: "7.0", type: "academic" | "general", date: "2026-12-12" | "" } ya da { skipped: true }
+try { plan = JSON.parse(localStorage.getItem(PLAN_KEY) || "null"); } catch {}
+let planEditing = false;
+function savePlan(){ try { localStorage.setItem(PLAN_KEY, JSON.stringify(plan)); } catch {} }
+const hasPlan = () => !!(plan && plan.band);
+function daysLeft(){
+  if (!hasPlan() || !plan.date) return null;
+  const [y, m, d] = plan.date.split("-").map(Number);
+  return Math.round((new Date(y, m - 1, d, 12) - noon()) / DAY);
+}
+// hedef banda göre öneriler: desteler, hikâye seviyesi, günlük kart sayısı
+function recommend(){
+  const b = hasPlan() ? parseFloat(plan.band) : 7;
+  const rec = b <= 5.5 ? { decks: ["a2", "b1"], level: "B1", goal: 15 }
+            : b <= 6.0 ? { decks: ["b1", "b2"], level: "B1", goal: 20 }
+            : b <= 6.5 ? { decks: ["b2", "topic"], level: "B2", goal: 20 }
+            : b <= 7.0 ? { decks: ["b2", "ielts-c1", "topic"], level: "B2", goal: 25 }
+            : b <= 7.5 ? { decks: ["ielts-c1", "b2", "topic"], level: "B2", goal: 30 }
+            :            { decks: ["ielts-c1", "topic"], level: "B2", goal: 40 };
+  const left = daysLeft();
+  rec.rush = left !== null && left >= 0 && left <= 30;   // son bir ay: biraz daha fazla kart
+  if (rec.rush) rec.goal = Math.min(50, rec.goal + 10);
+  return rec;
+}
+const isRecDeck = t => { const r = recommend().decks; return r.includes(t.key) || (t.kind === "topic" && r.includes("topic")); };
+function nextStory(){
+  const lv = recommend().level;
+  return STORIES.find(s => s.level === lv && !quizBest[s.id]) || STORIES.find(s => !quizBest[s.id]) || null;
+}
+
 function lastDays(n){ const d = noon(); let sum = 0; for (let i = 0; i < n; i++) { sum += activity.days[dayKey(d)] || 0; d.setDate(d.getDate() - 1); } return sum; }
 
 /* ---------- depolama: Claude içinde hesaba, dışarıda tarayıcıya ---------- */
@@ -152,6 +185,7 @@ const app = document.getElementById("app");
 function render(){
   if (view.name === "deck" && !store.decks[view.id]) view = { name: "home" };
   if (view.name === "home") renderHome();
+  else if (view.name === "vocab") renderVocab();
   else if (view.name === "deck") renderDeck();
   else if (view.name === "study") renderStudy();
   else if (view.name === "stories") renderStories();
@@ -238,7 +272,6 @@ function heatmapHTML(){
 
 function progressHTML(cards){
   const st = streak(), known = cards.filter(k => k.status === "known").length;
-  const hard = cards.filter(k => k.status !== "known" && (k.miss || 0) >= HARD_MIN).length;
   const tile = (n, label) => `<div class="tile"><b>${n}</b><span>${label}</span></div>`;
   return `<h3 class="sec">İlerlemen</h3>
     <section class="progress">
@@ -255,11 +288,14 @@ function progressHTML(cards){
           ${GOALS.map(g => `<button data-act="goal" data-v="${g}" aria-pressed="${activity.goal === g}">${g}</button>`).join("")}
         </div>
       </div>
-      <div class="hardrow">
-        <div><div class="nm">Zorlandıkların</div><div class="ds">En az ${HARD_MIN} kez "Bilmiyorum" dediğin kelimeler. "Öğrendim" dedikçe listeden düşerler.</div></div>
-        <button class="btn small" data-act="studyHard" ${hard ? "" : "disabled"}>Çalış (${hard})</button>
-      </div>
     </section>`;
+}
+function hardHTML(cards){
+  const hard = cards.filter(k => k.status !== "known" && (k.miss || 0) >= HARD_MIN).length;
+  return `<div class="hardrow card">
+      <div><div class="nm">Zorlandıkların</div><div class="ds">En az ${HARD_MIN} kez "Bilmiyorum" dediğin kelimeler. "Öğrendim" dedikçe listeden düşerler.</div></div>
+      <button class="btn small" data-act="studyHard" ${hard ? "" : "disabled"}>Çalış (${hard})</button>
+    </div>`;
 }
 
 /* kelime listeleri: çalışılan her kelime cevabına göre Bilmiyorum / Öğreniyorum / Öğrendim listesine taşınır */
@@ -298,7 +334,8 @@ function renderHelp(){
     <h2 class="ptitle">Nasıl kullanılır?</h2>
     <p class="hint">Fişlik, IELTS kelimelerini aralıklı tekrarla öğrenmen için yapıldı: bilmediğin kelimeler sık, öğrendiklerin hiç karşına çıkmaz. Böylece zamanını bilmediklerine harcarsın.</p>
     <ol class="help">
-      ${step(1, "Bir deste ekle", `<p>Ana sayfanın altındaki <b>Hazır şablonlar</b> bölümünden seviyene uygun bir deste (A2, B1, B2, C1) ya da bir <b>konu destesi</b> (Çevre, Eğitim…) seç ve <b>Ekle</b>'ye bas. İstersen kendi desteni oluşturup kelimeleri tek tek de ekleyebilirsin.</p>`)}
+      ${step(0, "Hedefini belirle", `<p><b>Bugün</b> sekmesinde sınav türünü (Academic / General Training), hedef band puanını ve istersen sınav tarihini gir. Fişlik buna göre günlük kart sayısı, desteler ve okuma seviyesi önerir; <b>Bugünün planı</b> listesi de her gün ne yapman gerektiğini gösterir. Uygulama üç sekmeden oluşur: <b>Bugün</b>, <b>Kelime</b>, <b>Okuma</b>.</p>`)}
+      ${step(1, "Bir deste ekle", `<p><b>Kelime</b> sekmesindeki <b>Hazır şablonlar</b> bölümünden seviyene uygun bir deste (A2, B1, B2, C1) ya da bir <b>konu destesi</b> (Çevre, Eğitim…) seç ve <b>Ekle</b>'ye bas. Hedefine uygun desteler <b>Önerilen</b> diye işaretlidir. İstersen kendi desteni oluşturup kelimeleri tek tek de ekleyebilirsin.</p>`)}
       ${step(2, "Çalışmaya başla", `<p><b>Çalışmaya başla</b> sana bugün çalışman gereken kartları getirir. Her oturumda en fazla ${NEW_PER_SESSION} yeni kelime gelir. İki çalışma şekli var:</p>
         <ul><li><b>Kart çevir:</b> Kelimeyi gör, anlamını düşün, sonra kartı çevir. Arka yüzde anlam, tanım, örnek cümle ve cümlenin Türkçesi var.</li>
         <li><b>Yazarak:</b> Türkçesini görürsün, İngilizcesini yazarsın. Yazım hatalarını da yakalar; IELTS'te yazım puan kaybettirir.</li></ul>`)}
@@ -306,9 +343,9 @@ function renderHelp(){
         <ul class="help-ans"><li><span class="dot c-bad"></span><b>Bilmiyorum:</b> Kelime her çalışmada karşına çıkar, aynı oturumun sonunda da bir kez daha gelir.</li>
         <li><span class="dot c-mid"></span><b>Öğreniyorum:</b> Kelime ertesi gün tekrar gelir.</li>
         <li><span class="dot c-good"></span><b>Öğrendim:</b> Kelime artık gösterilmez. Unutursan <b>Öğrendim</b> listesinden geri alabilirsin.</li></ul>`)}
-      ${step(4, "Listelerini takip et", `<p>Ana sayfadaki <b>Kelime listelerin</b> bölümünde her kelimenin hangi listede olduğunu görürsün ve istediğin listeyi ayrıca çalışabilirsin. İki kez <i>Bilmiyorum</i> dediğin kelimeler <b>Zorlandıkların</b> bölümünde toplanır.</p>`)}
+      ${step(4, "Listelerini takip et", `<p><b>Kelime</b> sekmesindeki <b>Kelime listelerin</b> bölümünde her kelimenin hangi listede olduğunu görürsün ve istediğin listeyi ayrıca çalışabilirsin. İki kez <i>Bilmiyorum</i> dediğin kelimeler <b>Zorlandıkların</b> bölümünde toplanır.</p>`)}
       ${step(5, "Her gün biraz çalış", `<p>Günlük hedefini (10, 20, 30 ya da 50 kart) seç. Her gün çalıştıkça 🔥 serin uzar, çalışma takvimin yeşillenir. Az ama her gün çalışmak, haftada bir uzun çalışmaktan çok daha etkilidir.</p>`)}
-      ${step(6, "Hikâye oku", `<p><b>Seviyeli hikâyeler</b> bölümünde A1'den B2'ye 40 kısa hikâye var. Bilmediğin kelimeye dokun: Türkçesini ve cümleyi görürsün, istersen destene eklersin. Hikâyenin sonundaki <b>True / False / Not Given</b> soruları IELTS Reading'e hazırlar.</p>`)}
+      ${step(6, "Hikâye oku", `<p><b>Okuma</b> sekmesinde A1'den B2'ye 40 kısa hikâye var; sıradaki önerilen hikâye en üstte durur. Bilmediğin kelimeye dokun: Türkçesini ve cümleyi görürsün, istersen destene eklersin. Hikâyenin sonundaki <b>True / False / Not Given</b> soruları IELTS Reading'e hazırlar.</p>`)}
       ${step(7, "İlerlemeni koru", `<p>İlerlemen bu tarayıcıda saklanır. Başka bir cihaza geçmek ya da yedek almak için sayfanın en altındaki <b>Yedeği indir</b> ve <b>Yedekten yükle</b> düğmelerini kullan. Telefonda tarayıcı menüsünden <b>Ana ekrana ekle</b> dersen Fişlik uygulama gibi açılır ve internetsiz de çalışır.</p>`)}
     </ol>
     <h3 class="sec">Klavye kısayolları</h3>
@@ -317,19 +354,91 @@ function renderHelp(){
   ` + footer();
 }
 
+function navHTML(active){
+  const tab = (act, label) => `<button data-act="${act}" ${active === act ? 'aria-current="page"' : ""}>${label}</button>`;
+  return `<nav class="tabs" aria-label="Bölümler">${tab("home", "Bugün")}${tab("vocab", "Kelime")}${tab("stories", "Okuma")}</nav>`;
+}
+
+function planFormHTML(){
+  const p = hasPlan() ? plan : { band: "7.0", type: "academic", date: "" };
+  return `<form class="plancard planform" data-form="plan">
+    <div class="pc-title">🎯 Hedefini belirle</div>
+    <p class="hint">Hedefine göre günlük kart sayısı, desteler ve okuma seviyesi önerilir. İstediğin zaman değiştirebilirsin.</p>
+    <div class="pf-grid">
+      <label>Sınav türü<select name="type">
+        <option value="academic" ${p.type !== "general" ? "selected" : ""}>Academic</option>
+        <option value="general" ${p.type === "general" ? "selected" : ""}>General Training</option></select></label>
+      <label>Hedef band<select name="band">${BANDS.map(b => `<option ${b === p.band ? "selected" : ""}>${b}</option>`).join("")}</select></label>
+      <label>Sınav tarihi (isteğe bağlı)<input type="date" name="date" value="${esc(p.date || "")}" min="${dayKey()}"></label>
+    </div>
+    <div class="row">
+      <button class="btn hl" type="submit">Kaydet</button>
+      <button class="btn ghost" type="button" data-act="${hasPlan() ? "planCancel" : "planSkip"}">${hasPlan() ? "Vazgeç" : "Şimdilik geç"}</button>
+    </div>
+  </form>`;
+}
+
+function planCardHTML(){
+  if (planEditing || !plan) return planFormHTML();
+  if (!hasPlan()) return `<div class="plan-mini"><button class="helplink" data-act="planEdit">🎯 Hedef belirle: band ve sınav tarihine göre öneri al</button></div>`;
+  const left = daysLeft(), rec = recommend();
+  const when = left === null ? "Sınav tarihi belirlenmedi"
+             : left > 1 ? `Sınava <b>${left} gün</b> var` : left === 1 ? "Sınav <b>yarın</b>. Başarılar!" : left === 0 ? "Sınav <b>bugün</b>. Başarılar!" : "Sınav tarihin geçti. Yeni tarih girebilirsin.";
+  return `<section class="plancard">
+    <div class="pc-top">
+      <div><div class="pc-title">🎯 ${plan.type === "general" ? "General Training" : "Academic"} · Band ${esc(plan.band)}</div><div class="pc-sub">${when}</div></div>
+      <button class="ib" data-act="planEdit">Düzenle</button>
+    </div>
+    ${activity.goal !== rec.goal ? `<div class="pc-rec"><span>Hedefine göre önerilen günlük kart: <b>${rec.goal}</b>${rec.rush ? " (sınava bir aydan az kaldı)" : ""} · şu an ${activity.goal}</span>
+      <button class="btn small" data-act="applyGoal" data-v="${rec.goal}">Uygula</button></div>` : ""}
+  </section>`;
+}
+
+function todayPlanHTML(all, due){
+  const done = activity.days[dayKey()] || 0, goal = activity.goal;
+  const read = activity.reads[dayKey()] || 0, ns = nextStory();
+  const item = (ok, title, sub, btn) => `<li class="tp-item${ok ? " ok" : ""}"><span class="tp-check" aria-hidden="true">${ok ? "✓" : ""}</span>
+    <div><div class="nm">${title}</div><div class="ds">${sub}</div></div>${ok ? `<span class="added">Tamam</span>` : btn}</li>`;
+  return `<h3 class="sec">Bugünün planı</h3>
+    <ol class="todayplan">
+      ${item(done >= goal, "Kelime", all.length ? `${done} / ${goal} kart` : "Önce Kelime sekmesinden bir deste ekle",
+        all.length ? `<button class="btn small" data-act="studyAll" ${due ? "" : "disabled"}>Çalış</button>` : `<button class="btn small" data-act="vocab">Deste ekle</button>`)}
+      ${STORIES.length ? item(read > 0, "Okuma", read > 0 ? `Bugün ${read} hikâye bitirdin` : ns ? `Önerilen: ${esc(ns.title)} (${ns.level}) · hikâyeyi oku, soruları cevapla` : "Tüm hikâyeleri bitirdin; istediğini tekrar okuyabilirsin",
+        ns ? `<button class="btn small" data-act="story" data-id="${esc(ns.id)}">Oku</button>` : `<button class="btn small" data-act="stories">Hikâyeler</button>`) : ""}
+    </ol>`;
+}
+
 function renderHome(){
   const decks = Object.entries(store.decks).sort((a,b) => (a[1].created||0) - (b[1].created||0));
   const all = decks.flatMap(([,d]) => d.cards || []);
   const due = todayCount(all);
-  const used = new Set(decks.map(([,d]) => d.template || (d.starter ? "paket1" : null)).filter(Boolean));
-  app.innerHTML = header() + `
-    <section class="today">
+  app.innerHTML = header() + navHTML("home") + `
+    ${planCardHTML()}
+    ${todayPlanHTML(all, due)}
+    ${all.length ? `<section class="today">
       <div><h2>Bugün çalışılacak</h2><div class="n">${due}<span>kart</span></div></div>
       <button class="btn hl" data-act="studyAll" ${due ? "" : "disabled"}>Çalışmaya başla</button>
-      ${all.length ? goalRowHTML() : ""}
+      ${goalRowHTML()}
     </section>
-    ${all.length ? modeSeg() : ""}
+    ${modeSeg()}
     ${all.some(k => k.status === "new") ? `<div class="newinfo">Her oturumda en fazla ${NEW_PER_SESSION} yeni kelime gelir; tekrarı gelenler hep önce gösterilir.</div>` : ""}
+    ${progressHTML(all)}` : `<div class="empty">Henüz deste yok. <b>Kelime</b> sekmesinden hazır bir deste ekleyerek başla.
+      <div class="row" style="justify-content:center;margin-top:10px"><button class="btn small hl" data-act="vocab">Deste ekle</button><button class="btn small" data-act="help">Nasıl kullanılır?</button></div></div>`}
+  ` + footer();
+  // dar ekranda takvim yana kayar: en yeni haftalar görünsün
+  const hm = app.querySelector(".hm"); if (hm) hm.scrollLeft = hm.scrollWidth;
+}
+
+function renderVocab(){
+  const decks = Object.entries(store.decks).sort((a,b) => (a[1].created||0) - (b[1].created||0));
+  const all = decks.flatMap(([,d]) => d.cards || []);
+  const used = new Set(decks.map(([,d]) => d.template || (d.starter ? "paket1" : null)).filter(Boolean));
+  const tplRow = t => `<div class="tpl-item${isRecDeck(t) && !used.has(t.key) ? " rec" : ""}">
+        <div class="lvl${t.kind === "topic" ? " emo" : ""}">${esc(t.level)}</div>
+        <div><div class="nm">${esc(t.name)}${hasPlan() && isRecDeck(t) ? ` <span class="recbadge">Önerilen</span>` : ""}</div><div class="ds">${esc(t.desc)} · ${t.cards.length} kelime</div></div>
+        ${used.has(t.key) ? `<span class="added">Eklendi</span>` : `<button class="btn small" data-act="addTpl" data-key="${esc(t.key)}">Ekle</button>`}
+      </div>`;
+  app.innerHTML = header() + navHTML("vocab") + `
     <h3 class="sec">Destelerin</h3>
     <div class="decks">
       ${decks.length ? decks.map(([id,d]) => {
@@ -343,32 +452,18 @@ function renderHome(){
           <div class="deck-meta">${cs.length} kart</div>
           ${legendHTML(c)}
         </article>`;
-      }).join("") : `<div class="empty">Henüz deste yok. Aşağıdaki hazır şablonlardan birini ekle ya da kendi kategorini oluştur.<br><button class="btn small" data-act="help" style="margin-top:10px">Nasıl kullanılır?</button></div>`}
+      }).join("") : `<div class="empty">Henüz deste yok. Aşağıdaki hazır şablonlardan birini ekle ya da kendi kategorini oluştur.${hasPlan() ? " Hedefine uygun olanlar <b>Önerilen</b> diye işaretli." : ""}</div>`}
     </div>
     <form class="newdeck" data-form="newdeck">
       <input type="text" name="deckname" placeholder="Yeni kategori adı (ör. Environment, Education)" maxlength="60" aria-label="Yeni kategori adı">
       <button class="btn" type="submit">Oluştur</button>
     </form>
-    ${all.length ? progressHTML(all) + wordListsHTML(decks) : ""}
-    ${STORIES.length ? `<h3 class="sec">Okuma</h3>
-    <button class="readcard" data-act="stories">
-      <span class="lvl">A1<br>B2</span>
-      <span><span class="nm">Seviyeli hikâyeler</span><span class="ds">${STORIES.length} kısa hikâye. Okurken bilmediğin kelimeye dokun, anlamını gör, destene ekle.</span></span>
-      <span class="go" aria-hidden="true">→</span>
-    </button>` : ""}
+    ${all.length ? wordListsHTML(decks) + hardHTML(all) : ""}
     ${[["Hazır şablonlar: seviye desteleri", TEMPLATES.filter(t => t.kind !== "topic")],
        ["Konu desteleri: IELTS Writing konuları", TEMPLATES.filter(t => t.kind === "topic")]].filter(([, ts]) => ts.length).map(([title, ts]) => `
     <h3 class="sec">${title}</h3>
-    <div class="tpl">
-      ${ts.map(t => `<div class="tpl-item">
-        <div class="lvl${t.kind === "topic" ? " emo" : ""}">${esc(t.level)}</div>
-        <div><div class="nm">${esc(t.name)}</div><div class="ds">${esc(t.desc)} · ${t.cards.length} kelime</div></div>
-        ${used.has(t.key) ? `<span class="added">Eklendi</span>` : `<button class="btn small" data-act="addTpl" data-key="${esc(t.key)}">Ekle</button>`}
-      </div>`).join("")}
-    </div>`).join("")}
+    <div class="tpl">${ts.map(tplRow).join("")}</div>`).join("")}
   ` + footer();
-  // dar ekranda takvim yana kayar: en yeni haftalar görünsün
-  const hm = app.querySelector(".hm"); if (hm) hm.scrollLeft = hm.scrollWidth;
 }
 
 function renderDeck(){
@@ -379,7 +474,7 @@ function renderDeck(){
                   .sort((a,b) => ORDER.indexOf(a.status) - ORDER.indexOf(b.status) || (a.added||0) - (b.added||0));
   const LIMIT = 200, list = shown.slice(0, LIMIT);
   app.innerHTML = header() + `
-    <button class="back" data-act="home">← Destelere dön</button>
+    <button class="back" data-act="vocab">← Destelere dön</button>
     <div class="dtitle"><input type="text" value="${esc(d.name)}" data-field="deckname" aria-label="Deste adı" maxlength="60"></div>
     ${barHTML(c, cs.length)}
     <div style="margin:8px 0 16px">${legendHTML(c)}</div>
@@ -509,6 +604,7 @@ function answerQuiz(i, v){
     const score = st.quiz.reduce((n, [, a], k) => n + (picks[k] === a ? 1 : 0), 0);
     const prev = quizBest[st.id];
     if (!prev || score > prev.score) { quizBest[st.id] = { score, total: st.quiz.length }; try { localStorage.setItem(QUIZ_KEY, JSON.stringify(quizBest)); } catch {} }
+    const dk = dayKey(); activity.reads[dk] = (activity.reads[dk] || 0) + 1; saveActivity();
   }
   // sadece soru bölümünü yenile: sayfa kaymasın, okuduğun yer kaybolmasın
   const sec = app.querySelector(".quiz"); if (sec) sec.outerHTML = quizHTML(st);
@@ -516,12 +612,17 @@ function answerQuiz(i, v){
 
 function renderStories(){
   const levels = [...new Set(STORIES.map(s => s.level))];
-  app.innerHTML = header() + `
-    <button class="back" data-act="home">← Ana sayfa</button>
+  const ns = nextStory(), recLv = recommend().level, doneN = STORIES.filter(s => quizBest[s.id]).length;
+  app.innerHTML = header() + navHTML("stories") + `
     <h2 class="ptitle">Seviyeli hikâyeler</h2>
-    <p class="hint">Hepsi Fişlik için yazılmış kısa hikâyeler. Okurken bilmediğin kelimeye dokun: Türkçesini ve hikâyedeki cümleyi görürsün, istersen destene eklersin.</p>
+    <p class="hint">Hepsi Fişlik için yazılmış kısa hikâyeler. Okurken bilmediğin kelimeye dokun: Türkçesini ve hikâyedeki cümleyi görürsün, istersen destene eklersin. Sondaki True / False / Not Given soruları IELTS Reading'e hazırlar. ${doneN} / ${STORIES.length} hikâyeyi bitirdin.</p>
+    ${ns ? `<button class="readcard" data-act="story" data-id="${esc(ns.id)}">
+      <span class="lvl">${esc(ns.level)}</span>
+      <span><span class="nm">Sıradaki: ${esc(ns.title)}</span><span class="ds">${hasPlan() ? `Band ${esc(plan.band)} hedefin için önerilen seviye` : "Önerilen hikâye"} · ${wordCount(ns)} kelime · ${ns.quiz.length} soru</span></span>
+      <span class="go" aria-hidden="true">→</span>
+    </button>` : ""}
     ${levels.map(lv => `
-      <h3 class="sec">${esc(lv)} · ${esc(LEVELS[lv] || "")}</h3>
+      <h3 class="sec">${esc(lv)} · ${esc(LEVELS[lv] || "")}${hasPlan() && lv === recLv ? ` <span class="recbadge">Hedefine uygun</span>` : ""}</h3>
       <div class="tpl">${STORIES.filter(s => s.level === lv).map(s => `
         <button class="tpl-item storyrow" data-act="story" data-id="${esc(s.id)}">
           <span class="lvl">${esc(s.level)}</span>
@@ -774,7 +875,7 @@ function renderStudy(){
         </div>
         ${(() => { const st = streak(), d = activity.days[dayKey()] || 0;
           return `<p class="donestreak">🔥 ${st.len} günlük seri · bugün ${d} kart${d >= activity.goal ? " · günlük hedef tamam ✓" : ` · hedefe ${activity.goal - d} kart kaldı`}</p>`; })()}
-        <p class="hint">Bilmiyorum dediklerin her çalışmada, Öğreniyorum dediklerin yarın tekrar gelir. Öğrendim dediklerin artık gösterilmez; istersen ana sayfadaki Öğrendim listesinden tekrar edebilirsin.</p>
+        <p class="hint">Bilmiyorum dediklerin her çalışmada, Öğreniyorum dediklerin yarın tekrar gelir. Öğrendim dediklerin artık gösterilmez; istersen Kelime sekmesindeki Öğrendim listesinden tekrar edebilirsin.</p>
         <button class="btn hl" data-act="endStudy">Tamam</button>
       </div>`;
     return;
@@ -828,7 +929,8 @@ function answer(v){
 }
 function endStudy(){
   const back = session && session.from; session = null;
-  go(back && back.name === "deck" && store.decks[back.id] ? back : { name: "home" });
+  // oturum nereden başladıysa oraya dön (silinmiş bir desteye değil)
+  go(back && back.name !== "study" && (back.name !== "deck" || store.decks[back.id]) ? back : { name: "home" });
 }
 
 /* ---------- yedekleme (GitHub sürümü) ---------- */
@@ -867,6 +969,11 @@ app.addEventListener("click", async e => {
   else if (act === "studyAll") startSession(Object.keys(store.decks), false);
   else if (act === "studyHard") startSession(Object.keys(store.decks), true, k => k.status !== "known" && (k.miss || 0) >= HARD_MIN);
   else if (act === "help") go({ name: "help" });
+  else if (act === "vocab") go({ name: "vocab" });
+  else if (act === "planEdit") { planEditing = true; render(); app.querySelector("[data-form=plan] select")?.focus(); }
+  else if (act === "planCancel") { planEditing = false; render(); }
+  else if (act === "planSkip") { plan = { skipped: true }; savePlan(); render(); }
+  else if (act === "applyGoal") { activity.goal = +b.dataset.v; saveActivity(); toast(`Günlük hedef ${activity.goal} kart oldu.`); render(); }
   else if (act === "ltab") { listTab = b.dataset.v; listLimit = 50; render(); }
   else if (act === "moreList") { listLimit += 100; render(); }
   else if (act === "studyList") startSession(Object.keys(store.decks), true, k => k.status === listTab);
@@ -938,6 +1045,15 @@ app.addEventListener("submit", e => {
   e.preventDefault();
   const f = e.target;
   if (f.dataset.form === "typed") { submitTyped(f.typed.value); return; }
+  if (f.dataset.form === "plan") {
+    const first = !hasPlan();
+    plan = { band: BANDS.includes(f.band.value) ? f.band.value : "7.0", type: f.type.value === "general" ? "general" : "academic", date: /^\d{4}-\d{2}-\d{2}$/.test(f.date.value) ? f.date.value : "" };
+    savePlan(); planEditing = false;
+    // ilk kurulumda önerilen günlük hedefi doğrudan uygula; sonra kullanıcının seçimine dokunma
+    if (first) { activity.goal = recommend().goal; saveActivity(); toast(`Hedefin kaydedildi. Günlük hedef: ${activity.goal} kart.`); }
+    else toast("Hedefin güncellendi.");
+    render(); return;
+  }
   if (f.dataset.form === "newdeck") {
     const name = f.deckname.value.trim(); if (!name) return;
     const id = uid(); store.decks[id] = { name, created: now(), cards: [] };
