@@ -1,0 +1,492 @@
+above: prep | üstünde, yukarısında
+abstractions: abstraction | n | soyut kavram
+accelerated: accelerate | v | hızlanmak
+accept: v | kabul etmek
+acceptable: adj | kabul edilebilir
+accompanied: accompany | v | eşlik etmek
+accordingly: adv | buna göre
+accuracy: n | doğruluk, isabet
+achievement: n | başarı
+adapted: adapt | v | uyarlamak, uyum sağlamak
+add: v | eklemek
+additional: adj | ek, ilave
+adjective: n | sıfat
+admission: n | itiraf, kabul
+advantages: advantage | n | avantaj, fayda
+affectionately: adv | sevecen bir şekilde
+agreement: n | onay, anlaşma
+alarms: alarm | n | alarm (false alarm: yanlış alarm)
+algorithm: n | algoritma
+algorithms: algorithm | n | algoritma
+alive: adj | hayatta, canlı
+aloud: adv | sesli olarak
+alpine: adj | Alp, Alplere ait
+analysis: n | analiz, inceleme
+anticipated: anticipate | v | beklemek, öngörmek
+apparently: adv | görünüşe göre
+appear: v | görünmek
+archive: n | arşiv
+areas: area | n | alan, bölge
+around: adv | yaklaşık; etrafında
+arrive: v | varmak, gelmek
+arriving: arrive | v | varmak, gelmek
+artificial: adj | yapay
+artist: n | sanatçı, ressam
+at the expense of: phrase | -in pahasına
+austrian: adj | Avusturya'ya ait
+author: n | yazar
+authorities: authority | n | yetkililer
+automated: automate | v | otomatikleştirmek
+automatically: adv | otomatik olarak, düşünmeden
+automation: n | otomasyon
+autumns: autumn | n | sonbahar
+awake: adj | uyanık
+belonging: belong | v | ait olmak
+beneath: prep | altında
+betraying: betray | v | ihanet etmek, sadık kalmamak
+bias: n | önyargı, eğilim (automation bias: otomasyona aşırı güven)
+biking: n | bisiklet sürme (mountain biking: dağ bisikleti)
+biopsy: n | biyopsi
+boat: n | tekne
+borrowing: borrow | v | ödünç almak
+burning: burn | v | yanmak
+came to a head: come to a head | phrase | doruğa ulaşmak, patlak vermek
+cancer: n | kanser
+cancers: cancer | n | kanser
+canvas: n | tuval
+captured: capture | v | yakalamak, yansıtmak
+careers: career | n | kariyer, meslek
+careless: adj | dikkatsiz
+carried: carry | v | taşımak, içermek
+case: n | vaka, durum
+caught: catch | v | yakalamak
+century: n | yüzyıl
+certain: adj | emin
+chemical: adj | kimyasal
+chose: choose | v | seçmek, tercih etmek
+classic: adj | klasik
+clients: client | n | müşteri
+climate: n | iklim
+climbed: climb | v | tırmanmak, çıkmak
+climbing: n | tırmanış
+clockwork: n | saat mekanizması
+clue: n | ipucu
+coast: n | kıyı, sahil
+collaborating: collaborate | v | iş birliği yapmak
+collaboration: n | iş birliği
+colonies: colony | n | koloni
+companionship: n | arkadaşlık, yoldaşlık
+compiled: compile | v | derlemek, hazırlamak
+complain: v | şikâyet etmek
+compliment: n | iltifat, övgü
+composition: n | kompozisyon (resim)
+compromises: compromise | n | uzlaşma, ödün
+conclusion: n | sonuç, karar
+condition: n | koşul, şart
+confirmed: confirm | v | doğrulamak
+conservation: n | koruma, restorasyon (eser)
+considered: consider | v | ... olarak görmek
+constant: adj | sürekli
+contained: contain | v | içermek
+converted: convert | v | dönüştürmek
+conviction: n | inanç, kanaat
+counted: count | v | saymak
+countless: adj | sayısız
+covering: cover | v | örtmek, kaplamak
+crevasses: crevasse | n | buzul yarığı
+critic: n | eleştirmen
+culture: n | kültür
+curiosity: n | merak
+daily: adj | günlük
+damp: adj | nemli, rutubetli
+dangerous: adj | tehlikeli
+death: n | ölüm
+deciding: decide | v | karar vermek
+decline: n | düşüş, gerileme
+defeat: n | yenilgi
+deferring: defer | v | (defer to) -e boyun eğmek, kararı -e bırakmak
+denial: n | inkâr, gerçeği kabul etmeme
+depend: v | (depend on) -e bağlı olmak
+dependent: adj | bağımlı
+descend: v | inmek
+describe: v | tanımlamak, anlatmak
+despite: prep | -e rağmen
+destroy: v | yok etmek
+detailed: adj | ayrıntılı
+diagnostic: adj | tanı koymaya yarayan, teşhis
+difficulty: n | zorluk, sıkıntı
+dilemma: n | ikilem
+dim: adj | loş
+direct: adj | doğrudan
+dirt: n | kir
+disappear: v | yok olmak, kaybolmak
+discipline: n | disiplin
+discourage: v | caydırmak, vazgeçirmek
+discovery: n | keşif
+dismal: adj | kasvetli
+distracted: adj | dikkati dağılmış
+divide up: phr v | bölmek, paylaştırmak
+document: n | belge
+documented: document | v | belgelemek
+documenting: document | v | belgelemek
+doing: do | v | yapmak
+dreich: adj | (İskoçça) kasvetli, soğuk ve yağışlı (hava)
+drizzle: n | çisenti, ince yağmur
+drizzly: adj | çiseleyen
+dry: adj | kuru; (mizah) iğneleyici, ince
+dull: adj | sönük, donuk
+dusk: n | alacakaranlık
+early-stage: adj | erken evre
+electric: adj | elektrikli
+emerged: emerge | v | ortaya çıkmak
+emphasising: emphasise | v | vurgulamak
+encourage: v | teşvik etmek
+engineer: n | mühendis
+entire: adj | bütün, tüm
+episode: n | olay, dönem
+equally: adv | aynı şekilde, öte yandan
+equivalent: n | karşılık, eşdeğer
+estimate: v | tahmin etmek
+ethics: n | etik
+examining: examine | v | incelemek
+exception: n | istisna
+exhausting: adj | yorucu
+expectant: adj | bekleyen, umutlu
+expecting: expect | v | beklemek
+experienced: adj | deneyimli
+experiences: experience | n | deneyim, yaşantı
+explaining: explain | v | açıklamak
+expression: n | ifade, deyim
+fails: fail | v | başarısız olmak, yanılmak
+faint: adj | belli belirsiz, soluk
+faithful: adj | sadık
+false: adj | yanlış, sahte
+figure: n | figür, insan silueti
+firmer: firm | adj | daha sert, daha sağlam
+flagging: flag | v | işaretlemek
+following: adj | ertesi, sonraki
+footnotes: footnote | n | dipnot
+former: adj | eski
+fortnight: n | iki hafta
+frequent: adj | sık
+further: adj | ek, ileri
+gallery: n | galeri
+gazed: gaze | v | dalgın dalgın bakmak
+glacier: n | buzul
+glaciers: glacier | n | buzul
+gloom: n | kasvet
+graph: n | grafik
+ground: n | zemin, toprak
+guided: guide | v | rehberlik etmek
+guides: guide | n | rehber
+guiding: guide | v | rehberlik etmek
+hand: n | el (by hand: elle)
+harmless: adj | zararsız
+having: have | v | (yardımcı fiil) -miş olarak
+heart: n | kalp; öz, merkez
+helicopter: n | helikopter
+heroine: n | kadın kahraman
+highlighting: highlight | v | işaretlemek, vurgulamak
+highly: adv | son derece
+himself: pron | kendisi
+hint: n | iz, ima
+history: n | tarih, geçmiş
+holidays: holiday | n | tatil
+honesty: n | dürüstlük
+humour: n | mizah
+hundred: num | yüz
+hung: hang | v | asılı durmak
+hut: n | kulübe, dağ evi
+ice: n | buz
+identified: identify | v | tespit etmek
+images: image | n | görüntü
+implied: imply | v | ima etmek, gerektirmek
+in other words: phrase | başka bir deyişle
+income: n | gelir
+informing: inform | v | bildirmek
+infrared: adj | kızılötesi
+initial: adj | ilk
+intention: n | niyet, amaç
+intentions: intention | n | niyet, amaç
+interpretation: n | yorum
+interrupting: interrupt | v | sözünü kesmek, bölmek
+intuition: n | sezgi
+inventory: n | envanter, döküm
+invest: v | yatırım yapmak
+irregularity: n | düzensizlik, anormallik
+joke: n | şaka, espri
+keep: v | tutmak, sürdürmek
+keeper: n | (fener) bekçisi
+keepers: keeper | n | (fener) bekçisi
+knowledgeable: adj | bilgili
+ladders: ladder | n | merdiven (seyyar)
+lamp: n | lamba, fener
+lamps: lamp | n | lamba
+landscape: n | manzara; manzara resmi
+landscapes: landscape | n | manzara
+languages: language | n | dil
+lay: lie | v | bulunmak, uzanmak
+layer: n | katman
+layers: layer | n | katman
+leather-bound: adj | deri ciltli
+lens: n | mercek
+letter: n | mektup; harf (in letter: lafzen)
+lies: lie | v | (-de) yatmak, bulunmak
+lifeless: adj | cansız, ruhsuz
+lifetime: n | ömür
+light: n, v | ışık, fener; yakmak
+lighthouse: n | deniz feneri
+listening: listen | v | dinlemek
+lit: light | v | yakmak
+literal: adj | kelimesi kelimesine, lafzi
+locals: local | n | yerel halk
+log: n | seyir defteri, kayıt defteri
+logbooks: logbook | n | kayıt defteri
+loose: adj | gevşek, oynak
+losses: loss | n | kayıp
+lucky: adj | şanslı
+lung: n | akciğer
+machines: machine | n | makine
+maintain: v | bakımını yapmak, sürdürmek
+manufactured: manufacture | v | üretmek
+manufacturer: n | üretici
+maritime: adj | denizcilik
+matched: match | v | -e denk olmak, eşleşmek
+matter: n | mesele, konu
+measure: v | ölçmek
+melancholy: n | hüzün, melankoli
+mentioned: mention | v | söz etmek, belirtmek
+metal: n, adj | metal
+middle: n | orta
+might: modal | -ebilir
+millimetre: n | milimetre
+mirrored: mirror | v | yansıtmak
+mixture: n | karışım
+monitoring: n | izleme, gözetim
+mountains: mountain | n | dağ
+museum: n | müze
+museums: museum | n | müze
+nature: n | doğa; nitelik
+navigation: n | seyir, navigasyon
+needed: need | v | gerekmek
+nesting: nest | v | yuva yapmak
+news: n | haber
+nineteenth: adj | on dokuzuncu
+nineteenth-century: adj | 19. yüzyıldan kalma
+nodules: nodule | n | nodül, küçük yumru
+north: n | kuzey
+north-east: adj | kuzeydoğu
+novels: novel | n | roman
+observation: n | gözlem
+occasionally: adv | ara sıra
+occasions: occasion | n | durum, sefer
+odd: adj | tuhaf
+off: prep | açıklarında
+official: adj | resmî
+operate: v | işletmek, çalıştırmak
+original: n, adj | asıl metin, orijinal; özgün
+outline: n | taslak, dış hat
+outperformed: outperform | v | -den daha iyi sonuç vermek
+overconfident: adj | kendine fazla güvenen
+overlooked: overlook | v | gözden kaçırmak
+overpaint: n | (resmin) üzerine sonradan yapılan boya
+owner: n | sahip
+pace: n | hız
+painstaking: adj | özenli, titiz
+paint: n | boya
+painted: paint | v | boyamak
+painting: n | tablo, resim
+panels: panel | n | panel (solar panels: güneş panelleri)
+passage: n | pasaj, bölüm; geçiş
+patches: patch | n | leke, yama
+patients: patient | n | hasta
+paying attention: pay attention | phrase | dikkat etmek
+person: n | kişi
+personal: adj | kişisel
+perspective: n | bakış açısı
+photographing: photograph | v | fotoğrafını çekmek
+phrase: n | ifade, deyiş
+pigment: n | pigment, boya maddesi
+placed: place | v | yerleştirmek
+points: point | n | nokta
+posed: pose | v | (sorun) ortaya çıkarmak
+positions: position | n | tutum, görüş
+possibility: n | olasılık
+powerfully: adv | güçlü bir şekilde
+praised: praise | v | övmek
+preceded: precede | v | -den önce gelmek
+programme: n | program
+prove: v | (olduğu) ortaya çıkmak, kanıtlamak
+provided: conj | şartıyla, -mesi koşuluyla
+psychologists: psychologist | n | psikolog
+published: publish | v | yayımlamak
+puffins: puffin | n | deniz papağanı
+quality: n | özellik, nitelik
+radiologists: radiologist | n | radyolog
+rarely: adv | nadiren
+rated: rate | v | değerlendirmek
+rational: adj | mantıklı, akılcı
+reaction: n | tepki
+reader: n | okur
+readers: reader | n | okur
+records: record | n | kayıt
+recreating: recreate | v | yeniden yaratmak
+region: n | bölge
+regional: adj | bölgesel
+relentless: adj | aralıksız, amansız
+remote: adj | uzaktan
+remove: v | kaldırmak, temizlemek
+removing: remove | v | kaldırmak
+rendering: n | çeviri, yorumlama
+repeats: repeat | v | tekrarlamak
+replacement: n | yerine geçme, ikame
+replacing: replace | v | yerine koymak
+replied: reply | v | cevap vermek
+reproduce: v | yeniden üretmek, tekrarlamak
+requested: request | v | istemek, talep etmek
+requires: require | v | gerektirmek
+rescued: rescue | v | kurtarmak
+researcher: n | araştırmacı
+researchers: researcher | n | araştırmacı
+resists: resist | v | karşı çıkmak, direnmek
+responsibility: n | sorumluluk
+restoration: n | restorasyon
+restraint: n | kendini tutma, ölçülülük
+resulting: adj | ortaya çıkan
+retouched: adj | rötuşlanmış
+retreat: n | geri çekilme
+retreating: retreat | v | geri çekilmek
+returned: return | v | geri dönmek
+reveal: v | ortaya çıkarmak
+rewrote: rewrite | v | yeniden yazmak
+river: n | nehir
+rockfalls: rockfall | n | kaya düşmesi
+role: n | rol, görev
+routes: route | n | güzergâh, rota
+routine: adj | sıradan, rutin
+rubble: n | moloz
+saga: n | destan, uzun aile romanı
+samples: sample | n | örnek, numune
+satellite: n | uydu
+scan: n | tarama, görüntüleme
+scars: scar | n | yara izi
+scientists: scientist | n | bilim insanı
+scots: adj | İskoç (dili)
+scottish: adj | İskoç
+seabird: n | deniz kuşu
+searching: search | v | aramak
+section: n | bölüm, kısım
+seeing: see | v | görmek
+seventeenth-century: adj | 17. yüzyıldan kalma
+shadows: shadow | n | gölge
+shares: share | v | paylaşmak
+sheltering: shelter | v | sığınmak, korunmak
+shielding: shield | v | korumak, siper etmek
+ships: ship | n | gemi
+show: v | göstermek
+side: n | yan (side by side: yan yana)
+sight: n | görüş (within sight of: -i görebilecek mesafede)
+signs: sign | n | belirti, işaret
+simultaneously: adv | aynı anda
+sixty-year-old: adj | altmış yaşında
+slopes: slope | n | yamaç
+smaller: small | adj | daha küçük
+smoker: n | sigara içen kişi
+solar: adj | güneş (enerjisi)
+solitary: adj | yalnız, tek başına
+solvents: solvent | n | çözücü
+soot: n | is
+sounds: sound | v | (kulağa) gelmek
+source: n | kaynak
+speaking: speak | v | konuşmak
+specialists: specialist | n | uzman
+spends: spend | v | (zaman) harcamak
+spiral: adj | sarmal, döner (merdiven)
+spirit: n | ruh, öz
+spoils: spoil | v | bozmak, mahvetmek
+sprawling: adj | uzun ve dağınık, geniş kapsamlı
+stage: n | aşama
+staircase: n | merdiven
+standing: stand | v | durmak (ayakta)
+starts: start | v | başlatmak
+steep: adj | dik
+storms: storm | n | fırtına
+stranded: adj | mahsur kalmış
+stretching: stretch | v | uzanmak
+striking: adj | çarpıcı
+successfully: adv | başarıyla
+superior: adj | üstün
+supplies: supply | n | erzak, malzeme
+surface: n | yüzey
+suspects: suspect | v | sanmak, -den şüphelenmek
+suspicion: n | şüphe
+suspicious: adj | şüpheli
+suspiciously: adv | şüphe uyandıracak şekilde
+taken liberties: take liberties | phrase | (metinle) fazla serbest davranmak
+talking: talk | v | konuşmak
+temptation: n | cazibe, ayartı
+tendency: n | eğilim
+tension: n | gerginlik
+term: n | terim
+test: n | test, tetkik
+text: n | metin
+thaws: thaw | v | çözülmek, erimek
+though: conj | sanki (as though); gerçi
+touching: touch | v | dokunmak
+tours: tour | n | tur
+tranquil: adj | huzurlu, sakin
+transformed: transform | v | dönüştürmek, tamamen değiştirmek
+translate: v | çevirmek
+translated: translate | v | çevirmek
+translation: n | çeviri
+translators: translator | n | çevirmen
+treat: v | ... gibi davranmak, ... olarak görmek
+treated: treat | v | tedavi etmek
+triumphing: triumph | v | zafer kazanmak, galip gelmek
+troubled: adj | tedirgin, kaygılı
+trust: v | güvenmek
+tumours: tumour | n | tümör
+turkish: n, adj | Türkçe; Türk
+twentieth: adj | yirminci
+ultraviolet: adj | morötesi, ultraviyole
+unacceptable: adj | kabul edilemez
+unbroken: adj | kesintisiz
+undeniable: adj | inkâr edilemez
+undeniably: adv | inkâr edilemez biçimde
+underrepresented: adj | yeterince temsil edilmeyen
+unease: n | huzursuzluk, tedirginlik
+unexpected: adj | beklenmedik
+unfashionable: adj | modası geçmiş
+uniform: adj | tek düze, aynı tonda
+unremarkable: adj | sıradan, dikkat çekmeyen
+until: conj | -e kadar
+untranslatable: adj | çevrilemez
+varnish: n | vernik
+vessels: vessel | n | gemi, tekne
+visitor: n | ziyaretçi
+volume: n | hacim
+walkers: walker | n | yürüyüşçü
+ways: way | n | yol, biçim
+west: n | batı
+winters: winter | n | kış
+word: n | kelime
+wound: wind | v | kurmak (saat)
+wry: adj | buruk, hafif alaycı
+yellowed: adj | sararmış
+andreas
+brennan
+haddad
+huber
+innsbruck
+kaya
+leila
+lindqvist
+marta
+nilay
+thomas
+alps
+atlantic
+@c1-radiologist shift: n | vardiya
+@c1-lighthouse watch: n | nöbet (night watch: gece nöbeti)
+alteration: n | değişiklik, tadilat
+attractions: attraction | n | turistik faaliyet, ilgi çekici yer

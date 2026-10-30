@@ -246,3 +246,5 @@ Nevertheless, she believes the method offers a broader lesson. Memory is not a f
 
 from stories_more import STORIES_MORE
 STORIES += STORIES_MORE
+from stories_c1 import STORIES_C1
+STORIES += STORIES_C1

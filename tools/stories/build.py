@@ -40,7 +40,7 @@ print("kullanılmayan:", sorted(set(lex) - used))
 if missing: sys.exit(1)
 
 # sorular: her hikâyede olmalı, cevap T / F / NG, açıklama boş olmamalı
-qmin = {"A1": 3, "A2": 3, "B1": 4, "B2": 5}
+qmin = {"A1": 3, "A2": 3, "B1": 4, "B2": 5, "C1": 6}
 assert set(QUIZZES) == ids, ("soru eşleşmesi", set(QUIZZES) ^ ids)
 for s in STORIES:
     q = QUIZZES[s["id"]]

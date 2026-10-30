@@ -5,7 +5,7 @@
 const TEMPLATES = window.FISLIK_TEMPLATES || [];
 const STORIES = (window.FISLIK_STORIES || {}).stories || [];
 const LEXICON = (window.FISLIK_STORIES || {}).lexicon || {};
-const LEVELS = { A1: "Başlangıç", A2: "Temel", B1: "Orta", B2: "Orta üstü" };
+const LEVELS = { A1: "Başlangıç", A2: "Temel", B1: "Orta", B2: "Orta üstü", C1: "İleri" };
 const STORY_DECK_NAME = "Hikâye kelimeleri";
 const STORY_DECK_KEY = "fislik.storyDeck";
 const NEW_PER_SESSION = 20;   // bir oturumda en fazla kaç yeni kart
@@ -85,13 +85,14 @@ function daysLeft(){
 }
 // hedef banda göre öneriler: desteler, hikâye seviyesi, günlük kart sayısı
 function recommend(){
-  const b = hasPlan() ? parseFloat(plan.band) : 7;
+  // hedef girilmemişse orta seviyeden (B1) başla; C1 yeni başlayan biri için fazla zor olabilir
+  const b = hasPlan() ? parseFloat(plan.band) : 6;
   const rec = b <= 5.5 ? { decks: ["a2", "b1"], level: "B1", goal: 15 }
             : b <= 6.0 ? { decks: ["b1", "b2"], level: "B1", goal: 20 }
             : b <= 6.5 ? { decks: ["b2", "topic"], level: "B2", goal: 20 }
-            : b <= 7.0 ? { decks: ["b2", "ielts-c1", "topic"], level: "B2", goal: 25 }
-            : b <= 7.5 ? { decks: ["ielts-c1", "b2", "topic"], level: "B2", goal: 30 }
-            :            { decks: ["ielts-c1", "topic"], level: "B2", goal: 40 };
+            : b <= 7.0 ? { decks: ["b2", "ielts-c1", "topic"], level: "C1", goal: 25 }
+            : b <= 7.5 ? { decks: ["ielts-c1", "b2", "topic"], level: "C1", goal: 30 }
+            :            { decks: ["ielts-c1", "topic"], level: "C1", goal: 40 };
   const left = daysLeft();
   rec.rush = left !== null && left >= 0 && left <= 30;   // son bir ay: biraz daha fazla kart
   if (rec.rush) rec.goal = Math.min(50, rec.goal + 10);
@@ -179,7 +180,7 @@ try { const p = JSON.parse(localStorage.getItem(PREFS_KEY) || "{}"); if (p.direc
 function savePrefs(){ try { localStorage.setItem(PREFS_KEY, JSON.stringify({ direction, mode })); } catch {} }
 let editing = null;
 let session = null;
-function go(v){ if (v.name !== "wpractice" && wrTimer) { stopWrTimer(); saveWr(); } view = v; editing = null; closeSheet(); window.scrollTo(0, 0); render(); }
+function go(v){ if (v.name !== "wpractice" && wrTimer) { stopWrTimer(); saveWr(); } if (v.name !== "rtest" && rtTimer) stopRtTimer(); view = v; editing = null; closeSheet(); window.scrollTo(0, 0); render(); }
 
 const app = document.getElementById("app");
 function render(){
@@ -192,6 +193,7 @@ function render(){
   else if (view.name === "story") renderStory();
   else if (view.name === "help") renderHelp();
   else if (view.name === "writing") renderWriting();
+  else if (view.name === "rtest") renderRTest();
   else if (view.name === "wtype") renderWType();
   else if (view.name === "wcrit") renderWCrit();
   else if (view.name === "wlink") renderWLink();
@@ -351,7 +353,7 @@ function renderHelp(){
         <li><span class="dot c-good"></span><b>Öğrendim:</b> Kelime artık gösterilmez. Unutursan <b>Öğrendim</b> listesinden geri alabilirsin.</li></ul>`)}
       ${step(4, "Listelerini takip et", `<p><b>Kelime</b> sekmesindeki <b>Kelime listelerin</b> bölümünde her kelimenin hangi listede olduğunu görürsün ve istediğin listeyi ayrıca çalışabilirsin. İki kez <i>Bilmiyorum</i> dediğin kelimeler <b>Zorlandıkların</b> bölümünde toplanır.</p>`)}
       ${step(5, "Her gün biraz çalış", `<p>Günlük hedefini (10, 20, 30 ya da 50 kart) seç. Her gün çalıştıkça 🔥 serin uzar, çalışma takvimin yeşillenir. Az ama her gün çalışmak, haftada bir uzun çalışmaktan çok daha etkilidir.</p>`)}
-      ${step(6, "Hikâye oku", `<p><b>Okuma</b> sekmesinde A1'den B2'ye 40 kısa hikâye var; sıradaki önerilen hikâye en üstte durur. Bilmediğin kelimeye dokun: Türkçesini ve cümleyi görürsün, istersen destene eklersin. Hikâyenin sonundaki <b>True / False / Not Given</b> soruları IELTS Reading'e hazırlar.</p>`)}
+      ${step(6, "Hikâye oku", `<p><b>Okuma</b> sekmesinde A1'den C1'e 45 hikâye var; sıradaki önerilen hikâye en üstte durur. Gerçek sınava hazırlık için aynı sekmede 3 pasaj, 40 soru ve 60 dakikalık <b>IELTS Reading testi</b> var; bitirince tahmini band puanını ve en çok zorlandığın soru tipini görürsün. Bilmediğin kelimeye dokun: Türkçesini ve cümleyi görürsün, istersen destene eklersin. Hikâyenin sonundaki <b>True / False / Not Given</b> soruları IELTS Reading'e hazırlar.</p>`)}
       ${step(6.5, "Writing pratiği yap", `<p><b>Writing</b> sekmesinde Task 2'nin beş deneme türünü, her biri için yapı şablonunu ve açıklamalı band 7+ örnek denemeyi bulursun. <b>Deneme yaz</b> ile 40 dakikalık sayaçla bir soru cevapla; bitirince kelime sayısı, paragraf, bağlaç çeşitliliği, tekrar ve akademik üslup otomatik kontrol edilir, sonra kendi değerlendirme listeni doldurursun. Haftada en az iki deneme hedefle.</p>`)}
       ${step(7, "İlerlemeni koru", `<p>İlerlemen bu tarayıcıda saklanır. Başka bir cihaza geçmek ya da yedek almak için sayfanın en altındaki <b>Yedeği indir</b> ve <b>Yedekten yükle</b> düğmelerini kullan. Telefonda tarayıcı menüsünden <b>Ana ekrana ekle</b> dersen Fişlik uygulama gibi açılır ve internetsiz de çalışır.</p>`)}
     </ol>
@@ -623,7 +625,9 @@ function renderStories(){
   const levels = [...new Set(STORIES.map(s => s.level))];
   const ns = nextStory(), recLv = recommend().level, doneN = STORIES.filter(s => quizBest[s.id]).length;
   app.innerHTML = header() + navHTML("stories") + `
-    <h2 class="ptitle">Seviyeli hikâyeler</h2>
+    <h2 class="ptitle">Okuma</h2>
+    ${readingTestsHTML()}
+    <h3 class="sec">Seviyeli hikâyeler</h3>
     <p class="hint">Hepsi Fişlik için yazılmış kısa hikâyeler. Okurken bilmediğin kelimeye dokun: Türkçesini ve hikâyedeki cümleyi görürsün, istersen destene eklersin. Sondaki True / False / Not Given soruları IELTS Reading'e hazırlar. ${doneN} / ${STORIES.length} hikâyeyi bitirdin.</p>
     ${ns ? `<button class="readcard" data-act="story" data-id="${esc(ns.id)}">
       <span class="lvl">${esc(ns.level)}</span>
@@ -748,6 +752,153 @@ function exTrOf(k, deckId){
   return (key && tplExTr[key] && tplExTr[key][k.en.toLowerCase()]) || "";
 }
 const exBlock = (k, deckId) => k.ex ? `<div class="ex">“${esc(k.ex)}”</div>${exTrOf(k, deckId) ? `<div class="extr">${esc(exTrOf(k, deckId))}</div>` : ""}` : "";
+
+/* ---------- IELTS Reading testleri ---------- */
+const RD = window.FISLIK_READING || null;
+const RT_KEY = "fislik.rtest.v1";
+const RT_TYPES = { tfng: "True / False / Not Given", ynng: "Yes / No / Not Given", mc: "Multiple Choice", gap: "Completion (boşluk doldurma)", heading: "Matching Headings", match: "Matching Sentence Endings" };
+const ROMAN = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"];
+const LETTERS = "ABCDEFGHIJ";
+let rtBest = {}; try { rtBest = JSON.parse(localStorage.getItem(RT_KEY) || "{}") || {}; } catch {}
+let rt = null;          // { tid, only (pasaj indeksi ya da null), cur, ans: {}, secs, done }
+let rtTimer = null;
+const rtTest = id => RD && RD.tests.find(t => t.id === id);
+const rtKey = (tid, only) => only === null || only === undefined ? tid : `${tid}-p${only}`;
+function bandFor(score, total){
+  const scaled = total === 40 ? score : Math.round(score / total * 40);
+  return (RD.bands.find(([min]) => scaled >= min) || [0, 0])[1];
+}
+// sorular: tüm test boyunca 1'den numaralanır
+function rtItems(t){
+  const out = []; let n = 0;
+  t.passages.forEach((p, pi) => p.groups.forEach((g, gi) => g.items.forEach((it, ii) => out.push({ n: ++n, pi, gi, ii, g, it, key: `${pi}-${gi}-${ii}` }))));
+  return out;
+}
+const normGap = x => String(x || "").toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9' -]/g, "").replace(/^(a|an|the) /, "").replace(/\s+/g, " ").trim();
+function rtCorrect(g, it, v){
+  if (v === undefined || v === "") return false;
+  if (g.type === "gap") return it.a.map(normGap).includes(normGap(v));
+  if (g.type === "tfng" || g.type === "ynng") return v === it.a;
+  return +v === it.a;
+}
+function rtAnswerText(g, it){
+  if (g.type === "gap") return it.a[0];
+  if (g.type === "tfng") return { T: "TRUE", F: "FALSE", NG: "NOT GIVEN" }[it.a];
+  if (g.type === "ynng") return { Y: "YES", N: "NO", NG: "NOT GIVEN" }[it.a];
+  if (g.type === "heading") return `${ROMAN[it.a]}. ${g.options[it.a]}`;
+  if (g.type === "match") return `${LETTERS[it.a]}. ${g.options[it.a]}`;
+  return `${LETTERS[it.a]}. ${it.options[it.a]}`;
+}
+function stopRtTimer(){ clearInterval(rtTimer); rtTimer = null; }
+function startRt(tid, only){
+  stopRtTimer();
+  rt = { tid, only: only === undefined ? null : only, cur: only == null ? 0 : only, ans: {}, secs: 0, done: false };
+  go({ name: "rtest" });
+}
+function rtLimit(){ const t = rtTest(rt.tid); return (rt.only === null ? t.minutes : Math.round(t.minutes / t.passages.length)) * 60; }
+function tickRt(){
+  if (!rt || rt.done) return stopRtTimer();
+  rt.secs++;
+  const left = rtLimit() - rt.secs, el = app.querySelector("[data-rtime]");
+  if (el) { el.textContent = left >= 0 ? fmtTime(left) : "+" + fmtTime(-left); el.parentElement.classList.toggle("over", left < 0); }
+  if (left === 0) toast("Süre doldu. Gerçek sınavda cevap kâğıdı burada toplanır; istersen bitirmeye devam edebilirsin.", 6000);
+}
+
+function readingTestsHTML(){
+  if (!RD) return "";
+  return `<h3 class="sec">IELTS Reading · Academic</h3>
+    ${RD.tests.map(t => { const best = rtBest[t.id];
+      return `<section class="rt-card">
+        <div class="rt-head"><div><div class="nm">${esc(t.title)}</div><div class="ds">Gerçek sınav biçimi: 3 pasaj, 40 soru, ${t.minutes} dakika${best ? ` · en iyi: <b>${best.score}/40 · band ${best.band}</b>` : ""}</div></div>
+          <button class="btn hl" data-act="rtStart" data-id="${t.id}">Tam test</button></div>
+        <div class="rt-ps">${t.passages.map((p, i) => { const b = rtBest[rtKey(t.id, i)], n = p.groups.reduce((s, g) => s + g.items.length, 0);
+          return `<button class="rt-p" data-act="rtStart" data-id="${t.id}" data-p="${i}"><span class="nm">Pasaj ${i + 1}: ${esc(p.title)}</span><span class="ds">${n} soru · ${Math.round(t.minutes / t.passages.length)} dk${b ? ` · <span class="qz-best">✓ ${b.score}/${b.total}</span>` : ""}</span></button>`; }).join("")}</div>
+      </section>`; }).join("")}`;
+}
+
+function rtQuestionHTML(x, review){
+  const { g, it, key, n } = x, v = rt.ans[key], ok = review && rtCorrect(g, it, v);
+  let input = "";
+  if (g.type === "tfng" || g.type === "ynng") {
+    const opts = g.type === "tfng" ? [["T", "TRUE"], ["F", "FALSE"], ["NG", "NOT GIVEN"]] : [["Y", "YES"], ["N", "NO"], ["NG", "NOT GIVEN"]];
+    input = `<div class="qz-b">${opts.map(([val, lab]) => `<button data-act="rtAns" data-k="${key}" data-v="${val}" aria-pressed="${v === val}" ${review ? "disabled" : ""} class="${review && val === it.a ? "is-ans" : ""}${review && v === val && !ok ? " is-wrong" : ""}">${lab}</button>`).join("")}</div>`;
+  } else if (g.type === "mc") {
+    input = `<div class="rt-mc">${it.options.map((o, i) => `<button data-act="rtAns" data-k="${key}" data-v="${i}" aria-pressed="${+v === i && v !== undefined}" ${review ? "disabled" : ""} class="${review && i === it.a ? "is-ans" : ""}${review && +v === i && v !== undefined && !ok ? " is-wrong" : ""}"><b>${LETTERS[i]}</b> ${esc(o)}</button>`).join("")}</div>`;
+  } else if (g.type === "heading" || g.type === "match") {
+    const lab = i => g.type === "heading" ? ROMAN[i] : LETTERS[i];
+    input = `<select data-rsel="${key}" ${review ? "disabled" : ""} aria-label="Soru ${n} cevabı"><option value="">Seç…</option>${g.options.map((o, i) => `<option value="${i}" ${+v === i && v !== undefined && v !== "" ? "selected" : ""}>${lab(i)}</option>`).join("")}</select>`;
+  }
+  const q = g.type === "gap"
+    ? esc(it.q).replace("____", `<input class="rt-gap" type="text" data-rgap="${key}" value="${esc(v || "")}" ${review ? "disabled" : ""} autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Soru ${n} cevabı">`)
+    : esc(it.q);
+  return `<li class="rt-q${review ? (ok ? " ok" : " bad") : ""}" value="${n}">
+    <div class="rt-qt">${q}</div>${input}
+    ${review ? `<div class="qz-f"><b>${ok ? "Doğru ✓" : `${v === undefined || v === "" ? "Boş bıraktın." : "Yanlış."} Doğrusu: ${esc(rtAnswerText(g, it))}`}</b> ${esc(it.why)}</div>` : ""}
+  </li>`;
+}
+
+function rtGroupHTML(p, pi, g, gi, items, review){
+  const list = g.type === "heading" ? `<div class="rt-opts"><b>List of Headings</b>${g.options.map((o, i) => `<div><b>${ROMAN[i]}</b> ${esc(o)}</div>`).join("")}</div>`
+             : g.type === "match" ? `<div class="rt-opts">${g.options.map((o, i) => `<div><b>${LETTERS[i]}</b> ${esc(o)}</div>`).join("")}</div>` : "";
+  return `<section class="rt-group"><p class="rt-instr">${esc(g.instr)}</p>${list}
+    <ol class="rt-qs">${items.filter(x => x.pi === pi && x.gi === gi).map(x => rtQuestionHTML(x, review)).join("")}</ol></section>`;
+}
+
+function renderRTest(){
+  const t = rt && rtTest(rt.tid); if (!t) return go({ name: "stories" });
+  const items = rtItems(t).filter(x => rt.only === null || x.pi === rt.only);
+  const review = rt.done, pi = rt.cur, p = t.passages[pi];
+  const answered = i => items.filter(x => x.pi === i && rt.ans[x.key] !== undefined && rt.ans[x.key] !== "").length;
+  const left = rtLimit() - rt.secs;
+  let summary = "";
+  if (review) {
+    const score = items.filter(x => rtCorrect(x.g, x.it, rt.ans[x.key])).length, band = bandFor(score, items.length);
+    const byType = {};
+    items.forEach(x => { const b = byType[x.g.type] || (byType[x.g.type] = [0, 0]); b[1]++; if (rtCorrect(x.g, x.it, rt.ans[x.key])) b[0]++; });
+    const weakest = Object.entries(byType).sort((a, b) => a[1][0] / a[1][1] - b[1][0] / b[1][1])[0];
+    summary = `<section class="rt-result">
+      <div class="rt-score"><b>${score} / ${items.length}</b><span>doğru</span></div>
+      <div class="rt-score"><b>${band}</b><span>tahmini band${items.length < 40 ? " (kabaca)" : ""}</span></div>
+      <div class="rt-types">${Object.entries(byType).map(([k, [c, n]]) => `<div><span>${RT_TYPES[k]}</span><b>${c}/${n}</b></div>`).join("")}</div>
+      ${weakest && weakest[1][0] < weakest[1][1] ? `<p class="hint">En çok zorlandığın soru tipi: <b>${RT_TYPES[weakest[0]]}</b>. Açıklamalarda cevabın metinde nerede olduğuna bak.</p>` : `<p class="hint">Hepsi doğru, harika!</p>`}
+      <p class="hint">Band, Academic Reading'de yaygın kullanılan dönüşüm tablosuna göre tahmindir${items.length < 40 ? "; tek pasajda 40 soruya oranlanır, bu yüzden kaba bir tahmindir" : ""}.</p>
+    </section>`;
+  }
+  app.innerHTML = `
+    <div class="top studytop"><button class="back" data-act="rtExit">← ${review ? "Okuma" : "Çık"}</button>
+      ${review ? `<span class="sync">${esc(t.title)}</span>` : `<div class="wr-timer${left < 0 ? " over" : ""}"><span data-rtime>${left >= 0 ? fmtTime(left) : "+" + fmtTime(-left)}</span>
+        <button class="btn small ghost" data-act="rtTimer">${rtTimer ? "Duraklat" : (rt.secs ? "Devam" : "Sayacı başlat")}</button></div>`}</div>
+    ${summary}
+    ${rt.only === null ? `<div class="rt-tabs" role="group" aria-label="Pasajlar">${t.passages.map((_, i) => `<button data-act="rtGo" data-p="${i}" aria-current="${i === pi}">Pasaj ${i + 1}<small>${answered(i)}/${items.filter(x => x.pi === i).length}</small></button>`).join("")}</div>` : ""}
+    <article class="rt-passage">
+      <div class="hint">READING PASSAGE ${pi + 1}${rt.only === null ? ` · You should spend about 20 minutes on Questions ${items.find(x => x.pi === pi).n}–${items.filter(x => x.pi === pi).slice(-1)[0].n}` : ""}</div>
+      <h2 class="ptitle">${esc(p.title)}</h2>
+      ${p.paras.map(([l, txt]) => `<p><b class="rt-l">${l}</b> ${esc(txt)}</p>`).join("")}
+    </article>
+    ${p.groups.map((g, gi) => rtGroupHTML(p, pi, g, gi, items, review)).join("")}
+    <div class="row rt-foot">
+      ${rt.only === null && pi < t.passages.length - 1 ? `<button class="btn" data-act="rtGo" data-p="${pi + 1}">Pasaj ${pi + 2} →</button>` : ""}
+      ${review ? `<button class="btn hl" data-act="rtStart" data-id="${t.id}" ${rt.only !== null ? `data-p="${rt.only}"` : ""}>Tekrar çöz</button>`
+               : `<button class="btn hl" data-act="rtFinish">Testi bitir (${items.filter(x => rt.ans[x.key] !== undefined && rt.ans[x.key] !== "").length}/${items.length})</button>`}
+    </div>
+  `;
+}
+function rtCounts(){
+  const t = rtTest(rt.tid), items = rtItems(t).filter(x => rt.only === null || x.pi === rt.only);
+  const filled = x => rt.ans[x.key] !== undefined && rt.ans[x.key] !== "";
+  const fin = app.querySelector("[data-act=rtFinish]"); if (fin) fin.textContent = `Testi bitir (${items.filter(filled).length}/${items.length})`;
+  app.querySelectorAll(".rt-tabs button").forEach((b, i) => { const sm = b.querySelector("small"); if (sm) sm.textContent = `${items.filter(x => x.pi === i && filled(x)).length}/${items.filter(x => x.pi === i).length}`; });
+}
+function finishRt(){
+  const t = rtTest(rt.tid), items = rtItems(t).filter(x => rt.only === null || x.pi === rt.only);
+  const empty = items.filter(x => rt.ans[x.key] === undefined || rt.ans[x.key] === "").length;
+  if (empty && !confirm(`${empty} soru boş. Gerçek sınavda boş bırakmak yerine tahmin etmek daha iyidir; yanlış cevap puan düşürmez. Yine de bitirilsin mi?`)) return;
+  stopRtTimer(); rt.done = true;
+  const score = items.filter(x => rtCorrect(x.g, x.it, rt.ans[x.key])).length, k = rtKey(rt.tid, rt.only), prev = rtBest[k];
+  if (!prev || score > prev.score) { rtBest[k] = { score, total: items.length, band: bandFor(score, items.length), date: now() }; try { localStorage.setItem(RT_KEY, JSON.stringify(rtBest)); } catch {} }
+  const dk = dayKey(); activity.reads[dk] = (activity.reads[dk] || 0) + 1; saveActivity();
+  window.scrollTo(0, 0); render();
+}
 
 /* ---------- Writing (Task 2) ---------- */
 const WR = window.FISLIK_WRITING || null;
@@ -1179,6 +1330,22 @@ app.addEventListener("click", async e => {
   else if (act === "help") go({ name: "help" });
   else if (act === "vocab") go({ name: "vocab" });
   else if (act === "writing") go({ name: "writing" });
+  else if (act === "rtStart") {
+    const busy = rt && !rt.done && Object.keys(rt.ans).length;
+    if (!busy || confirm("Devam eden testin silinecek. Yeni test başlasın mı?")) startRt(id, b.dataset.p === undefined ? null : +b.dataset.p);
+  }
+  else if (act === "rtGo") { rt.cur = +b.dataset.p; render(); window.scrollTo(0, 0); }
+  else if (act === "rtTimer") { if (rtTimer) stopRtTimer(); else rtTimer = setInterval(tickRt, 1000); b.textContent = rtTimer ? "Duraklat" : "Devam"; }
+  else if (act === "rtAns") {
+    rt.ans[b.dataset.k] = b.dataset.v;
+    b.parentElement.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    rtCounts();
+  }
+  else if (act === "rtFinish") finishRt();
+  else if (act === "rtExit") {
+    if (rt && !rt.done && Object.keys(rt.ans).length && !confirm("Testten çıkarsan cevapların silinir. Çıkılsın mı?")) return;
+    stopRtTimer(); rt = null; go({ name: "stories" });
+  }
   else if (act === "wtype") go({ name: "wtype", id });
   else if (act === "wcrit") go({ name: "wcrit" });
   else if (act === "wlink") go({ name: "wlink" });
@@ -1310,8 +1477,10 @@ app.addEventListener("change", e => {
     store.decks[view.id].name = v; store.save(view.id);
   }
   if (e.target.dataset.act === "import" && e.target.files && e.target.files[0]) importBackup(e.target.files[0]);
+  if (e.target.dataset.rsel && rt) { rt.ans[e.target.dataset.rsel] = e.target.value; rtCounts(); }
 });
 app.addEventListener("input", e => {
+  if (e.target.dataset.rgap && rt) { rt.ans[e.target.dataset.rgap] = e.target.value; rtCounts(); return; }
   if (e.target.dataset.field === "essay" && wr.draft) {
     wr.draft.text = e.target.value; updateWrCount();
     clearTimeout(updateWrCount._t); updateWrCount._t = setTimeout(saveWr, 500);
