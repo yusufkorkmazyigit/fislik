@@ -182,7 +182,7 @@ try { const p = JSON.parse(localStorage.getItem(PREFS_KEY) || "{}"); if (p.direc
 function savePrefs(){ try { localStorage.setItem(PREFS_KEY, JSON.stringify({ direction, mode })); } catch {} }
 let editing = null;
 let session = null;
-function go(v){ if (v.name !== "wpractice" && wrTimer) { stopWrTimer(); saveWr(); } if (v.name !== "rtest" && rtTimer) stopRtTimer(); view = v; editing = null; closeSheet(); window.scrollTo(0, 0); render(); }
+function go(v){ if (v.name !== "wpractice" && wrTimer) { stopWrTimer(); saveWr(); } if (v.name !== "rtest" && rtTimer) stopRtTimer(); if (v.name !== "spractice" && sp) spCleanup(); view = v; editing = null; closeSheet(); window.scrollTo(0, 0); render(); }
 
 const app = document.getElementById("app");
 function render(){
@@ -196,6 +196,12 @@ function render(){
   else if (view.name === "help") renderHelp();
   else if (view.name === "writing") renderWriting();
   else if (view.name === "rtest") renderRTest();
+  else if (view.name === "speaking") renderSpeaking();
+  else if (view.name === "spguide") renderSpGuide();
+  else if (view.name === "spphrases") renderSpPhrases();
+  else if (view.name === "spcard") renderSpCard();
+  else if (view.name === "listening") renderListening();
+  else if (view.name === "spractice") renderSpPractice();
   else if (view.name === "wtype") renderWType();
   else if (view.name === "wcrit") renderWCrit();
   else if (view.name === "wlink") renderWLink();
@@ -359,6 +365,7 @@ function renderHelp(){
       ${step(5, "Her gün biraz çalış", `<p>Günlük hedefini (10, 20, 30 ya da 50 kart) seç. Her gün çalıştıkça 🔥 serin uzar, çalışma takvimin yeşillenir. Az ama her gün çalışmak, haftada bir uzun çalışmaktan çok daha etkilidir.</p>`)}
       ${step(6, "Hikâye oku", `<p><b>Okuma</b> sekmesinde A1'den C1'e 45 hikâye var; sıradaki önerilen hikâye en üstte durur. Gerçek sınava hazırlık için aynı sekmede 3 pasaj, 40 soru ve 60 dakikalık <b>IELTS Reading testi</b> var; bitirince tahmini band puanını ve en çok zorlandığın soru tipini görürsün. Bilmediğin kelimeye dokun: Türkçesini ve cümleyi görürsün, istersen destene eklersin. Hikâyenin sonundaki <b>True / False / Not Given</b> soruları IELTS Reading'e hazırlar.</p>`)}
       ${step(6.5, "Writing pratiği yap", `<p><b>Writing</b> sekmesinde Task 2'nin beş deneme türünü, her biri için yapı şablonunu ve açıklamalı band 7+ örnek denemeyi bulursun. <b>Deneme yaz</b> ile 40 dakikalık sayaçla bir soru cevapla; bitirince kelime sayısı, paragraf, bağlaç çeşitliliği, tekrar ve akademik üslup otomatik kontrol edilir, sonra kendi değerlendirme listeni doldurursun. Haftada en az iki deneme hedefle.</p>`)}
+      ${step(6.7, "Speaking ve Listening", `<p><b>Speaking</b> sekmesinde sınav biçimi, kriterler, Part 1 konuları, Part 2 cue card'ları ve örnek konuşmalar var. <b>Deneme sınavı</b> Part 1, 2 ve 3'ü sırayla yaptırır; her cevabını kaydeder, sonunda dinlersin. Kayıtlar yalnızca senin cihazında durur ve sayfadan çıkınca silinir. Aynı sekmedeki <b>Listening rehberi</b> stratejileri ve resmî ücretsiz deneme kaynaklarını gösterir.</p>`)}
       ${step(7, "İlerlemeni koru", `<p>İlerlemen bu tarayıcıda saklanır. Başka bir cihaza geçmek ya da yedek almak için sayfanın en altındaki <b>Yedeği indir</b> ve <b>Yedekten yükle</b> düğmelerini kullan. Telefonda tarayıcı menüsünden <b>Ana ekrana ekle</b> dersen Fişlik uygulama gibi açılır ve internetsiz de çalışır.</p>`)}
     </ol>
     <h3 class="sec">Klavye kısayolları</h3>
@@ -371,7 +378,7 @@ function renderHelp(){
 
 function navHTML(active){
   const tab = (act, label) => `<button data-act="${act}" ${active === act ? 'aria-current="page"' : ""}>${label}</button>`;
-  return `<nav class="tabs" aria-label="Bölümler">${tab("home", "Bugün")}${tab("vocab", "Kelime")}${tab("stories", "Okuma")}${WR ? tab("writing", "Writing") : ""}</nav>`;
+  return `<nav class="tabs" aria-label="Bölümler">${tab("home", "Bugün")}${tab("vocab", "Kelime")}${tab("stories", "Okuma")}${WR ? tab("writing", "Writing") : ""}${SP ? tab("speaking", "Speaking") : ""}</nav>`;
 }
 
 /* yedek hatırlatması: ilerleme yalnızca bu tarayıcıda durduğu için ara sıra yedek almayı hatırlat */
@@ -442,6 +449,7 @@ function todayPlanHTML(all, due){
         ns ? `<button class="btn small" data-act="story" data-id="${esc(ns.id)}">Oku</button>` : `<button class="btn small" data-act="stories">Hikâyeler</button>`) : ""}
       ${WR ? item(weekEssays() >= WR_WEEKLY, "Writing", `Bu hafta ${weekEssays()} / ${WR_WEEKLY} deneme${wr.draft && !wr.draft.done && wrWords(wr.draft.text) ? " · yarım kalan bir denemen var" : ""}`,
         `<button class="btn small" data-act="${wr.draft ? "wcontinue" : "wnew"}">${wr.draft ? "Devam" : "Yaz"}</button>`) : ""}
+      ${SP ? item(spWeek() >= SP_WEEKLY, "Speaking", `Bu hafta ${spWeek()} / ${SP_WEEKLY} pratik · cevaplarını kaydedip dinle`, `<button class="btn small" data-act="spStart">Başla</button>`) : ""}
     </ol>`;
 }
 
@@ -927,6 +935,203 @@ function finishRt(){
   window.scrollTo(0, 0); render();
 }
 
+/* ---------- Speaking ve Listening ---------- */
+const SP = window.FISLIK_SPEAKING || null;
+const SP_KEY = "fislik.speaking.v1", SP_WEEKLY = 2;
+let spLog = []; try { spLog = JSON.parse(localStorage.getItem(SP_KEY) || "[]") || []; } catch {}
+const spWeek = () => spLog.filter(t => now() - t < 7 * DAY).length;
+const canRecord = () => !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+const SP_CHECK = [
+  "Duraksamadan, uzun cevaplar verdim (Part 1'de 2–3 cümle, Part 2'de 2 dakikaya yakın).",
+  "Cevaplarımı sebep ve örnekle genişlettim.",
+  "Fikirlerimi 'first of all', 'on the other hand' gibi bağlaçlarla sıraladım.",
+  "'good, bad, nice' yerine daha belirgin kelimeler kullandım.",
+  "Farklı zamanlar ve en az bir koşul cümlesi (If...) kullandım.",
+  "Kaydımı dinlerken söylediklerim kolayca anlaşılıyordu.",
+];
+let sp = null;   // deneme: { mode: "full"|"card", stage, topic, card, qi, recs, recorder, stream, chunks, secs, timer, noMic, notes }
+
+function spStopTimer(){ if (sp) { clearInterval(sp.timer); sp.timer = null; } }
+function spRelease(){
+  if (!sp) return;
+  spStopTimer();
+  try { if (sp.recorder && sp.recorder.state !== "inactive") sp.recorder.stop(); } catch {}
+  if (sp.stream) sp.stream.getTracks().forEach(t => t.stop());
+}
+function spCleanup(){ if (!sp) return; spRelease(); (sp.recs || []).forEach(r => r.url && URL.revokeObjectURL(r.url)); sp = null; }
+
+function renderSpeaking(){
+  if (!SP) return go({ name: "home" });
+  const row = (act, id, lvl, nm, ds) => `<button class="tpl-item storyrow" data-act="${act}" ${id ? `data-id="${esc(id)}"` : ""}><span class="lvl">${lvl}</span><span><span class="nm">${nm}</span><span class="ds">${ds}</span></span><span class="go" aria-hidden="true">→</span></button>`;
+  app.innerHTML = header() + navHTML("speaking") + `
+    <h2 class="ptitle">Speaking</h2>
+    <p class="hint">11–14 dakikalık yüz yüze görüşme, üç bölüm. Kendi sesini kaydedip dinlemek, kendi başına çalışırken en çok işe yarayan yöntemdir. Bu hafta ${spWeek()} / ${SP_WEEKLY} pratik yaptın.</p>
+    <section class="wr-cta">
+      <div><div class="nm">Deneme sınavı</div><div class="ds">Part 1 (4 soru), Part 2 (1 dk hazırlık + 2 dk konuşma), Part 3 (3 soru). Her cevabın kaydedilir, sonunda dinlersin. Kayıtlar sadece bu cihazda kalır.</div></div>
+      <button class="btn hl" data-act="spStart">Başla</button>
+    </section>
+    ${canRecord() ? "" : `<p class="hint">Bu tarayıcı ses kaydını desteklemiyor; pratik sayaçlarla, kayıtsız yapılır.</p>`}
+    <h3 class="sec">Rehber</h3>
+    <div class="tpl">
+      ${row("spGuide", "", "4", "Sınav biçimi ve kriterler", "Üç bölüm, dört puanlama kriteri ve band 7 için ipuçları")}
+      ${row("spPhrases", "", "Aa", "İşe yarar kalıplar", "Zaman kazanma, görüş bildirme, bilmediğin kelimeyi anlatma")}
+    </div>
+    <h3 class="sec">Part 1 · konular</h3>
+    ${SP.part1.map((t, i) => `<details class="wr-bank"><summary>${esc(t.topic)} <span class="hint">${esc(t.tr)} · ${t.qs.length} soru</span></summary>
+      <ul class="sp-qs">${t.qs.map(q => `<li>${esc(q)}</li>`).join("")}</ul>
+      <div class="sp-sample"><b>Örnek cevap · ${esc(t.sample[0])}</b><p>${esc(t.sample[1])}</p><div class="hint">Yapı: doğrudan cevap → sebep → küçük bir ayrıntı ya da örnek. Part 1'de 2–3 cümle yeterli.</div></div>
+    </details>`).join("")}
+    <h3 class="sec">Part 2 · cue card'lar</h3>
+    <div class="tpl">${SP.cards.map((c, i) => row("spCard", c.id, i + 1, esc(c.title), `${c.sample ? "örnek konuşma · " : ""}${c.part3.length} Part 3 sorusu`)).join("")}</div>
+    <h3 class="sec">Listening</h3>
+    <div class="tpl">${row("listening", "", "🎧", "Listening rehberi", "Sınav biçimi, stratejiler, yazım tuzakları ve resmî ücretsiz deneme kaynakları")}</div>
+  ` + footer();
+}
+
+function renderSpGuide(){
+  app.innerHTML = header() + `
+    <button class="back" data-act="speaking">← Speaking</button>
+    <h2 class="ptitle">Sınav biçimi ve kriterler</h2>
+    <div class="sp-format">${SP.format.map(([p, t, d]) => `<div><b>${esc(p)}</b><span class="hint">${esc(t)}</span><p>${esc(d)}</p></div>`).join("")}</div>
+    <h3 class="sec">Dört puanlama kriteri</h3>
+    ${SP.criteria.map(c => `<section class="wr-crit"><h3>${esc(c.name)} <span class="hint">· ${esc(c.tr)}</span></h3><p><b>Band 7 için:</b> ${esc(c.band7)}</p><p><b>İpucu:</b> ${esc(c.tip)}</p></section>`).join("")}
+    <h3 class="sec">Part 3 cevabını genişletmek</h3>
+    <ol class="wr-struct">${SP.part3tips.map(([h, d]) => `<li><b>${esc(h)}:</b> ${esc(d)}</li>`).join("")}</ol>
+  ` + footer();
+}
+
+function renderSpPhrases(){
+  app.innerHTML = header() + `
+    <button class="back" data-act="speaking">← Speaking</button>
+    <h2 class="ptitle">İşe yarar kalıplar</h2>
+    <p class="hint">Ezber cevaplar yerine bu kalıpları doğal bir şekilde kullan; sınav görevlisi ezberlenmiş paragrafları kolayca fark eder.</p>
+    ${SP.phrases.map(g => `<h3 class="sec">${esc(g.group)}</h3><div class="wr-links">${g.items.map(([en, tr]) => `<div class="wr-link"><b>${esc(en)}</b><div class="hint">${esc(tr)}</div></div>`).join("")}</div>`).join("")}
+  ` + footer();
+}
+
+function cueCardHTML(c){
+  return `<div class="cue"><div class="cue-t">${esc(c.title)}</div><div class="hint">You should say:</div><ul>${c.say.map(x => `<li>${esc(x)}</li>`).join("")}</ul><div>${esc(c.explain)}</div></div>`;
+}
+function renderSpCard(){
+  const c = SP.cards.find(x => x.id === view.id); if (!c) return go({ name: "speaking" });
+  app.innerHTML = header() + `
+    <button class="back" data-act="speaking">← Speaking</button>
+    <h2 class="ptitle">Part 2 · cue card</h2>
+    ${cueCardHTML(c)}
+    <div class="row" style="margin:12px 0"><button class="btn hl" data-act="spStart" data-id="${c.id}">Bu kartla pratik yap</button></div>
+    ${c.sample ? `<h3 class="sec">Band 7+ örnek konuşma</h3><article class="wr-model">${c.sample.split("\n\n").map(p => `<p>${esc(p)}</p>`).join("")}
+      <div class="hint">${wrWords(c.sample)} kelime · normal konuşma hızında (dakikada ~140 kelime) yaklaşık ${(wrWords(c.sample) / 140).toFixed(1).replace(".", ",")} dakika. Kartın her maddesine değinip son maddeye ('explain') en çok zamanı ayırıyor.</div></article>` : `<p class="hint">Bu kart için örnek konuşma yok. Yapı: her maddeye 20–30 saniye, son maddeye ('explain') en uzun süreyi ayır; geçmiş zamanla somut ayrıntılar ver.</p>`}
+    <h3 class="sec">Part 3 soruları</h3>
+    <ul class="sp-qs">${c.part3.map(q => `<li>${esc(q)}</li>`).join("")}</ul>
+    <p class="hint">Her Part 3 cevabında şu sırayı dene: cevap → sebep → örnek → karşı görüş → toparlama.</p>
+  ` + footer();
+}
+
+function renderListening(){
+  const L = SP.listening;
+  app.innerHTML = header() + `
+    <button class="back" data-act="speaking">← Speaking</button>
+    <h2 class="ptitle">Listening rehberi</h2>
+    <p>${esc(L.format)}</p>
+    <p class="hint">Listening için gerçek ses kayıtları gerekir. Fişlik'te kendi kayıtlarımız yok; aşağıdaki stratejileri resmî ücretsiz deneme sınavlarıyla birlikte kullan.</p>
+    <h3 class="sec">Stratejiler</h3>
+    <ol class="wr-struct">${L.strategies.map(([h, d]) => `<li><b>${esc(h)}:</b> ${esc(d)}</li>`).join("")}</ol>
+    <h3 class="sec">Sık yapılan hatalar</h3>
+    <div class="wa">${L.traps.map(([h, d]) => `<div class="wa-row warn"><span class="wa-ic" aria-hidden="true">!</span><div><b>${esc(h)}</b><div class="ds">${esc(d)}</div></div></div>`).join("")}</div>
+    <h3 class="sec">Ücretsiz kaynaklar</h3>
+    <div class="wr-links">${L.resources.map(([n, u, d]) => `<a class="wr-link sp-res" href="${esc(u)}" target="_blank" rel="noopener"><b>${esc(n)} ↗</b><div class="hint">${esc(d)}</div></a>`).join("")}</div>
+  ` + footer();
+}
+
+/* ---- deneme sınavı ---- */
+async function spStart(cardId){
+  spCleanup();
+  const card = cardId ? SP.cards.find(c => c.id === cardId) : SP.cards[Math.floor(Math.random() * SP.cards.length)];
+  const topic = SP.part1[Math.floor(Math.random() * SP.part1.length)];
+  sp = { mode: cardId ? "card" : "full", stage: cardId ? "p2prep" : "p1", topic, card, qi: 0, recs: [], notes: "", secs: 0, noMic: !canRecord() };
+  if (!sp.noMic) {
+    try { sp.stream = await navigator.mediaDevices.getUserMedia({ audio: true }); }
+    catch { sp.noMic = true; toast("Mikrofon izni verilmedi; pratik kayıtsız devam ediyor.", 5000); }
+  }
+  go({ name: "spractice" });
+  if (sp.stage === "p2prep") spBeginPrep();
+}
+function spMime(){ return ["audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg"].find(m => window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m)) || ""; }
+function spRecStart(label){
+  sp.recLabel = label; sp.recSecs = 0;
+  if (sp.noMic || !sp.stream) return;
+  sp.chunks = [];
+  const mime = spMime();
+  sp.recorder = new MediaRecorder(sp.stream, mime ? { mimeType: mime } : undefined);
+  sp.recorder.ondataavailable = e => { if (e.data && e.data.size) sp.chunks.push(e.data); };
+  const label0 = label, secsRef = () => sp.recSecs;
+  sp.recorder.onstop = () => {
+    if (!sp) return;
+    const blob = new Blob(sp.chunks, { type: sp.recorder.mimeType || mime || "audio/webm" });
+    sp.recs.push({ label: label0, url: URL.createObjectURL(blob), secs: secsRef(), ext: (blob.type.includes("mp4") ? "m4a" : blob.type.includes("ogg") ? "ogg" : "webm") });
+    if (sp.stage === "done") render();
+  };
+  sp.recorder.start();
+}
+function spRecStop(){
+  if (sp.recorder && sp.recorder.state !== "inactive") sp.recorder.stop();
+  else if (sp.noMic && sp.recLabel) sp.recs.push({ label: sp.recLabel, url: "", secs: sp.recSecs });
+  sp.recLabel = null;
+}
+function spTick(limit, onEnd){
+  spStopTimer(); sp.secs = 0; sp.limit = limit;
+  sp.timer = setInterval(() => {
+    if (!sp) return;
+    sp.secs++; if (sp.recLabel) sp.recSecs++;
+    const el = app.querySelector("[data-stime]");
+    if (el) el.textContent = limit ? fmtTime(Math.max(0, limit - sp.secs)) : fmtTime(sp.secs);
+    if (limit && sp.secs >= limit) { spStopTimer(); onEnd && onEnd(); }
+  }, 1000);
+}
+// ekran sayaç başlamadan çizildiği için süre sınırı önceden yazılır (hazırlıkta 01:00 görünsün)
+function spBeginPrep(){ spStopTimer(); sp.stage = "p2prep"; sp.secs = 0; sp.limit = 60; render(); spTick(60, spBeginTalk); }
+function spBeginTalk(){
+  if (!sp || sp.stage !== "p2prep") return;
+  const ta = app.querySelector("[data-spnotes]"); if (ta) sp.notes = ta.value;
+  sp.stage = "p2talk"; spRecStart("Part 2 · " + sp.card.title); sp.secs = 0; sp.limit = 120; render(); spTick(120, () => { toast("2 dakika doldu."); spAfterTalk(); });
+}
+function spAfterTalk(){ spRecStop(); spStopTimer(); sp.stage = "p3"; sp.qi = 0; sp.answering = false; render(); }
+function spFinish(){
+  spRecStop(); spStopTimer(); sp.stage = "done";
+  if (sp.stream) sp.stream.getTracks().forEach(t => t.stop());
+  spLog.push(now()); try { localStorage.setItem(SP_KEY, JSON.stringify(spLog.slice(-200))); } catch {}
+  render();
+}
+function renderSpPractice(){
+  if (!sp) return go({ name: "speaking" });
+  const s = sp, mic = s.noMic ? `<span class="sp-mic off">Kayıt yok</span>` : `<span class="sp-mic${s.recLabel ? " on" : ""}">${s.recLabel ? "● Kaydediliyor" : "Mikrofon hazır"}</span>`;
+  const top = `<div class="top studytop"><button class="back" data-act="spExit">← Çık</button><div class="wr-timer"><span data-stime>${fmtTime(s.limit ? s.limit - s.secs : s.secs)}</span>${mic}</div></div>`;
+  const qBlock = (part, list, idx, nextLabel) => `
+    <div class="hint">${part} · soru ${idx + 1} / ${list.length}</div>
+    <div class="sp-q">${esc(list[idx])}</div>
+    ${s.answering ? `<button class="btn hl" data-act="spNext">${nextLabel}</button>` : `<button class="btn hl" data-act="spAnswer">Cevapla${s.noMic ? "" : " (kaydı başlat)"}</button>`}
+    <p class="hint">${part === "Part 1" ? "2–3 cümle: cevap, sebep, küçük bir örnek." : "Cevap → sebep → örnek → karşı görüş → toparlama. Yaklaşık 30–60 saniye."}</p>`;
+  let body = "";
+  if (s.stage === "p1") body = `<h2 class="ptitle">Part 1 · ${esc(s.topic.topic)}</h2>${qBlock("Part 1", s.topic.qs, s.qi, s.qi < s.topic.qs.length - 1 ? "Bitti, sonraki soru →" : "Bitti, Part 2'ye geç →")}`;
+  else if (s.stage === "p2prep") body = `<h2 class="ptitle">Part 2 · hazırlık</h2>${cueCardHTML(s.card)}
+    <p class="hint">1 dakikan var. Her maddeye bir iki anahtar kelime not al; cümle yazma.</p>
+    <textarea class="sp-notes" data-spnotes placeholder="Notların…">${esc(s.notes)}</textarea>
+    <button class="btn hl" data-act="spTalk">Hazırım, konuşmaya başla</button>`;
+  else if (s.stage === "p2talk") body = `<h2 class="ptitle">Part 2 · konuş</h2>${cueCardHTML(s.card)}
+    ${s.notes.trim() ? `<div class="sp-notes-view"><b>Notların:</b> ${esc(s.notes)}</div>` : ""}
+    <p class="hint">2 dakika boyunca konuş. Sayaç bitince kayıt kendiliğinden durur; erken bitirirsen aşağıdaki butona bas.</p>
+    <button class="btn" data-act="spTalkDone">Bitirdim</button>`;
+  else if (s.stage === "p3") body = `<h2 class="ptitle">Part 3 · tartışma</h2>${qBlock("Part 3", s.card.part3.slice(0, 3), s.qi, s.qi < 2 ? "Bitti, sonraki soru →" : "Bitti, sonuçları gör →")}`;
+  else if (s.stage === "done") body = `<h2 class="ptitle">Pratik bitti</h2>
+    <p class="hint">${s.noMic ? "Kayıt yapılmadı. Bir dahaki sefere mikrofon izni verirsen cevaplarını dinleyebilirsin." : "Kayıtların aşağıda. Dinlerken duraksamalara, tekrar eden kelimelere ve -ed / -s gibi sonların söylenip söylenmediğine dikkat et. Kayıtlar yalnızca bu sayfada durur; çıkınca silinir. Bir öğretmene göndermek istersen indir."}</p>
+    <div class="sp-recs">${s.recs.map((r, i) => `<div class="sp-rec"><div><b>${esc(r.label)}</b><span class="hint"> · ${fmtTime(r.secs)}</span></div>
+      ${r.url ? `<audio controls preload="metadata" src="${r.url}"></audio><a class="ib" href="${r.url}" download="fislik-speaking-${i + 1}.${r.ext}">İndir</a>` : ""}</div>`).join("") || `<p class="hint">Kayıt yok.</p>`}</div>
+    <h3 class="sec">Kendini değerlendir</h3>
+    <div class="wr-check">${SP_CHECK.map(t => `<label><input type="checkbox"> ${esc(t)}</label>`).join("")}</div>
+    <div class="row" style="margin-top:14px"><button class="btn hl" data-act="spStart">Yeni deneme</button><button class="btn ghost" data-act="spCard" data-id="${s.card.id}">Kartın örnek konuşması</button><button class="btn ghost" data-act="spExit">Speaking'e dön</button></div>`;
+  app.innerHTML = top + body;
+}
+
 /* ---------- Writing (Task 2) ---------- */
 const WR = window.FISLIK_WRITING || null;
 const WR_KEY = "fislik.writing.v1";
@@ -1357,6 +1562,27 @@ app.addEventListener("click", async e => {
   else if (act === "help") go({ name: "help" });
   else if (act === "vocab") go({ name: "vocab" });
   else if (act === "writing") go({ name: "writing" });
+  else if (act === "speaking") go({ name: "speaking" });
+  else if (act === "spGuide") go({ name: "spguide" });
+  else if (act === "spPhrases") go({ name: "spphrases" });
+  else if (act === "spCard") go({ name: "spcard", id });
+  else if (act === "listening") go({ name: "listening" });
+  else if (act === "spStart") spStart(id);
+  else if (act === "spAnswer" && sp) {
+    const q = sp.stage === "p1" ? sp.topic.qs[sp.qi] : sp.card.part3[sp.qi];
+    sp.answering = true; spRecStart(`${sp.stage === "p1" ? "Part 1" : "Part 3"} · ${q}`); sp.secs = 0; sp.limit = 0; render(); spTick(0);
+  }
+  else if (act === "spNext" && sp) {
+    spRecStop(); spStopTimer(); sp.answering = false; sp.secs = 0;
+    if (sp.stage === "p1") { if (sp.qi < sp.topic.qs.length - 1) { sp.qi++; render(); } else { sp.qi = 0; spBeginPrep(); } }
+    else if (sp.stage === "p3") { if (sp.qi < 2) { sp.qi++; render(); } else spFinish(); }
+  }
+  else if (act === "spTalk" && sp) spBeginTalk();
+  else if (act === "spTalkDone" && sp) spAfterTalk();
+  else if (act === "spExit") {
+    if (sp && sp.stage !== "done" && (sp.recs.length || sp.answering || sp.recLabel) && !confirm("Pratikten çıkarsan kayıtların silinir. Çıkılsın mı?")) return;
+    go({ name: "speaking" });
+  }
   else if (act === "rtStart") {
     const busy = rt && !rt.done && Object.keys(rt.ans).length;
     if (!busy || confirm("Devam eden testin silinecek. Yeni test başlasın mı?")) startRt(id, b.dataset.p === undefined ? null : +b.dataset.p);
@@ -1508,6 +1734,7 @@ app.addEventListener("change", e => {
   if (e.target.dataset.rsel && rt) { rt.ans[e.target.dataset.rsel] = e.target.value; rtCounts(); }
 });
 app.addEventListener("input", e => {
+  if (e.target.dataset.spnotes !== undefined && sp) { sp.notes = e.target.value; return; }
   if (e.target.dataset.rgap && rt) { rt.ans[e.target.dataset.rgap] = e.target.value; rtCounts(); return; }
   if (e.target.dataset.field === "essay" && wr.draft) {
     wr.draft.text = e.target.value; updateWrCount();

@@ -7,7 +7,9 @@ Sunucu, hesap ya da kurulum gerekmez. Tek bir HTML sayfasıdır ve verilerin tar
 ## Özellikler
 
 - **Hedef ve günlük plan:** İlk açılışta sınav türünü (Academic / General Training), hedef band puanını ve sınav tarihini girersin. Fişlik buna göre günlük kart sayısı, desteler (*Önerilen*) ve okuma seviyesi önerir, sınava kalan günleri sayar; sınava bir aydan az kaldıysa günlük hedefi artırmayı önerir. **Bugünün planı** listesi kelime ve okuma görevlerini gösterir ve yaptıkça kendiliğinden işaretlenir.
-- **Dört sekme:** *Bugün* (plan, çalışma, ilerleme), *Kelime* (desteler, kelime listeleri, şablonlar), *Okuma* (seviyeli hikâyeler ve soruları), *Writing* (Task 2).
+- **Beş sekme:** *Bugün* (plan, çalışma, ilerleme), *Kelime* (desteler, kelime listeleri, şablonlar), *Okuma* (Reading testi ve hikâyeler), *Writing* (Task 2), *Speaking* (ve Listening rehberi).
+- **Speaking:** Sınav biçimi ve dört kriter, işe yarar kalıplar, 10 konuda Part 1 soruları ve örnek cevaplar, 10 cue card (4'ünde yaklaşık 2 dakikalık band 7+ örnek konuşma) ve Part 3 soruları. **Deneme sınavı** Part 1, 2 (1 dk hazırlık + 2 dk konuşma) ve 3'ü sırayla yaptırır; her cevap tarayıcının kendi kayıt özelliğiyle kaydedilir ve sonunda dinlenir ya da indirilir. Kayıtlar hiçbir yere gönderilmez, sayfadan çıkınca silinir; mikrofon yoksa pratik sayaçlarla yapılır.
+- **Listening rehberi:** Sınav biçimi, soru tiplerine göre stratejiler, sık yapılan hatalar (yazım, sayılar, harf harf okunan isimler) ve resmî ücretsiz deneme kaynaklarına bağlantılar.
 - **Writing Task 2:** Beş deneme türü (Opinion, Discussion, Advantages & Disadvantages, Problem & Solution, Two-part) için soruda nasıl tanınacağı, paragraf paragraf yapı, işe yarar kalıplar ve paragraf notlarıyla açıklanmış band 7+ örnek deneme; dört puanlama kriterinin sade Türkçe özeti; işlevine göre bağlaç bankası. 20 soruluk bankadan 40 dakikalık sayaçla deneme yazarsın: taslak otomatik kaydedilir, yazarken türün kalıplarına ve konuyla ilgili kelimelere bakabilirsin. Bitirince uzunluk, paragraf, bağlaç çeşitliliği, akademik üslup, kelime tekrarı ve cümle uzunluğu otomatik kontrol edilir (band puanı değil), ardından 10 maddelik listeyle kendini değerlendirirsin. Denemelerin kaydedilir; Bugünün planı haftada iki deneme hedefler.
 - **Hazır desteler:** A2, B1, B2 ve IELTS 7+ (C1) seviyelerinde, her biri en sık kullanılan 500 kelimeden oluşur. Toplam 2000+ kelime ve hepsinin Türkçe anlamı var. Bunlara ek olarak tanım ve örnek cümleleriyle 24 kelimelik *Paket #1 · Memory & Learning* destesi de gelir.
 - **Konu desteleri:** IELTS Writing Task 2'nin sık konularında altı deste: Çevre, Eğitim, Sağlık, Teknoloji, İş ve Ekonomi, Toplum ve Şehir. Her birinde 40 kelime ya da kalıp (*carbon footprint*, *work-life balance*…), hepsi Türkçe anlam, İngilizce tanım ve örnek cümleyle.
@@ -53,6 +55,7 @@ data/*.json         Aynı desteler, başka projelerde kullanmak için JSON olara
 data/stories.js     Hikâyeler ve hikâye sözlüğü (tools/stories/ ile üretilir)
 data/writing.js     Writing Task 2: türler, örnek denemeler, kriterler, bağlaçlar, sorular
 data/reading.js     IELTS Reading testleri (tools/check_reading.js ile kontrol edilir)
+data/speaking.js    Speaking soruları, cue card'lar, örnek cevaplar ve Listening rehberi
 tools/stories/      Hikâye kaynakları, sözlük ve üretim betiği
 data/konu-*.json    Konu desteleri (decks.js içinde de var)
 manifest.webmanifest, icons/   Ana ekrana ekleme bilgileri ve ikonlar
