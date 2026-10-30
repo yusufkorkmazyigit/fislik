@@ -1,4 +1,4 @@
-# Fişlik — IELTS kelime kartları
+# Fişlik — IELTS çalışma uygulaması
 
 Fişlik, IELTS'e hazırlananlar için yapılmış sade bir kelime kartı uygulamasıdır. Kelimeler kategorilere (destelere) ayrılır. Her kartı çevirdikten sonra **Bilmiyorum**, **Öğreniyorum** ya da **Öğrendim** dersin. Uygulama da her kelimeyi unutmaya başlayacağın zamana denk gelecek şekilde yeniden karşına çıkarır (*spaced repetition*, aralıklı tekrar).
 
@@ -27,7 +27,7 @@ Sunucu, hesap ya da kurulum gerekmez. Tek bir HTML sayfasıdır ve verilerin tar
 - **Kart yönü:** İngilizce → Türkçe ya da Türkçe → İngilizce çalışabilirsin.
 - **Yazarak çalışma:** Türkçesini görüp İngilizcesini yazarsın. Varsa tanım ve kelimesi boşaltılmış örnek cümle ipucu olur; *İpucu* her basışta bir harf açar. Küçük yazım hatalarını (*recieve*) "neredeyse" diye ayırır ve buna göre Bilmiyorum / Öğreniyorum / Öğrendim önerir; son kararı sen verirsin.
 - **Arama ve filtre:** Deste içinde kelime arayabilir, kartları duruma göre süzebilirsin.
-- **Yedekleme:** İlerlemeni (desteler ve çalışma takvimi) JSON dosyası olarak indirip başka bir cihaza yükleyebilirsin.
+- **Yedekleme:** İlerlemeni (desteler ve çalışma takvimi) JSON dosyası olarak indirip başka bir cihaza yükleyebilirsin. İlerleme yalnızca tarayıcıda durduğu için uygulama belli aralıklarla yedek almayı hatırlatır; iPhone'da Safari'nin uzun süre girilmeyen sitelerin verilerini silebileceğini de belirtir.
 - **Klavye kısayolları:** Boşluk kartı çevirir, 1 / 2 / 3 cevap verir, Esc oturumdan çıkar. Yazarak modda Enter önce kontrol eder, sonra önerilen cevabı seçer.
 - **Telefona kurulabilir:** GitHub Pages üzerinden açınca tarayıcıdan *Ana ekrana ekle* diyebilirsin. Uygulama bir kez açıldıktan sonra internetsiz de çalışır.
 - **Görünüm:** Mobil uyumlu, karanlık mod destekli.
@@ -97,6 +97,14 @@ Kaynaklar:
 
 - The CEFR-J Wordlist Version 1.5. Compiled by Yukio Tono, Tokyo University of Foreign Studies. Retrieved from http://www.cefr-j.org/download.html (via [openlanguageprofiles/olp-en-cefrj](https://github.com/openlanguageprofiles/olp-en-cefrj)).
 - Octanove Vocabulary Profile C1/C2 ver 1.0, Octanove Labs, CC BY-SA 4.0.
+
+## Geri bildirim
+
+Yanlış bir çeviri, hatalı bir soru ya da bir öneri için [Issues](https://github.com/yusufkorkmazyigit/fislik/issues/new) üzerinden bildirim açabilirsin. Uygulamanın alt kısmında ve kullanım rehberinde de bu bağlantı var.
+
+## Resmî değildir
+
+Fişlik bağımsız ve ücretsiz bir çalışma aracıdır. IELTS, British Council, IDP: IELTS Australia ve Cambridge University Press & Assessment'a ait bir markadır; Fişlik'in bu kurumlarla resmî bir bağlantısı yoktur. Uygulamadaki band puanları yaklaşık tahminlerdir, resmî sonuç yerine geçmez.
 
 ## Lisans
 

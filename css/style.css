@@ -440,3 +440,10 @@ body.sheet-open .wrap{padding-bottom:320px}
 .rt-types div{display:flex;justify-content:space-between;gap:10px}
 .rt-result .hint{grid-column:1/-1;margin:0}
 @media (max-width:560px){.rt-result{grid-template-columns:1fr 1fr}.rt-types{grid-column:1/-1}}
+
+/* yedek hatırlatması, geri bildirim, yasal not */
+.remind{background:var(--card);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 2px var(--mid);padding:14px 16px;margin:6px 0 4px;display:grid;gap:6px}
+.remind .nm{font-weight:700}
+.remind p{margin:0;font-size:14px;color:var(--ink-2)}
+.fblink{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.disclaimer{font-size:12px;line-height:1.5;color:var(--ink-3);border-top:1.5px solid var(--line);padding-top:8px}

@@ -22,6 +22,8 @@ const QUOTES = [
   ["Well begun is half done.", "Aristoteles"],
 ];
 const DEVELOPER = "Yusuf Korkmazyiğit";
+const ISSUES_URL = "https://github.com/yusufkorkmazyigit/fislik/issues/new";
+const feedbackLink = (label = "Hata bildir / öneri gönder") => `<a class="fblink" href="${ISSUES_URL}" target="_blank" rel="noopener">${label}</a>`;
 
 /* ---------- yardımcılar ---------- */
 const DAY = 86400000;
@@ -204,7 +206,7 @@ function render(){
 function header(){
   const [q, a] = quoteOfDay();
   return `<header class="top">
-    <div class="brandbox"><button class="brand" data-act="home">Fişlik <small>IELTS kelime kartları</small></button><button class="helplink" data-act="help">Nasıl kullanılır?</button></div>
+    <div class="brandbox"><button class="brand" data-act="home">Fişlik <small>IELTS çalışma uygulaması</small></button><button class="helplink" data-act="help">Nasıl kullanılır?</button></div>
     <blockquote class="quote">“${esc(q)}”<cite>${esc(a)}</cite></blockquote>
   </header>`;
 }
@@ -214,7 +216,9 @@ function footer(){
     <div>Geliştirici: <strong>${esc(DEVELOPER)}</strong></div>
     <div>${s}</div>
     ${inClaude ? "" : `<div class="row"><button class="btn ghost small" data-act="export">Yedeği indir</button><label class="btn ghost small" style="cursor:pointer">Yedekten yükle<input type="file" accept="application/json,.json" data-act="import" hidden></label></div>`}
-    <div>Kelime seviyeleri: CEFR-J Wordlist 1.5 (Tono Laboratory, TUFS) ve Octanove Vocabulary Profile C1/C2 (CC BY-SA 4.0). Türkçe anlamlar Fişlik için hazırlanmıştır.</div>
+    <div>Yanlış bir çeviri, hatalı bir soru ya da bir öneri mi var? ${feedbackLink()} <span class="hint">(GitHub hesabı gerekir)</span></div>
+    <div>Kelime seviyeleri: CEFR-J Wordlist 1.5 (Tono Laboratory, TUFS) ve Octanove Vocabulary Profile C1/C2 (CC BY-SA 4.0). Türkçe anlamlar, hikâyeler, sorular ve örnek denemeler Fişlik için hazırlanmıştır.</div>
+    <div class="disclaimer">Fişlik bağımsız ve ücretsiz bir çalışma aracıdır. IELTS, British Council, IDP: IELTS Australia ve Cambridge University Press &amp; Assessment'a ait bir markadır; Fişlik'in bu kurumlarla resmî bir bağlantısı yoktur. Uygulamadaki band puanları yaklaşık tahminlerdir, resmî sonuç yerine geçmez.</div>
   </footer>`;
 }
 function barHTML(c, total){
@@ -359,6 +363,8 @@ function renderHelp(){
     </ol>
     <h3 class="sec">Klavye kısayolları</h3>
     <p class="hint"><b>Boşluk</b> kartı çevirir · <b>1</b> Bilmiyorum · <b>2</b> Öğreniyorum · <b>3</b> Öğrendim · Yazarak modda <b>Enter</b> önce kontrol eder, sonra önerilen cevabı seçer · <b>Esc</b> çalışmadan çıkar.</p>
+    <h3 class="sec">Geri bildirim</h3>
+    <p class="hint">Fişlik geliştirilmeye devam ediyor. Yanlış bir çeviri, hatalı bir soru ya da bir fikir görürsen ${feedbackLink("buradan bildirebilirsin")}.</p>
     <div style="margin-top:20px"><button class="btn hl" data-act="home">Başlayalım</button></div>
   ` + footer();
 }
@@ -366,6 +372,26 @@ function renderHelp(){
 function navHTML(active){
   const tab = (act, label) => `<button data-act="${act}" ${active === act ? 'aria-current="page"' : ""}>${label}</button>`;
   return `<nav class="tabs" aria-label="Bölümler">${tab("home", "Bugün")}${tab("vocab", "Kelime")}${tab("stories", "Okuma")}${WR ? tab("writing", "Writing") : ""}</nav>`;
+}
+
+/* yedek hatırlatması: ilerleme yalnızca bu tarayıcıda durduğu için ara sıra yedek almayı hatırlat */
+const META_KEY = "fislik.meta.v1";
+let meta = {}; try { meta = JSON.parse(localStorage.getItem(META_KEY) || "{}") || {}; } catch {}
+function saveMeta(){ try { localStorage.setItem(META_KEY, JSON.stringify(meta)); } catch {} }
+const isIOS = () => /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const isStandalone = () => navigator.standalone === true || (window.matchMedia && matchMedia("(display-mode: standalone)").matches);
+function backupReminderHTML(){
+  if (inClaude || now() < (meta.snoozeUntil || 0)) return "";
+  const reviews = Object.values(activity.days).reduce((a, b) => a + b, 0);
+  const iosRisk = isIOS() && !isStandalone();
+  const stale = !meta.lastBackup || now() - meta.lastBackup > 30 * DAY;
+  if (!(stale && reviews >= 30) && !(iosRisk && reviews >= 10)) return "";
+  return `<section class="remind" role="note">
+    <div class="nm">💾 İlerlemeni koru</div>
+    <p>İlerlemen yalnızca bu tarayıcıda saklanıyor. Tarayıcı verilerini silersen ya da cihaz değiştirirsen kaybolabilir. ${meta.lastBackup ? `Son yedeğin ${Math.round((now() - meta.lastBackup) / DAY)} gün önce alındı.` : "Henüz hiç yedek almadın."}</p>
+    ${iosRisk ? `<p><b>iPhone / iPad:</b> Safari, 7 gün girilmeyen sitelerin verilerini silebilir. Safari'de <b>Paylaş → Ana Ekrana Ekle</b> ile Fişlik'i ana ekrana eklersen bu olmaz.</p>` : ""}
+    <div class="row"><button class="btn small hl" data-act="export">Yedeği indir</button><button class="btn small ghost" data-act="backupLater">Sonra hatırlat</button></div>
+  </section>`;
 }
 
 function planFormHTML(){
@@ -425,6 +451,7 @@ function renderHome(){
   const due = todayCount(all);
   app.innerHTML = header() + navHTML("home") + `
     ${planCardHTML()}
+    ${backupReminderHTML()}
     ${todayPlanHTML(all, due)}
     ${all.length ? `<section class="today">
       <div><h2>Bugün çalışılacak</h2><div class="n">${due}<span>kart</span></div></div>
@@ -861,7 +888,7 @@ function renderRTest(){
       <div class="rt-score"><b>${band}</b><span>tahmini band${items.length < 40 ? " (kabaca)" : ""}</span></div>
       <div class="rt-types">${Object.entries(byType).map(([k, [c, n]]) => `<div><span>${RT_TYPES[k]}</span><b>${c}/${n}</b></div>`).join("")}</div>
       ${weakest && weakest[1][0] < weakest[1][1] ? `<p class="hint">En çok zorlandığın soru tipi: <b>${RT_TYPES[weakest[0]]}</b>. Açıklamalarda cevabın metinde nerede olduğuna bak.</p>` : `<p class="hint">Hepsi doğru, harika!</p>`}
-      <p class="hint">Band, Academic Reading'de yaygın kullanılan dönüşüm tablosuna göre tahmindir${items.length < 40 ? "; tek pasajda 40 soruya oranlanır, bu yüzden kaba bir tahmindir" : ""}.</p>
+      <p class="hint">Band, Academic Reading'de yaygın kullanılan dönüşüm tablosuna göre yapılan resmî olmayan bir tahmindir${items.length < 40 ? "; tek pasajda 40 soruya oranlanır, bu yüzden kabadır" : ""}. Bir cevaba katılmıyorsan ${feedbackLink("bildir")}.</p>
     </section>`;
   }
   app.innerHTML = `
@@ -1408,7 +1435,8 @@ app.addEventListener("click", async e => {
   else if (act === "word") openSheet(b);
   else if (act === "qz") answerQuiz(+b.dataset.i, b.dataset.v);
   else if (act === "qzReset") { const st = STORIES.find(x => x.id === view.id); delete quizPicks[view.id]; const sec = app.querySelector(".quiz"); if (st && sec) sec.outerHTML = quizHTML(st); }
-  else if (act === "export") exportBackup();
+  else if (act === "export") { exportBackup(); meta.lastBackup = now(); meta.snoozeUntil = 0; saveMeta(); if (view.name === "home") render(); }
+  else if (act === "backupLater") { meta.snoozeUntil = now() + 7 * DAY; saveMeta(); render(); }
   else if (act === "fill") {
     const f = b.closest("form"), msg = f.querySelector("[data-msg]"), w = f.en.value.trim();
     if (!w) { msg.className = "err"; msg.textContent = "Önce İngilizce kelimeyi yaz."; f.en.focus(); return; }
