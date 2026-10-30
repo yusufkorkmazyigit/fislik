@@ -1,7 +1,7 @@
 /* Fişlik service worker: uygulamayı çevrimdışı çalıştırır.
    Uygulama dosyaları önce ağdan istenir (her açılışta güncel sürüm), ağ yoksa ya da
    birkaç saniye içinde cevap gelmezse önbellekteki sürüm verilir. Yazı tipleri önce önbellekten. */
-const CACHE = "fislik-v3";
+const CACHE = "fislik-v4";
 const NET_TIMEOUT = 3500;   // ms; yavaş bağlantıda bu süreden sonra önbellekteki sürüm açılır
 const SHELL = [
   "./",
@@ -10,6 +10,7 @@ const SHELL = [
   "js/app.js",
   "data/decks.js",
   "data/stories.js",
+  "data/writing.js",
   "manifest.webmanifest",
   "icons/icon-192.png",
   "icons/icon-512.png",

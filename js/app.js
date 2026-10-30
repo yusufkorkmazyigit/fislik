@@ -179,7 +179,7 @@ try { const p = JSON.parse(localStorage.getItem(PREFS_KEY) || "{}"); if (p.direc
 function savePrefs(){ try { localStorage.setItem(PREFS_KEY, JSON.stringify({ direction, mode })); } catch {} }
 let editing = null;
 let session = null;
-function go(v){ view = v; editing = null; closeSheet(); window.scrollTo(0, 0); render(); }
+function go(v){ if (v.name !== "wpractice" && wrTimer) { stopWrTimer(); saveWr(); } view = v; editing = null; closeSheet(); window.scrollTo(0, 0); render(); }
 
 const app = document.getElementById("app");
 function render(){
@@ -191,6 +191,12 @@ function render(){
   else if (view.name === "stories") renderStories();
   else if (view.name === "story") renderStory();
   else if (view.name === "help") renderHelp();
+  else if (view.name === "writing") renderWriting();
+  else if (view.name === "wtype") renderWType();
+  else if (view.name === "wcrit") renderWCrit();
+  else if (view.name === "wlink") renderWLink();
+  else if (view.name === "wpractice") renderWPractice();
+  else if (view.name === "wessay") renderWEssay();
 }
 
 function header(){
@@ -346,6 +352,7 @@ function renderHelp(){
       ${step(4, "Listelerini takip et", `<p><b>Kelime</b> sekmesindeki <b>Kelime listelerin</b> bölümünde her kelimenin hangi listede olduğunu görürsün ve istediğin listeyi ayrıca çalışabilirsin. İki kez <i>Bilmiyorum</i> dediğin kelimeler <b>Zorlandıkların</b> bölümünde toplanır.</p>`)}
       ${step(5, "Her gün biraz çalış", `<p>Günlük hedefini (10, 20, 30 ya da 50 kart) seç. Her gün çalıştıkça 🔥 serin uzar, çalışma takvimin yeşillenir. Az ama her gün çalışmak, haftada bir uzun çalışmaktan çok daha etkilidir.</p>`)}
       ${step(6, "Hikâye oku", `<p><b>Okuma</b> sekmesinde A1'den B2'ye 40 kısa hikâye var; sıradaki önerilen hikâye en üstte durur. Bilmediğin kelimeye dokun: Türkçesini ve cümleyi görürsün, istersen destene eklersin. Hikâyenin sonundaki <b>True / False / Not Given</b> soruları IELTS Reading'e hazırlar.</p>`)}
+      ${step(6.5, "Writing pratiği yap", `<p><b>Writing</b> sekmesinde Task 2'nin beş deneme türünü, her biri için yapı şablonunu ve açıklamalı band 7+ örnek denemeyi bulursun. <b>Deneme yaz</b> ile 40 dakikalık sayaçla bir soru cevapla; bitirince kelime sayısı, paragraf, bağlaç çeşitliliği, tekrar ve akademik üslup otomatik kontrol edilir, sonra kendi değerlendirme listeni doldurursun. Haftada en az iki deneme hedefle.</p>`)}
       ${step(7, "İlerlemeni koru", `<p>İlerlemen bu tarayıcıda saklanır. Başka bir cihaza geçmek ya da yedek almak için sayfanın en altındaki <b>Yedeği indir</b> ve <b>Yedekten yükle</b> düğmelerini kullan. Telefonda tarayıcı menüsünden <b>Ana ekrana ekle</b> dersen Fişlik uygulama gibi açılır ve internetsiz de çalışır.</p>`)}
     </ol>
     <h3 class="sec">Klavye kısayolları</h3>
@@ -356,7 +363,7 @@ function renderHelp(){
 
 function navHTML(active){
   const tab = (act, label) => `<button data-act="${act}" ${active === act ? 'aria-current="page"' : ""}>${label}</button>`;
-  return `<nav class="tabs" aria-label="Bölümler">${tab("home", "Bugün")}${tab("vocab", "Kelime")}${tab("stories", "Okuma")}</nav>`;
+  return `<nav class="tabs" aria-label="Bölümler">${tab("home", "Bugün")}${tab("vocab", "Kelime")}${tab("stories", "Okuma")}${WR ? tab("writing", "Writing") : ""}</nav>`;
 }
 
 function planFormHTML(){
@@ -405,6 +412,8 @@ function todayPlanHTML(all, due){
         all.length ? `<button class="btn small" data-act="studyAll" ${due ? "" : "disabled"}>Çalış</button>` : `<button class="btn small" data-act="vocab">Deste ekle</button>`)}
       ${STORIES.length ? item(read > 0, "Okuma", read > 0 ? `Bugün ${read} hikâye bitirdin` : ns ? `Önerilen: ${esc(ns.title)} (${ns.level}) · hikâyeyi oku, soruları cevapla` : "Tüm hikâyeleri bitirdin; istediğini tekrar okuyabilirsin",
         ns ? `<button class="btn small" data-act="story" data-id="${esc(ns.id)}">Oku</button>` : `<button class="btn small" data-act="stories">Hikâyeler</button>`) : ""}
+      ${WR ? item(weekEssays() >= WR_WEEKLY, "Writing", `Bu hafta ${weekEssays()} / ${WR_WEEKLY} deneme${wr.draft && !wr.draft.done && wrWords(wr.draft.text) ? " · yarım kalan bir denemen var" : ""}`,
+        `<button class="btn small" data-act="${wr.draft ? "wcontinue" : "wnew"}">${wr.draft ? "Devam" : "Yaz"}</button>`) : ""}
     </ol>`;
 }
 
@@ -740,6 +749,205 @@ function exTrOf(k, deckId){
 }
 const exBlock = (k, deckId) => k.ex ? `<div class="ex">“${esc(k.ex)}”</div>${exTrOf(k, deckId) ? `<div class="extr">${esc(exTrOf(k, deckId))}</div>` : ""}` : "";
 
+/* ---------- Writing (Task 2) ---------- */
+const WR = window.FISLIK_WRITING || null;
+const WR_KEY = "fislik.writing.v1";
+const WR_MIN = 250, WR_TIME = 40 * 60, WR_WEEKLY = 2;
+let wr = { draft: null, essays: [] };   // draft: { pid, text, secs, done }  essays: [{ id, pid, text, words, secs, date, checks }]
+try { const x = JSON.parse(localStorage.getItem(WR_KEY) || "null"); if (x && Array.isArray(x.essays)) wr = { draft: x.draft || null, essays: x.essays }; } catch {}
+function saveWr(){ try { localStorage.setItem(WR_KEY, JSON.stringify(wr)); } catch { toast("Taslak kaydedilemedi: tarayıcı depolaması dolu ya da kapalı."); } }
+const wrType = k => WR.types.find(t => t.key === k);
+const wrPrompt = id => WR.prompts.find(p => p.id === id);
+const wrTopicName = key => (TEMPLATES.find(t => t.key === key) || {}).name || "";
+const wrWords = txt => (String(txt).match(/[A-Za-z]+(?:['’-][A-Za-z]+)*/g) || []).length;
+const fmtTime = s => `${String(Math.floor(Math.max(0, s) / 60)).padStart(2, "0")}:${String(Math.max(0, s) % 60).padStart(2, "0")}`;
+const weekEssays = () => wr.essays.filter(e => now() - e.date < 7 * DAY).length;
+
+// Otomatik kontroller: band puanı değil, ölçülebilen şeyler
+const WR_STOP = new Set("that this with have from they their there which would could should about these those because while where when what into also more most many much some such than then them were been being other only very will just your over even like make made does doing done people think".split(" "));
+const WR_INFORMAL = ["kids", "stuff", "gonna", "wanna", "lots of", "a lot of", "okay", "ok", "nowadays", "etc"];
+function wrAnalyze(text, promptText){
+  const words = wrWords(text);
+  const paras = text.split(/\n+/).filter(p => wrWords(p) >= 5).length;
+  const linkers = [];
+  WR.linkers.forEach(g => g.items.forEach(([phrase]) => phrase.split(" / ").forEach(ph => {
+    if (ph.includes("...")) return;
+    const n = (text.match(new RegExp(`\\b${ph.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "gi")) || []).length;
+    if (n) linkers.push([ph, n]);
+  })));
+  const contractions = [...new Set((text.match(/\b[A-Za-z]+(?:n['’]t|['’](?:re|ll|ve|m|d))\b|\b(?:it|that|there|what|let)['’]s\b/gi) || []).map(x => x.toLowerCase()))];
+  const informal = WR_INFORMAL.filter(w => new RegExp(`\\b${w}\\b`, "i").test(text));
+  // sorudaki kelimelerin farklı biçimleri (educated / education) tekrar sayılmaz
+  const promptStems = new Set((promptText.toLowerCase().match(/[a-z]{4,}/g) || []).map(w => w.slice(0, 5)));
+  const freq = {};
+  (text.toLowerCase().match(/[a-z]+/g) || []).forEach(w => { if (w.length >= 4 && !WR_STOP.has(w)) freq[w] = (freq[w] || 0) + 1; });
+  // konunun ana kelimeleri doğal olarak tekrar eder; metnin %2'sini (en az 5 kez) geçerse uyar
+  const lim = Math.max(5, Math.ceil(words * 0.02));
+  const repeated = Object.entries(freq).filter(([w, n]) => n >= lim && !promptStems.has(w.slice(0, 5))).sort((a, b) => b[1] - a[1]).slice(0, 6);
+  const sentences = text.split(/[.!?]+\s/).filter(s => wrWords(s) > 0);
+  const avg = sentences.length ? Math.round(words / sentences.length) : 0;
+  const checks = [
+    { ok: words >= WR_MIN, title: `Uzunluk: ${words} kelime`, note: words >= WR_MIN ? "En az 250 kelime şartı karşılandı." : `Sınavda ${WR_MIN} kelimenin altı Task Response puanını düşürür; ${WR_MIN - words} kelime daha gerekiyor.` },
+    { ok: paras >= 4 && paras <= 6, title: `Paragraf: ${paras}`, note: paras >= 4 && paras <= 6 ? "Giriş, iki ya da üç gövde ve sonuç için uygun." : "Genelde 4–5 paragraf beklenir: giriş, 2–3 gövde, sonuç. Paragrafları boş satırla ayır." },
+    { ok: linkers.length >= 4 && !linkers.some(([, n]) => n > 2), title: `Bağlaçlar: ${linkers.length} farklı`, note: linkers.length ? linkers.map(([p, n]) => `${p}${n > 1 ? ` ×${n}` : ""}`).join(", ") + (linkers.some(([, n]) => n > 2) ? ". İkiden fazla kullandığın bağlacı değiştir." : linkers.length < 4 ? ". Biraz daha çeşitlendirebilirsin." : ".") : "Hiç bağlaç bulunamadı; fikirleri birbirine bağlamak Coherence and Cohesion puanı için önemli." },
+    { ok: !contractions.length && !informal.length, title: "Akademik üslup", note: contractions.length || informal.length ? `Kaçınılması gerekenler: ${[...contractions, ...informal].join(", ")}. Akademik yazıda kısaltma (don't → do not) ve gündelik ifadeler kullanılmaz.` : "Kısaltma ya da gündelik ifade bulunamadı." },
+    { ok: !repeated.length, title: "Kelime tekrarı", note: repeated.length ? `Çok sık kullandıkların: ${repeated.map(([w, n]) => `${w} ×${n}`).join(", ")}. Bunlar için eş anlamlı ya da 'this issue', 'such policies' gibi gönderim kullan. (Sorudaki kelimelerin tekrarı sayılmaz.)` : "Belirgin bir kelime tekrarı yok; sorudaki kelimelerin tekrarı sayılmaz." },
+    { ok: avg >= 12 && avg <= 28, title: `Ortalama cümle: ${avg} kelime`, note: avg < 12 ? "Cümleler çok kısa; yan cümleyle (which, although, because) bazılarını birleştir." : avg > 28 ? "Cümleler çok uzun; anlaşılırlık için bazılarını böl." : "Cümle uzunluğu dengeli." },
+  ];
+  return { words, checks };
+}
+function analysisHTML(a){
+  return `<div class="wa">${a.checks.map(c => `<div class="wa-row ${c.ok ? "ok" : "warn"}"><span class="wa-ic" aria-hidden="true">${c.ok ? "✓" : "!"}</span><div><b>${esc(c.title)}</b><div class="ds">${esc(c.note)}</div></div></div>`).join("")}</div>`;
+}
+
+function renderWriting(){
+  if (!WR) return go({ name: "home" });
+  const d = wr.draft, dp = d && wrPrompt(d.pid), done = new Set(wr.essays.map(e => e.pid));
+  const row = (act, id, lvl, nm, ds) => `<button class="tpl-item storyrow" data-act="${act}" ${id ? `data-id="${esc(id)}"` : ""}><span class="lvl">${lvl}</span><span><span class="nm">${nm}</span><span class="ds">${ds}</span></span><span class="go" aria-hidden="true">→</span></button>`;
+  app.innerHTML = header() + navHTML("writing") + `
+    <h2 class="ptitle">Writing Task 2</h2>
+    <p class="hint">40 dakikada en az 250 kelimelik bir deneme. Puanın dört kritere göre verilir; önce türleri ve örnekleri incele, sonra sayaçla pratik yap. Bu hafta ${weekEssays()} / ${WR_WEEKLY} deneme yazdın.</p>
+    <section class="wr-cta">
+      ${dp ? `<div><div class="nm">Yarım kalan denemen</div><div class="ds">${esc(dp.text.slice(0, 90))}… · ${wrWords(d.text)} kelime · ${fmtTime(d.secs || 0)}</div></div>
+        <div class="row"><button class="btn hl" data-act="wcontinue">Devam et</button><button class="btn ghost" data-act="wnew">Yeni soru</button></div>`
+      : `<div><div class="nm">Deneme yaz</div><div class="ds">Rastgele bir soru gelir, sayaç başlar. Bitirince otomatik kontroller ve değerlendirme listesi çıkar.</div></div>
+        <button class="btn hl" data-act="wnew">Başla</button>`}
+    </section>
+    <h3 class="sec">Deneme türleri</h3>
+    <div class="tpl">${WR.types.map((t, i) => row("wtype", t.key, i + 1, `${esc(t.name)} · ${esc(t.tr)}`, `Soruda: “${esc(t.spot[0])}” · örnek deneme`)).join("")}</div>
+    <h3 class="sec">Rehber</h3>
+    <div class="tpl">
+      ${row("wcrit", "", "4", "Puanlama kriterleri", "Band 7 için her kriterde ne gerekir?")}
+      ${row("wlink", "", "Aa", "Bağlaç bankası", `${WR.linkers.reduce((n, g) => n + g.items.length, 0)} bağlaç, işlevine göre, Türkçe ve örnekle`)}
+    </div>
+    <h3 class="sec">Soru bankası</h3>
+    ${WR.types.map(t => `<details class="wr-bank"><summary>${esc(t.name)} <span class="hint">${WR.prompts.filter(p => p.type === t.key).length} soru</span></summary>
+      ${WR.prompts.filter(p => p.type === t.key).map(p => `<div class="wr-q"><div>${esc(p.text)}<div class="hint">${esc(wrTopicName(p.topic))}${done.has(p.id) ? ` · <span class="qz-best">✓ yazıldı</span>` : ""}</div></div><button class="btn small" data-act="wstart" data-id="${p.id}">Yaz</button></div>`).join("")}
+    </details>`).join("")}
+    <h3 class="sec">Denemelerin</h3>
+    ${wr.essays.length ? `<div class="tpl">${wr.essays.slice().reverse().map(e => { const p = wrPrompt(e.pid) || { text: "", type: "" }, tp = wrType(p.type);
+      return row("wessay", e.id, `${e.words}`, `${esc(new Date(e.date).toLocaleDateString("tr-TR", { day: "numeric", month: "long" }))} · ${esc(tp ? tp.name : "")}`, `${esc(p.text.slice(0, 80))}… · ${e.words} kelime · liste ${e.checks.filter(Boolean).length}/${WR.checklist.length}`); }).join("")}</div>`
+      : `<div class="empty">Henüz kaydedilmiş denemen yok. İlk denemeni yazınca burada görünür.</div>`}
+  ` + footer();
+}
+
+function renderWType(){
+  const t = wrType(view.id); if (!t) return go({ name: "writing" });
+  app.innerHTML = header() + `
+    <button class="back" data-act="writing">← Writing</button>
+    <h2 class="ptitle">${esc(t.name)} <span class="hint">· ${esc(t.tr)}</span></h2>
+    <p>${esc(t.summary)}</p>
+    <div class="wr-box"><b>Soruda şöyle geçer:</b> ${t.spot.map(s => `<span class="wr-spot">${esc(s)}</span>`).join(" ")}</div>
+    <h3 class="sec">Yapı</h3>
+    <ol class="wr-struct">${t.structure.map(([h, d]) => `<li><b>${esc(h)}:</b> ${esc(d)}</li>`).join("")}</ol>
+    <h3 class="sec">İşe yarar kalıplar</h3>
+    <ul class="wr-frames">${t.frames.map(f => `<li>${esc(f)}</li>`).join("")}</ul>
+    <h3 class="sec">Band 7+ örnek deneme</h3>
+    <div class="wr-box"><b>Soru:</b> ${esc(t.model.prompt)}</div>
+    <article class="wr-model">${t.model.paras.map(([p, note]) => `<p>${esc(p)}</p><div class="wr-note">${esc(note)}</div>`).join("")}
+      <div class="hint">${wrWords(t.model.paras.map(p => p[0]).join(" "))} kelime · TR: Task Response, CC: Coherence and Cohesion, LR: Lexical Resource, GRA: Grammatical Range and Accuracy</div></article>
+    <div class="row" style="margin-top:16px"><button class="btn hl" data-act="wnew" data-type="${t.key}">Bu türde pratik yap</button></div>
+  ` + footer();
+}
+
+function renderWCrit(){
+  app.innerHTML = header() + `
+    <button class="back" data-act="writing">← Writing</button>
+    <h2 class="ptitle">Puanlama kriterleri</h2>
+    <p class="hint">Writing puanın dört kriterin ortalamasıdır; her biri eşit ağırlıktadır. Aşağıdaki özetler resmî tanımların sade Türkçe açıklamasıdır, birebir çevirisi değildir.</p>
+    ${WR.criteria.map(c => `<section class="wr-crit"><h3>${esc(c.name)} <span class="hint">· ${esc(c.tr)}</span></h3>
+      <p>${esc(c.what)}</p>
+      <div class="wr-cols"><div><b>Band 7 için</b><ul>${c.band7.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
+      <div><b>Nasıl yapılır</b><ul>${c.tips.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div></div></section>`).join("")}
+  ` + footer();
+}
+
+function renderWLink(){
+  app.innerHTML = header() + `
+    <button class="back" data-act="writing">← Writing</button>
+    <h2 class="ptitle">Bağlaç bankası</h2>
+    <p class="hint">Bağlaçlar Coherence and Cohesion puanının parçasıdır ama fazlası zarar verir: her cümleye bağlaç koyma ve aynısını ikiden fazla kullanma.</p>
+    ${WR.linkers.map(g => `<h3 class="sec">${esc(g.group)}</h3><div class="wr-links">${g.items.map(([en, tr, ex]) => `<div class="wr-link"><div><b>${esc(en)}</b> <span class="hint">${esc(tr)}</span></div><div class="ex">${esc(ex)}</div></div>`).join("")}</div>`).join("")}
+  ` + footer();
+}
+
+let wrTimer = null;
+function stopWrTimer(){ clearInterval(wrTimer); wrTimer = null; }
+function renderWPractice(){
+  const d = wr.draft, p = d && wrPrompt(d.pid); if (!p) return go({ name: "writing" });
+  const t = wrType(p.type), topic = TEMPLATES.find(x => x.key === p.topic);
+  const words = topic ? topic.cards.slice().sort((a, b) => (a[0] > b[0] ? 1 : -1)).filter((_, i) => i % 3 === 0).slice(0, 12) : [];
+  if (d.done) {
+    const a = wrAnalyze(d.text, p.text);
+    app.innerHTML = header() + `
+      <button class="back" data-act="wedit">← Yazmaya dön</button>
+      <h2 class="ptitle">Kontrol</h2>
+      <div class="wr-box"><b>${esc(t.name)}:</b> ${esc(p.text)}</div>
+      <h3 class="sec">Otomatik kontroller</h3>
+      <p class="hint">Bunlar band puanı değil; sadece ölçülebilen şeyler. Asıl değerlendirmeyi aşağıdaki listeyle sen yaparsın.</p>
+      ${analysisHTML(a)}
+      <h3 class="sec">Kendini değerlendir</h3>
+      <p class="hint">Denemeni tekrar oku ve doğru olan maddeleri işaretle. Emin olamadığın maddeler için <button class="helplink" data-act="wtype" data-id="${t.key}">örnek denemeye</button> bak.</p>
+      <div class="wr-check">${WR.checklist.map(([k, txt], i) => `<label><input type="checkbox" data-wcheck="${i}"> <span class="wr-crit-tag">${k}</span> ${esc(txt)}</label>`).join("")}</div>
+      <div class="row" style="margin-top:14px"><button class="btn hl" data-act="wsave">Denemeyi kaydet</button><button class="btn ghost" data-act="wedit">Düzenlemeye dön</button></div>
+    ` + footer();
+    return;
+  }
+  const left = WR_TIME - (d.secs || 0);
+  app.innerHTML = `
+    <div class="top studytop"><button class="back" data-act="wexit">← Çık</button>
+      <div class="wr-timer${left < 0 ? " over" : ""}" aria-live="off"><span data-wtime>${left >= 0 ? fmtTime(left) : "+" + fmtTime(-left)}</span>
+        <button class="btn small ghost" data-act="wtimer">${wrTimer ? "Duraklat" : (d.secs ? "Devam" : "Sayacı başlat")}</button></div></div>
+    <div class="wr-box"><span class="recbadge">${esc(t.name)}</span> ${esc(p.text)}
+      <div class="hint" style="margin-top:6px">İpucu: İlk 5 dakikayı planlamaya, son 3 dakikayı kontrole ayır.</div></div>
+    <textarea class="wr-text" data-field="essay" spellcheck="false" autocomplete="off" autocapitalize="sentences" lang="en" placeholder="Denemeni buraya yaz. Paragrafları boş satırla ayır.">${esc(d.text)}</textarea>
+    <div class="wr-bar"><span data-wcount>${wrWords(d.text)} kelime</span><span class="hint">Sınavda yazım denetimi olmadığı için burada da kapalı.</span>
+      <button class="btn hl" data-act="wfinish">Bitir ve kontrol et</button></div>
+    <details class="wr-help"><summary>Yapı ve kalıplar · ${esc(t.name)}</summary>
+      <ol class="wr-struct">${t.structure.map(([h, x]) => `<li><b>${esc(h)}:</b> ${esc(x)}</li>`).join("")}</ol>
+      <ul class="wr-frames">${t.frames.map(f => `<li>${esc(f)}</li>`).join("")}</ul></details>
+    ${words.length ? `<details class="wr-help"><summary>Konu kelimeleri · ${esc(topic.name)}</summary>
+      <div class="wr-words">${words.map(c => `<span><b>${esc(c[0])}</b> ${esc(c[2])}</span>`).join("")}</div></details>` : ""}
+  `;
+  updateWrCount();
+}
+function updateWrCount(){
+  const el = app.querySelector("[data-wcount]"); if (!el || !wr.draft) return;
+  const n = wrWords(wr.draft.text); el.textContent = `${n} kelime`; el.className = n >= WR_MIN ? "ok" : "";
+}
+function tickWr(){
+  if (!wr.draft) return stopWrTimer();
+  wr.draft.secs = (wr.draft.secs || 0) + 1;
+  const left = WR_TIME - wr.draft.secs, el = app.querySelector("[data-wtime]");
+  if (el) { el.textContent = left >= 0 ? fmtTime(left) : "+" + fmtTime(-left); el.parentElement.classList.toggle("over", left < 0); }
+  if (left === 0) toast("40 dakika doldu. Sınavda bu noktada kalem bırakılır; yine de bitirebilirsin.", 6000);
+  if (wr.draft.secs % 10 === 0) saveWr();
+}
+function startWr(pid){
+  stopWrTimer();
+  wr.draft = { pid, text: "", secs: 0, done: false }; saveWr();
+  go({ name: "wpractice" });
+}
+function pickPrompt(type){
+  const pool = WR.prompts.filter(p => !type || p.type === type), fresh = pool.filter(p => !wr.essays.some(e => e.pid === p.id));
+  const from = fresh.length ? fresh : pool; return from[Math.floor(Math.random() * from.length)].id;
+}
+function renderWEssay(){
+  const e = wr.essays.find(x => x.id === view.id); if (!e) return go({ name: "writing" });
+  const p = wrPrompt(e.pid) || { text: "", type: "" }, t = wrType(p.type);
+  app.innerHTML = header() + `
+    <button class="back" data-act="writing">← Writing</button>
+    <h2 class="ptitle">${esc(new Date(e.date).toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" }))}</h2>
+    <div class="wr-box"><b>${esc(t ? t.name : "")}:</b> ${esc(p.text)}</div>
+    <article class="wr-model wr-mine">${e.text.split(/\n+/).filter(x => x.trim()).map(x => `<p>${esc(x)}</p>`).join("")}
+      <div class="hint">${e.words} kelime · ${fmtTime(e.secs || 0)} sürede yazıldı</div></article>
+    <h3 class="sec">Otomatik kontroller</h3>${analysisHTML(wrAnalyze(e.text, p.text))}
+    <h3 class="sec">Kendi değerlendirmen · ${e.checks.filter(Boolean).length} / ${WR.checklist.length}</h3>
+    <ul class="wr-checked">${WR.checklist.map(([k, txt], i) => `<li class="${e.checks[i] ? "ok" : ""}"><span class="wa-ic">${e.checks[i] ? "✓" : "·"}</span> <span class="wr-crit-tag">${k}</span> ${esc(txt)}</li>`).join("")}</ul>
+    <div class="row" style="margin-top:14px">${t ? `<button class="btn" data-act="wtype" data-id="${t.key}">Örnek denemeyle karşılaştır</button>` : ""}<button class="ib" data-act="wdel" data-id="${e.id}">Denemeyi sil</button></div>
+  ` + footer();
+}
+
 /* ---------- çalışma ---------- */
 function cardOf(it){ const d = store.decks[it.deck]; return d && (d.cards || []).find(k => k.id === it.id); }
 function startSession(deckIds, everything, pick){
@@ -970,6 +1178,27 @@ app.addEventListener("click", async e => {
   else if (act === "studyHard") startSession(Object.keys(store.decks), true, k => k.status !== "known" && (k.miss || 0) >= HARD_MIN);
   else if (act === "help") go({ name: "help" });
   else if (act === "vocab") go({ name: "vocab" });
+  else if (act === "writing") go({ name: "writing" });
+  else if (act === "wtype") go({ name: "wtype", id });
+  else if (act === "wcrit") go({ name: "wcrit" });
+  else if (act === "wlink") go({ name: "wlink" });
+  else if (act === "wessay") go({ name: "wessay", id });
+  else if (act === "wcontinue") go({ name: "wpractice" });
+  else if (act === "wnew") { if (!wr.draft || !wrWords(wr.draft.text) || confirm("Yarım kalan denemen silinecek. Yeni soruyla başlansın mı?")) startWr(pickPrompt(b.dataset.type)); }
+  else if (act === "wstart") { if (!wr.draft || !wrWords(wr.draft.text) || confirm("Yarım kalan denemen silinecek. Bu soruyla başlansın mı?")) startWr(id); }
+  else if (act === "wtimer") { if (wrTimer) stopWrTimer(); else wrTimer = setInterval(tickWr, 1000); saveWr(); b.textContent = wrTimer ? "Duraklat" : "Devam"; }
+  else if (act === "wfinish") {
+    if (wrWords(wr.draft.text) < 50) { toast("Kontrol için en az 50 kelime yazmalısın."); return; }
+    stopWrTimer(); wr.draft.done = true; saveWr(); window.scrollTo(0, 0); render();
+  }
+  else if (act === "wedit") { wr.draft.done = false; saveWr(); render(); }
+  else if (act === "wexit") { stopWrTimer(); saveWr(); go({ name: "writing" }); }
+  else if (act === "wsave") {
+    const d = wr.draft, checks = WR.checklist.map((_, i) => !!app.querySelector(`[data-wcheck="${i}"]`)?.checked);
+    wr.essays.push({ id: uid(), pid: d.pid, text: d.text, words: wrWords(d.text), secs: d.secs || 0, date: now(), checks });
+    wr.draft = null; saveWr(); toast("Denemen kaydedildi."); go({ name: "writing" });
+  }
+  else if (act === "wdel") { if (confirm("Bu deneme silinsin mi? Geri alınamaz.")) { wr.essays = wr.essays.filter(e => e.id !== id); saveWr(); go({ name: "writing" }); } }
   else if (act === "planEdit") { planEditing = true; render(); app.querySelector("[data-form=plan] select")?.focus(); }
   else if (act === "planCancel") { planEditing = false; render(); }
   else if (act === "planSkip") { plan = { skipped: true }; savePlan(); render(); }
@@ -1083,6 +1312,11 @@ app.addEventListener("change", e => {
   if (e.target.dataset.act === "import" && e.target.files && e.target.files[0]) importBackup(e.target.files[0]);
 });
 app.addEventListener("input", e => {
+  if (e.target.dataset.field === "essay" && wr.draft) {
+    wr.draft.text = e.target.value; updateWrCount();
+    clearTimeout(updateWrCount._t); updateWrCount._t = setTimeout(saveWr, 500);
+    return;
+  }
   if (e.target.dataset.field === "search") {
     query = e.target.value; const pos = e.target.selectionStart; render();
     const s = app.querySelector('[data-field=search]'); s.focus(); s.setSelectionRange(pos, pos);

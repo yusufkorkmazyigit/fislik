@@ -7,7 +7,8 @@ Sunucu, hesap ya da kurulum gerekmez. Tek bir HTML sayfasıdır ve verilerin tar
 ## Özellikler
 
 - **Hedef ve günlük plan:** İlk açılışta sınav türünü (Academic / General Training), hedef band puanını ve sınav tarihini girersin. Fişlik buna göre günlük kart sayısı, desteler (*Önerilen*) ve okuma seviyesi önerir, sınava kalan günleri sayar; sınava bir aydan az kaldıysa günlük hedefi artırmayı önerir. **Bugünün planı** listesi kelime ve okuma görevlerini gösterir ve yaptıkça kendiliğinden işaretlenir.
-- **Üç sekme:** *Bugün* (plan, çalışma, ilerleme), *Kelime* (desteler, kelime listeleri, şablonlar), *Okuma* (seviyeli hikâyeler ve soruları).
+- **Dört sekme:** *Bugün* (plan, çalışma, ilerleme), *Kelime* (desteler, kelime listeleri, şablonlar), *Okuma* (seviyeli hikâyeler ve soruları), *Writing* (Task 2).
+- **Writing Task 2:** Beş deneme türü (Opinion, Discussion, Advantages & Disadvantages, Problem & Solution, Two-part) için soruda nasıl tanınacağı, paragraf paragraf yapı, işe yarar kalıplar ve paragraf notlarıyla açıklanmış band 7+ örnek deneme; dört puanlama kriterinin sade Türkçe özeti; işlevine göre bağlaç bankası. 20 soruluk bankadan 40 dakikalık sayaçla deneme yazarsın: taslak otomatik kaydedilir, yazarken türün kalıplarına ve konuyla ilgili kelimelere bakabilirsin. Bitirince uzunluk, paragraf, bağlaç çeşitliliği, akademik üslup, kelime tekrarı ve cümle uzunluğu otomatik kontrol edilir (band puanı değil), ardından 10 maddelik listeyle kendini değerlendirirsin. Denemelerin kaydedilir; Bugünün planı haftada iki deneme hedefler.
 - **Hazır desteler:** A2, B1, B2 ve IELTS 7+ (C1) seviyelerinde, her biri en sık kullanılan 500 kelimeden oluşur. Toplam 2000+ kelime ve hepsinin Türkçe anlamı var. Bunlara ek olarak tanım ve örnek cümleleriyle 24 kelimelik *Paket #1 · Memory & Learning* destesi de gelir.
 - **Konu desteleri:** IELTS Writing Task 2'nin sık konularında altı deste: Çevre, Eğitim, Sağlık, Teknoloji, İş ve Ekonomi, Toplum ve Şehir. Her birinde 40 kelime ya da kalıp (*carbon footprint*, *work-life balance*…), hepsi Türkçe anlam, İngilizce tanım ve örnek cümleyle.
 - **Seviyeli hikâyeler:** A1, A2, B1 ve B2 seviyelerinde onar kısa hikâye; B2 hikâyeleri IELTS Reading tarzı metinlerdir. Her hikâyenin sonunda IELTS Reading'deki gibi **True / False / Not Given** soruları var (toplam 150); her cevabın nedeni metinden alıntıyla Türkçe açıklanır, en iyi skorun hikâye listesinde görünür. Okurken bir kelimeye dokununca Türkçe anlamı ve hikâyedeki cümle görünür; istersen kelimeyi o cümleyle birlikte istediğin desteye eklersin (varsayılan: *Hikâye kelimeleri*). Çekimli hâller köke bağlanır (*went → go*), *look after* gibi kalıplar tek parça seçilir.
@@ -49,6 +50,7 @@ js/app.js           Uygulama mantığı (bağımlılık yok)
 data/decks.js       Uygulamanın yüklediği hazır desteler
 data/*.json         Aynı desteler, başka projelerde kullanmak için JSON olarak
 data/stories.js     Hikâyeler ve hikâye sözlüğü (tools/stories/ ile üretilir)
+data/writing.js     Writing Task 2: türler, örnek denemeler, kriterler, bağlaçlar, sorular
 tools/stories/      Hikâye kaynakları, sözlük ve üretim betiği
 data/konu-*.json    Konu desteleri (decks.js içinde de var)
 manifest.webmanifest, icons/   Ana ekrana ekleme bilgileri ve ikonlar
@@ -85,7 +87,7 @@ Betik, sözlükte karşılığı olmayan kelimeleri listeler; onları `tools/sto
 - Her seviyede, alt seviyelerde hiç geçmeyen kelimeler seçildi.
 - Bu kelimeler [wordfreq](https://github.com/rspeer/wordfreq) kütüphanesindeki kullanım sıklığına göre sıralandı ve her seviyeden ilk 500 kelime alındı.
 - Türkçe anlamlar bu proje için hazırlandı.
-- Hikâyeler, hikâye sözlüğü ve konu destelerinin tanım ve örnek cümleleri Fişlik için yazıldı; başka bir eserden alınmadı.
+- Hikâyeler, hikâye sözlüğü, konu destelerinin tanım ve örnek cümleleri ile Writing bölümündeki sorular ve örnek denemeler Fişlik için yazıldı; başka bir eserden alınmadı.
 
 Hata gördüğün bir anlam olursa *issue* açabilir ya da düzeltmeyi *pull request* olarak gönderebilirsin.
 
@@ -107,7 +109,7 @@ Kaynaklar:
 
 ### English
 
-Fişlik is a lightweight, dependency-free flashcard web app for IELTS vocabulary. It uses spaced repetition and ships with four ready-made decks (CEFR A2, B1, B2 and C1, 500 words each) with Turkish translations, plus a small themed starter pack. It also includes six topic decks for IELTS Writing (environment, education, health, technology, work, society) and 40 original graded stories (A1–B2): tap any word to see its Turkish meaning and add it, with its sentence, to a deck. The app can be installed to the home screen and used offline.
+Fişlik is a lightweight, dependency-free flashcard web app for IELTS vocabulary. It uses spaced repetition and ships with four ready-made decks (CEFR A2, B1, B2 and C1, 500 words each) with Turkish translations, plus a small themed starter pack. It also includes an IELTS Writing Task 2 section (essay types, annotated band 7+ model essays, a timed practice editor with automatic checks), six topic decks for IELTS Writing (environment, education, health, technology, work, society) and 40 original graded stories (A1–B2): tap any word to see its Turkish meaning and add it, with its sentence, to a deck. The app can be installed to the home screen and used offline.
 
 To use it, open `index.html` in a browser or host the folder on GitHub Pages. Your progress is stored in the browser and can be exported as JSON.
 
