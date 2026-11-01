@@ -366,7 +366,7 @@ function renderHelp(){
       ${step(6, "Hikâye oku", `<p><b>Okuma</b> sekmesinde A1'den C1'e 45 hikâye var; sıradaki önerilen hikâye en üstte durur. Gerçek sınava hazırlık için aynı sekmede 3 pasaj, 40 soru ve 60 dakikalık <b>IELTS Reading testi</b> var; bitirince tahmini band puanını ve en çok zorlandığın soru tipini görürsün. Bilmediğin kelimeye dokun: Türkçesini ve cümleyi görürsün, istersen destene eklersin. Hikâyenin sonundaki <b>True / False / Not Given</b> soruları IELTS Reading'e hazırlar.</p>`)}
       ${step(6.5, "Writing pratiği yap", `<p><b>Writing</b> sekmesinde Task 2'nin beş deneme türünü, her biri için yapı şablonunu ve açıklamalı band 7+ örnek denemeyi bulursun. <b>Deneme yaz</b> ile 40 dakikalık sayaçla bir soru cevapla; bitirince kelime sayısı, paragraf, bağlaç çeşitliliği, tekrar ve akademik üslup otomatik kontrol edilir, sonra kendi değerlendirme listeni doldurursun. Haftada en az iki deneme hedefle.</p>`)}
       ${step(6.7, "Speaking ve Listening", `<p><b>Speaking</b> sekmesinde sınav biçimi, kriterler, Part 1 konuları, Part 2 cue card'ları ve örnek konuşmalar var. <b>Deneme sınavı</b> Part 1, 2 ve 3'ü sırayla yaptırır; her cevabını kaydeder, sonunda dinlersin. Kayıtlar yalnızca senin cihazında durur ve sayfadan çıkınca silinir. Aynı sekmedeki <b>Listening rehberi</b> stratejileri ve resmî ücretsiz deneme kaynaklarını gösterir.</p>`)}
-      ${step(7, "İlerlemeni koru", `<p>İlerlemen bu tarayıcıda saklanır. Başka bir cihaza geçmek ya da yedek almak için sayfanın en altındaki <b>Yedeği indir</b> ve <b>Yedekten yükle</b> düğmelerini kullan. Telefonda tarayıcı menüsünden <b>Ana ekrana ekle</b> dersen Fişlik uygulama gibi açılır ve internetsiz de çalışır.</p>`)}
+      ${step(7, "İlerlemeni koru", `<p>İlerlemen bu tarayıcıda saklanır. Sayfanın en altındaki <b>Yedeği indir</b> tüm ilerlemeni (desteler, takvim, hedef, skorlar, denemeler) tek dosyaya kaydeder. Bu dosyayı diğer cihazına at (iPhone'a AirDrop ya da Dosyalar ile) ve orada <b>Yedekten yükle</b> de: iki cihazın ilerlemesi <b>birleştirilir</b>, hiçbir şey silinmez, aynı desteler tek deste olur ve her kelimede en son çalışılan hâli alınır. Telefonda tarayıcı menüsünden <b>Ana ekrana ekle</b> dersen Fişlik uygulama gibi açılır ve internetsiz de çalışır.</p>`)}
     </ol>
     <h3 class="sec">Klavye kısayolları</h3>
     <p class="hint"><b>Boşluk</b> kartı çevirir · <b>1</b> Bilmiyorum · <b>2</b> Öğreniyorum · <b>3</b> Öğrendim · Yazarak modda <b>Enter</b> önce kontrol eder, sonra önerilen cevabı seçer · <b>Esc</b> çalışmadan çıkar.</p>
@@ -1524,9 +1524,60 @@ function endStudy(){
   go(back && back.name !== "study" && (back.name !== "deck" || store.decks[back.id]) ? back : { name: "home" });
 }
 
-/* ---------- yedekleme (GitHub sürümü) ---------- */
+/* ---------- yedekleme ve cihazlar arası birleştirme ---------- */
+// Tüm ilerleme tek nesnede: yedek dosyası bunu taşır, birleştirme bunun üzerinde çalışır.
+function collectProgress(){
+  return { decks: store.decks, activity, plan, quizBest, rtBest, essays: wr.essays, spLog };
+}
+const deckKey = d => d.template || (d.starter ? "paket1" : null);
+// Saf fonksiyon: cur ve inc'i değiştirmez; birleşmiş ilerlemeyi ve bir özet döndürür.
+// Kural: hiçbir şey silinmez. Aynı deste (aynı şablon ya da aynı ad) tek deste olur; aynı kelimede
+// en son çalışılan (last daha büyük olan) kartın ilerlemesi alınır.
+function mergeProgress(cur, inc){
+  const clone = x => JSON.parse(JSON.stringify(x || null));
+  const out = clone(cur), sum = { decksMerged: 0, decksAdded: 0, cardsUpdated: 0, cardsAdded: 0, essaysAdded: 0 };
+  out.decks = out.decks || {};
+  const PROG = ["status", "interval", "due", "seen", "last", "miss"];
+  Object.entries(inc.decks || {}).forEach(([iid, idk]) => {
+    if (!idk || !Array.isArray(idk.cards)) return;
+    const key = deckKey(idk), name = String(idk.name || "").trim().toLowerCase();
+    let lid = out.decks[iid] ? iid : Object.keys(out.decks).find(id => {
+      const d = out.decks[id];
+      return key ? deckKey(d) === key : !deckKey(d) && String(d.name || "").trim().toLowerCase() === name;
+    });
+    if (!lid) { out.decks[iid] = clone(idk); sum.decksAdded++; return; }
+    const ld = out.decks[lid]; ld.cards = ld.cards || []; sum.decksMerged++;
+    const byEn = new Map(ld.cards.map(c => [String(c.en).toLowerCase(), c]));
+    const ids = new Set(ld.cards.map(c => c.id));
+    idk.cards.forEach(ic => {
+      const lc = byEn.get(String(ic.en).toLowerCase());
+      if (!lc) {
+        const c = clone(ic); if (ids.has(c.id)) c.id = c.id + "-" + Math.random().toString(36).slice(2, 6);
+        ld.cards.push(c); ids.add(c.id); byEn.set(String(c.en).toLowerCase(), c); sum.cardsAdded++; return;
+      }
+      if ((ic.last || 0) > (lc.last || 0)) { PROG.forEach(f => { if (ic[f] !== undefined) lc[f] = ic[f]; }); sum.cardsUpdated++; }
+      ["def", "ex", "extr", "pos", "tr"].forEach(f => { if (!lc[f] && ic[f]) lc[f] = ic[f]; });
+    });
+  });
+  const ia = inc.activity || {}, a = out.activity = out.activity || { days: {}, goal: 20, best: 0, reads: {} };
+  a.days = a.days || {}; a.reads = a.reads || {};
+  Object.entries(ia.days || {}).forEach(([d, n]) => { if (+n > (a.days[d] || 0)) a.days[d] = +n; });
+  Object.entries(ia.reads || {}).forEach(([d, n]) => { if (+n > (a.reads[d] || 0)) a.reads[d] = +n; });
+  a.best = Math.max(a.best || 0, +ia.best || 0);
+  if (!(out.plan && out.plan.band) && inc.plan && inc.plan.band) out.plan = clone(inc.plan);
+  const better = (x, y) => !x || (y && y.score > x.score) ? y : x;
+  out.quizBest = out.quizBest || {}; Object.entries(inc.quizBest || {}).forEach(([k, v]) => { out.quizBest[k] = better(out.quizBest[k], v); });
+  out.rtBest = out.rtBest || {}; Object.entries(inc.rtBest || {}).forEach(([k, v]) => { out.rtBest[k] = better(out.rtBest[k], v); });
+  out.essays = out.essays || []; const eids = new Set(out.essays.map(e => e.id));
+  (inc.essays || []).forEach(e => { if (e && !eids.has(e.id)) { out.essays.push(clone(e)); eids.add(e.id); sum.essaysAdded++; } });
+  out.essays.sort((x, y) => x.date - y.date);
+  out.spLog = [...new Set([...(out.spLog || []), ...(inc.spLog || [])])].sort((x, y) => x - y);
+  return { merged: out, sum };
+}
+
 function exportBackup(){
-  const blob = new Blob([JSON.stringify({ app: "fislik", version: 1, exported: new Date().toISOString(), decks: store.decks, activity }, null, 1)], { type: "application/json" });
+  const p = collectProgress();
+  const blob = new Blob([JSON.stringify({ app: "fislik", version: 2, exported: new Date().toISOString(), ...p }, null, 1)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
   a.download = `fislik-yedek-${new Date().toISOString().slice(0,10)}.json`;
@@ -1534,19 +1585,22 @@ function exportBackup(){
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 async function importBackup(file){
-  try {
-    const data = JSON.parse(await file.text());
-    if (!data || data.app !== "fislik" || typeof data.decks !== "object") throw 0;
-    const n = Object.keys(data.decks).length;
-    if (!confirm(`Yedekte ${n} deste var. Aynı desteler yedektekiyle değiştirilecek, diğerleri kalacak. Devam edilsin mi?`)) return;
-    Object.entries(data.decks).forEach(([id, d]) => { if (d && Array.isArray(d.cards)) { store.decks[id] = d; store.push(id); } });
-    if (data.activity && typeof data.activity.days === "object") {
-      // günler birleştirilir: aynı gün için büyük olan sayı kalır
-      Object.entries(data.activity.days).forEach(([d, c]) => { if (+c > (activity.days[d] || 0)) activity.days[d] = +c; });
-      activity.best = Math.max(activity.best, +data.activity.best || 0, streak().len); saveActivity();
-    }
-    store.saveLocal(); toast(`${n} deste yüklendi.`); go({ name: "home" });
-  } catch { toast("Bu dosya bir Fişlik yedeği değil."); }
+  let data;
+  try { data = JSON.parse(await file.text()); if (!data || data.app !== "fislik" || typeof data.decks !== "object") throw 0; }
+  catch { toast("Bu dosya bir Fişlik yedeği değil."); return; }
+  const n = Object.keys(data.decks).length;
+  if (!confirm(`Yedekte ${n} deste var. Bu cihazdaki ilerlemenle birleştirilecek: hiçbir şey silinmez, aynı desteler tek deste olur ve her kelimede en son çalışılan hâli alınır. Devam edilsin mi?`)) return;
+  const { merged, sum } = mergeProgress(collectProgress(), data);
+  store.decks = merged.decks; Object.keys(store.decks).forEach(id => store.push(id)); store.saveLocal();
+  activity = merged.activity; activity.best = Math.max(activity.best, streak().len); saveActivity();
+  if (merged.plan) { plan = merged.plan; savePlan(); }
+  quizBest = merged.quizBest; try { localStorage.setItem(QUIZ_KEY, JSON.stringify(quizBest)); } catch {}
+  rtBest = merged.rtBest; try { localStorage.setItem(RT_KEY, JSON.stringify(rtBest)); } catch {}
+  wr.essays = merged.essays; saveWr();
+  spLog = merged.spLog; try { localStorage.setItem(SP_KEY, JSON.stringify(spLog.slice(-200))); } catch {}
+  const parts = [sum.decksMerged && `${sum.decksMerged} deste birleşti`, sum.decksAdded && `${sum.decksAdded} yeni deste`, sum.cardsUpdated && `${sum.cardsUpdated} kart güncellendi`, sum.cardsAdded && `${sum.cardsAdded} kart eklendi`, sum.essaysAdded && `${sum.essaysAdded} deneme eklendi`].filter(Boolean);
+  toast(parts.length ? `Birleştirildi: ${parts.join(", ")}.` : "Yedekteki her şey bu cihazda zaten vardı.", 7000);
+  go({ name: "home" });
 }
 
 /* ---------- olaylar ---------- */
